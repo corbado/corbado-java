@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>corbado-java</groupId>
+  <artifactId>corbado-java</artifactId>
+  <version>1.0.0</version>
+  <name>Corbado Java</name>
+  <description>Corbado Java SDK</description>
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <plugins>
+		
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.3.1</version>
+            <configuration>
+                <failsOnError>true</failsOnError>
+                <configLocation>src/main/resources/checkstyle.xml</configLocation>
+                <suppressionsLocation>src/main/resources/suppressions.xml</suppressionsLocation>
+            </configuration>
+            <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>9.3</version>
+                    </dependency>
+                </dependencies>
+            <executions>
+                <execution>
+                    <phase>validate</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        
+    </plugins>
+  </build>
+  
+  <!-- Dependencies -->
+  <dependencies>
+	<!-- Test -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.8.0</version>
+        <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

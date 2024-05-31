@@ -1,1 +1,8 @@
-s
+/bin/
+/target/
+.project
+.settings
+.classpath
+/corbado-java-cs-cleanup.xml
+/corbado-java-cs-formatter.xml
+/.checkstyle
