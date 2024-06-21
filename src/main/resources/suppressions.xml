@@ -12,4 +12,7 @@
     <suppress checks=".*" files=".*\.rtf$"/>
     <suppress checks="Javadoc.*$" files="intTest.*\.java"/>
     <suppress checks="AbbreviationAsWordInName" files="CorbadoSDK.*\.java"/>
+	<suppress checks=".*" files="com[\\/]corbado[\\/]generated[\\/]"/>
+	<suppress files=".+\.(?:java|gif|jpg|jpeg)$" checks=".*"/>
+
 </suppressions>
