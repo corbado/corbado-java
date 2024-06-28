@@ -1,7 +1,7 @@
 package com.corbado.sdk;
 
-/** The Class CorbadoSDK. */
-public class CorbadoSDK {
+/** The Class CorbadoSdk. */
+public class CorbadoSdk {
 
   /** The configuration class. */
   private Config config;
@@ -12,7 +12,7 @@ public class CorbadoSDK {
    * @return the config
    */
   public Config getConfig() {
-    return this.config;
+    return config;
   }
 
   /**
