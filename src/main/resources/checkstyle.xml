@@ -5,9 +5,8 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: Copy of Google Checks
-    Description: 
-Checkstyle configuration that checks the Google coding conventions from Google Java Style that can be found at https://google.github.io/styleguide/javaguide.html.
+    Checkstyle-Configuration: Google Checks PR
+    Description: none
 -->
 <module name="Checker">
   <property name="severity" value="warning"/>
@@ -169,7 +168,6 @@ Checkstyle configuration that checks the Google coding conventions from Google J
       <property name="caseIndent" value="2"/>
     </module>
     <module name="AbbreviationAsWordInName">
-      <property name="allowedAbbreviationLength" value="3"/>
       <property name="ignoreFinal" value="false"/>
       <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, ANNOTATION_DEF, ANNOTATION_FIELD_DEF,                     PARAMETER_DEF, VARIABLE_DEF, METHOD_DEF, PATTERN_VARIABLE_DEF, RECORD_DEF,                     RECORD_COMPONENT_DEF"/>
     </module>
@@ -223,9 +221,10 @@ Checkstyle configuration that checks the Google coding conventions from Google J
       <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF"/>
     </module>
     <module name="MissingJavadocMethod">
+      <property name="severity" value="warning"/>
       <property name="allowedAnnotations" value="Override, Test"/>
       <property name="minLineCount" value="2"/>
-      <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF,                                    COMPACT_CTOR_DEF"/>
+      <property name="tokens" value="METHOD_DEF, CTOR_DEF, ANNOTATION_FIELD_DEF, COMPACT_CTOR_DEF"/>
     </module>
     <module name="MissingJavadocType">
       <property name="excludeScope" value="nothing"/>
@@ -242,10 +241,6 @@ Checkstyle configuration that checks the Google coding conventions from Google J
     </module>
     <module name="CommentsIndentation">
       <property name="tokens" value="SINGLE_LINE_COMMENT, BLOCK_COMMENT_BEGIN"/>
-    </module>
-    <module name="SuppressionXpathFilter">
-      <property name="file" value="suppressions.xml"/>
-      <property name="optional" value="true"/>
     </module>
     <module name="SuppressWarningsHolder"/>
     <module name="SuppressionCommentFilter">
@@ -268,8 +263,7 @@ Checkstyle configuration that checks the Google coding conventions from Google J
     <property name="fileNamePattern" value="module\-info\.java$"/>
   </module>
   <module name="SuppressionFilter">
-    <property name="file" value="${config_loc}/src/main/resources/suppressions.xml"/>
-    <property name="optional" value="false"/>  
+    <property name="file" value="${config_loc}/suppressions.xml"/>
   </module>
   <module name="LineLength">
     <property name="fileExtensions" value="java"/>
