@@ -6,27 +6,26 @@ on:
     branches:
       - master
       - beta
-      - sdk-release/**
-      - feature/**
-	  - development
+      - 'sdk-release/**'
+      - 'feature/**'
+      - development
     tags:
-      - v[0-9]+.[0-9]+.[0-9]+*
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
   pull_request:
     branches:
       - master
       - beta
-      - sdk-release/**
-      - feature/**
-	  - development
+      - 'sdk-release/**'
+      - 'feature/**'
+      - development
 
 jobs:
   build:
     name: Build
-
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Setup Java
         id: setup-jre
@@ -38,17 +37,12 @@ jobs:
       - name: Set Test Java Runtime Environment variable
         run: echo "JAVA_TEST_HOME=${{ steps.setup-jre.outputs.path }}" >> $GITHUB_ENV
 
-	  - name: Install dependencies
-		run: mvn clean install -DskipTests
-		
-	  - name: Build project
-	    run: mvn package
+      - name: Install dependencies
+        run: mvn clean install -DskipTests
 
   test:
     name: Test
-
     runs-on: ubuntu-latest
-
     strategy:
       fail-fast: false
       matrix:
@@ -59,9 +53,9 @@ jobs:
           - "18"
           - "19"
           - "20"
-
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Setup Test Java Runtime
         id: setup-test-jre
@@ -73,16 +67,8 @@ jobs:
       - name: Set Test Java Runtime Environment variable
         run: echo "JAVA_TEST_HOME=${{ steps.setup-test-jre.outputs.path }}" >> $GITHUB_ENV
 
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: "17" # always use 17 LTS for building
-          architecture: x64
-
-
       - name: Display version
-        run: |
-          echo "JAVA_TEST_HOME=$JAVA_TEST_HOME"
+        run: echo "JAVA_TEST_HOME=$JAVA_TEST_HOME"
 
       - name: Run test suite
         run: mvn test
