@@ -190,8 +190,8 @@
 	            <version>3.4.0</version>
 	            <configuration>
 	                <failsOnError>true</failsOnError>
-	                <configLocation>${basedir}\src\main\resources\checkstyle.xml</configLocation>
-	                <suppressionsLocation>${basedir}\src\main\resources\suppressions.xml</suppressionsLocation>
+	                <configLocation>${basedir}/src/main/resources/checkstyle.xml</configLocation>
+	                <suppressionsLocation>${basedir}/src/main/resources/suppressions.xml</suppressionsLocation>
 	                <propertyExpansion>config_loc=${basedir}</propertyExpansion>
 	            </configuration>
 	            <dependencies>
