@@ -48,7 +48,7 @@ jobs:
       fail-fast: false
       matrix:
         java-version:
-          - "1.8"
+          - "8"
           - "11"
           - "17"
           - "18"

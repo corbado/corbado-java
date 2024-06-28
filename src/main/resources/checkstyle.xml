@@ -268,7 +268,7 @@ Checkstyle configuration that checks the Google coding conventions from Google J
     <property name="fileNamePattern" value="module\-info\.java$"/>
   </module>
   <module name="SuppressionFilter">
-    <property name="file" value="${config_loc}\src\main\resources/suppressions.xml"/>
+    <property name="file" value="${config_loc}/src/main/resources/suppressions.xml"/>
     <property name="optional" value="false"/>  
   </module>
   <module name="LineLength">
