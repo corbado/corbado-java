@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - master
+      - beta
+      - sdk-release/**
+      - feature/**
+	  - development
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+*
+  pull_request:
+    branches:
+      - master
+      - beta
+      - sdk-release/**
+      - feature/**
+	  - development
+
+jobs:
+  build:
+    name: Build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Setup Java
+        id: setup-jre
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17" # always use 17 LTS for building
+          architecture: x64
+
+      - name: Set Test Java Runtime Environment variable
+        run: echo "JAVA_TEST_HOME=${{ steps.setup-jre.outputs.path }}" >> $GITHUB_ENV
+
+	  - name: Install dependencies
+		run: mvn clean install -DskipTests
+		
+	  - name: Build project
+	    run: mvn package
+
+  test:
+    name: Test
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version:
+          - "1.8"
+          - "11"
+          - "17"
+          - "18"
+          - "19"
+          - "20"
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Setup Test Java Runtime
+        id: setup-test-jre
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java-version }}
+          architecture: x64
+
+      - name: Set Test Java Runtime Environment variable
+        run: echo "JAVA_TEST_HOME=${{ steps.setup-test-jre.outputs.path }}" >> $GITHUB_ENV
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17" # always use 17 LTS for building
+          architecture: x64
+
+
+      - name: Display version
+        run: |
+          echo "JAVA_TEST_HOME=$JAVA_TEST_HOME"
+
+      - name: Run test suite
+        run: mvn test
+
