@@ -25,13 +25,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Java
         id: setup-jre
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: "17" # always use 17 LTS for building
+          distribution: zulu
           architecture: x64
 
       - name: Set Test Java Runtime Environment variable
@@ -46,6 +47,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        distribution: zulu
         java-version:
           - "1.8"
           - "11"
@@ -55,13 +57,14 @@ jobs:
           - "20"
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Test Java Runtime
         id: setup-test-jre
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java-version }}
+          distribution: zulu
           architecture: x64
 
       - name: Set Test Java Runtime Environment variable
