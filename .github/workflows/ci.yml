@@ -23,6 +23,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -38,12 +39,21 @@ jobs:
       - name: Set Test Java Runtime Environment variable
         run: echo "JAVA_TEST_HOME=${{ steps.setup-jre.outputs.path }}" >> $GITHUB_ENV
 
+      - name: Cache Maven dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Install dependencies
         run: mvn clean install -DskipTests
 
   test:
     name: Test
     runs-on: ubuntu-latest
+
     strategy:
       fail-fast: false
       matrix:
@@ -54,6 +64,7 @@ jobs:
           - "18"
           - "19"
           - "20"
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -71,6 +82,14 @@ jobs:
 
       - name: Display version
         run: echo "JAVA_TEST_HOME=$JAVA_TEST_HOME"
+
+      - name: Cache Maven dependencies for tests
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ matrix.java-version }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
       - name: Run test suite
         run: mvn test
