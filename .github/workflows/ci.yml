@@ -47,7 +47,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        distribution: zulu
         java-version:
           - "1.8"
           - "11"
