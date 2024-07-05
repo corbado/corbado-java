@@ -5,14 +5,6 @@
         "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
 
 <suppressions>
-    <suppress checks="AvoidStarImport|VisibilityModifier|Javadoc.*" files="test.*\.java"/>
-    <suppress checks="JavadocType|JavadocMethod" files="example.*\.java"/>
-    <suppress checks="ImportOrder"
-              files="test.*\.java"/>
-    <suppress checks=".*" files=".*\.rtf$"/>
-    <suppress checks="Javadoc.*$" files="intTest.*\.java"/>
-    <suppress checks="AbbreviationAsWordInName" files="CorbadoSDK.*\.java"/>
 	<suppress checks=".*" files="com[\\/]corbado[\\/]generated[\\/]"/>
-	<suppress files=".+\.(?:java|gif|jpg|jpeg)$" checks=".*"/>
 
 </suppressions>
