@@ -18,6 +18,16 @@
 
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
+	
+	    <pluginManagement>
+	        <plugins>
+	            <plugin>
+		            <groupId>org.apache.maven.plugins</groupId>
+		            <artifactId>maven-checkstyle-plugin</artifactId>
+				</plugin>
+	        </plugins>
+	    </pluginManagement>
+
 		<plugins>
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -189,7 +199,6 @@
 	            <artifactId>maven-checkstyle-plugin</artifactId>
 	            <version>3.4.0</version>
 	            <configuration>
-	                <failsOnError>true</failsOnError>
 	                <configLocation>${basedir}${file.separator}src${file.separator}main${file.separator}resources${file.separator}checkstyle.xml</configLocation>
 	                <propertyExpansion>config_loc=${basedir}${file.separator}src${file.separator}main${file.separator}resources</propertyExpansion>
 	            </configuration>
@@ -200,15 +209,19 @@
 	                        <version>9.3</version>
 	                    </dependency>
 	                </dependencies>
-	            <executions>
-	                <execution>
-				       <id>validate</id>
-				       <phase>validate</phase>
-				       <goals>
-				       		<goal>check</goal>
-				       </goals>
-    					 </execution>
-	            </executions>
+	           <executions>
+                <execution>
+                    <id>validate</id>
+                    <phase>validate</phase>
+                    <configuration>
+                        <consoleOutput>true</consoleOutput>
+                        <failsOnError>true</failsOnError>
+                    </configuration>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
 	        	</plugin>
 	        
 	        
@@ -224,6 +237,12 @@
             <artifactId>jsr305</artifactId>
             <version>3.0.2</version>
         </dependency>
+        <dependency>
+		    <groupId>io.github.cdimascio</groupId>
+		    <artifactId>dotenv-java</artifactId>
+		    <!-- Last version using Java 8 -->
+		    <version>2.3.2</version> 
+		</dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
