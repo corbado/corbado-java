@@ -6,3 +6,4 @@
 /corbado-java-cs-cleanup.xml
 /corbado-java-cs-formatter.xml
 /.checkstyle
+.env
