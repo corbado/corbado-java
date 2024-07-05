@@ -39,13 +39,19 @@ public class Config {
    * @param apiSecret the api secret
    */
   // Constructors
-  public Config(String projectId, String apiSecret) {
-    this.projectId = projectId;
-    this.apiSecret = apiSecret;
+  public Config(final String projectId, final String apiSecret) {
+    setProjectId(projectId); // set and validate
+    setApiSecret(apiSecret);
 
     // default values
-    this.frontendApi = "https://" + projectId + ".frontendapi.corbado.io";
-    this.issuer = this.frontendApi;
+    setFrontendApi("https://" + projectId + ".frontendapi.corbado.io");
+    setIssuer(this.frontendApi);
+  }
+
+  // Constructors
+  public Config(final String projectId, final String apiSecret, final String backendApi) {
+    this(projectId, apiSecret);
+    setBackendApi(backendApi);
   }
 
   /**
@@ -109,9 +115,10 @@ public class Config {
    * @param apiSecret the new api secret
    * @throws IllegalArgumentException If the API secret does not start with "corbado1_".
    */
-  public void setApiSecret(String apiSecret) {
+  public void setApiSecret(final String apiSecret) {
     if (!apiSecret.startsWith("corbado1_")) {
-      throw new IllegalArgumentException("Invalid API Secret, must start with 'corbado1_'");
+      throw new IllegalArgumentException(
+          "Invalid API Secret, must start with 'corbado1_', but was: " + apiSecret);
     }
     this.apiSecret = apiSecret;
   }
@@ -122,7 +129,7 @@ public class Config {
    * @param backendApi the new backend api
    * @throws IllegalArgumentException If the URL is invalid.
    */
-  public void setBackendApi(String backendApi) {
+  public void setBackendApi(final String backendApi) {
     try {
       new URL(backendApi); // Validate URL syntax
     } catch (final MalformedURLException e) {
@@ -137,7 +144,7 @@ public class Config {
    * @param frontendApi the new frontend api
    * @throws IllegalArgumentException If the URL is invalid.
    */
-  public void setFrontendApi(String frontendApi) {
+  public void setFrontendApi(final String frontendApi) {
     try {
       new URL(frontendApi); // Validate URL syntax
     } catch (final MalformedURLException e) {
@@ -151,7 +158,7 @@ public class Config {
    *
    * @param issuer the new issuer
    */
-  public void setIssuer(String issuer) {
+  public void setIssuer(final String issuer) {
     this.issuer = issuer;
   }
 
@@ -161,9 +168,10 @@ public class Config {
    * @param projectId the new project id
    * @throws IllegalArgumentException If the project Id does not start with "pro-".
    */
-  public void setProjectId(String projectId) {
+  public void setProjectId(final String projectId) {
     if (!projectId.startsWith("pro-")) {
-      throw new IllegalArgumentException("Invalid project ID, must start with 'pro-'");
+      throw new IllegalArgumentException(
+          "Invalid project ID, must start with 'pro-', but was: " + projectId);
     }
     this.projectId = projectId;
   }
@@ -173,7 +181,7 @@ public class Config {
    *
    * @param shortSessionCookieName the new short session cookie name
    */
-  public void setShortSessionCookieName(String shortSessionCookieName) {
+  public void setShortSessionCookieName(final String shortSessionCookieName) {
     this.shortSessionCookieName = shortSessionCookieName;
   }
 }
