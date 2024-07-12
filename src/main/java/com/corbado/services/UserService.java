@@ -12,12 +12,11 @@ import com.corbado.generated.model.UserListRsp;
 import com.corbado.services.base.ApiService;
 import java.util.List;
 
-// TODO: Auto-generated Javadoc
 /** Service for managing users. */
 public class UserService extends ApiService<UserApi> {
 
   /**
-   * s Constructor for UserService.
+   * Constructor for UserService.
    *
    * @param client User API client
    */
