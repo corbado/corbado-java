@@ -92,5 +92,5 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Run test suite
-        run: mvn test
+        run: mvn --batch-mode --update-snapshots verify
 
