@@ -10,9 +10,9 @@ import com.corbado.generated.model.UserDeleteReq;
 import com.corbado.generated.model.UserGetRsp;
 import com.corbado.generated.model.UserListRsp;
 import com.corbado.services.base.ApiService;
-
 import java.util.List;
 
+// TODO: Auto-generated Javadoc
 /** Service for managing users. */
 public class UserService extends ApiService<UserApi> {
 
@@ -97,6 +97,7 @@ public class UserService extends ApiService<UserApi> {
    * @param pageSize Page size. Use null if not needed.
    * @return UserListRsp Response
    * @throws CorbadoServerException If any server-side error occurs.
+   * @throws IllegalArgumentException if page or pageSize <=0
    */
   public UserListRsp listUsers(
       final String remoteAddr,
@@ -105,10 +106,13 @@ public class UserService extends ApiService<UserApi> {
       final List<String> filterArgs,
       final Integer page,
       final Integer pageSize)
-      throws CorbadoServerException {
+      throws CorbadoServerException, IllegalArgumentException {
     try {
       if (page != null && page <= 0) {
-        throw new IllegalArgumentException("page can not be <= 0");
+        throw new IllegalArgumentException("age can not be <= 0");
+      }
+      if (pageSize != null && pageSize <= 0) {
+        throw new IllegalArgumentException("Page size can not be <= 0");
       }
 
       return client.userList(remoteAddr, userAgent, sort, filterArgs, page, pageSize);

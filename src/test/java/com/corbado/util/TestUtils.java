@@ -1,6 +1,4 @@
-package util;
-
-import java.util.Random;
+package com.corbado.util;
 
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -8,12 +6,20 @@ import com.corbado.generated.model.UserCreateReq;
 import com.corbado.generated.model.UserCreateRsp;
 import com.corbado.sdk.Config;
 import com.corbado.sdk.CorbadoSdk;
-
 import io.github.cdimascio.dotenv.Dotenv;
+import java.util.Random;
 
-public class TestUtils { // Constants for environment variable names
+// TODO: Auto-generated Javadocs
+/** The Class TestUtils. */
+public class TestUtils {
+  /** The Constant CORBADO_API_SECRET. */
+  // Constants for environment variable names
   public static final String CORBADO_API_SECRET = "CORBADO_API_SECRET";
+
+  /** The Constant CORBADO_PROJECT_ID. */
   public static final String CORBADO_PROJECT_ID = "CORBADO_PROJECT_ID";
+
+  /** The Constant CORBADO_BACKEND_API. */
   public static final String CORBADO_BACKEND_API = "CORBADO_BACKEND_API";
 
   /**

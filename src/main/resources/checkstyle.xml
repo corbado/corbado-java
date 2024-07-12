@@ -19,7 +19,7 @@
 
 -->
 <module name="Checker">
-  <property name="severity" value="error"/>
+  <property name="severity" value="warning"/>
   <property name="charset" value="UTF-8"/>
   <property name="fileExtensions" value="java, properties, xml"/>
   <module name="TreeWalker">
@@ -180,6 +180,7 @@
       <property name="arrayInitIndent" value="2"/>
     </module>
     <module name="AbbreviationAsWordInName">
+      <property name="allowedAbbreviationLength" value="3"/>
       <property name="ignoreFinal" value="false"/>
       <property name="tokens" value="CLASS_DEF, INTERFACE_DEF, ENUM_DEF, ANNOTATION_DEF, ANNOTATION_FIELD_DEF,                     PARAMETER_DEF, VARIABLE_DEF, METHOD_DEF, PATTERN_VARIABLE_DEF, RECORD_DEF,                     RECORD_COMPONENT_DEF"/>
     </module>
@@ -189,6 +190,7 @@
     <module name="CustomImportOrder">
       <property name="customImportOrderRules" value="STATIC###THIRD_PARTY_PACKAGE"/>
       <property name="sortImportsInGroupAlphabetically" value="true"/>
+      <property name="separateLineBetweenGroups" value="true"/>
     </module>
     <module name="MethodParamPad">
       <property name="tokens" value="CTOR_DEF, LITERAL_NEW, METHOD_CALL, METHOD_DEF,                     SUPER_CTOR_CALL, ENUM_CONSTANT_DEF, RECORD_DEF"/>

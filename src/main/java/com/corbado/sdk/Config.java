@@ -2,6 +2,8 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Configuration class for setting up project parameters.
@@ -14,31 +16,37 @@ public class Config {
 
   // Fields
 
-  /** The project id. */
-  private String projectId;
+  /** API secret must begin with this prefix. */
+  private static final String API_SERCRET_PREFIX = "corbado1_";
 
-  /** The api secret. */
-  private String apiSecret;
+  /** Project Id must begin with this prefix. */
+  private static final String PROJECT_ID_PREFIX = "pro-";
 
-  /** The backend api. */
-  private String backendApi = "https://backendapi.corbado.io";
+  /** The project id with custom setter. */
+  @Getter private String projectId;
+
+  /** The api secret with custom setter. */
+  @Getter private String apiSecret;
+
+  /** The backend api with custom setter. */
+  @Getter private String backendApi = "https://backendapi.corbado.io";
 
   /** The short session cookie name. */
-  private String shortSessionCookieName = "cbo_short_session";
+  @Getter @Setter private String shortSessionCookieName = "cbo_short_session";
 
   /** The issuer. */
-  private String issuer;
+  @Getter @Setter private String issuer;
 
-  /** The frontend api. */
-  private String frontendApi;
+  /** The frontend api with custom setter. */
+  @Getter private String frontendApi;
 
+  // Constructors
   /**
    * Instantiates a new config.
    *
    * @param projectId the project id
    * @param apiSecret the api secret
    */
-  // Constructors
   public Config(final String projectId, final String apiSecret) {
     setProjectId(projectId); // set and validate
     setApiSecret(apiSecret);
@@ -48,67 +56,19 @@ public class Config {
     setIssuer(this.frontendApi);
   }
 
-  // Constructors
+  /**
+   * Instantiates a new config.
+   *
+   * @param projectId the project id
+   * @param apiSecret the api secret
+   * @param backendApi the backend api
+   */
   public Config(final String projectId, final String apiSecret, final String backendApi) {
     this(projectId, apiSecret);
     setBackendApi(backendApi);
   }
 
-  /**
-   * Gets the api secret.
-   *
-   * @return the api secret
-   */
-  public String getApiSecret() {
-    return this.apiSecret;
-  }
-
-  /**
-   * Gets the backend api.
-   *
-   * @return the backend api
-   */
-  public String getBackendApi() {
-    return this.backendApi;
-  }
-
-  /**
-   * Gets the frontend api.
-   *
-   * @return the frontend api
-   */
-  public String getFrontendApi() {
-    return this.frontendApi;
-  }
-
-  /**
-   * Gets the issuer.
-   *
-   * @return the issuer
-   */
-  public String getIssuer() {
-    return this.issuer;
-  }
-
   // Getters and Setters
-  /**
-   * Gets the project id.
-   *
-   * @return the project id
-   */
-  public String getProjectId() {
-    return this.projectId;
-  }
-
-  /**
-   * Gets the short session cookie name.
-   *
-   * @return the short session cookie name
-   */
-  public String getShortSessionCookieName() {
-    return this.shortSessionCookieName;
-  }
-
   /**
    * Sets the api secret.
    *
@@ -116,7 +76,7 @@ public class Config {
    * @throws IllegalArgumentException If the API secret does not start with "corbado1_".
    */
   public void setApiSecret(final String apiSecret) {
-    if (!apiSecret.startsWith("corbado1_")) {
+    if (!apiSecret.startsWith(API_SERCRET_PREFIX)) {
       throw new IllegalArgumentException(
           "Invalid API Secret, must start with 'corbado1_', but was: " + apiSecret);
     }
@@ -154,34 +114,16 @@ public class Config {
   }
 
   /**
-   * Sets the issuer.
-   *
-   * @param issuer the new issuer
-   */
-  public void setIssuer(final String issuer) {
-    this.issuer = issuer;
-  }
-
-  /**
    * Sets the project id.
    *
    * @param projectId the new project id
    * @throws IllegalArgumentException If the project Id does not start with "pro-".
    */
   public void setProjectId(final String projectId) {
-    if (!projectId.startsWith("pro-")) {
+    if (!projectId.startsWith(PROJECT_ID_PREFIX)) {
       throw new IllegalArgumentException(
           "Invalid project ID, must start with 'pro-', but was: " + projectId);
     }
     this.projectId = projectId;
-  }
-
-  /**
-   * Sets the short session cookie name.
-   *
-   * @param shortSessionCookieName the new short session cookie name
-   */
-  public void setShortSessionCookieName(final String shortSessionCookieName) {
-    this.shortSessionCookieName = shortSessionCookieName;
   }
 }
