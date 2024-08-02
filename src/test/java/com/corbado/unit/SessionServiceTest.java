@@ -4,10 +4,21 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import com.auth0.jwk.Jwk;
+import com.auth0.jwk.JwkException;
 import com.auth0.jwk.JwkProvider;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.corbado.entities.UserEntity;
+import com.corbado.exceptions.StandardException;
 import com.corbado.services.SessionService;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -19,8 +30,10 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,8 +43,10 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+/** Unit Test for session service. */
 @ExtendWith(MockitoExtension.class)
 public class SessionServiceTest {
 
@@ -60,35 +75,43 @@ public class SessionServiceTest {
   @InjectMocks private static SessionService sessionService;
 
   /** The jwks. */
-  private static byte[] jwks;
+  private static JsonArray jwks;
 
   /** The private key. */
   private static RSAPrivateKey privateKey;
 
   // ------------------ Set up --------------------- //
+
   /**
    * Sets the up class.
    *
    * @throws IOException Signals that an I/O exception has occurred.
-   * @throws NoSuchAlgorithmException
-   * @throws InvalidKeySpecException
+   * @throws NoSuchAlgorithmException the no such algorithm exception
+   * @throws InvalidKeySpecException the invalid key spec exception
    */
   @BeforeAll
   public static void setUpClass()
       throws IOException, NoSuchAlgorithmException, InvalidKeySpecException {
+    // generateKeyPair();
     sessionService = createSessionService();
-    jwks = Files.readAllBytes(Paths.get(JWKS_PATH));
-
+    jwks = readJwks();
     privateKey = readPrivateKey(PRIVATE_KEY_PATH);
   }
 
   /**
-   * Sets the up.
+   * Set up before each test.
    *
    * @throws IOException Signals that an I/O exception has occurred.
+   * @throws JsonSyntaxException the json syntax exception
+   * @throws JwkException the jwk exception
    */
+  @SuppressWarnings("unchecked")
   @BeforeEach
-  public void setUp() throws IOException {}
+  public void setUp() throws IOException, JsonSyntaxException, JwkException {
+    final Gson gson = new Gson();
+    final Jwk ret = Jwk.fromValues(gson.fromJson(jwks.get(0), Map.class));
+    Mockito.lenient().when(jwkProvider.get(anyString())).thenReturn(ret);
+  }
 
   // ------------------ Tests --------------------- //
 
@@ -106,13 +129,13 @@ public class SessionServiceTest {
   }
 
   /**
-   * Test test generate gwt.
+   * Test test generate jwt.
    *
    * @throws InvalidKeySpecException the invalid key spec exception
    * @throws NoSuchAlgorithmException the no such algorithm exception
    */
   @Test
-  void test_testGenerateGwt() throws InvalidKeySpecException, NoSuchAlgorithmException {
+  void test_testGenerateJwt() throws InvalidKeySpecException, NoSuchAlgorithmException {
     assertNotNull(generateJwt("1", 3, 4));
   }
 
@@ -150,12 +173,20 @@ public class SessionServiceTest {
    * @param jwksUri the jwks uri
    * @param shortSessionCookieName the short session cookie name
    * @param expectValid the expect valid
+   * @throws StandardException
    */
   @ParameterizedTest
   @MethodSource("provideJwts")
-  void test_GetAndValidateShortSessionValue(final boolean expectValid, final String jwt) {
-    assertEquals(
-        expectValid, sessionService.getAndValidateShortSessionValue(jwt).isAuthenticated());
+  void test_getCurrentUser(final boolean expectValid, final String jwt) throws StandardException {
+    final UserEntity currentUser = sessionService.getCurrentUser(jwt);
+    assertEquals(expectValid, currentUser.isAuthenticated());
+
+    if (expectValid) {
+      assertEquals(TEST_NAME, currentUser.getName());
+      assertEquals(TEST_EMAIL, currentUser.getEmail());
+      assertEquals(TEST_PHONE_NUMBER, currentUser.getPhoneNumber());
+      assertEquals(TEST_USER_ID, currentUser.getUserId());
+    }
   }
 
   // ------------------ Test data --------------------- //
@@ -181,8 +212,8 @@ public class SessionServiceTest {
    * Provide jwts.
    *
    * @return the list
-   * @throws NoSuchAlgorithmException
-   * @throws InvalidKeySpecException
+   * @throws InvalidKeySpecException the invalid key spec exception
+   * @throws NoSuchAlgorithmException the no such algorithm exception
    */
   static List<Object[]> provideJwts() throws InvalidKeySpecException, NoSuchAlgorithmException {
     final List<Object[]> testData = new ArrayList<>();
@@ -273,15 +304,15 @@ public class SessionServiceTest {
    * @param exp the exp
    * @param nbf the nbf
    * @return the string
-   * @throws InvalidKeySpecException
-   * @throws NoSuchAlgorithmException
+   * @throws InvalidKeySpecException the invalid key spec exception
+   * @throws NoSuchAlgorithmException the no such algorithm exception
    */
   private static String generateJwt(final String iss, final long exp, final long nbf)
       throws InvalidKeySpecException, NoSuchAlgorithmException {
 
-    // Now you have RSAPrivateKey, you can use it as needed
     final Algorithm algorithm = Algorithm.RSA256(privateKey);
     return JWT.create()
+        .withHeader(Collections.singletonMap("kid", "kid123"))
         .withIssuer(iss)
         .withIssuedAt(new Date())
         .withExpiresAt(new Date(exp * 1000L))
@@ -304,5 +335,18 @@ public class SessionServiceTest {
         "https://example_uri.com",
         10,
         false); // URLs do not matter, url access is mocked
+  }
+
+  /**
+   * Read jwks.
+   *
+   * @return the json array
+   * @throws FileNotFoundException the file not found exception
+   */
+  private static JsonArray readJwks() throws FileNotFoundException {
+    final FileReader reader = new FileReader(JWKS_PATH);
+    final Gson gson = new Gson();
+    final JsonObject jwks = gson.fromJson(reader, JsonObject.class);
+    return jwks.getAsJsonArray("keys");
   }
 }

@@ -19,7 +19,7 @@ public class UserEntity {
   public static final String NO_AUTH = "User is not authenticated";
 
   /** Is user authenticated. */
-  private boolean authenticated;
+  @Builder.Default private boolean authenticated = false;
 
   /** The user id. */
   @Builder.Default private String userId = "";

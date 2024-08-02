@@ -4,14 +4,17 @@ import com.auth0.jwk.Jwk;
 import com.auth0.jwk.JwkException;
 import com.auth0.jwk.JwkProvider;
 import com.auth0.jwk.JwkProviderBuilder;
+import com.auth0.jwk.SigningKeyNotFoundException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.corbado.entities.UserEntity;
 import com.corbado.utils.ValidationUtils;
 import java.security.interfaces.RSAPublicKey;
 import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.StringUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -80,51 +83,6 @@ public class SessionService {
   }
 
   /**
-   * Gets the and validate short session value.
-   *
-   * @param shortSession the short session
-   * @return the and validate short session value
-   * @throws JwkException if no jwk can be found using the given kid
-   */
-  public UserEntity getAndValidateShortSessionValue(final String shortSession) {
-
-    if (shortSession == null || shortSession.isEmpty()) {
-      return UserEntity.builder().authenticated(false).build();
-    }
-    try {
-      // Get the signing key
-      DecodedJWT decodedJwt = JWT.decode(shortSession);
-      final Jwk jwk = jwkProvider.get(decodedJwt.getKeyId());
-      final RSAPublicKey publicKey = (RSAPublicKey) jwk.getPublicKey();
-
-      // Verify and decode the JWT using the signing key
-      final Algorithm algorithm = Algorithm.RSA256(publicKey);
-      final JWTVerifier verifier = JWT.require(algorithm).build();
-
-      decodedJwt = verifier.verify(shortSession);
-      System.out.println(decodedJwt);
-
-    } catch (final JwkException e) {
-      setValidationError(e);
-      return UserEntity.builder().authenticated(false).build();
-    }
-    return null;
-  }
-
-  /**
-   * Gets the current user.
-   *
-   * @param shortSession the short session
-   * @return the current user
-   */
-  public UserEntity getCurrentUser(final String shortSession) {
-    if (shortSession == null || shortSession.isEmpty()) {
-      return UserEntity.builder().authenticated(false).build();
-    }
-    return getAndValidateShortSessionValue(shortSession);
-  }
-
-  /**
    * Sets the issuer mismatch error.
    *
    * @param issuer the new issuer mismatch error
@@ -135,11 +93,68 @@ public class SessionService {
   }
 
   /**
+   * Gets the and validate short session value.
+   *
+   * @param shortSession the short session
+   * @return the and validate short session value
+   */
+  private UserEntity getAndValidateUserFromShortSessionValue(final String shortSession) {
+
+    if (shortSession == null || shortSession.isEmpty()) {
+      throw new IllegalArgumentException("Session value cannot be null or empty");
+    }
+    try {
+      // Get the signing key
+      DecodedJWT decodedJwt = JWT.decode(shortSession);
+      final Jwk jwk = jwkProvider.get(decodedJwt.getKeyId());
+      if (jwk == null) {
+        throw new SigningKeyNotFoundException(shortSession, null);
+      }
+      final RSAPublicKey publicKey = (RSAPublicKey) jwk.getPublicKey();
+
+      // Verify and decode the JWT using the signing key
+      final Algorithm algorithm = Algorithm.RSA256(publicKey);
+      final JWTVerifier verifier = JWT.require(algorithm).build();
+      decodedJwt = verifier.verify(shortSession);
+
+      // Verify issuer
+      if (!StringUtils.equals(decodedJwt.getClaim("iss").asString(), this.issuer)) {
+        setIssuerMismatchError(decodedJwt.getClaim("iss").asString());
+        return UserEntity.builder().authenticated(false).build();
+      }
+
+      return UserEntity.builder()
+          .authenticated(true)
+          .userId(decodedJwt.getClaim("sub").asString())
+          .name(decodedJwt.getClaim("name").asString())
+          .email(decodedJwt.getClaim("email").asString())
+          .phoneNumber(decodedJwt.getClaim("phone_number").asString())
+          .build();
+
+    } catch (final JwkException | JWTVerificationException e) {
+      setValidationError(e);
+      return UserEntity.builder().authenticated(false).build();
+    }
+  }
+
+  /**
+   * Gets the current user. Returns empty unauthorized user in the case if token is not valid or
+   * error occurred.
+   *
+   * @param shortSession the short session
+   * @return the current user
+   */
+  public UserEntity getCurrentUser(final String shortSession) {
+
+    return getAndValidateUserFromShortSessionValue(shortSession);
+  }
+
+  /**
    * Sets the validation error.
    *
    * @param error the new validation error
    */
-  public void setValidationError(@NonNull final Exception error) {
+  private void setValidationError(@NonNull final Exception error) {
     this.lastShortSessionValidationResult =
         String.format("JWT validation failed: %s", error.getMessage());
   }
