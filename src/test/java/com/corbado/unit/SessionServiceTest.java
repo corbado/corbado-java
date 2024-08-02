@@ -10,7 +10,7 @@ import com.auth0.jwk.JwkException;
 import com.auth0.jwk.JwkProvider;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.corbado.entities.UserEntity;
+import com.corbado.entities.SessionValidationResult;
 import com.corbado.exceptions.StandardException;
 import com.corbado.services.SessionService;
 import com.google.gson.Gson;
@@ -167,25 +167,21 @@ public class SessionServiceTest {
   }
 
   /**
-   * Test get and validate short session value.
+   * Test get current user.
    *
-   * @param issuer the issuer
-   * @param jwksUri the jwks uri
-   * @param shortSessionCookieName the short session cookie name
    * @param expectValid the expect valid
-   * @throws StandardException
+   * @param jwt the jwt
+   * @throws StandardException the standard exception
    */
   @ParameterizedTest
   @MethodSource("provideJwts")
   void test_getCurrentUser(final boolean expectValid, final String jwt) throws StandardException {
-    final UserEntity currentUser = sessionService.getCurrentUser(jwt);
-    assertEquals(expectValid, currentUser.isAuthenticated());
+    final SessionValidationResult validationResult = sessionService.getAndValidateCurrentUser(jwt);
+    assertEquals(expectValid, validationResult.isAuthenticated());
 
     if (expectValid) {
-      assertEquals(TEST_NAME, currentUser.getName());
-      assertEquals(TEST_EMAIL, currentUser.getEmail());
-      assertEquals(TEST_PHONE_NUMBER, currentUser.getPhoneNumber());
-      assertEquals(TEST_USER_ID, currentUser.getUserId());
+      assertEquals(TEST_NAME, validationResult.getFullName());
+      assertEquals(TEST_USER_ID, validationResult.getUserID());
     }
   }
 

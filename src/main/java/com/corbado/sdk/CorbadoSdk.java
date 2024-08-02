@@ -1,7 +1,7 @@
 package com.corbado.sdk;
 
 import com.corbado.exceptions.StandardException;
-import com.corbado.generated.api.UserApi;
+import com.corbado.generated.api.UsersApi;
 import com.corbado.generated.invoker.ApiClient;
 import com.corbado.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
 
 /** The Class CorbadoSdk. */
 public class CorbadoSdk {
@@ -19,11 +18,11 @@ public class CorbadoSdk {
   private static final String CORBADO_HEADER_NAME = "X-Corbado-SDK";
 
   /** The configuration class. */
-  @Getter @Setter private Config config;
+  @Getter private final Config config;
 
   /** The user API. */
   @Getter(lazy = true)
-  private final UserService users = new UserService(new UserApi(this.client));
+  private final UserService users = new UserService(new UsersApi(this.client));
 
   /** The client. */
   private ApiClient client;
@@ -49,7 +48,6 @@ public class CorbadoSdk {
     tempClient.setBasePath(this.config.getBackendApi());
     tempClient.setUsername(this.config.getProjectId());
     tempClient.setPassword(this.config.getApiSecret());
-    tempClient.setApiKey(this.config.getProjectId());
 
     // Additional info for requests
     final Map<String, String> data = new HashMap<>();

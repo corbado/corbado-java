@@ -1,8 +1,8 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys.  The Corbado Backend API is organized around REST principles. It uses resource-oriented URLs with verbs (HTTP methods) and HTTP status codes. Requests need to be valid JSON payloads. We always return JSON.  The Corbado Backend API specification is written in **OpenAPI Version 3.0.3**. You can download it via the download button at the top and use it to generate clients in languages we do not provide officially for example.  # Authentication To authenticate your API requests HTTP Basic Auth is used.  You need to set the projectID as username and the API secret as password. The authorization header looks as follows:  `Basic <<projectID>:<API secret>>`  The **authorization header** needs to be **Base64 encoded** to be working. If the authorization header is missing or incorrect, the API will respond with status code 401.  # Error types As mentioned above we make use of HTTP status codes. **4xx** errors indicate so called client errors, meaning the error occurred on client side and you need to fix it. **5xx** errors indicate server errors, which means the error occurred on server side and outside your control.  Besides HTTP status codes Corbado uses what we call error types which gives more details in error cases and help you to debug your request.  ## internal_error The error type **internal_error** is used when some internal error occurred at Corbado. You can retry your request but usually there is nothing you can do about it. All internal errors get logged and will triggert an alert to our operations team which takes care of the situation as soon as possible.  ## not_found The error type **not_found** is used when you try to get a resource which cannot be found. Most common case is that you provided a wrong ID.  ## method_not_allowed The error type **method_not_allowed** is used when you use a HTTP method (GET for example) on a resource/endpoint which it not supports.   ## validation_error The error type **validation_error** is used when there is validation error on the data you provided in the request payload or path. There will be detailed information in the JSON response about the validation error like what exactly went wrong on what field.   ## project_id_mismatch The error type **project_id_mismatch** is used when there is a project ID you provided mismatch.  ## login_error The error type **login_error** is used when the authentication failed. Most common case is that you provided a wrong pair of project ID and API secret. As mentioned above with use HTTP Basic Auth for authentication.  ## invalid_json The error type **invalid_json** is used when you send invalid JSON as request body. There will be detailed information in the JSON response about what went wrong.  ## rate_limited The error type **rate_limited** is used when ran into rate limiting of the Corbado Backend API. Right now you can do a maximum of **2000 requests** within **10 seconds** from a **single IP**. Throttle your requests and try again. If you think you need more contact support@corbado.com.  ## invalid_origin The error type **invalid_origin** is used when the API has been called from a origin which is not authorized (CORS). Add the origin to your project at https://app.corbado.com/app/settings/credentials/authorized-origins.  ## already_exists The error type **already_exists** is used when you try create a resource which already exists. Most common case is that there is some unique constraint on one of the fields.  # Security and privacy Corbado services are designed, developed, monitored, and updated with security at our core to protect you and your customers’ data and privacy.  ## Security  ### Infrastructure security Corbado leverages highly available and secure cloud infrastructure to ensure that our services are always available and securely delivered. Corbado's services are operated in uvensys GmbH's data centers in Germany and comply with ISO standard 27001. All data centers have redundant power and internet connections to avoid failure. The main location of the servers used is in Linden and offers 24/7 support. We do not use any AWS, GCP or Azure services.  Each server is monitored 24/7 and in the event of problems, automated information is sent via SMS and e-mail. The monitoring is done by the external service provider Serverguard24 GmbH.   All Corbado hardware and networking is routinely updated and audited to ensure systems are secure and that least privileged access is followed. Additionally we implement robust logging and audit protocols that allow us high visibility into system use.  ### Responsible disclosure program Here at Corbado, we take the security of our user’s data and of our services seriously. As such, we encourage responsible security research on Corbado services and products. If you believe you’ve discovered a potential vulnerability, please let us know by emailing us at [security@corbado.com](mailto:security@corbado.com). We will acknowledge your email within 2 business days. As public disclosures of a security vulnerability could put the entire Corbado community at risk, we ask that you keep such potential vulnerabilities confidential until we are able to address them. We aim to resolve critical issues within 30 days of disclosure. Please make a good faith effort to avoid violating privacy, destroying data, or interrupting or degrading the Corbado service. Please only interact with accounts you own or for which you have explicit permission from the account holder. While researching, please refrain from:  - Distributed Denial of Service (DDoS) - Spamming - Social engineering or phishing of Corbado employees or contractors - Any attacks against Corbado's physical property or data centers  Thank you for helping to keep Corbado and our users safe!  ### Rate limiting At Corbado, we apply rate limit policies on our APIs in order to protect your application and user management infrastructure, so your users will have a frictionless non-interrupted experience.  Corbado responds with HTTP status code 429 (too many requests) when the rate limits exceed. Your code logic should be able to handle such cases by checking the status code on the response and recovering from such cases. If a retry is needed, it is best to allow for a back-off to avoid going into an infinite retry loop.  The current rate limit for all our API endpoints is **max. 100 requests per 10 seconds**.  ## Privacy Corbado is committed to protecting the personal data of our customers and their customers. Corbado has in place appropriate data security measures that meet industry standards. We regularly review and make enhancements to our processes, products, documentation, and contracts to help support ours and our customers’ compliance for the processing of personal data.  We try to minimize the usage and processing of personally identifiable information. Therefore, all our services are constructed to avoid unnecessary data consumption.  To make our services work, we only require the following data: - any kind of identifier (e.g. UUID, phone number, email address) - IP address (only temporarily for rate limiting aspects) - User agent (for device management) 
+ *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
- * The version of the OpenAPI document: 1.0.0
+ * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import com.corbado.generated.model.LongSessionStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,121 +50,47 @@ import com.corbado.generated.invoker.JSON;
 /**
  * LongSession
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-06-21T11:14:23.049718350Z[Etc/UTC]", comments = "Generator version: 7.7.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-02T14:34:22.087477742Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
 public class LongSession {
-  public static final String SERIALIZED_NAME_I_D = "ID";
-  @SerializedName(SERIALIZED_NAME_I_D)
-  private String ID;
+  public static final String SERIALIZED_NAME_LONG_SESSION_I_D = "longSessionID";
+  @SerializedName(SERIALIZED_NAME_LONG_SESSION_I_D)
+  private String longSessionID;
 
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
   private String userID;
 
-  public static final String SERIALIZED_NAME_USER_IDENTIFIER = "userIdentifier";
-  @SerializedName(SERIALIZED_NAME_USER_IDENTIFIER)
-  private String userIdentifier;
+  public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
+  private String identifierValue;
 
-  public static final String SERIALIZED_NAME_USER_FULL_NAME = "userFullName";
-  @SerializedName(SERIALIZED_NAME_USER_FULL_NAME)
-  private String userFullName;
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private LongSessionStatus status;
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
   private String expires;
 
-  public static final String SERIALIZED_NAME_LAST_ACTION = "lastAction";
-  @SerializedName(SERIALIZED_NAME_LAST_ACTION)
-  private String lastAction;
-
-  public static final String SERIALIZED_NAME_CREATED = "created";
-  @SerializedName(SERIALIZED_NAME_CREATED)
-  private String created;
-
-  public static final String SERIALIZED_NAME_UPDATED = "updated";
-  @SerializedName(SERIALIZED_NAME_UPDATED)
-  private String updated;
-
-  /**
-   * status values of a long session
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    ACTIVE("active"),
-    
-    LOGGED_OUT("logged_out"),
-    
-    EXPIRED("expired"),
-    
-    INACTIVITY_REACHED("inactivity_reached"),
-    
-    REVOKED("revoked");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      StatusEnum.fromValue(value);
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
-
   public LongSession() {
   }
 
-  public LongSession ID(String ID) {
-    this.ID = ID;
+  public LongSession longSessionID(String longSessionID) {
+    this.longSessionID = longSessionID;
     return this;
   }
 
-   /**
-   * Get ID
-   * @return ID
-  **/
+  /**
+   * Get longSessionID
+   * @return longSessionID
+   */
   @javax.annotation.Nonnull
-  public String getID() {
-    return ID;
+  public String getLongSessionID() {
+    return longSessionID;
   }
 
-  public void setID(String ID) {
-    this.ID = ID;
+  public void setLongSessionID(String longSessionID) {
+    this.longSessionID = longSessionID;
   }
 
 
@@ -172,10 +99,10 @@ public class LongSession {
     return this;
   }
 
-   /**
-   * ID of the user
+  /**
+   * Get userID
    * @return userID
-  **/
+   */
   @javax.annotation.Nonnull
   public String getUserID() {
     return userID;
@@ -186,41 +113,41 @@ public class LongSession {
   }
 
 
-  public LongSession userIdentifier(String userIdentifier) {
-    this.userIdentifier = userIdentifier;
+  public LongSession identifierValue(String identifierValue) {
+    this.identifierValue = identifierValue;
     return this;
   }
 
-   /**
-   * Get userIdentifier
-   * @return userIdentifier
-  **/
+  /**
+   * Get identifierValue
+   * @return identifierValue
+   */
   @javax.annotation.Nonnull
-  public String getUserIdentifier() {
-    return userIdentifier;
+  public String getIdentifierValue() {
+    return identifierValue;
   }
 
-  public void setUserIdentifier(String userIdentifier) {
-    this.userIdentifier = userIdentifier;
+  public void setIdentifierValue(String identifierValue) {
+    this.identifierValue = identifierValue;
   }
 
 
-  public LongSession userFullName(String userFullName) {
-    this.userFullName = userFullName;
+  public LongSession status(LongSessionStatus status) {
+    this.status = status;
     return this;
   }
 
-   /**
-   * Get userFullName
-   * @return userFullName
-  **/
+  /**
+   * Get status
+   * @return status
+   */
   @javax.annotation.Nonnull
-  public String getUserFullName() {
-    return userFullName;
+  public LongSessionStatus getStatus() {
+    return status;
   }
 
-  public void setUserFullName(String userFullName) {
-    this.userFullName = userFullName;
+  public void setStatus(LongSessionStatus status) {
+    this.status = status;
   }
 
 
@@ -229,10 +156,10 @@ public class LongSession {
     return this;
   }
 
-   /**
-   * Timestamp of when long session expires in yyyy-MM-dd&#39;T&#39;HH:mm:ss format
+  /**
+   * Get expires
    * @return expires
-  **/
+   */
   @javax.annotation.Nonnull
   public String getExpires() {
     return expires;
@@ -240,82 +167,6 @@ public class LongSession {
 
   public void setExpires(String expires) {
     this.expires = expires;
-  }
-
-
-  public LongSession lastAction(String lastAction) {
-    this.lastAction = lastAction;
-    return this;
-  }
-
-   /**
-   * Timestamp of when last action was done on long session in yyyy-MM-dd&#39;T&#39;HH:mm:ss format
-   * @return lastAction
-  **/
-  @javax.annotation.Nonnull
-  public String getLastAction() {
-    return lastAction;
-  }
-
-  public void setLastAction(String lastAction) {
-    this.lastAction = lastAction;
-  }
-
-
-  public LongSession created(String created) {
-    this.created = created;
-    return this;
-  }
-
-   /**
-   * Timestamp of when the entity was created in yyyy-MM-dd&#39;T&#39;HH:mm:ss format
-   * @return created
-  **/
-  @javax.annotation.Nonnull
-  public String getCreated() {
-    return created;
-  }
-
-  public void setCreated(String created) {
-    this.created = created;
-  }
-
-
-  public LongSession updated(String updated) {
-    this.updated = updated;
-    return this;
-  }
-
-   /**
-   * Timestamp of when the entity was last updated in yyyy-MM-dd&#39;T&#39;HH:mm:ss format
-   * @return updated
-  **/
-  @javax.annotation.Nonnull
-  public String getUpdated() {
-    return updated;
-  }
-
-  public void setUpdated(String updated) {
-    this.updated = updated;
-  }
-
-
-  public LongSession status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * status values of a long session
-   * @return status
-  **/
-  @javax.annotation.Nonnull
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
   }
 
 
@@ -329,35 +180,27 @@ public class LongSession {
       return false;
     }
     LongSession longSession = (LongSession) o;
-    return Objects.equals(this.ID, longSession.ID) &&
+    return Objects.equals(this.longSessionID, longSession.longSessionID) &&
         Objects.equals(this.userID, longSession.userID) &&
-        Objects.equals(this.userIdentifier, longSession.userIdentifier) &&
-        Objects.equals(this.userFullName, longSession.userFullName) &&
-        Objects.equals(this.expires, longSession.expires) &&
-        Objects.equals(this.lastAction, longSession.lastAction) &&
-        Objects.equals(this.created, longSession.created) &&
-        Objects.equals(this.updated, longSession.updated) &&
-        Objects.equals(this.status, longSession.status);
+        Objects.equals(this.identifierValue, longSession.identifierValue) &&
+        Objects.equals(this.status, longSession.status) &&
+        Objects.equals(this.expires, longSession.expires);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ID, userID, userIdentifier, userFullName, expires, lastAction, created, updated, status);
+    return Objects.hash(longSessionID, userID, identifierValue, status, expires);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class LongSession {\n");
-    sb.append("    ID: ").append(toIndentedString(ID)).append("\n");
+    sb.append("    longSessionID: ").append(toIndentedString(longSessionID)).append("\n");
     sb.append("    userID: ").append(toIndentedString(userID)).append("\n");
-    sb.append("    userIdentifier: ").append(toIndentedString(userIdentifier)).append("\n");
-    sb.append("    userFullName: ").append(toIndentedString(userFullName)).append("\n");
-    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
-    sb.append("    lastAction: ").append(toIndentedString(lastAction)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
+    sb.append("    identifierValue: ").append(toIndentedString(identifierValue)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -380,35 +223,27 @@ public class LongSession {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("ID");
+    openapiFields.add("longSessionID");
     openapiFields.add("userID");
-    openapiFields.add("userIdentifier");
-    openapiFields.add("userFullName");
-    openapiFields.add("expires");
-    openapiFields.add("lastAction");
-    openapiFields.add("created");
-    openapiFields.add("updated");
+    openapiFields.add("identifierValue");
     openapiFields.add("status");
+    openapiFields.add("expires");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("ID");
+    openapiRequiredFields.add("longSessionID");
     openapiRequiredFields.add("userID");
-    openapiRequiredFields.add("userIdentifier");
-    openapiRequiredFields.add("userFullName");
-    openapiRequiredFields.add("expires");
-    openapiRequiredFields.add("lastAction");
-    openapiRequiredFields.add("created");
-    openapiRequiredFields.add("updated");
+    openapiRequiredFields.add("identifierValue");
     openapiRequiredFields.add("status");
+    openapiRequiredFields.add("expires");
   }
 
- /**
-  * Validates the JSON Element and throws an exception if issues found
-  *
-  * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to LongSession
-  */
+  /**
+   * Validates the JSON Element and throws an exception if issues found
+   *
+   * @param jsonElement JSON Element
+   * @throws IOException if the JSON Element is invalid with respect to LongSession
+   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!LongSession.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
@@ -431,35 +266,20 @@ public class LongSession {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("ID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ID").toString()));
+      if (!jsonObj.get("longSessionID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `longSessionID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("longSessionID").toString()));
       }
       if (!jsonObj.get("userID").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
       }
-      if (!jsonObj.get("userIdentifier").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userIdentifier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userIdentifier").toString()));
+      if (!jsonObj.get("identifierValue").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `identifierValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierValue").toString()));
       }
-      if (!jsonObj.get("userFullName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userFullName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userFullName").toString()));
-      }
+      // validate the required field `status`
+      LongSessionStatus.validateJsonElement(jsonObj.get("status"));
       if (!jsonObj.get("expires").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `expires` to be a primitive type in the JSON string but got `%s`", jsonObj.get("expires").toString()));
       }
-      if (!jsonObj.get("lastAction").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastAction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastAction").toString()));
-      }
-      if (!jsonObj.get("created").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
-      }
-      if (!jsonObj.get("updated").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated").toString()));
-      }
-      if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
-      }
-      // validate the required field `status`
-      StatusEnum.validateJsonElement(jsonObj.get("status"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -491,22 +311,22 @@ public class LongSession {
     }
   }
 
- /**
-  * Create an instance of LongSession given an JSON string
-  *
-  * @param jsonString JSON string
-  * @return An instance of LongSession
-  * @throws IOException if the JSON string is invalid with respect to LongSession
-  */
+  /**
+   * Create an instance of LongSession given an JSON string
+   *
+   * @param jsonString JSON string
+   * @return An instance of LongSession
+   * @throws IOException if the JSON string is invalid with respect to LongSession
+   */
   public static LongSession fromJson(String jsonString) throws IOException {
     return JSON.getGson().fromJson(jsonString, LongSession.class);
   }
 
- /**
-  * Convert an instance of LongSession to an JSON string
-  *
-  * @return JSON string
-  */
+  /**
+   * Convert an instance of LongSession to an JSON string
+   *
+   * @return JSON string
+   */
   public String toJson() {
     return JSON.getGson().toJson(this);
   }

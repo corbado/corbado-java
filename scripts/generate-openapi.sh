@@ -13,10 +13,10 @@ cd .gen
 rm -rf ../../src/main/java/$SDK_PACKAGE_NAME/$GENERATED_PACKAGE_NAME
 mkdir -p ../../src/main/java/$SDK_PACKAGE_NAME/$GENERATED_PACKAGE_NAME
 
-curl -s -O https://api.corbado.com/docs/api/openapi/backend_api_public.yml
+curl -s -O https://apireference.cloud.corbado.io/backendapi-v2/backend_api.yml
 docker pull openapitools/openapi-generator-cli
 docker run -v ${PWD}:/local --user $(id -u):$(id -g) openapitools/openapi-generator-cli generate \
-    -i /local/backend_api_public.yml \
+    -i /local/backend_api.yml \
     -g java \
     -o /local \
     --additional-properties=packageName=com.corbado.generated \

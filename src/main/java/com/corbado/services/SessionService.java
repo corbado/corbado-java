@@ -10,7 +10,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.corbado.entities.UserEntity;
+import com.corbado.entities.SessionValidationResult;
 import com.corbado.utils.ValidationUtils;
 import java.security.interfaces.RSAPublicKey;
 import java.util.concurrent.TimeUnit;
@@ -98,7 +98,8 @@ public class SessionService {
    * @param shortSession the short session
    * @return the and validate short session value
    */
-  private UserEntity getAndValidateUserFromShortSessionValue(final String shortSession) {
+  private SessionValidationResult getAndValidateUserFromShortSessionValue(
+      final String shortSession) {
 
     if (shortSession == null || shortSession.isEmpty()) {
       throw new IllegalArgumentException("Session value cannot be null or empty");
@@ -120,31 +121,28 @@ public class SessionService {
       // Verify issuer
       if (!StringUtils.equals(decodedJwt.getClaim("iss").asString(), this.issuer)) {
         setIssuerMismatchError(decodedJwt.getClaim("iss").asString());
-        return UserEntity.builder().authenticated(false).build();
+        return new SessionValidationResult();
       }
 
-      return UserEntity.builder()
+      return SessionValidationResult.builder()
           .authenticated(true)
-          .userId(decodedJwt.getClaim("sub").asString())
-          .name(decodedJwt.getClaim("name").asString())
-          .email(decodedJwt.getClaim("email").asString())
-          .phoneNumber(decodedJwt.getClaim("phone_number").asString())
+          .fullName(decodedJwt.getClaim("name").asString())
+          .userID(decodedJwt.getClaim("sub").asString())
           .build();
 
     } catch (final JwkException | JWTVerificationException e) {
       setValidationError(e);
-      return UserEntity.builder().authenticated(false).build();
+      return new SessionValidationResult();
     }
   }
 
   /**
-   * Gets the current user. Returns empty unauthorized user in the case if token is not valid or
-   * error occurred.
+   * Retrieves userID and full name if 'shortSession' is valid.
    *
    * @param shortSession the short session
-   * @return the current user
+   * @return the current user{@link SessionValidationResult}
    */
-  public UserEntity getCurrentUser(final String shortSession) {
+  public SessionValidationResult getAndValidateCurrentUser(final String shortSession) {
 
     return getAndValidateUserFromShortSessionValue(shortSession);
   }

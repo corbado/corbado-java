@@ -1,9 +1,9 @@
 package com.corbado.util;
 
+import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
 import com.corbado.generated.model.UserCreateReq;
-import com.corbado.generated.model.UserCreateRsp;
 import com.corbado.sdk.Config;
 import com.corbado.sdk.CorbadoSdk;
 import io.github.cdimascio.dotenv.Dotenv;
@@ -61,10 +61,9 @@ public class TestUtils {
    * @throws CorbadoServerException
    */
   public static String createUser() throws CorbadoServerException, StandardException {
-    final UserCreateReq req =
-        new UserCreateReq().name(createRandomTestName()).email(createRandomTestEmail());
-    final UserCreateRsp rsp = instantiateSDK().getUsers().create(req);
-    return rsp.getData().getUserID();
+    final UserCreateReq req = new UserCreateReq().fullName(createRandomTestName());
+    final UserEntity rsp = instantiateSDK().getUsers().create(req);
+    return rsp.getUserID();
   }
 
   /**

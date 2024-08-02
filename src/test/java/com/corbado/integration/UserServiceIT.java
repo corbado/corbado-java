@@ -4,17 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import com.corbado.base.AbstractSdkTest;
+import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.CorbadoServerException.ValidationMessage;
 import com.corbado.exceptions.StandardException;
-import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.UserCreateReq;
-import com.corbado.generated.model.UserCreateRsp;
-import com.corbado.generated.model.UserDeleteReq;
-import com.corbado.generated.model.UserGetRsp;
-import com.corbado.generated.model.UserListRsp;
 import com.corbado.services.UserService;
 import com.corbado.util.TestUtils;
 import org.junit.jupiter.api.BeforeAll;
@@ -45,7 +40,7 @@ class UserServiceIT extends AbstractSdkTest {
   /** Test case for user creation with validation error. * */
   @Test
   void test_UserCreateBlankNameExpectValidationError() {
-    final UserCreateReq req = new UserCreateReq().name("").email("");
+    final UserCreateReq req = new UserCreateReq().fullName("");
 
     final CorbadoServerException e =
         assertThrows(CorbadoServerException.class, () -> fixture.create(req));
@@ -60,13 +55,10 @@ class UserServiceIT extends AbstractSdkTest {
   /** Test case for successful user creation. * */
   @Test
   void test_UserCreateExpectSuccess() throws CorbadoServerException {
-    final UserCreateReq req =
-        new UserCreateReq()
-            .name(TestUtils.createRandomTestName())
-            .email(TestUtils.createRandomTestEmail());
+    final UserCreateReq req = new UserCreateReq().fullName(TestUtils.createRandomTestName());
 
-    final UserCreateRsp rsp = fixture.create(req);
-    assertEquals(200, rsp.getHttpStatusCode());
+    final UserEntity rsp = fixture.create(req);
+    assertEquals(req.getFullName(), rsp.getFullName());
   }
 
   /** Test for retrieving a user that does not exist. * */
@@ -76,7 +68,7 @@ class UserServiceIT extends AbstractSdkTest {
         assertThrows(
             CorbadoServerException.class,
             () -> {
-              final UserGetRsp ret = fixture.get("usr-1234567890");
+              final UserEntity ret = fixture.get("usr-1234567890");
               System.out.println(ret.toString());
             });
     assertNotNull(e);
@@ -87,41 +79,15 @@ class UserServiceIT extends AbstractSdkTest {
   @Test
   void test_UserGetExpectSuccess() throws CorbadoServerException, StandardException {
     final String userId = TestUtils.createUser();
-    final UserGetRsp rsp = fixture.get(userId);
-    assertEquals(200, rsp.getHttpStatusCode());
+    final UserEntity rsp = fixture.delete(userId);
+    assertEquals(userId, rsp.getUserID());
   }
 
   /** Test for successfully deleting a user. * */
   @Test
   void test_UserDeleteExpectSuccess() throws CorbadoServerException, StandardException {
     final String userId = TestUtils.createUser();
-    final GenericRsp rsp = fixture.delete(userId, new UserDeleteReq());
-    assertEquals(200, rsp.getHttpStatusCode());
-  }
-
-  /** Test for listing users with validation error. * */
-  @Test
-  void test_UserListInvalidSortExpectValidationError() {
-    final CorbadoServerException e =
-        assertThrows(
-            CorbadoServerException.class,
-            () -> fixture.listUsers("", "", "foo:bar", null, null, null));
-    assertNotNull(e);
-    assertEquals(422, e.getHttpStatusCode());
-
-    assertArrayEquals(
-        new ValidationMessage[] {new ValidationMessage("sort", "Invalid order direction 'bar'")},
-        e.getValidationMessages().toArray());
-  }
-
-  /** Test for successfully listing users. * */
-  @Test
-  void test_UserListSuccess() throws CorbadoServerException, StandardException {
-    final String userId = TestUtils.createUser();
-    final UserListRsp rsp = fixture.listUsers(null, null, "created:desc", null, null, null);
-
-    final boolean found =
-        rsp.getData().getUsers().stream().anyMatch(user -> user.getID().equals(userId));
-    assertTrue(found);
+    final UserEntity rsp = fixture.delete(userId);
+    assertEquals(userId, rsp.getUserID());
   }
 }
