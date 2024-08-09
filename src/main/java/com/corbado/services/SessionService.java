@@ -31,13 +31,13 @@ public class SessionService {
   private static final int JWK_CACHE_SIZE = 100;
 
   /** The short session cookie name. */
-  private String shortSessionCookieName;
+  private final String shortSessionCookieName;
 
   /** The issuer. */
-  private String issuer;
+  private final String issuer;
 
   /** The jwks uri. */
-  private String jwksUri;
+  private final String jwksUri;
 
   /** The last short session validation result. */
   private String lastShortSessionValidationResult;
@@ -49,7 +49,7 @@ public class SessionService {
   private boolean cacheKeys = false;
 
   /** The jwk provider. */
-  private JwkProvider jwkProvider;
+  private final JwkProvider jwkProvider;
 
   /**
    * Instantiates a new session service.

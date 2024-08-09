@@ -4,12 +4,12 @@ import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
 import com.corbado.generated.model.UserCreateReq;
+import com.corbado.generated.model.UserStatus;
 import com.corbado.sdk.Config;
 import com.corbado.sdk.CorbadoSdk;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.util.Random;
 
-// TODO: Auto-generated Javadocs
 /** The Class TestUtils. */
 public class TestUtils {
   /** The Constant CORBADO_API_SECRET. */
@@ -21,6 +21,9 @@ public class TestUtils {
 
   /** The Constant CORBADO_BACKEND_API. */
   public static final String CORBADO_BACKEND_API = "CORBADO_BACKEND_API";
+
+  /** The Constant CANNOT_BE_BLANK_MESSAGE. */
+  public static final String CANNOT_BE_BLANK_MESSAGE = "cannot be blank";
 
   /**
    * Generate a random test email.
@@ -54,14 +57,15 @@ public class TestUtils {
   }
 
   /**
-   * Create a user and return the user ID.
+   * Creates the user.
    *
-   * @return user ID of the created user
-   * @throws StandardException
-   * @throws CorbadoServerException
+   * @return the string
+   * @throws CorbadoServerException the corbado server exception
+   * @throws StandardException the standard exception
    */
   public static String createUser() throws CorbadoServerException, StandardException {
-    final UserCreateReq req = new UserCreateReq().fullName(createRandomTestName());
+    final UserCreateReq req =
+        new UserCreateReq().fullName(createRandomTestName()).status(UserStatus.ACTIVE);
     final UserEntity rsp = instantiateSDK().getUsers().create(req);
     return rsp.getUserID();
   }

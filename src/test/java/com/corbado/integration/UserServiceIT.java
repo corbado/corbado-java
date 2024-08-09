@@ -33,17 +33,16 @@ class UserServiceIT extends AbstractSdkTest {
 
   /** Test instantiate sdk expect not null. */
   @Test
-  void test_InstantiateSdkExpectNotNull() {
+  void test_InstantiateSdk_ExpectNotNull() {
     assertNotNull(sdk);
   }
 
   /** Test case for user creation with validation error. * */
   @Test
-  void test_UserCreateBlankNameExpectValidationError() {
-    final UserCreateReq req = new UserCreateReq().fullName("");
+  void test_UserCreateBlankName_ExpectSuccess() {
 
     final CorbadoServerException e =
-        assertThrows(CorbadoServerException.class, () -> fixture.create(req));
+        assertThrows(CorbadoServerException.class, () -> fixture.createActiveByName(""));
     assertNotNull(e);
     assertEquals(400, e.getHttpStatusCode());
 
@@ -55,15 +54,22 @@ class UserServiceIT extends AbstractSdkTest {
   /** Test case for successful user creation. * */
   @Test
   void test_UserCreateExpectSuccess() throws CorbadoServerException {
+    final String name = TestUtils.createRandomTestName();
+    final UserEntity rsp = fixture.createActiveByName(name);
+    assertEquals(name, rsp.getFullName());
+  }
+
+  /** Test case for missing status on user creation. * */
+  @Test
+  void test_UserCreateWithoutStatus_ExpectNullPoinerException() throws CorbadoServerException {
     final UserCreateReq req = new UserCreateReq().fullName(TestUtils.createRandomTestName());
 
-    final UserEntity rsp = fixture.create(req);
-    assertEquals(req.getFullName(), rsp.getFullName());
+    assertThrows(NullPointerException.class, () -> fixture.create(req));
   }
 
   /** Test for retrieving a user that does not exist. * */
   @Test
-  void test_UserGetExpectNotFound() {
+  void test_UserGet_ExpectNotFound() {
     final CorbadoServerException e =
         assertThrows(
             CorbadoServerException.class,
@@ -77,7 +83,7 @@ class UserServiceIT extends AbstractSdkTest {
 
   /** Test for successfully retrieving a user. * */
   @Test
-  void test_UserGetExpectSuccess() throws CorbadoServerException, StandardException {
+  void test_UserGet_ExpectSuccess() throws CorbadoServerException, StandardException {
     final String userId = TestUtils.createUser();
     final UserEntity rsp = fixture.delete(userId);
     assertEquals(userId, rsp.getUserID());
@@ -85,9 +91,10 @@ class UserServiceIT extends AbstractSdkTest {
 
   /** Test for successfully deleting a user. * */
   @Test
-  void test_UserDeleteExpectSuccess() throws CorbadoServerException, StandardException {
+  void test_UserDelete_ExpectSuccess() throws CorbadoServerException, StandardException {
     final String userId = TestUtils.createUser();
     final UserEntity rsp = fixture.delete(userId);
+
     assertEquals(userId, rsp.getUserID());
   }
 }

@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Configuration class for setting up project parameters.
@@ -12,6 +13,7 @@ import lombok.Setter;
  * backend API URL, and other parameters. It provides validation for these fields and computes
  * derived properties like frontend API URL and issuer.
  */
+@Slf4j
 public class Config {
 
   // Fields
@@ -29,7 +31,7 @@ public class Config {
   @Getter private String apiSecret;
 
   /** The backend api with custom setter. */
-  @Getter private String backendApi = "https://backendapi.corbado.io";
+  @Getter private String backendApi = "https://backendapi.cloud.corbado.io/v2";
 
   /** The short session cookie name. */
   @Getter @Setter private String shortSessionCookieName = "cbo_short_session";
@@ -48,6 +50,7 @@ public class Config {
    * @param apiSecret the api secret
    */
   public Config(final String projectId, final String apiSecret) {
+
     setProjectId(projectId); // set and validate
     setApiSecret(apiSecret);
 

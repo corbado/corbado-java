@@ -42,7 +42,7 @@ public class CorbadoServerException extends Exception {
    * @param statusCode the status code
    * @param body the body
    */
-  public CorbadoServerException(final int statusCode, @NonNull final String body) {
+  public CorbadoServerException(final int statusCode, final String body) {
     final Gson gson = new Gson();
     httpStatusCode = statusCode;
     this.errorResponse = gson.fromJson(body, ErrorResponse.class);

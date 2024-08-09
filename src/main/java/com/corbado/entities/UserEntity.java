@@ -18,7 +18,10 @@ public class UserEntity extends User {
   /**
    * Instantiates a new user entity.
    *
-   * @param authenticated the authenticated
+   * @param userID the user ID
+   * @param explicitWebauthnID the explicit webauthn ID
+   * @param fullName the full name
+   * @param status the status
    */
   public UserEntity(
       @NonNull final String userID,
