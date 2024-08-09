@@ -1,8 +1,10 @@
 package com.corbado.sdk;
 
 import com.corbado.exceptions.StandardException;
+import com.corbado.generated.api.IdentifiersApi;
 import com.corbado.generated.api.UsersApi;
 import com.corbado.generated.invoker.ApiClient;
+import com.corbado.services.IdentifierService;
 import com.corbado.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,8 +12,10 @@ import java.util.HashMap;
 import java.util.Map;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 
 /** The Class CorbadoSdk. */
+@Slf4j
 public class CorbadoSdk {
 
   /** The Constant CORBADO_HEADER_NAME. */
@@ -20,9 +24,14 @@ public class CorbadoSdk {
   /** The configuration class. */
   @Getter private final Config config;
 
-  /** The user API. */
+  /** The users API. */
   @Getter(lazy = true)
   private final UserService users = new UserService(new UsersApi(this.client));
+
+  /** The identifiers API. */
+  @Getter(lazy = true)
+  private final IdentifierService identifiers =
+      new IdentifierService(new IdentifiersApi(this.client));
 
   /** The client. */
   private ApiClient client;
@@ -45,10 +54,10 @@ public class CorbadoSdk {
    */
   private void initializeClient() throws StandardException {
     final ApiClient tempClient = new ApiClient();
+
     tempClient.setBasePath(this.config.getBackendApi());
     tempClient.setUsername(this.config.getProjectId());
     tempClient.setPassword(this.config.getApiSecret());
-
     // Additional info for requests
     final Map<String, String> data = new HashMap<>();
     data.put("name", "Java SDK");
