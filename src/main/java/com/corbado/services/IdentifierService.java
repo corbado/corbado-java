@@ -19,6 +19,9 @@ import lombok.NonNull;
 /** This class provides functionality for managing login identifiers. */
 public class IdentifierService extends ApiService<IdentifiersApi> {
 
+  /** The user id prefix. */
+  private static String USER_ID_PREFIX = "usr-";
+
   /**
    * Instantiates a new identifier service.
    *
@@ -165,17 +168,21 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   /**
    * List by user id with paging.
    *
-   * @param userID the user ID
+   * @param userID the user ID (with or without 'usr-' prefix)
    * @param page the page
    * @param pageSize the page size
    * @return the identifier list
    * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
    *     the response body
    */
-  // TODO: finish impl.
   public IdentifierList listAllByUserIdWithPaging(
-      @NonNull final String userID, @Nullable final Integer page, @Nullable final Integer pageSize)
+      @NonNull String userID, @Nullable final Integer page, @Nullable final Integer pageSize)
       throws CorbadoServerException {
+
+    // filter queries are using userID without prefix
+    if (userID.startsWith(USER_ID_PREFIX)) {
+      userID = userID.substring(USER_ID_PREFIX.length());
+    }
     return list(null, Arrays.asList("userID:eq:" + userID), page, pageSize);
   }
 

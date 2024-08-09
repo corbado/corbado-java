@@ -155,7 +155,7 @@ class IdentifierServiceIT extends AbstractSdkTest {
   }
 
   /**
-   * Test get email and get email with false identifier.
+   * Test case for search for Identifiers by userId.
    *
    * @throws CorbadoServerException the corbado server exception
    * @throws StandardException the standard exception
@@ -166,7 +166,9 @@ class IdentifierServiceIT extends AbstractSdkTest {
       throws CorbadoServerException, StandardException, ApiException {
 
     final IdentifierList ret = fixture.listAllByUserIdWithPaging(TEST_USER_ID, null, null);
-
+    ret.getIdentifiers().stream()
+        .map(Identifier::getIdentifierID)
+        .anyMatch(x -> x.equals(TEST_USER_EMAIL_IDENTIFIER.getIdentifierID()));
     assertEquals(2, ret.getIdentifiers().size());
   }
 
