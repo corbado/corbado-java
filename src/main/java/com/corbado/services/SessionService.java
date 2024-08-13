@@ -1,5 +1,10 @@
 package com.corbado.services;
 
+import java.security.interfaces.RSAPublicKey;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.auth0.jwk.Jwk;
 import com.auth0.jwk.JwkException;
 import com.auth0.jwk.JwkProvider;
@@ -12,9 +17,7 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.corbado.entities.SessionValidationResult;
 import com.corbado.utils.ValidationUtils;
-import java.security.interfaces.RSAPublicKey;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.StringUtils;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -31,25 +34,19 @@ public class SessionService {
   private static final int JWK_CACHE_SIZE = 100;
 
   /** The short session cookie name. */
-  private final String shortSessionCookieName;
+  private String shortSessionCookieName;
 
   /** The issuer. */
-  private final String issuer;
+  private String issuer;
 
   /** The jwks uri. */
-  private final String jwksUri;
+  private String jwksUri;
 
   /** The last short session validation result. */
   private String lastShortSessionValidationResult;
 
-  /** The short session length. */
-  private int shortSessionLength = 300; // Default short session length in seconds
-
-  /** The cache keys. */
-  private boolean cacheKeys = false;
-
   /** The jwk provider. */
-  private final JwkProvider jwkProvider;
+  private JwkProvider jwkProvider;
 
   /**
    * Instantiates a new session service.
@@ -72,8 +69,6 @@ public class SessionService {
     this.shortSessionCookieName = shortSessionCookieName;
     this.issuer = issuer;
     this.jwksUri = jwksUri;
-    this.shortSessionLength = shortSessionLength;
-    this.cacheKeys = cacheKeys;
 
     final JwkProviderBuilder jwkProviderBuilder = new JwkProviderBuilder(this.jwksUri);
     if (cacheKeys) {
@@ -107,7 +102,7 @@ public class SessionService {
     try {
       // Get the signing key
       DecodedJWT decodedJwt = JWT.decode(shortSession);
-      final Jwk jwk = jwkProvider.get(decodedJwt.getKeyId());
+      final Jwk jwk = this.jwkProvider.get(decodedJwt.getKeyId());
       if (jwk == null) {
         throw new SigningKeyNotFoundException(shortSession, null);
       }

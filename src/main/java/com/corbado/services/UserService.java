@@ -95,7 +95,7 @@ public class UserService extends ApiService<UsersApi> {
    * @param userId the user id
    * @throws CorbadoServerException exception thrown on error or if user is not found
    */
-  public void delete(final String userId) throws CorbadoServerException {
+  public void delete(@NonNull final String userId) throws CorbadoServerException {
     try {
       this.client.userDelete(userId);
 
@@ -111,7 +111,7 @@ public class UserService extends ApiService<UsersApi> {
    * @return UserGetRsp Response
    * @throws CorbadoServerException If any server-side error occurs.
    */
-  public UserEntity get(final String userId) throws CorbadoServerException {
+  public UserEntity get(@NonNull final String userId) throws CorbadoServerException {
     try {
       return new UserEntity(this.client.userGet(userId));
     } catch (final ApiException e) {

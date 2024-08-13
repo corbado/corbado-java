@@ -74,7 +74,6 @@ class UserServiceIT extends AbstractSdkTest {
             CorbadoServerException.class,
             () -> {
               final UserEntity ret = this.fixture.get(user.getUserID());
-              System.out.println(ret.toString());
             });
     assertNotNull(e);
     assertEquals(400, e.getHttpStatusCode());
@@ -93,7 +92,6 @@ class UserServiceIT extends AbstractSdkTest {
             CorbadoServerException.class,
             () -> {
               final UserEntity ret = this.fixture.get("usr-1234567890");
-              System.out.println(ret.toString());
             });
     assertNotNull(e);
     assertEquals(400, e.getHttpStatusCode());
