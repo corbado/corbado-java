@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 import com.corbado.base.AbstractSdkTest;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -17,8 +21,7 @@ import com.corbado.generated.model.IdentifierStatus;
 import com.corbado.generated.model.IdentifierType;
 import com.corbado.services.IdentifierService;
 import com.corbado.util.TestUtils;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+
 import lombok.extern.slf4j.Slf4j;
 
 /** The Class UserServiceIT. */
@@ -41,6 +44,22 @@ class IdentifierServiceIT extends AbstractSdkTest {
   private static Identifier TEST_USER_EMAIL_IDENTIFIER = null;
 
   /**
+   * Assert validation error equals.
+   *
+   * @param e the CorbadoServerException
+   * @param validatedFieldName the validated field name
+   * @param expectedMessage the expected message
+   */
+  private void assertValidationErrorEquals(
+      final CorbadoServerException e,
+      final String validatedFieldName,
+      final String expectedMessage) {
+    assertEquals(1, e.getValidationMessages().size());
+    assertEquals(validatedFieldName, e.getValidationMessages().get(0).getField());
+    assertEquals(expectedMessage, e.getValidationMessages().get(0).getMessage());
+  }
+
+  /**
    * Sets the up class.
    *
    * @throws StandardException the standard exception
@@ -48,8 +67,8 @@ class IdentifierServiceIT extends AbstractSdkTest {
    */
   @BeforeAll
   public void setUpClass() throws StandardException, CorbadoServerException {
-    fixture = sdk.getIdentifiers();
-    TEST_USER_ID = TestUtils.createUser();
+    fixture = this.sdk.getIdentifiers();
+    TEST_USER_ID = TestUtils.createUser().getUserID();
     TEST_USER_EMAIL = TestUtils.createRandomTestEmail();
     TEST_USER_PHONE = TestUtils.createRandomTestPhoneNumber();
 
@@ -74,67 +93,6 @@ class IdentifierServiceIT extends AbstractSdkTest {
         TEST_USER_PHONE);
   }
 
-  /** Test for successfully creating an identifier. * */
-  @Test
-  void test_CreateIdentifier_ExpectSuccess() throws CorbadoServerException, StandardException {
-    final String userId = TestUtils.createUser();
-    final String email = TestUtils.createRandomTestEmail();
-    final Identifier rsp =
-        fixture.create(
-            userId,
-            new IdentifierCreateReq()
-                .identifierType(IdentifierType.EMAIL)
-                .identifierValue(email)
-                .status(IdentifierStatus.PRIMARY));
-
-    assertEquals(userId, rsp.getUserID());
-    assertEquals(email, rsp.getValue());
-    assertEquals(IdentifierType.EMAIL, rsp.getType());
-  }
-
-  /**
-   * Test create empty identifier expect exception.
-   *
-   * @throws CorbadoServerException the corbado server exception
-   * @throws StandardException the standard exception
-   */
-  @Test
-  void test_CreateEmptyIdentifier_ExpectException()
-      throws CorbadoServerException, StandardException {
-    final String userId = TestUtils.createUser();
-    final String email = "";
-    final CorbadoServerException e =
-        assertThrows(
-            CorbadoServerException.class,
-            () -> {
-              fixture.create(
-                  userId,
-                  new IdentifierCreateReq()
-                      .identifierType(IdentifierType.EMAIL)
-                      .identifierValue(email)
-                      .status(IdentifierStatus.PRIMARY));
-            });
-
-    assertValidationErrorEquals(e, "identifierValue", TestUtils.CANNOT_BE_BLANK_MESSAGE);
-  }
-
-  /**
-   * Test list expect success.
-   *
-   * @throws CorbadoServerException the corbado server exception
-   * @throws StandardException the standard exception
-   */
-  @Test
-  void test_ListIdentifiersAll_ExpectSuccess() throws CorbadoServerException, StandardException {
-    final IdentifierList ret = fixture.list(null, null, null, 100);
-
-    for (final Identifier x : ret.getIdentifiers()) {
-      log.error("Userid: {}, Value: {}", x.getUserID(), x.getValue());
-    }
-
-    assertNotNull(ret);
-  }
-
   /**
    * Test get email and get email with false identifier.
    *
@@ -155,6 +113,50 @@ class IdentifierServiceIT extends AbstractSdkTest {
   }
 
   /**
+   * Test create empty identifier expect exception.
+   *
+   * @throws CorbadoServerException the corbado server exception
+   * @throws StandardException the standard exception
+   */
+  @Test
+  void test_CreateEmptyIdentifier_ExpectException()
+      throws CorbadoServerException, StandardException {
+    final String userId = TestUtils.createUser().getUserID();
+    final String email = "";
+    final CorbadoServerException e =
+        assertThrows(
+            CorbadoServerException.class,
+            () -> {
+              fixture.create(
+                  userId,
+                  new IdentifierCreateReq()
+                      .identifierType(IdentifierType.EMAIL)
+                      .identifierValue(email)
+                      .status(IdentifierStatus.PRIMARY));
+            });
+
+    assertValidationErrorEquals(e, "identifierValue", TestUtils.CANNOT_BE_BLANK_MESSAGE);
+  }
+
+  /** Test for successfully creating an identifier. * */
+  @Test
+  void test_CreateIdentifier_ExpectSuccess() throws CorbadoServerException, StandardException {
+    final String userId = TestUtils.createUser().getUserID();
+    final String email = TestUtils.createRandomTestEmail();
+    final Identifier rsp =
+        fixture.create(
+            userId,
+            new IdentifierCreateReq()
+                .identifierType(IdentifierType.EMAIL)
+                .identifierValue(email)
+                .status(IdentifierStatus.PRIMARY));
+
+    assertEquals(userId, rsp.getUserID());
+    assertEquals(email, rsp.getValue());
+    assertEquals(IdentifierType.EMAIL, rsp.getType());
+  }
+
+  /**
    * Test case for search for Identifiers by userId.
    *
    * @throws CorbadoServerException the corbado server exception
@@ -171,6 +173,25 @@ class IdentifierServiceIT extends AbstractSdkTest {
         .anyMatch(x -> x.equals(TEST_USER_EMAIL_IDENTIFIER.getIdentifierID()));
     assertEquals(2, ret.getIdentifiers().size());
   }
+
+  /**
+   * Test list expect success.
+   *
+   * @throws CorbadoServerException the corbado server exception
+   * @throws StandardException the standard exception
+   */
+  @Test
+  void test_ListIdentifiersAll_ExpectSuccess() throws CorbadoServerException, StandardException {
+    final IdentifierList ret = fixture.list(null, null, null, 100);
+
+    for (final Identifier x : ret.getIdentifiers()) {
+      log.error("Userid: {}, Value: {}", x.getUserID(), x.getValue());
+    }
+
+    assertNotNull(ret);
+  }
+
+  // ----------- Helper functions ------------//
 
   /**
    * Test get email and get email with false identifier.
@@ -200,23 +221,5 @@ class IdentifierServiceIT extends AbstractSdkTest {
         fixture.listByValueAndType(
             TEST_USER_EMAIL_IDENTIFIER.getValue(), TEST_USER_EMAIL_IDENTIFIER.getType());
     assertEquals(IdentifierStatus.PRIMARY, ret.getIdentifiers().get(0).getStatus());
-  }
-
-  // ----------- Helper functions ------------//
-
-  /**
-   * Assert validation error equals.
-   *
-   * @param e the e
-   * @param validatedFieldName the validated field name
-   * @param expectedMessage the expected message
-   */
-  private void assertValidationErrorEquals(
-      final CorbadoServerException e,
-      final String validatedFieldName,
-      final String expectedMessage) {
-    assertEquals(1, e.getValidationMessages().size());
-    assertEquals(validatedFieldName, e.getValidationMessages().get(0).getField());
-    assertEquals(expectedMessage, e.getValidationMessages().get(0).getMessage());
   }
 }

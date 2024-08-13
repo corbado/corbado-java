@@ -1,5 +1,7 @@
 package com.corbado.util;
 
+import java.util.Random;
+
 import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -7,8 +9,8 @@ import com.corbado.generated.model.UserCreateReq;
 import com.corbado.generated.model.UserStatus;
 import com.corbado.sdk.Config;
 import com.corbado.sdk.CorbadoSdk;
+
 import io.github.cdimascio.dotenv.Dotenv;
-import java.util.Random;
 
 /** The Class TestUtils. */
 public class TestUtils {
@@ -63,11 +65,10 @@ public class TestUtils {
    * @throws CorbadoServerException the corbado server exception
    * @throws StandardException the standard exception
    */
-  public static String createUser() throws CorbadoServerException, StandardException {
+  public static UserEntity createUser() throws CorbadoServerException, StandardException {
     final UserCreateReq req =
         new UserCreateReq().fullName(createRandomTestName()).status(UserStatus.ACTIVE);
-    final UserEntity rsp = instantiateSDK().getUsers().create(req);
-    return rsp.getUserID();
+    return instantiateSDK().getUsers().create(req);
   }
 
   /**
@@ -89,8 +90,8 @@ public class TestUtils {
   /**
    * Instantiate SDK with parameters from environment variables.
    *
-   * @return CorbadoSdk instance
-   * @throws StandardException
+   * @return the corbado sdk
+   * @throws StandardException the standard exception
    */
   public static CorbadoSdk instantiateSDK() throws StandardException {
     final Dotenv dotenv = Dotenv.load();
@@ -99,10 +100,9 @@ public class TestUtils {
     final String projectId = dotenv.get(CORBADO_PROJECT_ID, "missing CORBADO_PROJECT_ID");
     final String backendApi = dotenv.get(CORBADO_BACKEND_API);
 
-    if (backendApi != null) {
+    if (backendApi == null || backendApi == "") {
       return new CorbadoSdk(new Config(projectId, apiSecret, backendApi));
-    } else {
-      return new CorbadoSdk(new Config(projectId, apiSecret));
     }
+    return new CorbadoSdk(new Config(projectId, apiSecret));
   }
 }
