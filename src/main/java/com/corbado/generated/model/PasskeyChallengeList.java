@@ -15,7 +15,7 @@ package com.corbado.generated.model;
 
 import java.util.Objects;
 import com.corbado.generated.model.Paging;
-import com.corbado.generated.model.SocialAccount;
+import com.corbado.generated.model.PasskeyChallenge;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,49 +51,49 @@ import java.util.Set;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * SocialAccountList
+ * PasskeyChallengeList
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
-public class SocialAccountList {
-  public static final String SERIALIZED_NAME_SOCIAL_ACCOUNTS = "socialAccounts";
-  @SerializedName(SERIALIZED_NAME_SOCIAL_ACCOUNTS)
-  private List<SocialAccount> socialAccounts = new ArrayList<>();
+public class PasskeyChallengeList {
+  public static final String SERIALIZED_NAME_PASSKEY_CHALLENGES = "passkeyChallenges";
+  @SerializedName(SERIALIZED_NAME_PASSKEY_CHALLENGES)
+  private List<PasskeyChallenge> passkeyChallenges = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PAGING = "paging";
   @SerializedName(SERIALIZED_NAME_PAGING)
   private Paging paging;
 
-  public SocialAccountList() {
+  public PasskeyChallengeList() {
   }
 
-  public SocialAccountList socialAccounts(List<SocialAccount> socialAccounts) {
-    this.socialAccounts = socialAccounts;
+  public PasskeyChallengeList passkeyChallenges(List<PasskeyChallenge> passkeyChallenges) {
+    this.passkeyChallenges = passkeyChallenges;
     return this;
   }
 
-  public SocialAccountList addSocialAccountsItem(SocialAccount socialAccountsItem) {
-    if (this.socialAccounts == null) {
-      this.socialAccounts = new ArrayList<>();
+  public PasskeyChallengeList addPasskeyChallengesItem(PasskeyChallenge passkeyChallengesItem) {
+    if (this.passkeyChallenges == null) {
+      this.passkeyChallenges = new ArrayList<>();
     }
-    this.socialAccounts.add(socialAccountsItem);
+    this.passkeyChallenges.add(passkeyChallengesItem);
     return this;
   }
 
   /**
-   * Get socialAccounts
-   * @return socialAccounts
+   * Get passkeyChallenges
+   * @return passkeyChallenges
    */
   @javax.annotation.Nonnull
-  public List<SocialAccount> getSocialAccounts() {
-    return socialAccounts;
+  public List<PasskeyChallenge> getPasskeyChallenges() {
+    return passkeyChallenges;
   }
 
-  public void setSocialAccounts(List<SocialAccount> socialAccounts) {
-    this.socialAccounts = socialAccounts;
+  public void setPasskeyChallenges(List<PasskeyChallenge> passkeyChallenges) {
+    this.passkeyChallenges = passkeyChallenges;
   }
 
 
-  public SocialAccountList paging(Paging paging) {
+  public PasskeyChallengeList paging(Paging paging) {
     this.paging = paging;
     return this;
   }
@@ -121,21 +121,21 @@ public class SocialAccountList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SocialAccountList socialAccountList = (SocialAccountList) o;
-    return Objects.equals(this.socialAccounts, socialAccountList.socialAccounts) &&
-        Objects.equals(this.paging, socialAccountList.paging);
+    PasskeyChallengeList passkeyChallengeList = (PasskeyChallengeList) o;
+    return Objects.equals(this.passkeyChallenges, passkeyChallengeList.passkeyChallenges) &&
+        Objects.equals(this.paging, passkeyChallengeList.paging);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(socialAccounts, paging);
+    return Objects.hash(passkeyChallenges, paging);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SocialAccountList {\n");
-    sb.append("    socialAccounts: ").append(toIndentedString(socialAccounts)).append("\n");
+    sb.append("class PasskeyChallengeList {\n");
+    sb.append("    passkeyChallenges: ").append(toIndentedString(passkeyChallenges)).append("\n");
     sb.append("    paging: ").append(toIndentedString(paging)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -159,12 +159,12 @@ public class SocialAccountList {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("socialAccounts");
+    openapiFields.add("passkeyChallenges");
     openapiFields.add("paging");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("socialAccounts");
+    openapiRequiredFields.add("passkeyChallenges");
     openapiRequiredFields.add("paging");
   }
 
@@ -172,39 +172,39 @@ public class SocialAccountList {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to SocialAccountList
+   * @throws IOException if the JSON Element is invalid with respect to PasskeyChallengeList
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!SocialAccountList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SocialAccountList is not found in the empty JSON string", SocialAccountList.openapiRequiredFields.toString()));
+        if (!PasskeyChallengeList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyChallengeList is not found in the empty JSON string", PasskeyChallengeList.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!SocialAccountList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SocialAccountList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!PasskeyChallengeList.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyChallengeList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : SocialAccountList.openapiRequiredFields) {
+      for (String requiredField : PasskeyChallengeList.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
-      if (!jsonObj.get("socialAccounts").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `socialAccounts` to be an array in the JSON string but got `%s`", jsonObj.get("socialAccounts").toString()));
+      if (!jsonObj.get("passkeyChallenges").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `passkeyChallenges` to be an array in the JSON string but got `%s`", jsonObj.get("passkeyChallenges").toString()));
       }
 
-      JsonArray jsonArraysocialAccounts = jsonObj.getAsJsonArray("socialAccounts");
-      // validate the required field `socialAccounts` (array)
-      for (int i = 0; i < jsonArraysocialAccounts.size(); i++) {
-        SocialAccount.validateJsonElement(jsonArraysocialAccounts.get(i));
+      JsonArray jsonArraypasskeyChallenges = jsonObj.getAsJsonArray("passkeyChallenges");
+      // validate the required field `passkeyChallenges` (array)
+      for (int i = 0; i < jsonArraypasskeyChallenges.size(); i++) {
+        PasskeyChallenge.validateJsonElement(jsonArraypasskeyChallenges.get(i));
       };
       // validate the required field `paging`
       Paging.validateJsonElement(jsonObj.get("paging"));
@@ -214,22 +214,22 @@ public class SocialAccountList {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!SocialAccountList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'SocialAccountList' and its subtypes
+       if (!PasskeyChallengeList.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PasskeyChallengeList' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<SocialAccountList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(SocialAccountList.class));
+       final TypeAdapter<PasskeyChallengeList> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PasskeyChallengeList.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<SocialAccountList>() {
+       return (TypeAdapter<T>) new TypeAdapter<PasskeyChallengeList>() {
            @Override
-           public void write(JsonWriter out, SocialAccountList value) throws IOException {
+           public void write(JsonWriter out, PasskeyChallengeList value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public SocialAccountList read(JsonReader in) throws IOException {
+           public PasskeyChallengeList read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -240,18 +240,18 @@ public class SocialAccountList {
   }
 
   /**
-   * Create an instance of SocialAccountList given an JSON string
+   * Create an instance of PasskeyChallengeList given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of SocialAccountList
-   * @throws IOException if the JSON string is invalid with respect to SocialAccountList
+   * @return An instance of PasskeyChallengeList
+   * @throws IOException if the JSON string is invalid with respect to PasskeyChallengeList
    */
-  public static SocialAccountList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, SocialAccountList.class);
+  public static PasskeyChallengeList fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PasskeyChallengeList.class);
   }
 
   /**
-   * Convert an instance of SocialAccountList to an JSON string
+   * Convert an instance of PasskeyChallengeList to an JSON string
    *
    * @return JSON string
    */

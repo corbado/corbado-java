@@ -79,7 +79,7 @@ public class ConnectTokensApi {
 
     /**
      * Build call for connectTokenCreate
-     * @param connectTokenCreateReq  (optional)
+     * @param connectTokenCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -137,6 +137,11 @@ public class ConnectTokensApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call connectTokenCreateValidateBeforeCall(ConnectTokenCreateReq connectTokenCreateReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'connectTokenCreateReq' is set
+        if (connectTokenCreateReq == null) {
+            throw new ApiException("Missing the required parameter 'connectTokenCreateReq' when calling connectTokenCreate(Async)");
+        }
+
         return connectTokenCreateCall(connectTokenCreateReq, _callback);
 
     }
@@ -144,7 +149,7 @@ public class ConnectTokensApi {
     /**
      * 
      * Create a new connect token
-     * @param connectTokenCreateReq  (optional)
+     * @param connectTokenCreateReq  (required)
      * @return ConnectToken
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -162,7 +167,7 @@ public class ConnectTokensApi {
     /**
      * 
      * Create a new connect token
-     * @param connectTokenCreateReq  (optional)
+     * @param connectTokenCreateReq  (required)
      * @return ApiResponse&lt;ConnectToken&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -181,7 +186,7 @@ public class ConnectTokensApi {
     /**
      *  (asynchronously)
      * Create a new connect token
-     * @param connectTokenCreateReq  (optional)
+     * @param connectTokenCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -478,7 +483,7 @@ public class ConnectTokensApi {
     /**
      * Build call for connectTokenUpdate
      * @param connectTokenID ID of an append token (required)
-     * @param connectTokenUpdateReq  (optional)
+     * @param connectTokenUpdateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -542,6 +547,11 @@ public class ConnectTokensApi {
             throw new ApiException("Missing the required parameter 'connectTokenID' when calling connectTokenUpdate(Async)");
         }
 
+        // verify the required parameter 'connectTokenUpdateReq' is set
+        if (connectTokenUpdateReq == null) {
+            throw new ApiException("Missing the required parameter 'connectTokenUpdateReq' when calling connectTokenUpdate(Async)");
+        }
+
         return connectTokenUpdateCall(connectTokenID, connectTokenUpdateReq, _callback);
 
     }
@@ -550,7 +560,7 @@ public class ConnectTokensApi {
      * 
      * Updates an existing append token
      * @param connectTokenID ID of an append token (required)
-     * @param connectTokenUpdateReq  (optional)
+     * @param connectTokenUpdateReq  (required)
      * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -569,7 +579,7 @@ public class ConnectTokensApi {
      * 
      * Updates an existing append token
      * @param connectTokenID ID of an append token (required)
-     * @param connectTokenUpdateReq  (optional)
+     * @param connectTokenUpdateReq  (required)
      * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -589,7 +599,7 @@ public class ConnectTokensApi {
      *  (asynchronously)
      * Updates an existing append token
      * @param connectTokenID ID of an append token (required)
-     * @param connectTokenUpdateReq  (optional)
+     * @param connectTokenUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

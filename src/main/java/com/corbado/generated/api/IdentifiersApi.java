@@ -80,7 +80,7 @@ public class IdentifiersApi {
     /**
      * Build call for identifierCreate
      * @param userID ID of user (required)
-     * @param identifierCreateReq  (optional)
+     * @param identifierCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -144,6 +144,11 @@ public class IdentifiersApi {
             throw new ApiException("Missing the required parameter 'userID' when calling identifierCreate(Async)");
         }
 
+        // verify the required parameter 'identifierCreateReq' is set
+        if (identifierCreateReq == null) {
+            throw new ApiException("Missing the required parameter 'identifierCreateReq' when calling identifierCreate(Async)");
+        }
+
         return identifierCreateCall(userID, identifierCreateReq, _callback);
 
     }
@@ -152,7 +157,7 @@ public class IdentifiersApi {
      * 
      * Create a new login identifier
      * @param userID ID of user (required)
-     * @param identifierCreateReq  (optional)
+     * @param identifierCreateReq  (required)
      * @return Identifier
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -171,7 +176,7 @@ public class IdentifiersApi {
      * 
      * Create a new login identifier
      * @param userID ID of user (required)
-     * @param identifierCreateReq  (optional)
+     * @param identifierCreateReq  (required)
      * @return ApiResponse&lt;Identifier&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -191,7 +196,7 @@ public class IdentifiersApi {
      *  (asynchronously)
      * Create a new login identifier
      * @param userID ID of user (required)
-     * @param identifierCreateReq  (optional)
+     * @param identifierCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -499,7 +504,7 @@ public class IdentifiersApi {
      * Build call for identifierUpdate
      * @param userID ID of user (required)
      * @param identifierID ID of login identifier (required)
-     * @param identifierUpdateReq  (optional)
+     * @param identifierUpdateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -569,6 +574,11 @@ public class IdentifiersApi {
             throw new ApiException("Missing the required parameter 'identifierID' when calling identifierUpdate(Async)");
         }
 
+        // verify the required parameter 'identifierUpdateReq' is set
+        if (identifierUpdateReq == null) {
+            throw new ApiException("Missing the required parameter 'identifierUpdateReq' when calling identifierUpdate(Async)");
+        }
+
         return identifierUpdateCall(userID, identifierID, identifierUpdateReq, _callback);
 
     }
@@ -578,7 +588,7 @@ public class IdentifiersApi {
      * Updates a login identifier (e.g. from pending to verified)
      * @param userID ID of user (required)
      * @param identifierID ID of login identifier (required)
-     * @param identifierUpdateReq  (optional)
+     * @param identifierUpdateReq  (required)
      * @return Identifier
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -598,7 +608,7 @@ public class IdentifiersApi {
      * Updates a login identifier (e.g. from pending to verified)
      * @param userID ID of user (required)
      * @param identifierID ID of login identifier (required)
-     * @param identifierUpdateReq  (optional)
+     * @param identifierUpdateReq  (required)
      * @return ApiResponse&lt;Identifier&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -619,7 +629,7 @@ public class IdentifiersApi {
      * Updates a login identifier (e.g. from pending to verified)
      * @param userID ID of user (required)
      * @param identifierID ID of login identifier (required)
-     * @param identifierUpdateReq  (optional)
+     * @param identifierUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

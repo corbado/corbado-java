@@ -49,7 +49,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-02T14:34:22.087477742Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
 public class PasskeyData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -63,9 +63,67 @@ public class PasskeyData {
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
 
-  public static final String SERIALIZED_NAME_IS_C_D_A = "isCDA";
-  @SerializedName(SERIALIZED_NAME_IS_C_D_A)
-  private Boolean isCDA;
+  /**
+   * Gets or Sets ceremonyType
+   */
+  @JsonAdapter(CeremonyTypeEnum.Adapter.class)
+  public enum CeremonyTypeEnum {
+    LOCAL("local"),
+    
+    CDA("cda"),
+    
+    SECURITY_KEY("security-key");
+
+    private String value;
+
+    CeremonyTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CeremonyTypeEnum fromValue(String value) {
+      for (CeremonyTypeEnum b : CeremonyTypeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<CeremonyTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CeremonyTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CeremonyTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CeremonyTypeEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      CeremonyTypeEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CEREMONY_TYPE = "ceremonyType";
+  @SerializedName(SERIALIZED_NAME_CEREMONY_TYPE)
+  private CeremonyTypeEnum ceremonyType;
+
+  public static final String SERIALIZED_NAME_CHALLENGE_I_D = "challengeID";
+  @SerializedName(SERIALIZED_NAME_CHALLENGE_I_D)
+  private String challengeID;
 
   public PasskeyData() {
   }
@@ -127,22 +185,41 @@ public class PasskeyData {
   }
 
 
-  public PasskeyData isCDA(Boolean isCDA) {
-    this.isCDA = isCDA;
+  public PasskeyData ceremonyType(CeremonyTypeEnum ceremonyType) {
+    this.ceremonyType = ceremonyType;
     return this;
   }
 
   /**
-   * Get isCDA
-   * @return isCDA
+   * Get ceremonyType
+   * @return ceremonyType
    */
   @javax.annotation.Nonnull
-  public Boolean getIsCDA() {
-    return isCDA;
+  public CeremonyTypeEnum getCeremonyType() {
+    return ceremonyType;
   }
 
-  public void setIsCDA(Boolean isCDA) {
-    this.isCDA = isCDA;
+  public void setCeremonyType(CeremonyTypeEnum ceremonyType) {
+    this.ceremonyType = ceremonyType;
+  }
+
+
+  public PasskeyData challengeID(String challengeID) {
+    this.challengeID = challengeID;
+    return this;
+  }
+
+  /**
+   * Get challengeID
+   * @return challengeID
+   */
+  @javax.annotation.Nonnull
+  public String getChallengeID() {
+    return challengeID;
+  }
+
+  public void setChallengeID(String challengeID) {
+    this.challengeID = challengeID;
   }
 
 
@@ -159,12 +236,13 @@ public class PasskeyData {
     return Objects.equals(this.id, passkeyData.id) &&
         Objects.equals(this.userID, passkeyData.userID) &&
         Objects.equals(this.username, passkeyData.username) &&
-        Objects.equals(this.isCDA, passkeyData.isCDA);
+        Objects.equals(this.ceremonyType, passkeyData.ceremonyType) &&
+        Objects.equals(this.challengeID, passkeyData.challengeID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userID, username, isCDA);
+    return Objects.hash(id, userID, username, ceremonyType, challengeID);
   }
 
   @Override
@@ -174,7 +252,8 @@ public class PasskeyData {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    userID: ").append(toIndentedString(userID)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
-    sb.append("    isCDA: ").append(toIndentedString(isCDA)).append("\n");
+    sb.append("    ceremonyType: ").append(toIndentedString(ceremonyType)).append("\n");
+    sb.append("    challengeID: ").append(toIndentedString(challengeID)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -200,14 +279,16 @@ public class PasskeyData {
     openapiFields.add("id");
     openapiFields.add("userID");
     openapiFields.add("username");
-    openapiFields.add("isCDA");
+    openapiFields.add("ceremonyType");
+    openapiFields.add("challengeID");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("userID");
     openapiRequiredFields.add("username");
-    openapiRequiredFields.add("isCDA");
+    openapiRequiredFields.add("ceremonyType");
+    openapiRequiredFields.add("challengeID");
   }
 
   /**
@@ -246,6 +327,14 @@ public class PasskeyData {
       }
       if (!jsonObj.get("username").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+      }
+      if (!jsonObj.get("ceremonyType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ceremonyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ceremonyType").toString()));
+      }
+      // validate the required field `ceremonyType`
+      CeremonyTypeEnum.validateJsonElement(jsonObj.get("ceremonyType"));
+      if (!jsonObj.get("challengeID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `challengeID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("challengeID").toString()));
       }
   }
 

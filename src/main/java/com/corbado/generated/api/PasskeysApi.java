@@ -86,7 +86,7 @@ public class PasskeysApi {
 
     /**
      * Build call for passkeyAppendFinish
-     * @param passkeyAppendFinishReq  (optional)
+     * @param passkeyAppendFinishReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -144,6 +144,11 @@ public class PasskeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call passkeyAppendFinishValidateBeforeCall(PasskeyAppendFinishReq passkeyAppendFinishReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'passkeyAppendFinishReq' is set
+        if (passkeyAppendFinishReq == null) {
+            throw new ApiException("Missing the required parameter 'passkeyAppendFinishReq' when calling passkeyAppendFinish(Async)");
+        }
+
         return passkeyAppendFinishCall(passkeyAppendFinishReq, _callback);
 
     }
@@ -151,7 +156,7 @@ public class PasskeysApi {
     /**
      * 
      * Completes a challenge for creating a new passkey
-     * @param passkeyAppendFinishReq  (optional)
+     * @param passkeyAppendFinishReq  (required)
      * @return PasskeyAppendFinishRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -169,7 +174,7 @@ public class PasskeysApi {
     /**
      * 
      * Completes a challenge for creating a new passkey
-     * @param passkeyAppendFinishReq  (optional)
+     * @param passkeyAppendFinishReq  (required)
      * @return ApiResponse&lt;PasskeyAppendFinishRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -188,7 +193,7 @@ public class PasskeysApi {
     /**
      *  (asynchronously)
      * Completes a challenge for creating a new passkey
-     * @param passkeyAppendFinishReq  (optional)
+     * @param passkeyAppendFinishReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -208,7 +213,7 @@ public class PasskeysApi {
     }
     /**
      * Build call for passkeyAppendStart
-     * @param passkeyAppendStartReq  (optional)
+     * @param passkeyAppendStartReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -266,6 +271,11 @@ public class PasskeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call passkeyAppendStartValidateBeforeCall(PasskeyAppendStartReq passkeyAppendStartReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'passkeyAppendStartReq' is set
+        if (passkeyAppendStartReq == null) {
+            throw new ApiException("Missing the required parameter 'passkeyAppendStartReq' when calling passkeyAppendStart(Async)");
+        }
+
         return passkeyAppendStartCall(passkeyAppendStartReq, _callback);
 
     }
@@ -273,7 +283,7 @@ public class PasskeysApi {
     /**
      * 
      * Starts a challenge for creating a new passkey
-     * @param passkeyAppendStartReq  (optional)
+     * @param passkeyAppendStartReq  (required)
      * @return PasskeyAppendStartRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -291,7 +301,7 @@ public class PasskeysApi {
     /**
      * 
      * Starts a challenge for creating a new passkey
-     * @param passkeyAppendStartReq  (optional)
+     * @param passkeyAppendStartReq  (required)
      * @return ApiResponse&lt;PasskeyAppendStartRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -310,7 +320,7 @@ public class PasskeysApi {
     /**
      *  (asynchronously)
      * Starts a challenge for creating a new passkey
-     * @param passkeyAppendStartReq  (optional)
+     * @param passkeyAppendStartReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -330,7 +340,7 @@ public class PasskeysApi {
     }
     /**
      * Build call for passkeyLoginFinish
-     * @param passkeyLoginFinishReq  (optional)
+     * @param passkeyLoginFinishReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -388,6 +398,11 @@ public class PasskeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call passkeyLoginFinishValidateBeforeCall(PasskeyLoginFinishReq passkeyLoginFinishReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'passkeyLoginFinishReq' is set
+        if (passkeyLoginFinishReq == null) {
+            throw new ApiException("Missing the required parameter 'passkeyLoginFinishReq' when calling passkeyLoginFinish(Async)");
+        }
+
         return passkeyLoginFinishCall(passkeyLoginFinishReq, _callback);
 
     }
@@ -395,7 +410,7 @@ public class PasskeysApi {
     /**
      * 
      * Completes a challenge for an existing passkey
-     * @param passkeyLoginFinishReq  (optional)
+     * @param passkeyLoginFinishReq  (required)
      * @return PasskeyLoginFinishRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -413,7 +428,7 @@ public class PasskeysApi {
     /**
      * 
      * Completes a challenge for an existing passkey
-     * @param passkeyLoginFinishReq  (optional)
+     * @param passkeyLoginFinishReq  (required)
      * @return ApiResponse&lt;PasskeyLoginFinishRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -432,7 +447,7 @@ public class PasskeysApi {
     /**
      *  (asynchronously)
      * Completes a challenge for an existing passkey
-     * @param passkeyLoginFinishReq  (optional)
+     * @param passkeyLoginFinishReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -452,7 +467,7 @@ public class PasskeysApi {
     }
     /**
      * Build call for passkeyLoginStart
-     * @param passkeyLoginStartReq  (optional)
+     * @param passkeyLoginStartReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -510,6 +525,11 @@ public class PasskeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call passkeyLoginStartValidateBeforeCall(PasskeyLoginStartReq passkeyLoginStartReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'passkeyLoginStartReq' is set
+        if (passkeyLoginStartReq == null) {
+            throw new ApiException("Missing the required parameter 'passkeyLoginStartReq' when calling passkeyLoginStart(Async)");
+        }
+
         return passkeyLoginStartCall(passkeyLoginStartReq, _callback);
 
     }
@@ -517,7 +537,7 @@ public class PasskeysApi {
     /**
      * 
      * Starts a challenge for an existing passkey
-     * @param passkeyLoginStartReq  (optional)
+     * @param passkeyLoginStartReq  (required)
      * @return PasskeyLoginStartRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -535,7 +555,7 @@ public class PasskeysApi {
     /**
      * 
      * Starts a challenge for an existing passkey
-     * @param passkeyLoginStartReq  (optional)
+     * @param passkeyLoginStartReq  (required)
      * @return ApiResponse&lt;PasskeyLoginStartRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -554,7 +574,7 @@ public class PasskeysApi {
     /**
      *  (asynchronously)
      * Starts a challenge for an existing passkey
-     * @param passkeyLoginStartReq  (optional)
+     * @param passkeyLoginStartReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -574,7 +594,7 @@ public class PasskeysApi {
     }
     /**
      * Build call for passkeyMediationFinish
-     * @param passkeyMediationFinishReq  (optional)
+     * @param passkeyMediationFinishReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -632,6 +652,11 @@ public class PasskeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call passkeyMediationFinishValidateBeforeCall(PasskeyMediationFinishReq passkeyMediationFinishReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'passkeyMediationFinishReq' is set
+        if (passkeyMediationFinishReq == null) {
+            throw new ApiException("Missing the required parameter 'passkeyMediationFinishReq' when calling passkeyMediationFinish(Async)");
+        }
+
         return passkeyMediationFinishCall(passkeyMediationFinishReq, _callback);
 
     }
@@ -639,7 +664,7 @@ public class PasskeysApi {
     /**
      * 
      * Completes a challenge for an existing passkey (Conditional UI)
-     * @param passkeyMediationFinishReq  (optional)
+     * @param passkeyMediationFinishReq  (required)
      * @return PasskeyMediationFinishRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -657,7 +682,7 @@ public class PasskeysApi {
     /**
      * 
      * Completes a challenge for an existing passkey (Conditional UI)
-     * @param passkeyMediationFinishReq  (optional)
+     * @param passkeyMediationFinishReq  (required)
      * @return ApiResponse&lt;PasskeyMediationFinishRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -676,7 +701,7 @@ public class PasskeysApi {
     /**
      *  (asynchronously)
      * Completes a challenge for an existing passkey (Conditional UI)
-     * @param passkeyMediationFinishReq  (optional)
+     * @param passkeyMediationFinishReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -696,7 +721,7 @@ public class PasskeysApi {
     }
     /**
      * Build call for passkeyMediationStart
-     * @param passkeyMediationStartReq  (optional)
+     * @param passkeyMediationStartReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -754,6 +779,11 @@ public class PasskeysApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call passkeyMediationStartValidateBeforeCall(PasskeyMediationStartReq passkeyMediationStartReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'passkeyMediationStartReq' is set
+        if (passkeyMediationStartReq == null) {
+            throw new ApiException("Missing the required parameter 'passkeyMediationStartReq' when calling passkeyMediationStart(Async)");
+        }
+
         return passkeyMediationStartCall(passkeyMediationStartReq, _callback);
 
     }
@@ -761,7 +791,7 @@ public class PasskeysApi {
     /**
      * 
      * Starts a challenge for an existing passkey (Conditional UI)
-     * @param passkeyMediationStartReq  (optional)
+     * @param passkeyMediationStartReq  (required)
      * @return PasskeyMediationStartRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -779,7 +809,7 @@ public class PasskeysApi {
     /**
      * 
      * Starts a challenge for an existing passkey (Conditional UI)
-     * @param passkeyMediationStartReq  (optional)
+     * @param passkeyMediationStartReq  (required)
      * @return ApiResponse&lt;PasskeyMediationStartRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -798,7 +828,7 @@ public class PasskeysApi {
     /**
      *  (asynchronously)
      * Starts a challenge for an existing passkey (Conditional UI)
-     * @param passkeyMediationStartReq  (optional)
+     * @param passkeyMediationStartReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

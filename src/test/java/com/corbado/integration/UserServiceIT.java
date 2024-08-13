@@ -9,6 +9,7 @@ import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.CorbadoServerException.ValidationMessage;
 import com.corbado.exceptions.StandardException;
+import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.UserCreateReq;
 import com.corbado.services.UserService;
 import com.corbado.util.TestUtils;
@@ -82,19 +83,20 @@ class UserServiceIT extends AbstractSdkTest {
   }
 
   /** Test for successfully retrieving a user. * */
+  // TODO fix
   @Test
   void test_UserGet_ExpectSuccess() throws CorbadoServerException, StandardException {
     final String userId = TestUtils.createUser();
-    final UserEntity rsp = fixture.delete(userId);
-    assertEquals(userId, rsp.getUserID());
+    final GenericRsp rsp = fixture.delete(userId);
+    assertEquals(200, rsp.getHttpStatusCode());
   }
 
   /** Test for successfully deleting a user. * */
   @Test
   void test_UserDelete_ExpectSuccess() throws CorbadoServerException, StandardException {
     final String userId = TestUtils.createUser();
-    final UserEntity rsp = fixture.delete(userId);
+    final GenericRsp rsp = fixture.delete(userId);
 
-    assertEquals(userId, rsp.getUserID());
+    assertEquals(200, rsp.getHttpStatusCode());
   }
 }

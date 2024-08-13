@@ -77,7 +77,7 @@ public class AuthEventsApi {
     /**
      * Build call for authEventCreate
      * @param userID ID of user (required)
-     * @param authEventCreateReq  (optional)
+     * @param authEventCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -141,6 +141,11 @@ public class AuthEventsApi {
             throw new ApiException("Missing the required parameter 'userID' when calling authEventCreate(Async)");
         }
 
+        // verify the required parameter 'authEventCreateReq' is set
+        if (authEventCreateReq == null) {
+            throw new ApiException("Missing the required parameter 'authEventCreateReq' when calling authEventCreate(Async)");
+        }
+
         return authEventCreateCall(userID, authEventCreateReq, _callback);
 
     }
@@ -149,7 +154,7 @@ public class AuthEventsApi {
      * 
      * Create a new authentication event for a user
      * @param userID ID of user (required)
-     * @param authEventCreateReq  (optional)
+     * @param authEventCreateReq  (required)
      * @return AuthEvent
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -168,7 +173,7 @@ public class AuthEventsApi {
      * 
      * Create a new authentication event for a user
      * @param userID ID of user (required)
-     * @param authEventCreateReq  (optional)
+     * @param authEventCreateReq  (required)
      * @return ApiResponse&lt;AuthEvent&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -188,7 +193,7 @@ public class AuthEventsApi {
      *  (asynchronously)
      * Create a new authentication event for a user
      * @param userID ID of user (required)
-     * @param authEventCreateReq  (optional)
+     * @param authEventCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

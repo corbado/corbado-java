@@ -127,6 +127,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyAppendFinishRsp.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyAppendStartReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyAppendStartRsp.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyChallenge.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyChallengeList.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyChallengeUpdateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyEventCreateReq.CustomTypeAdapterFactory());

@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.corbado.generated.model.ErrorRsp;
+import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.PasskeyEvent;
 import com.corbado.generated.model.PasskeyEventCreateReq;
 import com.corbado.generated.model.PasskeyEventList;
@@ -78,7 +79,7 @@ public class PasskeyEventsApi {
     /**
      * Build call for passkeyEventCreate
      * @param userID ID of user (required)
-     * @param passkeyEventCreateReq  (optional)
+     * @param passkeyEventCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -142,6 +143,11 @@ public class PasskeyEventsApi {
             throw new ApiException("Missing the required parameter 'userID' when calling passkeyEventCreate(Async)");
         }
 
+        // verify the required parameter 'passkeyEventCreateReq' is set
+        if (passkeyEventCreateReq == null) {
+            throw new ApiException("Missing the required parameter 'passkeyEventCreateReq' when calling passkeyEventCreate(Async)");
+        }
+
         return passkeyEventCreateCall(userID, passkeyEventCreateReq, _callback);
 
     }
@@ -150,7 +156,7 @@ public class PasskeyEventsApi {
      * 
      * Create a new passkey event for a user
      * @param userID ID of user (required)
-     * @param passkeyEventCreateReq  (optional)
+     * @param passkeyEventCreateReq  (required)
      * @return PasskeyEvent
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -169,7 +175,7 @@ public class PasskeyEventsApi {
      * 
      * Create a new passkey event for a user
      * @param userID ID of user (required)
-     * @param passkeyEventCreateReq  (optional)
+     * @param passkeyEventCreateReq  (required)
      * @return ApiResponse&lt;PasskeyEvent&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -189,7 +195,7 @@ public class PasskeyEventsApi {
      *  (asynchronously)
      * Create a new passkey event for a user
      * @param userID ID of user (required)
-     * @param passkeyEventCreateReq  (optional)
+     * @param passkeyEventCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -204,6 +210,143 @@ public class PasskeyEventsApi {
 
         okhttp3.Call localVarCall = passkeyEventCreateValidateBeforeCall(userID, passkeyEventCreateReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyEvent>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for passkeyEventDelete
+     * @param userID ID of user (required)
+     * @param passkeyEventID ID of a passkey event (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call passkeyEventDeleteCall(String userID, String passkeyEventID, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/users/{userID}/passkeyEvents/{passkeyEventID}"
+            .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()))
+            .replace("{" + "passkeyEventID" + "}", localVarApiClient.escapeString(passkeyEventID.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "basicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call passkeyEventDeleteValidateBeforeCall(String userID, String passkeyEventID, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'userID' is set
+        if (userID == null) {
+            throw new ApiException("Missing the required parameter 'userID' when calling passkeyEventDelete(Async)");
+        }
+
+        // verify the required parameter 'passkeyEventID' is set
+        if (passkeyEventID == null) {
+            throw new ApiException("Missing the required parameter 'passkeyEventID' when calling passkeyEventDelete(Async)");
+        }
+
+        return passkeyEventDeleteCall(userID, passkeyEventID, _callback);
+
+    }
+
+    /**
+     * 
+     * Deletes an existing passkey event
+     * @param userID ID of user (required)
+     * @param passkeyEventID ID of a passkey event (required)
+     * @return GenericRsp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public GenericRsp passkeyEventDelete(String userID, String passkeyEventID) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = passkeyEventDeleteWithHttpInfo(userID, passkeyEventID);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 
+     * Deletes an existing passkey event
+     * @param userID ID of user (required)
+     * @param passkeyEventID ID of a passkey event (required)
+     * @return ApiResponse&lt;GenericRsp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GenericRsp> passkeyEventDeleteWithHttpInfo(String userID, String passkeyEventID) throws ApiException {
+        okhttp3.Call localVarCall = passkeyEventDeleteValidateBeforeCall(userID, passkeyEventID, null);
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * Deletes an existing passkey event
+     * @param userID ID of user (required)
+     * @param passkeyEventID ID of a passkey event (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call passkeyEventDeleteAsync(String userID, String passkeyEventID, final ApiCallback<GenericRsp> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = passkeyEventDeleteValidateBeforeCall(userID, passkeyEventID, _callback);
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

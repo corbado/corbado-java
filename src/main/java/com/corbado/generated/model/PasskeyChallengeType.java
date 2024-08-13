@@ -24,26 +24,18 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Gets or Sets passkeyEventType
+ * Gets or Sets passkeyChallengeType
  */
-@JsonAdapter(PasskeyEventType.Adapter.class)
-public enum PasskeyEventType {
+@JsonAdapter(PasskeyChallengeType.Adapter.class)
+public enum PasskeyChallengeType {
   
-  USER_LOGIN_BLACKLISTED("user-login-blacklisted"),
+  REGISTER("register"),
   
-  LOGIN_EXPLICIT_ABORT("login-explicit-abort"),
-  
-  LOGIN_ERROR("login-error"),
-  
-  LOGIN_ONE_TAP_SWITCH("login-one-tap-switch"),
-  
-  USER_APPEND_AFTER_CROSS_PLATFORM_BLACKLISTED("user-append-after-cross-platform-blacklisted"),
-  
-  USER_APPEND_AFTER_LOGIN_ERROR_BLACKLISTED("user-append-after-login-error-blacklisted");
+  AUTHENTICATE("authenticate");
 
   private String value;
 
-  PasskeyEventType(String value) {
+  PasskeyChallengeType(String value) {
     this.value = value;
   }
 
@@ -56,8 +48,8 @@ public enum PasskeyEventType {
     return String.valueOf(value);
   }
 
-  public static PasskeyEventType fromValue(String value) {
-    for (PasskeyEventType b : PasskeyEventType.values()) {
+  public static PasskeyChallengeType fromValue(String value) {
+    for (PasskeyChallengeType b : PasskeyChallengeType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -65,22 +57,22 @@ public enum PasskeyEventType {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<PasskeyEventType> {
+  public static class Adapter extends TypeAdapter<PasskeyChallengeType> {
     @Override
-    public void write(final JsonWriter jsonWriter, final PasskeyEventType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final PasskeyChallengeType enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public PasskeyEventType read(final JsonReader jsonReader) throws IOException {
+    public PasskeyChallengeType read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return PasskeyEventType.fromValue(value);
+      return PasskeyChallengeType.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    PasskeyEventType.fromValue(value);
+    PasskeyChallengeType.fromValue(value);
   }
 }
 

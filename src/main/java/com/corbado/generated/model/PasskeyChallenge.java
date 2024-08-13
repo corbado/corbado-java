@@ -14,8 +14,8 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
-import com.corbado.generated.model.ChallengeStatus;
-import com.corbado.generated.model.ChallengeType;
+import com.corbado.generated.model.PasskeyChallengeStatus;
+import com.corbado.generated.model.PasskeyChallengeType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,21 +49,17 @@ import java.util.Set;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * Challenge
+ * PasskeyChallenge
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
-public class Challenge {
+public class PasskeyChallenge {
   public static final String SERIALIZED_NAME_CHALLENGE_I_D = "challengeID";
   @SerializedName(SERIALIZED_NAME_CHALLENGE_I_D)
   private String challengeID;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
-  private ChallengeType type;
-
-  public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
-  @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
-  private String identifierValue;
+  private PasskeyChallengeType type;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -71,12 +67,20 @@ public class Challenge {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private ChallengeStatus status;
+  private PasskeyChallengeStatus status;
 
-  public Challenge() {
+  public static final String SERIALIZED_NAME_CREATED = "created";
+  @SerializedName(SERIALIZED_NAME_CREATED)
+  private Long created;
+
+  public static final String SERIALIZED_NAME_EXPIRES = "expires";
+  @SerializedName(SERIALIZED_NAME_EXPIRES)
+  private Long expires;
+
+  public PasskeyChallenge() {
   }
 
-  public Challenge challengeID(String challengeID) {
+  public PasskeyChallenge challengeID(String challengeID) {
     this.challengeID = challengeID;
     return this;
   }
@@ -95,7 +99,7 @@ public class Challenge {
   }
 
 
-  public Challenge type(ChallengeType type) {
+  public PasskeyChallenge type(PasskeyChallengeType type) {
     this.type = type;
     return this;
   }
@@ -105,35 +109,16 @@ public class Challenge {
    * @return type
    */
   @javax.annotation.Nonnull
-  public ChallengeType getType() {
+  public PasskeyChallengeType getType() {
     return type;
   }
 
-  public void setType(ChallengeType type) {
+  public void setType(PasskeyChallengeType type) {
     this.type = type;
   }
 
 
-  public Challenge identifierValue(String identifierValue) {
-    this.identifierValue = identifierValue;
-    return this;
-  }
-
-  /**
-   * Get identifierValue
-   * @return identifierValue
-   */
-  @javax.annotation.Nonnull
-  public String getIdentifierValue() {
-    return identifierValue;
-  }
-
-  public void setIdentifierValue(String identifierValue) {
-    this.identifierValue = identifierValue;
-  }
-
-
-  public Challenge value(String value) {
+  public PasskeyChallenge value(String value) {
     this.value = value;
     return this;
   }
@@ -152,7 +137,7 @@ public class Challenge {
   }
 
 
-  public Challenge status(ChallengeStatus status) {
+  public PasskeyChallenge status(PasskeyChallengeStatus status) {
     this.status = status;
     return this;
   }
@@ -162,12 +147,50 @@ public class Challenge {
    * @return status
    */
   @javax.annotation.Nonnull
-  public ChallengeStatus getStatus() {
+  public PasskeyChallengeStatus getStatus() {
     return status;
   }
 
-  public void setStatus(ChallengeStatus status) {
+  public void setStatus(PasskeyChallengeStatus status) {
     this.status = status;
+  }
+
+
+  public PasskeyChallenge created(Long created) {
+    this.created = created;
+    return this;
+  }
+
+  /**
+   * Get created
+   * @return created
+   */
+  @javax.annotation.Nonnull
+  public Long getCreated() {
+    return created;
+  }
+
+  public void setCreated(Long created) {
+    this.created = created;
+  }
+
+
+  public PasskeyChallenge expires(Long expires) {
+    this.expires = expires;
+    return this;
+  }
+
+  /**
+   * Get expires
+   * @return expires
+   */
+  @javax.annotation.Nonnull
+  public Long getExpires() {
+    return expires;
+  }
+
+  public void setExpires(Long expires) {
+    this.expires = expires;
   }
 
 
@@ -180,28 +203,30 @@ public class Challenge {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Challenge challenge = (Challenge) o;
-    return Objects.equals(this.challengeID, challenge.challengeID) &&
-        Objects.equals(this.type, challenge.type) &&
-        Objects.equals(this.identifierValue, challenge.identifierValue) &&
-        Objects.equals(this.value, challenge.value) &&
-        Objects.equals(this.status, challenge.status);
+    PasskeyChallenge passkeyChallenge = (PasskeyChallenge) o;
+    return Objects.equals(this.challengeID, passkeyChallenge.challengeID) &&
+        Objects.equals(this.type, passkeyChallenge.type) &&
+        Objects.equals(this.value, passkeyChallenge.value) &&
+        Objects.equals(this.status, passkeyChallenge.status) &&
+        Objects.equals(this.created, passkeyChallenge.created) &&
+        Objects.equals(this.expires, passkeyChallenge.expires);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(challengeID, type, identifierValue, value, status);
+    return Objects.hash(challengeID, type, value, status, created, expires);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Challenge {\n");
+    sb.append("class PasskeyChallenge {\n");
     sb.append("    challengeID: ").append(toIndentedString(challengeID)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    identifierValue: ").append(toIndentedString(identifierValue)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -226,42 +251,44 @@ public class Challenge {
     openapiFields = new HashSet<String>();
     openapiFields.add("challengeID");
     openapiFields.add("type");
-    openapiFields.add("identifierValue");
     openapiFields.add("value");
     openapiFields.add("status");
+    openapiFields.add("created");
+    openapiFields.add("expires");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("challengeID");
     openapiRequiredFields.add("type");
-    openapiRequiredFields.add("identifierValue");
     openapiRequiredFields.add("value");
     openapiRequiredFields.add("status");
+    openapiRequiredFields.add("created");
+    openapiRequiredFields.add("expires");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Challenge
+   * @throws IOException if the JSON Element is invalid with respect to PasskeyChallenge
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Challenge.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Challenge is not found in the empty JSON string", Challenge.openapiRequiredFields.toString()));
+        if (!PasskeyChallenge.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyChallenge is not found in the empty JSON string", PasskeyChallenge.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Challenge.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Challenge` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!PasskeyChallenge.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyChallenge` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Challenge.openapiRequiredFields) {
+      for (String requiredField : PasskeyChallenge.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -271,37 +298,34 @@ public class Challenge {
         throw new IllegalArgumentException(String.format("Expected the field `challengeID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("challengeID").toString()));
       }
       // validate the required field `type`
-      ChallengeType.validateJsonElement(jsonObj.get("type"));
-      if (!jsonObj.get("identifierValue").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identifierValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierValue").toString()));
-      }
+      PasskeyChallengeType.validateJsonElement(jsonObj.get("type"));
       if (!jsonObj.get("value").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
       }
       // validate the required field `status`
-      ChallengeStatus.validateJsonElement(jsonObj.get("status"));
+      PasskeyChallengeStatus.validateJsonElement(jsonObj.get("status"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Challenge.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Challenge' and its subtypes
+       if (!PasskeyChallenge.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PasskeyChallenge' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Challenge> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Challenge.class));
+       final TypeAdapter<PasskeyChallenge> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PasskeyChallenge.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Challenge>() {
+       return (TypeAdapter<T>) new TypeAdapter<PasskeyChallenge>() {
            @Override
-           public void write(JsonWriter out, Challenge value) throws IOException {
+           public void write(JsonWriter out, PasskeyChallenge value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Challenge read(JsonReader in) throws IOException {
+           public PasskeyChallenge read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -312,18 +336,18 @@ public class Challenge {
   }
 
   /**
-   * Create an instance of Challenge given an JSON string
+   * Create an instance of PasskeyChallenge given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Challenge
-   * @throws IOException if the JSON string is invalid with respect to Challenge
+   * @return An instance of PasskeyChallenge
+   * @throws IOException if the JSON string is invalid with respect to PasskeyChallenge
    */
-  public static Challenge fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Challenge.class);
+  public static PasskeyChallenge fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PasskeyChallenge.class);
   }
 
   /**
-   * Convert an instance of Challenge to an JSON string
+   * Convert an instance of PasskeyChallenge to an JSON string
    *
    * @return JSON string
    */

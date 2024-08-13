@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import com.corbado.generated.model.PasskeyChallengeStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -47,56 +48,33 @@ import java.util.Set;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * PasskeyMediationStartRsp
+ * PasskeyChallengeUpdateReq
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
-public class PasskeyMediationStartRsp {
-  public static final String SERIALIZED_NAME_LOGIN_ALLOW = "loginAllow";
-  @SerializedName(SERIALIZED_NAME_LOGIN_ALLOW)
-  private Boolean loginAllow;
+public class PasskeyChallengeUpdateReq {
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private PasskeyChallengeStatus status;
 
-  public static final String SERIALIZED_NAME_ASSERTION_OPTIONS = "assertionOptions";
-  @SerializedName(SERIALIZED_NAME_ASSERTION_OPTIONS)
-  private String assertionOptions;
-
-  public PasskeyMediationStartRsp() {
+  public PasskeyChallengeUpdateReq() {
   }
 
-  public PasskeyMediationStartRsp loginAllow(Boolean loginAllow) {
-    this.loginAllow = loginAllow;
+  public PasskeyChallengeUpdateReq status(PasskeyChallengeStatus status) {
+    this.status = status;
     return this;
   }
 
   /**
-   * Get loginAllow
-   * @return loginAllow
+   * Get status
+   * @return status
    */
   @javax.annotation.Nonnull
-  public Boolean getLoginAllow() {
-    return loginAllow;
+  public PasskeyChallengeStatus getStatus() {
+    return status;
   }
 
-  public void setLoginAllow(Boolean loginAllow) {
-    this.loginAllow = loginAllow;
-  }
-
-
-  public PasskeyMediationStartRsp assertionOptions(String assertionOptions) {
-    this.assertionOptions = assertionOptions;
-    return this;
-  }
-
-  /**
-   * Get assertionOptions
-   * @return assertionOptions
-   */
-  @javax.annotation.Nonnull
-  public String getAssertionOptions() {
-    return assertionOptions;
-  }
-
-  public void setAssertionOptions(String assertionOptions) {
-    this.assertionOptions = assertionOptions;
+  public void setStatus(PasskeyChallengeStatus status) {
+    this.status = status;
   }
 
 
@@ -109,22 +87,20 @@ public class PasskeyMediationStartRsp {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PasskeyMediationStartRsp passkeyMediationStartRsp = (PasskeyMediationStartRsp) o;
-    return Objects.equals(this.loginAllow, passkeyMediationStartRsp.loginAllow) &&
-        Objects.equals(this.assertionOptions, passkeyMediationStartRsp.assertionOptions);
+    PasskeyChallengeUpdateReq passkeyChallengeUpdateReq = (PasskeyChallengeUpdateReq) o;
+    return Objects.equals(this.status, passkeyChallengeUpdateReq.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loginAllow, assertionOptions);
+    return Objects.hash(status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PasskeyMediationStartRsp {\n");
-    sb.append("    loginAllow: ").append(toIndentedString(loginAllow)).append("\n");
-    sb.append("    assertionOptions: ").append(toIndentedString(assertionOptions)).append("\n");
+    sb.append("class PasskeyChallengeUpdateReq {\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -147,68 +123,65 @@ public class PasskeyMediationStartRsp {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("loginAllow");
-    openapiFields.add("assertionOptions");
+    openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("loginAllow");
-    openapiRequiredFields.add("assertionOptions");
+    openapiRequiredFields.add("status");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to PasskeyMediationStartRsp
+   * @throws IOException if the JSON Element is invalid with respect to PasskeyChallengeUpdateReq
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!PasskeyMediationStartRsp.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyMediationStartRsp is not found in the empty JSON string", PasskeyMediationStartRsp.openapiRequiredFields.toString()));
+        if (!PasskeyChallengeUpdateReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyChallengeUpdateReq is not found in the empty JSON string", PasskeyChallengeUpdateReq.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!PasskeyMediationStartRsp.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyMediationStartRsp` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!PasskeyChallengeUpdateReq.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyChallengeUpdateReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PasskeyMediationStartRsp.openapiRequiredFields) {
+      for (String requiredField : PasskeyChallengeUpdateReq.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("assertionOptions").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `assertionOptions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assertionOptions").toString()));
-      }
+      // validate the required field `status`
+      PasskeyChallengeStatus.validateJsonElement(jsonObj.get("status"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!PasskeyMediationStartRsp.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'PasskeyMediationStartRsp' and its subtypes
+       if (!PasskeyChallengeUpdateReq.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PasskeyChallengeUpdateReq' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<PasskeyMediationStartRsp> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(PasskeyMediationStartRsp.class));
+       final TypeAdapter<PasskeyChallengeUpdateReq> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PasskeyChallengeUpdateReq.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<PasskeyMediationStartRsp>() {
+       return (TypeAdapter<T>) new TypeAdapter<PasskeyChallengeUpdateReq>() {
            @Override
-           public void write(JsonWriter out, PasskeyMediationStartRsp value) throws IOException {
+           public void write(JsonWriter out, PasskeyChallengeUpdateReq value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public PasskeyMediationStartRsp read(JsonReader in) throws IOException {
+           public PasskeyChallengeUpdateReq read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -219,18 +192,18 @@ public class PasskeyMediationStartRsp {
   }
 
   /**
-   * Create an instance of PasskeyMediationStartRsp given an JSON string
+   * Create an instance of PasskeyChallengeUpdateReq given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of PasskeyMediationStartRsp
-   * @throws IOException if the JSON string is invalid with respect to PasskeyMediationStartRsp
+   * @return An instance of PasskeyChallengeUpdateReq
+   * @throws IOException if the JSON string is invalid with respect to PasskeyChallengeUpdateReq
    */
-  public static PasskeyMediationStartRsp fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, PasskeyMediationStartRsp.class);
+  public static PasskeyChallengeUpdateReq fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PasskeyChallengeUpdateReq.class);
   }
 
   /**
-   * Convert an instance of PasskeyMediationStartRsp to an JSON string
+   * Convert an instance of PasskeyChallengeUpdateReq to an JSON string
    *
    * @return JSON string
    */

@@ -27,10 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.corbado.generated.model.Challenge;
-import com.corbado.generated.model.ChallengeCreateReq;
-import com.corbado.generated.model.ChallengeUpdateReq;
 import com.corbado.generated.model.ErrorRsp;
+import com.corbado.generated.model.PasskeyChallenge;
+import com.corbado.generated.model.PasskeyChallengeList;
+import com.corbado.generated.model.PasskeyChallengeUpdateReq;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -38,16 +38,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ChallengesApi {
+public class PasskeyChallengesApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public ChallengesApi() {
+    public PasskeyChallengesApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public ChallengesApi(ApiClient apiClient) {
+    public PasskeyChallengesApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -76,20 +76,23 @@ public class ChallengesApi {
     }
 
     /**
-     * Build call for challengeCreate
+     * Build call for passkeyChallengeList
      * @param userID ID of user (required)
-     * @param challengeCreateReq  (required)
+     * @param sort Field sorting (optional)
+     * @param filter Field filtering (optional)
+     * @param page Page number (optional, default to 1)
+     * @param pageSize Number of items per page (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey challenges </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call challengeCreateCall(String userID, ChallengeCreateReq challengeCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyChallengeListCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -103,10 +106,10 @@ public class ChallengesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = challengeCreateReq;
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/users/{userID}/challenges"
+        String localVarPath = "/users/{userID}/passkeyChallenges"
             .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -114,6 +117,22 @@ public class ChallengesApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (filter != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filter[]", filter));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -124,7 +143,6 @@ public class ChallengesApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -132,102 +150,106 @@ public class ChallengesApi {
         }
 
         String[] localVarAuthNames = new String[] { "basicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call challengeCreateValidateBeforeCall(String userID, ChallengeCreateReq challengeCreateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyChallengeListValidateBeforeCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
-            throw new ApiException("Missing the required parameter 'userID' when calling challengeCreate(Async)");
+            throw new ApiException("Missing the required parameter 'userID' when calling passkeyChallengeList(Async)");
         }
 
-        // verify the required parameter 'challengeCreateReq' is set
-        if (challengeCreateReq == null) {
-            throw new ApiException("Missing the required parameter 'challengeCreateReq' when calling challengeCreate(Async)");
-        }
-
-        return challengeCreateCall(userID, challengeCreateReq, _callback);
+        return passkeyChallengeListCall(userID, sort, filter, page, pageSize, _callback);
 
     }
 
     /**
      * 
-     * Create a new challenge to verify a login identifier
+     * Returns a list of matching passkey challenges
      * @param userID ID of user (required)
-     * @param challengeCreateReq  (required)
-     * @return Challenge
+     * @param sort Field sorting (optional)
+     * @param filter Field filtering (optional)
+     * @param page Page number (optional, default to 1)
+     * @param pageSize Number of items per page (optional, default to 10)
+     * @return PasskeyChallengeList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey challenges </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public Challenge challengeCreate(String userID, ChallengeCreateReq challengeCreateReq) throws ApiException {
-        ApiResponse<Challenge> localVarResp = challengeCreateWithHttpInfo(userID, challengeCreateReq);
+    public PasskeyChallengeList passkeyChallengeList(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+        ApiResponse<PasskeyChallengeList> localVarResp = passkeyChallengeListWithHttpInfo(userID, sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Create a new challenge to verify a login identifier
+     * Returns a list of matching passkey challenges
      * @param userID ID of user (required)
-     * @param challengeCreateReq  (required)
-     * @return ApiResponse&lt;Challenge&gt;
+     * @param sort Field sorting (optional)
+     * @param filter Field filtering (optional)
+     * @param page Page number (optional, default to 1)
+     * @param pageSize Number of items per page (optional, default to 10)
+     * @return ApiResponse&lt;PasskeyChallengeList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey challenges </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Challenge> challengeCreateWithHttpInfo(String userID, ChallengeCreateReq challengeCreateReq) throws ApiException {
-        okhttp3.Call localVarCall = challengeCreateValidateBeforeCall(userID, challengeCreateReq, null);
-        Type localVarReturnType = new TypeToken<Challenge>(){}.getType();
+    public ApiResponse<PasskeyChallengeList> passkeyChallengeListWithHttpInfo(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = passkeyChallengeListValidateBeforeCall(userID, sort, filter, page, pageSize, null);
+        Type localVarReturnType = new TypeToken<PasskeyChallengeList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Create a new challenge to verify a login identifier
+     * Returns a list of matching passkey challenges
      * @param userID ID of user (required)
-     * @param challengeCreateReq  (required)
+     * @param sort Field sorting (optional)
+     * @param filter Field filtering (optional)
+     * @param page Page number (optional, default to 1)
+     * @param pageSize Number of items per page (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey challenges </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call challengeCreateAsync(String userID, ChallengeCreateReq challengeCreateReq, final ApiCallback<Challenge> _callback) throws ApiException {
+    public okhttp3.Call passkeyChallengeListAsync(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<PasskeyChallengeList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = challengeCreateValidateBeforeCall(userID, challengeCreateReq, _callback);
-        Type localVarReturnType = new TypeToken<Challenge>(){}.getType();
+        okhttp3.Call localVarCall = passkeyChallengeListValidateBeforeCall(userID, sort, filter, page, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<PasskeyChallengeList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for challengeUpdate
+     * Build call for passkeyChallengeUpdate
      * @param userID ID of user (required)
-     * @param challengeID ID of challenge (required)
-     * @param challengeUpdateReq  (required)
+     * @param passkeyChallengeID ID of a passkey challenge (required)
+     * @param passkeyChallengeUpdateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey challenge has been updated </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call challengeUpdateCall(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyChallengeUpdateCall(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -241,12 +263,12 @@ public class ChallengesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = challengeUpdateReq;
+        Object localVarPostBody = passkeyChallengeUpdateReq;
 
         // create path and map variables
-        String localVarPath = "/users/{userID}/challenges/{challengeID}"
+        String localVarPath = "/users/{userID}/passkeyChallenges/{passkeyChallengeID}"
             .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()))
-            .replace("{" + "challengeID" + "}", localVarApiClient.escapeString(challengeID.toString()));
+            .replace("{" + "passkeyChallengeID" + "}", localVarApiClient.escapeString(passkeyChallengeID.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -275,87 +297,87 @@ public class ChallengesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call challengeUpdateValidateBeforeCall(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyChallengeUpdateValidateBeforeCall(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
-            throw new ApiException("Missing the required parameter 'userID' when calling challengeUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'userID' when calling passkeyChallengeUpdate(Async)");
         }
 
-        // verify the required parameter 'challengeID' is set
-        if (challengeID == null) {
-            throw new ApiException("Missing the required parameter 'challengeID' when calling challengeUpdate(Async)");
+        // verify the required parameter 'passkeyChallengeID' is set
+        if (passkeyChallengeID == null) {
+            throw new ApiException("Missing the required parameter 'passkeyChallengeID' when calling passkeyChallengeUpdate(Async)");
         }
 
-        // verify the required parameter 'challengeUpdateReq' is set
-        if (challengeUpdateReq == null) {
-            throw new ApiException("Missing the required parameter 'challengeUpdateReq' when calling challengeUpdate(Async)");
+        // verify the required parameter 'passkeyChallengeUpdateReq' is set
+        if (passkeyChallengeUpdateReq == null) {
+            throw new ApiException("Missing the required parameter 'passkeyChallengeUpdateReq' when calling passkeyChallengeUpdate(Async)");
         }
 
-        return challengeUpdateCall(userID, challengeID, challengeUpdateReq, _callback);
+        return passkeyChallengeUpdateCall(userID, passkeyChallengeID, passkeyChallengeUpdateReq, _callback);
 
     }
 
     /**
      * 
-     * Updates a challenge (e.g. from pending to completed)
+     * Updates a passkey challenge
      * @param userID ID of user (required)
-     * @param challengeID ID of challenge (required)
-     * @param challengeUpdateReq  (required)
-     * @return Challenge
+     * @param passkeyChallengeID ID of a passkey challenge (required)
+     * @param passkeyChallengeUpdateReq  (required)
+     * @return PasskeyChallenge
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey challenge has been updated </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public Challenge challengeUpdate(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq) throws ApiException {
-        ApiResponse<Challenge> localVarResp = challengeUpdateWithHttpInfo(userID, challengeID, challengeUpdateReq);
+    public PasskeyChallenge passkeyChallengeUpdate(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq) throws ApiException {
+        ApiResponse<PasskeyChallenge> localVarResp = passkeyChallengeUpdateWithHttpInfo(userID, passkeyChallengeID, passkeyChallengeUpdateReq);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Updates a challenge (e.g. from pending to completed)
+     * Updates a passkey challenge
      * @param userID ID of user (required)
-     * @param challengeID ID of challenge (required)
-     * @param challengeUpdateReq  (required)
-     * @return ApiResponse&lt;Challenge&gt;
+     * @param passkeyChallengeID ID of a passkey challenge (required)
+     * @param passkeyChallengeUpdateReq  (required)
+     * @return ApiResponse&lt;PasskeyChallenge&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey challenge has been updated </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Challenge> challengeUpdateWithHttpInfo(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq) throws ApiException {
-        okhttp3.Call localVarCall = challengeUpdateValidateBeforeCall(userID, challengeID, challengeUpdateReq, null);
-        Type localVarReturnType = new TypeToken<Challenge>(){}.getType();
+    public ApiResponse<PasskeyChallenge> passkeyChallengeUpdateWithHttpInfo(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq) throws ApiException {
+        okhttp3.Call localVarCall = passkeyChallengeUpdateValidateBeforeCall(userID, passkeyChallengeID, passkeyChallengeUpdateReq, null);
+        Type localVarReturnType = new TypeToken<PasskeyChallenge>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Updates a challenge (e.g. from pending to completed)
+     * Updates a passkey challenge
      * @param userID ID of user (required)
-     * @param challengeID ID of challenge (required)
-     * @param challengeUpdateReq  (required)
+     * @param passkeyChallengeID ID of a passkey challenge (required)
+     * @param passkeyChallengeUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey challenge has been updated </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call challengeUpdateAsync(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq, final ApiCallback<Challenge> _callback) throws ApiException {
+    public okhttp3.Call passkeyChallengeUpdateAsync(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq, final ApiCallback<PasskeyChallenge> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = challengeUpdateValidateBeforeCall(userID, challengeID, challengeUpdateReq, _callback);
-        Type localVarReturnType = new TypeToken<Challenge>(){}.getType();
+        okhttp3.Call localVarCall = passkeyChallengeUpdateValidateBeforeCall(userID, passkeyChallengeID, passkeyChallengeUpdateReq, _callback);
+        Type localVarReturnType = new TypeToken<PasskeyChallenge>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

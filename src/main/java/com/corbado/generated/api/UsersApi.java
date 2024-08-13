@@ -379,7 +379,7 @@ public class UsersApi {
     /**
      * Build call for socialAccountCreate
      * @param userID ID of user (required)
-     * @param socialAccountCreateReq  (optional)
+     * @param socialAccountCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -443,6 +443,11 @@ public class UsersApi {
             throw new ApiException("Missing the required parameter 'userID' when calling socialAccountCreate(Async)");
         }
 
+        // verify the required parameter 'socialAccountCreateReq' is set
+        if (socialAccountCreateReq == null) {
+            throw new ApiException("Missing the required parameter 'socialAccountCreateReq' when calling socialAccountCreate(Async)");
+        }
+
         return socialAccountCreateCall(userID, socialAccountCreateReq, _callback);
 
     }
@@ -451,7 +456,7 @@ public class UsersApi {
      * 
      * Creates a new social account
      * @param userID ID of user (required)
-     * @param socialAccountCreateReq  (optional)
+     * @param socialAccountCreateReq  (required)
      * @return SocialAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -470,7 +475,7 @@ public class UsersApi {
      * 
      * Creates a new social account
      * @param userID ID of user (required)
-     * @param socialAccountCreateReq  (optional)
+     * @param socialAccountCreateReq  (required)
      * @return ApiResponse&lt;SocialAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -490,7 +495,7 @@ public class UsersApi {
      *  (asynchronously)
      * Creates a new social account
      * @param userID ID of user (required)
-     * @param socialAccountCreateReq  (optional)
+     * @param socialAccountCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -659,7 +664,7 @@ public class UsersApi {
     }
     /**
      * Build call for userCreate
-     * @param userCreateReq  (optional)
+     * @param userCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -717,6 +722,11 @@ public class UsersApi {
 
     @SuppressWarnings("rawtypes")
     private okhttp3.Call userCreateValidateBeforeCall(UserCreateReq userCreateReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'userCreateReq' is set
+        if (userCreateReq == null) {
+            throw new ApiException("Missing the required parameter 'userCreateReq' when calling userCreate(Async)");
+        }
+
         return userCreateCall(userCreateReq, _callback);
 
     }
@@ -724,7 +734,7 @@ public class UsersApi {
     /**
      * 
      * Creates a new user
-     * @param userCreateReq  (optional)
+     * @param userCreateReq  (required)
      * @return User
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -742,7 +752,7 @@ public class UsersApi {
     /**
      * 
      * Creates a new user
-     * @param userCreateReq  (optional)
+     * @param userCreateReq  (required)
      * @return ApiResponse&lt;User&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -761,7 +771,7 @@ public class UsersApi {
     /**
      *  (asynchronously)
      * Creates a new user
-     * @param userCreateReq  (optional)
+     * @param userCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -788,7 +798,7 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
@@ -852,17 +862,17 @@ public class UsersApi {
      * 
      * Deletes a user
      * @param userID ID of user (required)
-     * @return User
+     * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public User userDelete(String userID) throws ApiException {
-        ApiResponse<User> localVarResp = userDeleteWithHttpInfo(userID);
+    public GenericRsp userDelete(String userID) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = userDeleteWithHttpInfo(userID);
         return localVarResp.getData();
     }
 
@@ -870,18 +880,18 @@ public class UsersApi {
      * 
      * Deletes a user
      * @param userID ID of user (required)
-     * @return ApiResponse&lt;User&gt;
+     * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<User> userDeleteWithHttpInfo(String userID) throws ApiException {
+    public ApiResponse<GenericRsp> userDeleteWithHttpInfo(String userID) throws ApiException {
         okhttp3.Call localVarCall = userDeleteValidateBeforeCall(userID, null);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -895,14 +905,14 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userDeleteAsync(String userID, final ApiCallback<User> _callback) throws ApiException {
+    public okhttp3.Call userDeleteAsync(String userID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = userDeleteValidateBeforeCall(userID, _callback);
-        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1195,7 +1205,7 @@ public class UsersApi {
     /**
      * Build call for userUpdate
      * @param userID ID of user (required)
-     * @param userUpdateReq  (optional)
+     * @param userUpdateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1259,6 +1269,11 @@ public class UsersApi {
             throw new ApiException("Missing the required parameter 'userID' when calling userUpdate(Async)");
         }
 
+        // verify the required parameter 'userUpdateReq' is set
+        if (userUpdateReq == null) {
+            throw new ApiException("Missing the required parameter 'userUpdateReq' when calling userUpdate(Async)");
+        }
+
         return userUpdateCall(userID, userUpdateReq, _callback);
 
     }
@@ -1267,7 +1282,7 @@ public class UsersApi {
      * 
      * Updates a user
      * @param userID ID of user (required)
-     * @param userUpdateReq  (optional)
+     * @param userUpdateReq  (required)
      * @return User
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1286,7 +1301,7 @@ public class UsersApi {
      * 
      * Updates a user
      * @param userID ID of user (required)
-     * @param userUpdateReq  (optional)
+     * @param userUpdateReq  (required)
      * @return ApiResponse&lt;User&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1306,7 +1321,7 @@ public class UsersApi {
      *  (asynchronously)
      * Updates a user
      * @param userID ID of user (required)
-     * @param userUpdateReq  (optional)
+     * @param userUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

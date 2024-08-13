@@ -80,7 +80,7 @@ public class SessionsApi {
     /**
      * Build call for longSessionCreate
      * @param userID ID of user (required)
-     * @param longSessionCreateReq  (optional)
+     * @param longSessionCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -144,6 +144,11 @@ public class SessionsApi {
             throw new ApiException("Missing the required parameter 'userID' when calling longSessionCreate(Async)");
         }
 
+        // verify the required parameter 'longSessionCreateReq' is set
+        if (longSessionCreateReq == null) {
+            throw new ApiException("Missing the required parameter 'longSessionCreateReq' when calling longSessionCreate(Async)");
+        }
+
         return longSessionCreateCall(userID, longSessionCreateReq, _callback);
 
     }
@@ -152,7 +157,7 @@ public class SessionsApi {
      * 
      * Create a new long session
      * @param userID ID of user (required)
-     * @param longSessionCreateReq  (optional)
+     * @param longSessionCreateReq  (required)
      * @return LongSession
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -171,7 +176,7 @@ public class SessionsApi {
      * 
      * Create a new long session
      * @param userID ID of user (required)
-     * @param longSessionCreateReq  (optional)
+     * @param longSessionCreateReq  (required)
      * @return ApiResponse&lt;LongSession&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -191,7 +196,7 @@ public class SessionsApi {
      *  (asynchronously)
      * Create a new long session
      * @param userID ID of user (required)
-     * @param longSessionCreateReq  (optional)
+     * @param longSessionCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -340,7 +345,7 @@ public class SessionsApi {
      * Build call for longSessionUpdate
      * @param userID ID of user (required)
      * @param longSessionID ID of long session (required)
-     * @param longSessionUpdateReq  (optional)
+     * @param longSessionUpdateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -410,6 +415,11 @@ public class SessionsApi {
             throw new ApiException("Missing the required parameter 'longSessionID' when calling longSessionUpdate(Async)");
         }
 
+        // verify the required parameter 'longSessionUpdateReq' is set
+        if (longSessionUpdateReq == null) {
+            throw new ApiException("Missing the required parameter 'longSessionUpdateReq' when calling longSessionUpdate(Async)");
+        }
+
         return longSessionUpdateCall(userID, longSessionID, longSessionUpdateReq, _callback);
 
     }
@@ -419,7 +429,7 @@ public class SessionsApi {
      * Updates long session status
      * @param userID ID of user (required)
      * @param longSessionID ID of long session (required)
-     * @param longSessionUpdateReq  (optional)
+     * @param longSessionUpdateReq  (required)
      * @return LongSession
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -439,7 +449,7 @@ public class SessionsApi {
      * Updates long session status
      * @param userID ID of user (required)
      * @param longSessionID ID of long session (required)
-     * @param longSessionUpdateReq  (optional)
+     * @param longSessionUpdateReq  (required)
      * @return ApiResponse&lt;LongSession&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -460,7 +470,7 @@ public class SessionsApi {
      * Updates long session status
      * @param userID ID of user (required)
      * @param longSessionID ID of long session (required)
-     * @param longSessionUpdateReq  (optional)
+     * @param longSessionUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -482,7 +492,7 @@ public class SessionsApi {
      * Build call for shortSessionCreate
      * @param userID ID of user (required)
      * @param longSessionID ID of long session (required)
-     * @param shortSessionCreateReq  (optional)
+     * @param shortSessionCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -552,6 +562,11 @@ public class SessionsApi {
             throw new ApiException("Missing the required parameter 'longSessionID' when calling shortSessionCreate(Async)");
         }
 
+        // verify the required parameter 'shortSessionCreateReq' is set
+        if (shortSessionCreateReq == null) {
+            throw new ApiException("Missing the required parameter 'shortSessionCreateReq' when calling shortSessionCreate(Async)");
+        }
+
         return shortSessionCreateCall(userID, longSessionID, shortSessionCreateReq, _callback);
 
     }
@@ -561,7 +576,7 @@ public class SessionsApi {
      * Create a new short session
      * @param userID ID of user (required)
      * @param longSessionID ID of long session (required)
-     * @param shortSessionCreateReq  (optional)
+     * @param shortSessionCreateReq  (required)
      * @return ShortSession
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -581,7 +596,7 @@ public class SessionsApi {
      * Create a new short session
      * @param userID ID of user (required)
      * @param longSessionID ID of long session (required)
-     * @param shortSessionCreateReq  (optional)
+     * @param shortSessionCreateReq  (required)
      * @return ApiResponse&lt;ShortSession&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -602,7 +617,7 @@ public class SessionsApi {
      * Create a new short session
      * @param userID ID of user (required)
      * @param longSessionID ID of long session (required)
-     * @param shortSessionCreateReq  (optional)
+     * @param shortSessionCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

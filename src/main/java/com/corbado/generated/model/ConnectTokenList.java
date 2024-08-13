@@ -53,7 +53,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ConnectTokenList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-02T14:34:22.087477742Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
 public class ConnectTokenList {
   public static final String SERIALIZED_NAME_CONNECT_TOKENS = "connectTokens";
   @SerializedName(SERIALIZED_NAME_CONNECT_TOKENS)

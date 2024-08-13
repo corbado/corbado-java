@@ -50,7 +50,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyMediationFinishReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-02T14:34:22.087477742Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
 public class PasskeyMediationFinishReq {
   public static final String SERIALIZED_NAME_ASSERTION_RESPONSE = "assertionResponse";
   @SerializedName(SERIALIZED_NAME_ASSERTION_RESPONSE)
@@ -59,6 +59,10 @@ public class PasskeyMediationFinishReq {
   public static final String SERIALIZED_NAME_CLIENT_INFORMATION = "clientInformation";
   @SerializedName(SERIALIZED_NAME_CLIENT_INFORMATION)
   private ClientInformation clientInformation;
+
+  public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
+  @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
+  private String processID;
 
   public PasskeyMediationFinishReq() {
   }
@@ -101,6 +105,25 @@ public class PasskeyMediationFinishReq {
   }
 
 
+  public PasskeyMediationFinishReq processID(String processID) {
+    this.processID = processID;
+    return this;
+  }
+
+  /**
+   * Get processID
+   * @return processID
+   */
+  @javax.annotation.Nonnull
+  public String getProcessID() {
+    return processID;
+  }
+
+  public void setProcessID(String processID) {
+    this.processID = processID;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -112,12 +135,13 @@ public class PasskeyMediationFinishReq {
     }
     PasskeyMediationFinishReq passkeyMediationFinishReq = (PasskeyMediationFinishReq) o;
     return Objects.equals(this.assertionResponse, passkeyMediationFinishReq.assertionResponse) &&
-        Objects.equals(this.clientInformation, passkeyMediationFinishReq.clientInformation);
+        Objects.equals(this.clientInformation, passkeyMediationFinishReq.clientInformation) &&
+        Objects.equals(this.processID, passkeyMediationFinishReq.processID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assertionResponse, clientInformation);
+    return Objects.hash(assertionResponse, clientInformation, processID);
   }
 
   @Override
@@ -126,6 +150,7 @@ public class PasskeyMediationFinishReq {
     sb.append("class PasskeyMediationFinishReq {\n");
     sb.append("    assertionResponse: ").append(toIndentedString(assertionResponse)).append("\n");
     sb.append("    clientInformation: ").append(toIndentedString(clientInformation)).append("\n");
+    sb.append("    processID: ").append(toIndentedString(processID)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,11 +175,13 @@ public class PasskeyMediationFinishReq {
     openapiFields = new HashSet<String>();
     openapiFields.add("assertionResponse");
     openapiFields.add("clientInformation");
+    openapiFields.add("processID");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("assertionResponse");
     openapiRequiredFields.add("clientInformation");
+    openapiRequiredFields.add("processID");
   }
 
   /**
@@ -190,6 +217,9 @@ public class PasskeyMediationFinishReq {
       }
       // validate the required field `clientInformation`
       ClientInformation.validateJsonElement(jsonObj.get("clientInformation"));
+      if (!jsonObj.get("processID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `processID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processID").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

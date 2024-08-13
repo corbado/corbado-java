@@ -50,7 +50,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyEventCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-02T14:34:22.087477742Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
 public class PasskeyEventCreateReq {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
@@ -59,6 +59,18 @@ public class PasskeyEventCreateReq {
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
   private Integer expires;
+
+  public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
+  @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
+  private String processID;
+
+  public static final String SERIALIZED_NAME_CLIENT_ENV_I_D = "clientEnvID";
+  @SerializedName(SERIALIZED_NAME_CLIENT_ENV_I_D)
+  private String clientEnvID;
+
+  public static final String SERIALIZED_NAME_CREDENTIAL_I_D = "credentialID";
+  @SerializedName(SERIALIZED_NAME_CREDENTIAL_I_D)
+  private String credentialID;
 
   public PasskeyEventCreateReq() {
   }
@@ -101,6 +113,63 @@ public class PasskeyEventCreateReq {
   }
 
 
+  public PasskeyEventCreateReq processID(String processID) {
+    this.processID = processID;
+    return this;
+  }
+
+  /**
+   * Get processID
+   * @return processID
+   */
+  @javax.annotation.Nullable
+  public String getProcessID() {
+    return processID;
+  }
+
+  public void setProcessID(String processID) {
+    this.processID = processID;
+  }
+
+
+  public PasskeyEventCreateReq clientEnvID(String clientEnvID) {
+    this.clientEnvID = clientEnvID;
+    return this;
+  }
+
+  /**
+   * Get clientEnvID
+   * @return clientEnvID
+   */
+  @javax.annotation.Nullable
+  public String getClientEnvID() {
+    return clientEnvID;
+  }
+
+  public void setClientEnvID(String clientEnvID) {
+    this.clientEnvID = clientEnvID;
+  }
+
+
+  public PasskeyEventCreateReq credentialID(String credentialID) {
+    this.credentialID = credentialID;
+    return this;
+  }
+
+  /**
+   * Get credentialID
+   * @return credentialID
+   */
+  @javax.annotation.Nullable
+  public String getCredentialID() {
+    return credentialID;
+  }
+
+  public void setCredentialID(String credentialID) {
+    this.credentialID = credentialID;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -112,12 +181,15 @@ public class PasskeyEventCreateReq {
     }
     PasskeyEventCreateReq passkeyEventCreateReq = (PasskeyEventCreateReq) o;
     return Objects.equals(this.eventType, passkeyEventCreateReq.eventType) &&
-        Objects.equals(this.expires, passkeyEventCreateReq.expires);
+        Objects.equals(this.expires, passkeyEventCreateReq.expires) &&
+        Objects.equals(this.processID, passkeyEventCreateReq.processID) &&
+        Objects.equals(this.clientEnvID, passkeyEventCreateReq.clientEnvID) &&
+        Objects.equals(this.credentialID, passkeyEventCreateReq.credentialID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, expires);
+    return Objects.hash(eventType, expires, processID, clientEnvID, credentialID);
   }
 
   @Override
@@ -126,6 +198,9 @@ public class PasskeyEventCreateReq {
     sb.append("class PasskeyEventCreateReq {\n");
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
+    sb.append("    processID: ").append(toIndentedString(processID)).append("\n");
+    sb.append("    clientEnvID: ").append(toIndentedString(clientEnvID)).append("\n");
+    sb.append("    credentialID: ").append(toIndentedString(credentialID)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,6 +225,9 @@ public class PasskeyEventCreateReq {
     openapiFields = new HashSet<String>();
     openapiFields.add("eventType");
     openapiFields.add("expires");
+    openapiFields.add("processID");
+    openapiFields.add("clientEnvID");
+    openapiFields.add("credentialID");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -186,6 +264,15 @@ public class PasskeyEventCreateReq {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `eventType`
       PasskeyEventType.validateJsonElement(jsonObj.get("eventType"));
+      if ((jsonObj.get("processID") != null && !jsonObj.get("processID").isJsonNull()) && !jsonObj.get("processID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `processID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processID").toString()));
+      }
+      if ((jsonObj.get("clientEnvID") != null && !jsonObj.get("clientEnvID").isJsonNull()) && !jsonObj.get("clientEnvID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `clientEnvID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientEnvID").toString()));
+      }
+      if ((jsonObj.get("credentialID") != null && !jsonObj.get("credentialID").isJsonNull()) && !jsonObj.get("credentialID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `credentialID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialID").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

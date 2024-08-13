@@ -4,6 +4,7 @@ import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.generated.api.UsersApi;
 import com.corbado.generated.invoker.ApiException;
+import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.UserCreateReq;
 import com.corbado.generated.model.UserStatus;
 import com.corbado.services.base.ApiService;
@@ -93,9 +94,9 @@ public class UserService extends ApiService<UsersApi> {
    * @return the user entity
    * @throws CorbadoServerException the corbado server exception
    */
-  public UserEntity delete(final String userId) throws CorbadoServerException {
+  public GenericRsp delete(final String userId) throws CorbadoServerException {
     try {
-      return new UserEntity(client.userDelete(userId));
+      return client.userDelete(userId);
 
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);

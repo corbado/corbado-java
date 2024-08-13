@@ -60,7 +60,7 @@ import com.google.gson.JsonParseException;
 
 import com.corbado.generated.invoker.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-02T14:34:22.087477742Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
 public class ConnectTokenData extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ConnectTokenData.class.getName());
 

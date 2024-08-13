@@ -53,7 +53,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyLoginStartRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-02T14:34:22.087477742Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
 public class PasskeyLoginStartRsp {
   public static final String SERIALIZED_NAME_LOGIN_ALLOW = "loginAllow";
   @SerializedName(SERIALIZED_NAME_LOGIN_ALLOW)
@@ -70,6 +70,10 @@ public class PasskeyLoginStartRsp {
   public static final String SERIALIZED_NAME_ASSERTION_OPTIONS = "assertionOptions";
   @SerializedName(SERIALIZED_NAME_ASSERTION_OPTIONS)
   private String assertionOptions;
+
+  public static final String SERIALIZED_NAME_IS_C_D_A_CANDIDATE = "isCDACandidate";
+  @SerializedName(SERIALIZED_NAME_IS_C_D_A_CANDIDATE)
+  private Boolean isCDACandidate;
 
   public PasskeyLoginStartRsp() {
   }
@@ -158,6 +162,25 @@ public class PasskeyLoginStartRsp {
   }
 
 
+  public PasskeyLoginStartRsp isCDACandidate(Boolean isCDACandidate) {
+    this.isCDACandidate = isCDACandidate;
+    return this;
+  }
+
+  /**
+   * Get isCDACandidate
+   * @return isCDACandidate
+   */
+  @javax.annotation.Nonnull
+  public Boolean getIsCDACandidate() {
+    return isCDACandidate;
+  }
+
+  public void setIsCDACandidate(Boolean isCDACandidate) {
+    this.isCDACandidate = isCDACandidate;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -171,12 +194,13 @@ public class PasskeyLoginStartRsp {
     return Objects.equals(this.loginAllow, passkeyLoginStartRsp.loginAllow) &&
         Objects.equals(this.detectionTags, passkeyLoginStartRsp.detectionTags) &&
         Objects.equals(this.decisionTag, passkeyLoginStartRsp.decisionTag) &&
-        Objects.equals(this.assertionOptions, passkeyLoginStartRsp.assertionOptions);
+        Objects.equals(this.assertionOptions, passkeyLoginStartRsp.assertionOptions) &&
+        Objects.equals(this.isCDACandidate, passkeyLoginStartRsp.isCDACandidate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loginAllow, detectionTags, decisionTag, assertionOptions);
+    return Objects.hash(loginAllow, detectionTags, decisionTag, assertionOptions, isCDACandidate);
   }
 
   @Override
@@ -187,6 +211,7 @@ public class PasskeyLoginStartRsp {
     sb.append("    detectionTags: ").append(toIndentedString(detectionTags)).append("\n");
     sb.append("    decisionTag: ").append(toIndentedString(decisionTag)).append("\n");
     sb.append("    assertionOptions: ").append(toIndentedString(assertionOptions)).append("\n");
+    sb.append("    isCDACandidate: ").append(toIndentedString(isCDACandidate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -213,6 +238,7 @@ public class PasskeyLoginStartRsp {
     openapiFields.add("detectionTags");
     openapiFields.add("decisionTag");
     openapiFields.add("assertionOptions");
+    openapiFields.add("isCDACandidate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -220,6 +246,7 @@ public class PasskeyLoginStartRsp {
     openapiRequiredFields.add("detectionTags");
     openapiRequiredFields.add("decisionTag");
     openapiRequiredFields.add("assertionOptions");
+    openapiRequiredFields.add("isCDACandidate");
   }
 
   /**
