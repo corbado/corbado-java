@@ -16,6 +16,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.corbado.entities.SessionValidationResult;
+import com.corbado.sdk.Config;
 import com.corbado.utils.ValidationUtils;
 
 import lombok.Getter;
@@ -32,6 +33,9 @@ public class SessionService {
 
   /** Number of keys that can be cached. */
   private static final int JWK_CACHE_SIZE = 100;
+
+  /** The Constant DEFAULT_SESSION_LENGTH. */
+  private static final int DEFAULT_SESSION_LENGTH = 300;
 
   /** The short session cookie name. */
   private String shortSessionCookieName;
@@ -61,10 +65,11 @@ public class SessionService {
       final String shortSessionCookieName,
       final String issuer,
       final String jwksUri,
-      final int shortSessionLength,
+      Integer shortSessionLength,
       final boolean cacheKeys) {
 
     ValidationUtils.validateNotEmpty(shortSessionCookieName, issuer, jwksUri);
+    shortSessionLength = (shortSessionLength != null) ? shortSessionLength : DEFAULT_SESSION_LENGTH;
 
     this.shortSessionCookieName = shortSessionCookieName;
     this.issuer = issuer;
@@ -75,6 +80,20 @@ public class SessionService {
       jwkProviderBuilder.cached(JWK_CACHE_SIZE, shortSessionLength, TimeUnit.SECONDS);
     }
     this.jwkProvider = jwkProviderBuilder.build();
+  }
+
+  /**
+   * Instantiates a new session service from config.
+   *
+   * @param config the config
+   */
+  public SessionService(@NonNull Config config) {
+    this(
+        config.getShortSessionCookieName(),
+        config.getIssuer(),
+        config.getFrontendApi() + "/.well-known/jwks",
+        config.getShortSessionLength(),
+        config.isCacheKeys());
   }
 
   /**

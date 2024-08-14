@@ -1,20 +1,28 @@
 package com.corbado.sdk;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.corbado.exceptions.StandardException;
 import com.corbado.generated.api.IdentifiersApi;
 import com.corbado.generated.api.UsersApi;
 import com.corbado.generated.invoker.ApiClient;
 import com.corbado.services.IdentifierService;
+import com.corbado.services.SessionService;
 import com.corbado.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.HashMap;
-import java.util.Map;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
-/** The Class CorbadoSdk. */
+/**
+ * Entry point for the Corbado SDK.
+ *
+ * <p>This class provides interfaces to interact with the Corbado API, including user, session and
+ * identifier services.
+ */
 @Slf4j
 public class CorbadoSdk {
 
@@ -32,6 +40,10 @@ public class CorbadoSdk {
   @Getter(lazy = true)
   private final IdentifierService identifiers =
       new IdentifierService(new IdentifiersApi(this.client));
+
+  /** The sessions API. */
+  @Getter(lazy = true)
+  private final SessionService sessions = new SessionService(this.config);
 
   /** The client. */
   private ApiClient client;
@@ -82,9 +94,8 @@ public class CorbadoSdk {
    *
    * @return the language version
    */
-  // TODO: add language version
-  private String getLanguageVersion() {
-    return "1.8";
+  private static String getLanguageVersion() {
+    return System.getProperty("java.version");
   }
 
   /**
@@ -92,8 +103,7 @@ public class CorbadoSdk {
    *
    * @return the version
    */
-  // TODO: sdk version
   public String getVersion() {
-    return "1.0.0";
+    return "0.0.1";
   }
 }

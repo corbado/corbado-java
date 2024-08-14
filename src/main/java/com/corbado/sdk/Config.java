@@ -2,6 +2,7 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +42,12 @@ public class Config {
 
   /** The frontend api with custom setter. */
   @Getter private String frontendApi;
+
+  /** The short session length for session service. Default = 300. */
+  @Getter @Setter private Integer shortSessionLength = 300;
+
+  /** Flag to cache keys in session service. Default = true. */
+  @Getter @Setter boolean cacheKeys = true;
 
   // Constructors
   /**

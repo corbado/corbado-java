@@ -1,10 +1,12 @@
 package com.corbado.exceptions;
 
-import com.corbado.generated.invoker.ApiException;
-import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+
+import com.corbado.generated.invoker.ApiException;
+import com.google.gson.Gson;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -12,7 +14,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
-// TODO: Complete
 /** Custom exception class for server-related errors. */
 @ToString
 public class CorbadoServerException extends Exception {
@@ -44,7 +45,7 @@ public class CorbadoServerException extends Exception {
    */
   public CorbadoServerException(final int statusCode, final String body) {
     final Gson gson = new Gson();
-    httpStatusCode = statusCode;
+    this.httpStatusCode = statusCode;
     this.errorResponse = gson.fromJson(body, ErrorResponse.class);
   }
 
@@ -61,10 +62,9 @@ public class CorbadoServerException extends Exception {
 
     if (requestId.isPresent()) {
       return requestId.get();
-    } else {
-      // requestId should always be present
-      return null;
     }
+    // requestId should always be present
+    return null;
   }
 
   /**
@@ -80,9 +80,8 @@ public class CorbadoServerException extends Exception {
 
     if (validationMessages.isPresent()) {
       return validationMessages.get();
-    } else {
-      return Collections.emptyList();
     }
+    return Collections.emptyList();
   }
 
   /** The Class ErrorResponse. */
