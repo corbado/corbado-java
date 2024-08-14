@@ -58,8 +58,8 @@ A list of examples can be found in the integration tests [here](/src/test/java/c
 The Corbado Java SDK provides the following services:
 
 - `sessions` for managing sessions #TODO example
-- `users` for managing users ([examples](/src/test/java/com/corbado/integration/UserServiceIT.java)
-- `identifiers` for managing identifiers ([examples](/src/test/java/com/corbado/integration/IdentifierServiceIT.java)
+- `users` for managing users ([examples](/src/test/java/com/corbado/integration/UserServiceIT.java))
+- `identifiers` for managing identifiers ([examples](/src/test/java/com/corbado/integration/IdentifierServiceIT.java))
 
 To use a specific service, such as `users`, invoke it as shown below:
 
@@ -78,13 +78,14 @@ The Corbado Java SDK throws exceptions for all errors. The following exceptions 
 
 If the Backend API returns a HTTP status code other than 200, the Corbado Java SDK throws a `CorbadoServerException`. The `CorbadoServerException`class parses the server response to access all important data. One of the test cases:
 ```Java
+    UserService users = sdk.getUsers();
     final UserEntity user = TestUtils.createUser();
-    this.fixture.delete(user.getUserID());
+    users.delete(user.getUserID());
     final CorbadoServerException e =
         assertThrows(
             CorbadoServerException.class,
             () -> {
-              final UserEntity ret = this.fixture.get(user.getUserID());
+              final UserEntity ret = users.get(user.getUserID());
             });
     assertNotNull(e);
     assertEquals(400, e.getHttpStatusCode());
