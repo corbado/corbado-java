@@ -51,15 +51,15 @@ To create a Corbado Java SDK instance you need to provide your `Project ID` and 
 
 ### Examples
 
-A list of examples can be found in the integration tests [here](/corbado-java/src/test/java/com/corbado/integration/).
+A list of examples can be found in the integration tests [here](/src/test/java/com/corbado/integration/).
 
 ## :hammer_and_wrench: Services
 
 The Corbado Java SDK provides the following services:
 
 - `sessions` for managing sessions #TODO example
-- `users` for managing users ([examples](/corbado-java/src/test/java/com/corbado/integration/UserServiceIT.java)
-- `identifiers` for managing identifiers ([examples](/corbado-java/src/test/java/com/corbado/integration/IdentifierServiceIT.java)
+- `users` for managing users ([examples](/src/test/java/com/corbado/integration/UserServiceIT.java)
+- `identifiers` for managing identifiers ([examples](/src/test/java/com/corbado/integration/IdentifierServiceIT.java)
 
 To use a specific service, such as `users`, invoke it as shown below:
 
