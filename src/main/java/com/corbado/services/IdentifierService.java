@@ -9,7 +9,9 @@ import com.corbado.generated.model.IdentifierList;
 import com.corbado.generated.model.IdentifierStatus;
 import com.corbado.generated.model.IdentifierType;
 import com.corbado.generated.model.IdentifierUpdateReq;
+import com.corbado.generated.model.Paging;
 import com.corbado.services.base.ApiService;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -166,7 +168,7 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   }
 
   /**
-   * List by user id with paging.
+   * List all identifiers (active and inactive) by user id with paging.
    *
    * @param userID the user ID (with or without 'usr-' prefix)
    * @param page the page
@@ -184,6 +186,61 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
       userID = userID.substring(USER_ID_PREFIX.length());
     }
     return list(null, Arrays.asList("userID:eq:" + userID), page, pageSize);
+  }
+
+  /**
+   * List all identifiers (active and inactive) by user id and type with paging.
+   *
+   * @param userID the user ID
+   * @param type the type of identifier (email, phone, username)
+   * @param page the page
+   * @param pageSize the page size
+   * @return the identifier list
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
+   *     the response body
+   */
+  public IdentifierList listAllByUserIdAndTypeWithPaging(
+      @NonNull String userID,
+      @NonNull final IdentifierType type,
+      @Nullable final Integer page,
+      @Nullable final Integer pageSize)
+      throws CorbadoServerException {
+
+    // filter queries are using userID without prefix
+    if (userID.startsWith(USER_ID_PREFIX)) {
+      userID = userID.substring(USER_ID_PREFIX.length());
+    }
+    return list(
+        null, Arrays.asList("userID:eq:" + userID, "identifierType:eq:" + type), page, pageSize);
+  }
+
+  /**
+   * Gets list of all (active and inactive) email addresses by user id.
+   *
+   * @param userID the user ID
+   * @return the single email by user id
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
+   *     the response body
+   */
+  public List<Identifier> listAllEmailsByUserId(@NonNull final String userID)
+      throws CorbadoServerException {
+    final ArrayList<Identifier> list = new ArrayList<>();
+    final IdentifierList firstRes =
+        listAllByUserIdAndTypeWithPaging(userID, IdentifierType.EMAIL, null, null);
+    list.addAll(firstRes.getIdentifiers());
+    final Paging paging = firstRes.getPaging();
+    // if there are more results unread
+    while (paging.getPage() < paging.getTotalPages()) {
+      // fetch further entries
+      final Integer currentPage = paging.getPage();
+      paging.setPage(currentPage + 1);
+      final IdentifierList temp =
+          listAllByUserIdAndTypeWithPaging(userID, IdentifierType.EMAIL, paging.getPage(), null);
+      // update paging
+      list.addAll(temp.getIdentifiers());
+    }
+
+    return list;
   }
 
   /**

@@ -6,10 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
 import com.corbado.base.AbstractSdkTest;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -21,7 +17,9 @@ import com.corbado.generated.model.IdentifierStatus;
 import com.corbado.generated.model.IdentifierType;
 import com.corbado.services.IdentifierService;
 import com.corbado.util.TestUtils;
-
+import java.util.List;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import lombok.extern.slf4j.Slf4j;
 
 /** The Class UserServiceIT. */
@@ -184,10 +182,6 @@ class IdentifierServiceIT extends AbstractSdkTest {
   void test_ListIdentifiersAll_ExpectSuccess() throws CorbadoServerException, StandardException {
     final IdentifierList ret = fixture.list(null, null, null, 100);
 
-    for (final Identifier x : ret.getIdentifiers()) {
-      log.error("Userid: {}, Value: {}", x.getUserID(), x.getValue());
-    }
-
     assertNotNull(ret);
   }
 
@@ -221,5 +215,27 @@ class IdentifierServiceIT extends AbstractSdkTest {
         fixture.listByValueAndType(
             TEST_USER_EMAIL_IDENTIFIER.getValue(), TEST_USER_EMAIL_IDENTIFIER.getType());
     assertEquals(IdentifierStatus.PRIMARY, ret.getIdentifiers().get(0).getStatus());
+  }
+
+  /**
+   * Test list all emails by user id expect success.
+   *
+   * @throws CorbadoServerException
+   */
+  @Test
+  void test_listAllEmailsByUserId_expectSuccess() throws CorbadoServerException {
+    final int testSize = 21;
+    for (int i = 0; i < testSize; i++) {
+      fixture.create(
+          TEST_USER_ID,
+          new IdentifierCreateReq()
+              .identifierType(IdentifierType.EMAIL)
+              .identifierValue(TestUtils.createRandomTestEmail())
+              .status(IdentifierStatus.VERIFIED));
+    }
+
+    final List<Identifier> ret = fixture.listAllEmailsByUserId(TEST_USER_ID);
+    // one email was already created before
+    assertEquals(testSize + 1, ret.size());
   }
 }

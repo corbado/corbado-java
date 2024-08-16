@@ -1,10 +1,5 @@
 package com.corbado.services;
 
-import java.security.interfaces.RSAPublicKey;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.auth0.jwk.Jwk;
 import com.auth0.jwk.JwkException;
 import com.auth0.jwk.JwkProvider;
@@ -18,7 +13,11 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.corbado.entities.SessionValidationResult;
 import com.corbado.sdk.Config;
 import com.corbado.utils.ValidationUtils;
-
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.interfaces.RSAPublicKey;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.StringUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -75,11 +74,17 @@ public class SessionService {
     this.issuer = issuer;
     this.jwksUri = jwksUri;
 
-    final JwkProviderBuilder jwkProviderBuilder = new JwkProviderBuilder(this.jwksUri);
-    if (cacheKeys) {
-      jwkProviderBuilder.cached(JWK_CACHE_SIZE, shortSessionLength, TimeUnit.SECONDS);
+    JwkProviderBuilder jwkProviderBuilder;
+    try {
+      jwkProviderBuilder = new JwkProviderBuilder(new URL(jwksUri));
+      if (cacheKeys) {
+        jwkProviderBuilder.cached(JWK_CACHE_SIZE, shortSessionLength, TimeUnit.SECONDS);
+      }
+      this.jwkProvider = jwkProviderBuilder.build();
+    } catch (final MalformedURLException e) {
+      // MalformedURL should not happen, since its validated in config before. We do not want to
+      // retrow this error to make code generation with lombok easier.
     }
-    this.jwkProvider = jwkProviderBuilder.build();
   }
 
   /**
@@ -87,7 +92,7 @@ public class SessionService {
    *
    * @param config the config
    */
-  public SessionService(@NonNull Config config) {
+  public SessionService(@NonNull final Config config) {
     this(
         config.getShortSessionCookieName(),
         config.getIssuer(),
