@@ -1,18 +1,34 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.corbado</groupId>
-  <artifactId>corbado-java</artifactId>
-  <packaging>jar</packaging>
-  <version>0.0.1</version>
-  <name>Corbado Java</name>
-  <description>Corbado Java SDK</description>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.corbado</groupId>
+    <artifactId>corbado-java</artifactId>
+    <packaging>jar</packaging>
+    <version>0.0.1</version>
+    <name>Corbado Java</name>
+    <description>Corbado Java SDK</description>
+    <url>https://github.com/corbado/corbado-java</url>
+  
+
+    <licenses>
+        <license>
+        <name>MIT</name>
+        <url>https://opensource.org/license/MIT</url>
+        </license>
+    </licenses>
+
+   <scm>
+        <connection>scm:git:git@github.com:corbado/corbado-java.git</connection>
+        <developerConnection>scm:git:git@github.com:corbado/corbado-java.git</developerConnection>
+        <url>https://github.com/corbado/corbado-java</url>
+        <tag>HEAD</tag>
+    </scm>
   
 	<developers>
 	    <developer>
-	        <name>OpenAPI-Generator Contributors</name>
-	        <email>team@openapitools.org</email>
-	        <organization>OpenAPITools.org</organization>
-	        <organizationUrl>http://openapitools.org</organizationUrl>
+	        <name>Corbado Team</name>
+	        <email>support@corbado.com</email>
+	        <organization>Corbado</organization>
+	        <organizationUrl>https://github.com/corbado/corbado-java</organizationUrl>
 	    </developer>
 	</developers>
 
