@@ -57,7 +57,7 @@ A list of examples can be found in the integration tests [here](/src/test/java/c
 
 The Corbado Java SDK provides the following services:
 
-- `sessions` for managing sessions #TODO example
+- `sessions` for managing sessions ([example spring boot application](https://github.com/corbado/example-passkeys-java-spring-boot))
 - `users` for managing users ([examples](/src/test/java/com/corbado/integration/UserServiceIT.java))
 - `identifiers` for managing identifiers ([examples](/src/test/java/com/corbado/integration/IdentifierServiceIT.java))
 
