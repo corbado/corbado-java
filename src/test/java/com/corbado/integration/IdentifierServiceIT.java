@@ -238,4 +238,19 @@ class IdentifierServiceIT extends AbstractSdkTest {
     // one email was already created before
     assertEquals(testSize + 1, ret.size());
   }
+
+  /** Test for successfully deleting a user. * */
+  @Test
+  void test_DeleteIdentifier_ExpectSuccess() throws CorbadoServerException, StandardException {
+    final Identifier identifier =
+        fixture.create(
+            TEST_USER_ID,
+            new IdentifierCreateReq()
+                .identifierType(IdentifierType.EMAIL)
+                .identifierValue(TestUtils.createRandomTestEmail())
+                .status(IdentifierStatus.VERIFIED));
+
+    // Success if no exception is thrown
+    fixture.delete(identifier.getUserID(), identifier.getIdentifierID());
+  }
 }

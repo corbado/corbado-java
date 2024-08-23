@@ -2,7 +2,6 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +17,9 @@ import lombok.extern.slf4j.Slf4j;
 public class Config {
 
   // Fields
+
+  /** The Constant API_VERSION. */
+  private static final String API_VERSION = "2";
 
   /** API secret must begin with this prefix. */
   private static final String API_SERCRET_PREFIX = "corbado1_";
@@ -105,7 +107,8 @@ public class Config {
     } catch (final MalformedURLException e) {
       throw new IllegalArgumentException("Invalid backend API URL: " + e.getMessage());
     }
-    this.backendApi = backendApi;
+
+    this.backendApi = backendApi + "/v" + API_VERSION; // add v2 to the end of backendApi
   }
 
   /**

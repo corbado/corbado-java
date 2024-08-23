@@ -282,4 +282,20 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
       throws CorbadoServerException {
     return updateStatus(userID, identifierID, new IdentifierUpdateReq().status(status));
   }
+
+  /**
+   * Delete.
+   *
+   * @param userID the user ID
+   * @param identifierID the identifier ID
+   * @throws CorbadoServerException If fail to call the API or to delete the object.
+   */
+  public void delete(@NonNull final String userID, @NonNull final String identifierID)
+      throws CorbadoServerException {
+    try {
+      client.identifierDelete(userID, identifierID);
+    } catch (final ApiException e) {
+      throw new CorbadoServerException(e);
+    }
+  }
 }

@@ -1,7 +1,5 @@
 package com.corbado.util;
 
-import java.util.Random;
-
 import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -9,8 +7,8 @@ import com.corbado.generated.model.UserCreateReq;
 import com.corbado.generated.model.UserStatus;
 import com.corbado.sdk.Config;
 import com.corbado.sdk.CorbadoSdk;
-
 import io.github.cdimascio.dotenv.Dotenv;
+import java.util.Random;
 
 /** The Class TestUtils. */
 public class TestUtils {
@@ -100,23 +98,26 @@ public class TestUtils {
 
     // If the environment variable is not set, then fallback to dotenv
     if (apiSecret == null || apiSecret.isEmpty()) {
-        apiSecret = dotenv.get(CORBADO_API_SECRET, "missing CORBADO_API_SECRET");
+      apiSecret = dotenv.get(CORBADO_API_SECRET, "missing CORBADO_API_SECRET");
     }
-     // Check for CORBADO_PROJECT_ID
-     String projectId = System.getenv(CORBADO_PROJECT_ID);
-     if (projectId == null || projectId.isEmpty()) {
-         projectId = dotenv.get(CORBADO_PROJECT_ID, "missing CORBADO_PROJECT_ID");
-     }
+    // Check for CORBADO_PROJECT_ID
+    String projectId = System.getenv(CORBADO_PROJECT_ID);
+    if (projectId == null || projectId.isEmpty()) {
+      projectId = dotenv.get(CORBADO_PROJECT_ID, "missing CORBADO_PROJECT_ID");
+    }
 
-     // Check for CORBADO_BACKEND_API
-     String backendApi = System.getenv(CORBADO_BACKEND_API);
-     if (backendApi == null || backendApi.isEmpty()) {
-         backendApi = dotenv.get(CORBADO_BACKEND_API);
-     }
-
+    // Check for CORBADO_BACKEND_API
+    String backendApi = System.getenv(CORBADO_BACKEND_API);
+    if (backendApi == null || backendApi.isEmpty()) {
+      backendApi = dotenv.get(CORBADO_BACKEND_API);
+    }
+    Config config = null;
     if (backendApi == null || backendApi == "") {
-      return new CorbadoSdk(new Config(projectId, apiSecret, backendApi));
+      config = new Config(projectId, apiSecret);
+    } else {
+      config = new Config(projectId, apiSecret, backendApi);
     }
-    return new CorbadoSdk(new Config(projectId, apiSecret));
+
+    return new CorbadoSdk(config);
   }
 }
