@@ -25,7 +25,7 @@ The [Corbado](https://www.corbado.com) Java SDK provides convenient access to th
 Add this dependency to your project's build file:
 
 ```groovy
-implementation "com.corbado:corbado-java:0.0.1"
+implementation "com.corbado:corbado-java:1.0.0"
 ```
 
 #### Maven users
@@ -36,7 +36,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.corbado</groupId>
   <artifactId>corbado-java</artifactId>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
