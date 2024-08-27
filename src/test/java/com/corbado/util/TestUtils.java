@@ -1,5 +1,9 @@
 package com.corbado.util;
 
+import java.util.Random;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -7,8 +11,8 @@ import com.corbado.generated.model.UserCreateReq;
 import com.corbado.generated.model.UserStatus;
 import com.corbado.sdk.Config;
 import com.corbado.sdk.CorbadoSdk;
+
 import io.github.cdimascio.dotenv.Dotenv;
-import java.util.Random;
 
 /** The Class TestUtils. */
 public class TestUtils {
@@ -108,11 +112,11 @@ public class TestUtils {
 
     // Check for CORBADO_BACKEND_API
     String backendApi = System.getenv(CORBADO_BACKEND_API);
-    if (backendApi == null || backendApi.isEmpty()) {
+    if (StringUtils.isEmpty(backendApi)) {
       backendApi = dotenv.get(CORBADO_BACKEND_API);
     }
     Config config = null;
-    if (backendApi == null || backendApi == "") {
+    if (StringUtils.isEmpty(backendApi)) {
       config = new Config(projectId, apiSecret);
     } else {
       config = new Config(projectId, apiSecret, backendApi);
