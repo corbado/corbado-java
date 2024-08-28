@@ -88,6 +88,10 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Run test suite
+        env:
+            CORBADO_API_SECRET: ${{ secrets.CORBADO_API_SECRET }}
+            CORBADO_PROJECT_ID: ${{ secrets.CORBADO_PROJECT_ID }}
+            CORBADO_BACKEND_API: ${{ secrets.CORBADO_BACKEND_API }}
         run: mvn --batch-mode --update-snapshots verify
 
   deploy:
@@ -126,6 +130,5 @@ jobs:
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         run: mvn clean deploy -P release
 
