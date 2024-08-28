@@ -45,7 +45,6 @@ jobs:
             
       - name: Configure GPG Key
         run: |
-          echo "${GPG_PRIVATE_KEY:0:100}"  # Print the first 100 characters of the base64 key for debugging
           echo "$GPG_PRIVATE_KEY" | base64 --decode | gpg --batch --import
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
@@ -129,7 +128,7 @@ jobs:
 
       - name: Setup GPG for Signing
         run: |
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | base64 --decode | gpg --batch --import
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
           echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
           gpg-connect-agent reloadagent /bye
@@ -138,5 +137,6 @@ jobs:
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
         run: mvn clean deploy -P release
 
