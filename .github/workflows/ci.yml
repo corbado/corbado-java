@@ -98,7 +98,7 @@ jobs:
         env:
             CORBADO_API_SECRET: ${{ secrets.CORBADO_API_SECRET }}
             CORBADO_PROJECT_ID: ${{ secrets.CORBADO_PROJECT_ID }}
-            CORBADO_BACKEND_API: ${{ secrets.CORBADO_BACKEND_API }}
+            CORBADO_BACKEND_API: ${{ vars.CORBADO_BACKEND_API }}
         run: mvn --batch-mode --update-snapshots verify
 
   deploy:
