@@ -122,6 +122,7 @@ jobs:
           java-version: "17"
           distribution: zulu
           architecture: x64
+          server-id: central
 
       - name: Cache Maven dependencies
         uses: actions/cache@v2
@@ -143,5 +144,5 @@ jobs:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-        run: mvn deploy -DskipTests -DskipInstall --settings .github/maven/settings.xml -P release
+        run: mvn deploy -DskipTests -DskipInstall --settings -P release
 
