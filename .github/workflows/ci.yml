@@ -99,7 +99,7 @@ jobs:
             CORBADO_API_SECRET: ${{ secrets.CORBADO_API_SECRET }}
             CORBADO_PROJECT_ID: ${{ secrets.CORBADO_PROJECT_ID }}
             CORBADO_BACKEND_API: ${{ vars.CORBADO_BACKEND_API }}
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn --batch-mode --update-snapshots verify -DskipInstall
 
   deploy:
     name: Deploy to Maven Central
@@ -110,6 +110,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: maven-artifacts
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -138,5 +143,5 @@ jobs:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-        run: mvn clean deploy -P release
+        run: mvn deploy -DskipTests -DskipInstall --settings .github/maven/settings.xml -P release
 
