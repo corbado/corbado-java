@@ -71,7 +71,7 @@ UserService users = sdk.getUsers();
 
 ### Error handling
 
-The Corbado Python SDK raises exceptions for all errors except those that occur in the session service during token validation (See example below on how to catch those errors). The following exceptions are thrown:
+The Corbado Java SDK raises exceptions for all errors except those that occur in the session service during token validation (See example below on how to catch those errors). The following exceptions are thrown:
 
 - `CorbadoServerException` for server errors (server side)
 - `StandardException` for everything else (client side)
