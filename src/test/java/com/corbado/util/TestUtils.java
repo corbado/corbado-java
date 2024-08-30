@@ -1,9 +1,5 @@
 package com.corbado.util;
 
-import java.util.Random;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -11,8 +7,9 @@ import com.corbado.generated.model.UserCreateReq;
 import com.corbado.generated.model.UserStatus;
 import com.corbado.sdk.Config;
 import com.corbado.sdk.CorbadoSdk;
-
 import io.github.cdimascio.dotenv.Dotenv;
+import java.util.Random;
+import org.apache.commons.lang3.StringUtils;
 
 /** The Class TestUtils. */
 public class TestUtils {
@@ -117,9 +114,10 @@ public class TestUtils {
     }
     Config config = null;
     if (StringUtils.isEmpty(backendApi)) {
-      config = new Config(projectId, apiSecret);
+      config = Config.builder().apiSecret(apiSecret).projectId(projectId).build();
     } else {
-      config = new Config(projectId, apiSecret, backendApi);
+      config =
+          Config.builder().apiSecret(apiSecret).projectId(projectId).backendApi(backendApi).build();
     }
 
     return new CorbadoSdk(config);
