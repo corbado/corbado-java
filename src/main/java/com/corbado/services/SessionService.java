@@ -8,6 +8,7 @@ import com.auth0.jwk.SigningKeyNotFoundException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.IncorrectClaimException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.corbado.entities.SessionValidationResult;
@@ -134,14 +135,8 @@ public class SessionService {
 
       // Verify and decode the JWT using the signing key
       final Algorithm algorithm = Algorithm.RSA256(publicKey);
-      final JWTVerifier verifier = JWT.require(algorithm).build();
+      final JWTVerifier verifier = JWT.require(algorithm).withIssuer(issuer).build();
       decodedJwt = verifier.verify(shortSession);
-
-      // Verify issuer
-      if (!StringUtils.equals(decodedJwt.getClaim("iss").asString(), this.issuer)) {
-        setIssuerMismatchError(decodedJwt.getClaim("iss").asString());
-        return new SessionValidationResult();
-      }
 
       return SessionValidationResult.builder()
           .authenticated(true)
@@ -149,9 +144,25 @@ public class SessionService {
           .userID(decodedJwt.getClaim("sub").asString())
           .build();
 
+    } catch (final IncorrectClaimException e) {
+      // Be careful of the case where issuer does not match. You have probably forgotten to set
+      // the cname in config class.
+      if (StringUtils.equals(e.getClaimName(), "iss")) {
+        final String message =
+            e.getMessage()
+                + "Be careful of the case where issuer does not match. You have probably forgotten to set the cname in config class.";
+        final IncorrectClaimException exception =
+            new IncorrectClaimException(message, e.getClaimName(), e.getClaimValue());
+
+        setValidationError(exception);
+        return new SessionValidationResult(exception);
+      }
+      setValidationError(e);
+      return new SessionValidationResult(e);
+
     } catch (final JwkException | JWTVerificationException e) {
       setValidationError(e);
-      return new SessionValidationResult();
+      return new SessionValidationResult(e);
     }
   }
 
