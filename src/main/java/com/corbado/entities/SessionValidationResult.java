@@ -22,4 +22,16 @@ public class SessionValidationResult {
 
   /** The full name. */
   private String fullName;
+
+  /** The error. */
+  private Exception error;
+
+  /**
+   * Instantiates a new session validation result.
+   *
+   * @param error the error
+   */
+  public SessionValidationResult(final Exception error) {
+    this.error = error;
+  }
 }
