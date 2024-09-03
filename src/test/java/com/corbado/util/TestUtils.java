@@ -1,5 +1,9 @@
 package com.corbado.util;
 
+import java.util.Random;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -7,9 +11,8 @@ import com.corbado.generated.model.UserCreateReq;
 import com.corbado.generated.model.UserStatus;
 import com.corbado.sdk.Config;
 import com.corbado.sdk.CorbadoSdk;
+
 import io.github.cdimascio.dotenv.Dotenv;
-import java.util.Random;
-import org.apache.commons.lang3.StringUtils;
 
 /** The Class TestUtils. */
 public class TestUtils {
@@ -94,7 +97,12 @@ public class TestUtils {
    */
   public static CorbadoSdk instantiateSDK() throws StandardException {
 
-    final Dotenv dotenv = Dotenv.load();
+    final Dotenv dotenv =
+        Dotenv.configure()
+            .directory("./src/test/resources")
+            .ignoreIfMalformed()
+            .ignoreIfMissing()
+            .load();
     String apiSecret = System.getenv(CORBADO_API_SECRET);
 
     // If the environment variable is not set, then fallback to dotenv
