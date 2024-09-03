@@ -75,6 +75,7 @@ The Corbado Java SDK throws exceptions for all errors. The following exceptions 
 
 - `CorbadoServerException` for server errors (server side)
 - `StandardException` for everything else (client side)
+- `JWTVerificationException` and its subclasses and `JwkException` in session service for JWT/JWK errors.
 
 If the Backend API returns a HTTP status code other than 200, the Corbado Java SDK throws a `CorbadoServerException`. The `CorbadoServerException`class parses the server response to access all important data. One of the test cases:
 ```Java
