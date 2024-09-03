@@ -11,11 +11,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
+/**
+ * The Class SessionValidationResultBuilder.
+ */
 @Builder
 public class SessionValidationResult {
-
-  /** Indicates success of validation by session service. */
-  @Builder.Default boolean authenticated = false;
 
   /** The user ID. */
   private String userID;
@@ -25,13 +26,4 @@ public class SessionValidationResult {
 
   /** The error. */
   private Exception error;
-
-  /**
-   * Instantiates a new session validation result.
-   *
-   * @param error the error
-   */
-  public SessionValidationResult(final Exception error) {
-    this.error = error;
-  }
 }
