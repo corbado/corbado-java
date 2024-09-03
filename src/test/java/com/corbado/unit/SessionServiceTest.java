@@ -5,18 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
-import com.auth0.jwk.Jwk;
-import com.auth0.jwk.JwkException;
-import com.auth0.jwk.JwkProvider;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.corbado.entities.SessionValidationResult;
-import com.corbado.exceptions.StandardException;
-import com.corbado.services.SessionService;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -35,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,6 +35,24 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.auth0.jwk.Jwk;
+import com.auth0.jwk.JwkException;
+import com.auth0.jwk.JwkProvider;
+import com.auth0.jwk.SigningKeyNotFoundException;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.IncorrectClaimException;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.corbado.entities.SessionValidationResult;
+import com.corbado.exceptions.StandardException;
+import com.corbado.services.SessionService;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 
 /** Unit Test for session service. */
 @ExtendWith(MockitoExtension.class)
@@ -105,12 +113,11 @@ public class SessionServiceTest {
    * @throws JsonSyntaxException the json syntax exception
    * @throws JwkException the jwk exception
    */
-  @SuppressWarnings("unchecked")
   @BeforeEach
   public void setUp() throws IOException, JsonSyntaxException, JwkException {
     final Gson gson = new Gson();
     final Jwk ret = Jwk.fromValues(gson.fromJson(jwks.get(0), Map.class));
-    Mockito.lenient().when(jwkProvider.get(anyString())).thenReturn(ret);
+    Mockito.lenient().when(this.jwkProvider.get(anyString())).thenReturn(ret);
   }
 
   // ------------------ Tests --------------------- //
@@ -169,17 +176,24 @@ public class SessionServiceTest {
   /**
    * Test get current user.
    *
-   * @param expectValid the expect valid
-   * @param jwt the jwt
+   * @param expectValid if user expected to be valid
+   * @param jwt the jwt to be verified
+   * @param e the exception class expected to be thrown
    * @throws StandardException the standard exception
+   * @throws IncorrectClaimException the incorrect claim exception
+   * @throws JWTVerificationException the JWT verification exception
+   * @throws JwkException the jwk exception
    */
   @ParameterizedTest
   @MethodSource("provideJwts")
-  void test_getCurrentUser(final boolean expectValid, final String jwt) throws StandardException {
-    final SessionValidationResult validationResult = sessionService.getAndValidateCurrentUser(jwt);
-    assertEquals(expectValid, validationResult.isAuthenticated());
+  void test_getCurrentUser(final String jwt, Class<Exception> e)
+      throws StandardException, IncorrectClaimException, JWTVerificationException, JwkException {
 
-    if (expectValid) {
+    if (e != null) {
+      assertThrows(e, () -> sessionService.getAndValidateCurrentUser(jwt));
+    } else {
+      final SessionValidationResult validationResult =
+          sessionService.getAndValidateCurrentUser(jwt);
       assertEquals(TEST_NAME, validationResult.getFullName());
       assertEquals(TEST_USER_ID, validationResult.getUserID());
     }
@@ -215,52 +229,52 @@ public class SessionServiceTest {
     final List<Object[]> testData = new ArrayList<>();
 
     // JWT with invalid format
-    testData.add(new Object[] {false, "invalid"});
+    testData.add(new Object[] {"invalid", JWTDecodeException.class});
 
     // JWT signed with wrong algorithm (HS256 instead of RS256)
     final String jwtWithWrongAlgorithm =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik"
             + "pvaG4gRG9lIiwiYWRtaW4iOnRydWV9.dyt0CoTl4WoVjAHI9Q_CwSKhl6d_9rhM3NrXuJttkao";
-    testData.add(new Object[] {false, jwtWithWrongAlgorithm});
+    testData.add(new Object[] {jwtWithWrongAlgorithm, SigningKeyNotFoundException.class});
 
     // Not before (nbf) in future
     testData.add(
         new Object[] {
-          false,
           generateJwt(
               "https://auth.acme.com",
               System.currentTimeMillis() / 1000 + 100,
-              System.currentTimeMillis() / 1000 + 100)
+              System.currentTimeMillis() / 1000 + 100),
+          IncorrectClaimException.class
         });
 
     // Expired (exp)
     testData.add(
         new Object[] {
-          false,
           generateJwt(
               "https://auth.acme.com",
               System.currentTimeMillis() / 1000 - 100,
-              System.currentTimeMillis() / 1000 - 100)
+              System.currentTimeMillis() / 1000 - 100),
+          TokenExpiredException.class
         });
 
     // Invalid issuer (iss)
     testData.add(
         new Object[] {
-          false,
           generateJwt(
               "https://invalid.com",
               System.currentTimeMillis() / 1000 + 100,
-              System.currentTimeMillis() / 1000 - 100)
+              System.currentTimeMillis() / 1000 - 100),
+          IncorrectClaimException.class
         });
 
     // Success
     testData.add(
         new Object[] {
-          true,
           generateJwt(
               "https://auth.acme.com",
               System.currentTimeMillis() / 1000 + 100,
-              System.currentTimeMillis() / 1000 - 100)
+              System.currentTimeMillis() / 1000 - 100),
+          null
         });
 
     return testData;

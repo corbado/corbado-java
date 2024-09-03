@@ -97,7 +97,12 @@ public class TestUtils {
    */
   public static CorbadoSdk instantiateSDK() throws StandardException {
 
-    final Dotenv dotenv = Dotenv.load();
+    final Dotenv dotenv =
+        Dotenv.configure()
+            .directory("./src/test/resources")
+            .ignoreIfMalformed()
+            .ignoreIfMissing()
+            .load();
     String apiSecret = System.getenv(CORBADO_API_SECRET);
 
     // If the environment variable is not set, then fallback to dotenv
@@ -117,9 +122,10 @@ public class TestUtils {
     }
     Config config = null;
     if (StringUtils.isEmpty(backendApi)) {
-      config = new Config(projectId, apiSecret);
+      config = Config.builder().apiSecret(apiSecret).projectId(projectId).build();
     } else {
-      config = new Config(projectId, apiSecret, backendApi);
+      config =
+          Config.builder().apiSecret(apiSecret).projectId(projectId).backendApi(backendApi).build();
     }
 
     return new CorbadoSdk(config);

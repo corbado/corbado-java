@@ -1,5 +1,12 @@
 package com.corbado.services;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.interfaces.RSAPublicKey;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.StringUtils;
+
 import com.auth0.jwk.Jwk;
 import com.auth0.jwk.JwkException;
 import com.auth0.jwk.JwkProvider;
@@ -14,11 +21,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.corbado.entities.SessionValidationResult;
 import com.corbado.sdk.Config;
 import com.corbado.utils.ValidationUtils;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.interfaces.RSAPublicKey;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.StringUtils;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -113,13 +116,16 @@ public class SessionService {
   }
 
   /**
-   * Gets the and validate short session value.
+   * Gets the and validate user from short session value.
    *
    * @param shortSession the short session
-   * @return the and validate short session value
+   * @return the and validate user from short session value
+   * @throws JWTVerificationException the JWT verification exception
+   * @throws JwkException the jwk exception
+   * @throws IncorrectClaimException the incorrect claim exception
    */
-  private SessionValidationResult getAndValidateUserFromShortSessionValue(
-      final String shortSession) {
+  private SessionValidationResult getAndValidateUserFromShortSessionValue(final String shortSession)
+      throws JWTVerificationException, JwkException, IncorrectClaimException {
 
     if (shortSession == null || shortSession.isEmpty()) {
       throw new IllegalArgumentException("Session value cannot be null or empty");
@@ -135,34 +141,29 @@ public class SessionService {
 
       // Verify and decode the JWT using the signing key
       final Algorithm algorithm = Algorithm.RSA256(publicKey);
-      final JWTVerifier verifier = JWT.require(algorithm).withIssuer(issuer).build();
+      final JWTVerifier verifier = JWT.require(algorithm).withIssuer(this.issuer).build();
       decodedJwt = verifier.verify(shortSession);
 
       return SessionValidationResult.builder()
-          .authenticated(true)
           .fullName(decodedJwt.getClaim("name").asString())
           .userID(decodedJwt.getClaim("sub").asString())
           .build();
 
     } catch (final IncorrectClaimException e) {
       // Be careful of the case where issuer does not match. You have probably forgotten to set
-      // the cname in config class.
+      // the cname in config class. We add an additional message to the exception and retrow it to
+      // underline its importance.
       if (StringUtils.equals(e.getClaimName(), "iss")) {
         final String message =
             e.getMessage()
-                + "Be careful of the case where issuer does not match. You have probably forgotten to set the cname in config class.";
-        final IncorrectClaimException exception =
-            new IncorrectClaimException(message, e.getClaimName(), e.getClaimValue());
-
-        setValidationError(exception);
-        return new SessionValidationResult(exception);
+                + "Be careful of the case where issuer does not match. "
+                + "You have probably forgotten to set the cname in config class.";
+        throw new IncorrectClaimException(message, e.getClaimName(), e.getClaimValue());
       }
-      setValidationError(e);
-      return new SessionValidationResult(e);
+      throw e;
 
     } catch (final JwkException | JWTVerificationException e) {
-      setValidationError(e);
-      return new SessionValidationResult(e);
+      throw e;
     }
   }
 
@@ -170,20 +171,14 @@ public class SessionService {
    * Retrieves userID and full name if 'shortSession' is valid.
    *
    * @param shortSession the short session
-   * @return the current user{@link SessionValidationResult}
+   * @return the and validate current user
+   * @throws IncorrectClaimException the incorrect claim exception
+   * @throws JWTVerificationException the JWT verification exception
+   * @throws JwkException the jwk exception
    */
-  public SessionValidationResult getAndValidateCurrentUser(final String shortSession) {
+  public SessionValidationResult getAndValidateCurrentUser(final String shortSession)
+      throws IncorrectClaimException, JWTVerificationException, JwkException {
 
     return getAndValidateUserFromShortSessionValue(shortSession);
-  }
-
-  /**
-   * Sets the validation error.
-   *
-   * @param error the new validation error
-   */
-  private void setValidationError(@NonNull final Exception error) {
-    this.lastShortSessionValidationResult =
-        String.format("JWT validation failed: %s", error.getMessage());
   }
 }
