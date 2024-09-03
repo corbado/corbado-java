@@ -79,17 +79,6 @@ The Corbado Java SDK raises exceptions for all errors except those that occur in
 - `StandardException` for everything else (client side)
 - `JWTVerificationException` and its subclasses and `JwkException` in session service for JWT/JWK errors.
 
-'SessionService' returns 'SessionValidationResult' as result of token validation. You can check whether any errors occurred and handle them if needed:
-```Java
-      final SessionValidationResult validationResp =
-          sdk.getSessions().getAndValidateCurrentUser(cboShortSession);
-
-      if (validationResp.getError() != null) {
-        // Handle invalid token.
-        throw validationResp.getError();
-      }
-```
-
 If the Backend API returns a HTTP status code other than 200, the Corbado Java SDK throws a `CorbadoServerException`. The `CorbadoServerException`class parses the server response to access all important data. One of the test cases:
 ```Java
     UserService users = sdk.getUsers();
