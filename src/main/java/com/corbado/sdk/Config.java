@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Builder
 public class Config {
 
-  /** The Constant HTTPS. */
+  /** The Constant HTTPS prefix. */
   private static final String HTTPS = "https://";
 
   // Fields
@@ -34,19 +34,19 @@ public class Config {
   /** Project Id must begin with this prefix. */
   private static final String PROJECT_ID_PREFIX = "pro-";
 
-  /** The project id with custom setter. */
+  /** The project id with custom setter. Must be provided. */
   @NonNull @Getter private String projectId;
 
-  /** The api secret with custom setter. */
+  /** The api secret with custom setter. Must be provided. */
   @NonNull @Getter private String apiSecret;
 
-  /** The backend api with custom setter. */
+  /** The backend api with custom setter. Default value: "https://backendapi.cloud.corbado.io/v2" */
   @Getter @Builder.Default private String backendApi = "https://backendapi.cloud.corbado.io/v2";
 
-  /** The short session cookie name. */
+  /** The short session cookie name. Default value: "cbo_short_session" */
   @Getter @Setter @Builder.Default private String shortSessionCookieName = "cbo_short_session";
 
-  /** The issuer. */
+  /** The issuer. Used for session verification. */
   @Getter @Setter private String issuer;
 
   /** The frontend api with custom setter. */
@@ -58,7 +58,7 @@ public class Config {
   /** Flag to cache keys in session service. Default = true. */
   @Getter @Setter @Builder.Default private boolean cacheKeys = true;
 
-  /** The cname. */
+  /** The cname. Replaces issuer field if present. */
   @Getter @Setter private String cname;
 
   // Constructors
@@ -93,7 +93,7 @@ public class Config {
     setBackendApi(backendApi);
   }
 
-  // Getters and Setters
+  // Custom Getters and Setters
   /**
    * Sets the api secret.
    *
@@ -190,7 +190,6 @@ public class Config {
     setApiSecret(apiSecret);
     setBackendApi(backendApi);
     setShortSessionCookieName(shortSessionCookieName);
-    setIssuer(issuer);
     if (StringUtils.isEmpty(frontendApi)) {
       setFrontendApi(projectId);
     } else {
@@ -204,7 +203,11 @@ public class Config {
       cname = StringUtils.prependIfMissing(cname, HTTPS);
       // Override issuer if cname is present
       setIssuer(cname);
+      // if cname is not defined, but issuer was set manually
+    } else if (StringUtils.isNotEmpty(issuer)) {
+      setIssuer(issuer);
     } else {
+      // else use default issuer
       setIssuer(this.frontendApi);
     }
   }
