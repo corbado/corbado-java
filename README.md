@@ -20,12 +20,14 @@ The [Corbado](https://www.corbado.com) Java SDK provides convenient access to th
 
 ### Installation
 
+You can find the latest SDK version at [central repository](https://repo1.maven.org/maven2/com/corbado/corbado-java/)
+
 #### Gradle users
 
 Add this dependency to your project's build file:
 
 ```groovy
-implementation "com.corbado:corbado-java:1.0.3"
+implementation "com.corbado:corbado-java:1.0.4"
 ```
 
 #### Maven users
@@ -36,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.corbado</groupId>
   <artifactId>corbado-java</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 
