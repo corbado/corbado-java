@@ -1,4 +1,4 @@
-# Introduction
+## 1. Introduction
 
 APIs are core components in communication between services in modern software, and the OpenAPI Specification has become the go-to standard for defining them. But while building an API might seem straightforward, offering a smooth developer experience often depends on the availability of SDKs (Software Development Kits). SDKs simplify API integration by providing pre-built, language-specific libraries that developers can use to interact with APIs more efficiently.
 
@@ -14,19 +14,13 @@ In this guide, we’ll focus on how to build a **Java SDK** based on an OpenAPI 
 
 We'll use Corbado’s passkey-first Java SDK as an example, guiding you through the practical steps and considerations involved in creating a professional, user-friendly SDK.
 
-# 2. Use an API Generator to Create a Client
-
-1.  First we use the OpenAPI generator to generate a client SDK from OpenAPI specification.Ideally, it should be moved to a separate project as a dependency to simplify dependency management. This is particularly important since OpenAPI-generated code may include dependencies that you might not want in your main project. For example, the OpenAPI generator for Python will use Pydantic and have it as a dependency that you may not want to have. Alternatively, move it to a designated folder.
-
-    1.  Avoid modifying the generated code
-
-    2.  Try not to expose the generated code to the outer world in the case you want to decouple your generated code from an SDK interface and to hide complexity.
+## 2. Use an API Generator to Create a Client
 
 The first step in building a Java SDK from an OpenAPI specification is to use an **OpenAPI generator** to create a client SDK. The OpenAPI generator simplifies the process by automatically generating client-side code that interacts with your API.
 
 Ideally, the generated client SDK should be placed in a **separate project or repository**. This ensures clean separation from your main application, helping to simplify dependency management. Generated SDKs often include third-party libraries that might not align with the dependencies used in your core project. For instance, when generating a Python SDK, the OpenAPI generator includes dependencies like Pydantic, which may not be required in your main project. By isolating the SDK into its own repository or folder, you avoid cluttering your core codebase with unnecessary dependencies.
 
-#### **Best Pracitce: Avoid Modifying Generated Code**
+**Best Practice: Avoid Modifying Generated Code**
 
 It’s best practice to **avoid manually modifying the generated code**. Once you start editing the generated SDK code, it becomes difficult to keep up with future updates or regenerate the SDK when your OpenAPI specification changes. Instead, any custom functionality should be built on top of the generated code, not directly within it.
 
@@ -38,57 +32,11 @@ If you're concerned about exposing the complexities of the generated code to dev
 
 By generating the client SDK and isolating it from your core project, you streamline both development and future maintenance. You also ensure that the SDK remains easy to update and integrate without breaking your main codebase.
 
-# 3. Understand the Functionality,structure and Tests of Existing Corbado SDKs
-
--   For the sake of the tutorial, we take a look at Corbado’s existing SDKs which serve as role model
-
--   First, we try to understand how this SDK will be later used in production by external developers. Therefore, the following use cases exist:
-
-    -   Session validation
-
-    -   Extracting more user information
-
-1.  What is the purpose of the SDK? How does it benefit the user compared to a simple generated client?
-
-    1.  The SDK should provide a simple, easy to install, configure and understand library to connect to the Corbado backend with meaningful error handling.
-
-        1.  Have simple examples for the available functionality (at least in form of unit tests) .
-
-        2.  Lower the entry barrier for new developers or developers wanting to try out the Corbado Passkeys.
-
-    2.  Familiarize yourself with JWT/JWK concepts and JWT usage in other SDKs.
-
-        1.  You can start your reading here: [JSON Web Token Introduction - jwt.io](https://jwt.io/introduction)
-
-        2.  Search for available JWT libraries for your language. Example: [JSON Web Token Libraries - jwt.io](https://jwt.io/libraries?language=Java)
-
-        3.  How is the JWT validation implemented? [Java JWT Validation code snippet]
-
-        4.  What is being tested in test classes and why? Take a look at the [unit test for session service in Java SDK](https://github.com/corbado/corbado-java/blob/main/src/test/java/com/corbado/unit/SessionServiceTest.java).
-
-        5.  How session service is being used in an example application. [Code snippet Spring Boot request mapping profile]
-
-    3.  How are errors handled?
-
-        1.  CorbadoServerException for server errors (server side) if the Backend API returns a HTTP status code other than 200. It also deserialize the error response to make the additional error information more accessible: [screenshot with example of the try catch block and which information can be accessed from the exception]
-
-        2.  StandardException for everything else (client side)
-
-        3.  JWTVerificationException and its subclasses and JwkException in session service for JWT/JWK errors.
-
-    4.  What parts of inputs are being validated? How can you implement this validation in your language in the most effective/clean way.
-
-        1.  The SDK is trying to validate as much information as possible on the client side.
-
-            1.  URL validation
-
-            2.  Basic constraints on string (e.g. userId cannot be empty)
-
-            3.  Configuration validation (e.g. projectId and apiSecret should begin with “pro-” and “corbado1_” respectfully)
+## 3. Understand the Functionality,structure and Tests of Existing Corbado SDKs
 
 When building a Java SDK from an OpenAPI specification, it’s important to first familiarize yourself with existing SDKs that can serve as role models (if they exist - in other cases you need to define the requirements for the SDK). In this section, we’ll examine Corbado’s existing SDKs to understand their structure, purpose, and how they are used in production by external developers.
 
-#### **Key Use Cases: Session Validation and User Information Extraction**
+**Key Use Cases: Session Validation and User Information Extraction**
 
 To better grasp how your SDK will be used in real-world applications, it’s crucial to understand the typical use cases. For Corbado’s SDKs, two key scenarios include **session validation** and **extracting additional user information**. These features are important for developers integrating user authentication into their applications.
 
@@ -144,37 +92,7 @@ The SDK also takes care of validating input on the client side to avoid sending 
 
 These validations help prevent common mistakes and improve the reliability of integrations, making the SDK more developer-friendly.
 
-# **4. Identify Best Practices for Your Language**
-
-1.  How should you structure the project to make it standalone and easily importable for users? Examples:
-
-    1.  For Java: [sombriks/how-to-structure-java-projects: sampling some project layouts to present in this article (github.com)](https://github.com/sombriks/how-to-structure-java-projects)
-
-        1.  For Python: [nedbat/pkgsample: A simple example of how to structure a Python project (github.com)](https://github.com/nedbat/pkgsample)
-
-    2.  Use modern formatters and linters for your language to ensure your code is structured, standardized, and more readable. Clean code is crucial, especially in a small project, and these tools can help maintain it.
-
-        1.  For Python I have used:
-
-            1.  Pylance
-
-            2.  Mypy
-
-            3.  flake8 with additional plugins
-
-            4.  isort
-
-            5.  Black Formatter
-
-        2.  For Java I have used:
-
-            1.  Checkstyle with Google Java Style
-
-            2.  SonarLint
-
-            3.  Findbugs
-
-            4.  [google-java-format](https://github.com/google/google-java-format)
+## 4. Identify Best Practices for Your Language
 
 When building an SDK, following best practices for project structure and code quality is essential to ensure that your library is easy to use, maintain, and integrate. Below are key recommendations for structuring your SDK project and maintaining clean, readable code, with specific examples for Java and Python.
 
@@ -218,35 +136,9 @@ To maintain clean, standardized code, it’s important to use modern formatters 
 
 Clean code is critical for any SDK, but it becomes even more important in smaller projects where every line of code has the potential to impact usability and maintainability. Using formatters and linters not only improves readability but also makes it easier for other developers to contribute to the project and ensures your SDK remains future-proof.
 
-# 5. Identify Best Practices and Established Coding Standards for SDK Development
+## 5. Identify Best Practices and Established Coding Standards for SDK Development
 
-:
-
-1.  Look at similar projects, like Stripe, to understand what and how they implement their SDKs. As example, I have learned:
-
-    1.  How to make a basic CI/CD structure.
-
-        1.  What do they test in CI/CD.
-
-            1.  Language version compatibility.
-
-            2.  Lint.
-
-            3.  Code static analysis and more.
-
-        2.  How I can improve my README.
-
-        3.  Used some of the linters/formatters they are using.
-
-        4.  How they structure their project.
-
-    2.  Examples:
-
-        1.  I have learned that Stripe is using Builder Pattern for client configuration class. It often makes sense for Java if there are a lot of optional parameters.
-
-        2.  I have also used similar project structure, project configuration tools/files and linters from their Python SDK.
-
-#### **Learning from Established SDKs**
+**Learning from Established SDKs**
 
 To build a robust SDK, look at how established companies approach SDK development. For example, Stripe is known for having one of the most well-documented and widely used SDKs across multiple languages. Studying their approach can teach you the following:
 
@@ -286,109 +178,7 @@ Finally, learning from these established SDKs also involves adopting the same to
 
 By leveraging these industry-standard tools, you ensure that your SDK remains high-quality, maintainable, and developer-friendly.
 
-# 6. Determine Your Technology Stack and Useful Libraries
-
-:
-
-1.  Technology stack you need define:
-
-    1.  Supported language version (Java 8 and above?)
-
-        1.  Build Tools (Maven or Gradle?)
-
-        2.  Dependency Management and Package Distribution (Maven Central or JCenter?)
-
-        3.  HTTP Client Library
-
-        4.  JSON Parsing (Jackson or Gson?)
-
-        5.  Logging (SLF4J with Logback or Log4j?)
-
-        6.  Testing (Junit? Maybe you need Mockito?)
-
-        7.  Documentation (Javadoc, Markdown)
-
-        8.  CI/CD (GitHub Actions, Jenkins, or Travis CI?)
-
-        9.  Optional Tools (lombok)
-
-    2.  Again, you can examine the code and libraries and technologies used in new and popular projects for your language to help you with your technology stack.
-
-        1.  I have seen that Stripe is using the lombok library to reduce boilerplate code for Java SDK.
-
-        2.  I took a look at
-
-            1.  which dependencies do other projects have
-
-            2.  what are they being used for (may be you will find another logger implementation that suits your needs better)
-
-        3.  At which stages those dependencies are being used. (runtime, compile time, test)
-
-    3.  The SDK should be runnable on most used versions of the used language. The other modern established projects will often mention which versions of the language are supported and why. Make research on the current state of the language.
-
-        1.  As of September 2024 for Python according to [statistics](https://w3techs.com/technologies/history_details/pl-python/3) a lot of websites are still using python 3.6 and 3.7. But that may not be not the versions you want to support if you take into consideration
-
-            1.  which projects would want to use passkeys (probably rather modern than legacy systems)
-
-            2.  older versions do not have security support
-
-            3.  other dependencies you may want to include could (and often will) end the support of EOL language versions.
-
-            4.  You may miss important language features like typing support for Python that will make your code safer and easier to maintain/understand.
-
-        2.  But you could have different opinion on Java versions
-
-            1.  It has much better long term support
-
-            2.  A lot of established systems are still using Java 8, even new projects.
-
-            3.  Java has a strong backwards compatibility.
-
-        3.  Conclusion: you need to make a weighted descition
-
-    4.  Which package manager/project configuration/description/metadata tools do you want to use (if there is one)?
-
-        1.  For example, do you prefer Gradle over Maven?
-
-            1.  I have picked Maven, because I am more familiar with it. It is an already well established tool, I do not need the custom build logic feature of Gradle and its faster build time is not going to be so impactful for a small library.
-
-        2.  Or maybe a lot of established projects are using setup.py to build for a variety of reasons but it will be deprecated soon for pyproject.toml [Is setup.py deprecated? - Python Packaging User Guide](https://packaging.python.org/en/latest/discussions/setup-py-deprecated/).
-
-        3.  Are there any libraries that can speed up your development or improve code readability? As example:
-
-            1.  Lombok in Java can reduce boilerplate code:
-
-                1.  Use annotations to generate getters, setters at compile time.
-
-                2.  Generate Builder on a class with single annotation.
-
-                3.  Generate Constructors.
-
-                4.  Null check with annotations.
-
-            2.  Pydantic can improve typing support for Python, validation and code readability. I have used Pydantic for:
-
-                1.  Type Enforcement.
-
-                2.  Custom Validation**:** By defining custom validation rules for fields using Pydantic’s validator functions.
-
-                3.  Type Annotations for cleaner, more expressive code.
-
-                4.  Data Classes.
-
-    5.  Be cautious with your dependencies.
-
-        1.  The user may not want to have them in their projects.
-
-        2.  Take compatibility and security concerns into account.
-
-            1.  Dependency may support only newer or older versions of the language.
-
-            2.  There may be security vulnerabilities in the version of the dependency you decide to use that your users may not want.
-
-        3.  Separate test, compile and runtime dependencies.
-
-            1.  For example in Maven use \<scope\> and \<target\>
+## 6. Determine Your Technology Stack and Useful Libraries
 
 Building an SDK requires selecting the right libraries to ensure compatibility, maintainability, and ease of use. The stack you choose will directly affect how well your SDK integrates into other projects and how easy it is for developers to adopt it. Let’s break down the key components you’ll need to consider based on the insights gathered from previous sections and established best practices.
 
@@ -486,19 +276,11 @@ Ultimately, the decisions you make about your technology stack should reflect th
 
             8.  Sign and publish the artifact ![](1f874051e7aef9cede1f7833550b6c1e.png)
 
-# 7. Ease of Collaboration and Development
-
-1.  A full CI/CD pipeline that includes static analysis will require consistent project configuration across all machines. This ensures that all developers use the same coding standards without needing to reconfigure the project or IDE each time. You can see the static analysis tools I have used in the CI/CD pipeline in Chapter “4. Identify Best Practices for Your Language”.
-
-    1.  If possible, share your project/IDE configuration in the most convenient way for your language/IDE.
-
-        1.  For example VSCode lets you share your workspace configuration like typing strictness, maximal code line length etc. and recommended extensions via settings.json and extensions.json respectively.
-
-        2.  If it's possible, make the VERSION file the single source of truth for the SDK version to simplify release preparations.
+## 7. Ease of Collaboration and Development
 
 When building an SDK, ensuring a smooth and collaborative development process is key to long-term success. This requires setting up consistent configurations, automating processes where possible, and simplifying release management to make it easy for teams to work together and ship updates.
 
-#### **Consistent Project Configuration Across All Machines**
+**Consistent Project Configuration Across All Machines**
 
 A full CI/CD pipeline is essential for ensuring that all code is automatically tested and analyzed before it reaches production. However, to make collaboration as seamless as possible, every developer working on the SDK should use the same coding standards and tools, regardless of their machine or development environment.
 
@@ -538,17 +320,11 @@ For example:
 
 -   **Prettier** (for JavaScript) or **Black** (for Python) can automatically format code as part of the commit process, ensuring consistent styling across all commits.
 
-# 8. Testing:
-
-1.  Choose a modern testing framework (again, take a look at reference projects)
-
-    1.  Use existing tests (e.g. PHP SDK) as a baseline and add new ones if needed.
-
-    2.  Set up and use the SDK to gain the perspective of an external developer. Current blog posts can serve as examples and can be adjusted to use the new SDK.
+## 8. Testing:
 
 Testing is a critical part of building any SDK, ensuring that it works as expected and is reliable in production environments. By adopting modern testing frameworks and writing thorough tests, you’ll not only catch potential issues early but also improve the developer experience by providing real-world usage examples.
 
-#### **Choose a Modern Testing Framework**
+**Choose a Modern Testing Framework**
 
 The first step in ensuring robust testing for your SDK is choosing the right testing framework for your language. To do this, look at how other reference projects handle testing, particularly those with high-quality SDKs like Stripe or PayPal. Here are some commonly used frameworks for Java and Python:
 
@@ -559,8 +335,8 @@ The first step in ensuring robust testing for your SDK is choosing the right tes
     **pytest** is the go-to framework for writing clean, readable, and efficient tests in Python. It provides a rich feature set for writing unit tests, integration tests, and more. For handling API mocking, libraries like **responses** can be used to simulate API responses without making actual HTTP requests.
 
 By selecting a modern, well-supported testing framework, you ensure that your SDK can be tested comprehensively, and future contributors will have an easier time maintaining the project.
-
-#### **Use Existing Tests as a Baseline**
+ 
+**Use Existing Tests as a Baseline**
 
 When building your SDK, it’s efficient to start by referencing existing tests from similar SDKs. For example, if Corbado already has SDKs written in other languages like PHP, use those as a **baseline**. You can adapt and extend the existing test cases to match the language-specific features of your new SDK.
 
@@ -584,21 +360,7 @@ Use current **Corbado blog posts** and examples as starting points, adjusting th
 
 By simulating the real-world usage of your SDK, you can ensure that it meets the needs of external developers and provides a seamless integration experience.
 
-# 9. Documentation:
-
-1.  Ensure the user understands by looking at the documentation:
-
-    1.  What function arguments, configuration fields are required and
-
-        1.  What constraints apply to those fields (not null, maximal length, etc.) by examining your code documentation (e.g., Javadoc, docstrings, annotations). For example, Pydantic can make field constraint really easy written, compact and readable: [Code snippet Pydantic field constraints example]
-
-    2.  Clearly explain what functions and classes do, and what configurations or parameters they expect.
-
-    3.  Use linters (e.g., flake8 for Python with Google-style docstrings) to ensure consistent documentation formatting across your project according to modern standards.
-
-    4.  Create README based on existing SDK implementations.
-
-    5.  Standard code commenting practices should also be applied.
+## 9. Documentation
 
 Clear, concise, and well-structured documentation is crucial to the success of any SDK. It ensures that developers can easily understand how to implement your SDK, use its features, and troubleshoot issues. The documentation should not only provide a comprehensive overview of the SDK's capabilities but also guide developers through its use with real-world examples.
 
@@ -664,9 +426,6 @@ Beyond formal documentation, clear **code comments** are essential to help futur
 
 Good commenting practices help bridge the gap between the code and its documentation, making the project easier to maintain and extend.
 
-# 10. Conclusion
+## 10. Conclusion
 
 Building a Java SDK from an OpenAPI specification involves several key steps, from generating the client to ensuring ease of use for developers through proper project structure, best practices, and thorough testing. By focusing on a clean, consistent technology stack, adopting industry-standard tools and libraries, and providing robust documentation, you create an SDK that’s intuitive, reliable, and easy to integrate. Following these best practices not only streamlines development but also positions your SDK as a professional tool that developers can confidently use in production.
-
-**Learnings & Best Practices see doc comment**
-
