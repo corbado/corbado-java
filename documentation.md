@@ -24,15 +24,65 @@ Ideally, the generated client SDK should be placed in a **separate project or re
 
 It’s best practice to **avoid manually modifying the generated code**. Once you start editing the generated SDK code, it becomes difficult to keep up with future updates or regenerate the SDK when your OpenAPI specification changes. Instead, any custom functionality should be built on top of the generated code, not directly within it.
 
-You can also add automation around this process by using scripts to generate the SDK. For example, a simple script can call the OpenAPI generator and handle any necessary folder management automatically. This ensures consistency across builds, which is crucial when working with different environments or teams.
+You can also add automation around this process by using scripts to generate the SDK. For example, a simple script can call the OpenAPI generator and handle any necessary folder management automatically. This ensures consistency across builds, which is crucial when working with different environments or teams. Example: Java script to generate a client
 
-*[Code snippet “OPENAPI SKRIPT GENERATOR”]*
+```bash
+#!/bin/sh
+# Define the names of the subpackage, SDK package, and project.
+GENERATED_PACKAGE_NAME="generated" # Subpackage under corbado_python_sdk for generated code.
+SDK_PACKAGE_NAME="corbado_python_sdk" # Main package name.
+GENERATED_PROJECT_NAME="corbado-python-generated" # Project name for generated code.
+
+# Inform the user that the OpenAPI code generation process is starting.
+echo "Generating OpenAPI code ..."
+
+# Move to the directory where the script is located.
+cd "$(dirname "$0")"
+
+# Remove any existing `.gen` directory to clean the workspace for new generated files.
+rm -rf .gen
+
+# Create a new `.gen` directory for storing temporary generated files.
+mkdir -p .gen
+cd .gen
+
+# Remove the previously generated package inside the SDK source directory.
+rm -rf ../../src/$SDK_PACKAGE_NAME/$GENERATED_PACKAGE_NAME
+
+# Create the target directory inside the SDK where the newly generated code will be placed.
+mkdir -p ../../src/$SDK_PACKAGE_NAME/$GENERATED_PACKAGE_NAME
+
+# Download the OpenAPI specification file from the provided URL.
+curl -s -O https://apireference.cloud.corbado.io/backendapi-v2/backend_api.yml use local files until the API specification is uploaded.
+
+# Pull the OpenAPI Generator CLI Docker image to generate client code from OpenAPI specification.
+docker pull openapitools/openapi-generator-cli
+
+# Run the OpenAPI Generator to generate Python client code from the API specification.
+# This mounts the current directory to Docker, sets user permissions, and generates code in Python.
+docker run -v ${PWD}:/local --user $(id -u):$(id -g) openapitools/openapi-generator-cli generate -i /local/backend_api_public_v2.yml -g python -o /local --additional-properties=packageName=$SDK_PACKAGE_NAME.$GENERATED_PACKAGE_NAME,projectName=$GENERATED_PROJECT_NAME
+
+# Copy the generated Python package files from the .gen directory to the SDK source directory.
+cp -r $SDK_PACKAGE_NAME/$GENERATED_PACKAGE_NAME/* ../../src/$SDK_PACKAGE_NAME/$GENERATED_PACKAGE_NAME
+
+# Copy the generated requirements.txt file to the SDK source directory.
+cp -r requirements.txt ../../src/$SDK_PACKAGE_NAME/$GENERATED_PACKAGE_NAME
+
+# Return to the parent directory and remove the temporary `.gen` directory to clean up.
+cd ..
+rm -rf .gen
+
+# Inform the user that the OpenAPI code generation process is complete.
+echo " done!"
+
+```
+
 
 If you're concerned about exposing the complexities of the generated code to developers, **decouple** the generated code from your SDK interface. This way, the complexity remains hidden, and your SDK provides a clean, simple interface for developers to use.
 
 By generating the client SDK and isolating it from your core project, you streamline both development and future maintenance. You also ensure that the SDK remains easy to update and integrate without breaking your main codebase.
 
-## 3. Understand the Functionality,structure and Tests of Existing Corbado SDKs
+## 3. Understand the Functionality, structure and Tests of Existing Corbado SDKs
 
 When building a Java SDK from an OpenAPI specification, it’s important to first familiarize yourself with existing SDKs that can serve as role models (if they exist - in other cases you need to define the requirements for the SDK). In this section, we’ll examine Corbado’s existing SDKs to understand their structure, purpose, and how they are used in production by external developers.
 
@@ -65,8 +115,98 @@ An essential part of building the Corbado SDK is understanding how JSON Web Toke
 In Corbado’s SDK, **JWT validation** is important. For example, session services often validate tokens to ensure they are correctly signed and authorized. It’s helpful to review how this is implemented in Corbado’s existing SDKs, especially the error handling and structure.
 
 Example: A JWT validation process could include validating the signature, checking token expiration, and handling JWK errors with custom exceptions like JWTVerificationException or JwkException.
+```java
+  private SessionValidationResult getAndValidateUserFromShortSessionValue(final String shortSession)
+      throws JWTVerificationException, JwkException, IncorrectClaimException {
+    if (shortSession == null || shortSession.isEmpty()) {
+    throw new IllegalArgumentException("Session value cannot be null or empty");
+    }
 
-Providing clear **unit tests** for valid and invalid tokens can demonstrate how these validations work in practice. This not only ensures robustness but also offers developers a clear example of how to handle JWTs in their applications.
+    try {
+    // Decode the JWT without verifying it, to extract its claims and headers.
+    DecodedJWT decodedJwt = JWT.decode(shortSession);
+
+    // Retrieve the signing key (JWK) using the Key ID (kid) from the JWT header.
+    final Jwk jwk = this.jwkProvider.get(decodedJwt.getKeyId());
+
+    // If the signing key (JWK) is not found, throw a custom exception.
+    if (jwk == null) {
+        throw new SigningKeyNotFoundException(shortSession, null);
+    }
+
+    // Extract the RSA public key from the JWK for verifying the JWT.
+    final RSAPublicKey publicKey = (RSAPublicKey) jwk.getPublicKey();
+
+    // Define the RSA256 algorithm using the retrieved public key.
+    final Algorithm algorithm = Algorithm.RSA256(publicKey);
+
+    // Create a JWT verifier using the algorithm and expected issuer.
+    final JWTVerifier verifier = JWT.require(algorithm).withIssuer(this.issuer).build();
+
+    // Verify the JWT signature and decode the JWT.
+    decodedJwt = verifier.verify(shortSession);
+
+    // Build and return the session validation result, extracting claims like name and userID.
+    return SessionValidationResult.builder()
+        .fullName(decodedJwt.getClaim("name").asString()) // Extract the 'name' claim.
+        .userID(decodedJwt.getClaim("sub").asString())    // Extract the 'sub' (user ID) claim.
+        .build();
+
+    } catch (final IncorrectClaimException e) {
+    // Handle cases where the JWT's claims do not match expected values (e.g., incorrect issuer).
+    
+    // If the claim that caused the exception is the 'iss' (issuer) claim.
+    if (StringUtils.equals(e.getClaimName(), "iss")) {
+        final String message =
+            e.getMessage()
+                + " Be careful of the case where issuer does not match. "
+                + "You have probably forgotten to set the cname in config class.";
+        
+        // Rethrow the IncorrectClaimException with the updated message.
+        throw new IncorrectClaimException(message, e.getClaimName(), e.getClaimValue());
+    }
+    
+    // If the exception is not related to the issuer, rethrow the original exception.
+    throw e;
+
+    } catch (final JwkException | JWTVerificationException e) {
+    // Catch any errors related to obtaining the JWK or verifying the JWT.
+    // Rethrow these exceptions as they are critical and need to be handled by the caller.
+    throw e;
+    }
+}
+```
+
+Example endpoint in Spring Boot using Session Service:
+```java
+  @RequestMapping("/profile")
+  public String profile(
+      final Model model, @CookieValue("cbo_short_session") final String cboShortSession) {
+    try {
+      // Validate user from token
+      final SessionValidationResult validationResp =
+          sdk.getSessions().getAndValidateCurrentUser(cboShortSession);
+
+      // get list of emails from identifier service
+      List<Identifier> emails;
+      emails = sdk.getIdentifiers().listAllEmailsByUserId(validationResp.getUserID());
+      model.addAttribute("PROJECT_ID", projectID);
+      model.addAttribute("USER_ID", validationResp.getUserID());
+      model.addAttribute("USER_NAME", validationResp.getFullName());
+      // select email of your liking or list all emails
+      model.addAttribute("USER_EMAIL", emails.get(0).getValue());
+
+    } catch (final Exception e) {
+	  //Handle verification errors here
+      model.addAttribute("ERROR", e.getMessage());
+      return "error";
+    }
+    return "profile";
+  }
+```
+
+
+Providing clear **unit tests** for valid and invalid tokens can demonstrate how these validations work in practice. This not only ensures robustness but also offers developers a clear example of how to handle JWTs in their applications. You can take a look at [SessionServiceTest](/src/test/java/com/corbado/unit/SessionServiceTest.java) as an example.
 
 #### **Handling Errors in the SDK**
 
@@ -234,7 +374,14 @@ Certain libraries can improve development efficiency and reduce boilerplate code
 
 -   **Lombok (Java)**: This library can greatly reduce boilerplate code by automatically generating getters, setters, constructors, and builders at compile time using annotations. For example, the **Builder Pattern** can simplify client configuration by handling optional parameters cleanly.
 
--   **Pydantic (Python)**: If you’re working in Python, **Pydantic** offers strong typing support, validation, and more readable code. It allows you to define data models with type enforcement and custom validation rules, making the SDK more robust.
+-   **Pydantic (Python)**: If you’re working in Python, **Pydantic** offers strong typing support, validation, and more readable code. It allows you to define data models with type enforcement and custom validation rules, making the SDK more robust. Example code with field constraints:
+```python
+    backend_api: str = "https://backendapi.cloud.corbado.io/v2"
+    short_session_cookie_name: str = "cbo_short_session"
+    cname: Optional[Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]] = None
+    _issuer: Optional[Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]] = None
+
+```
 
 #### **Dependency Management**
 
