@@ -2,7 +2,9 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import org.apache.commons.lang3.StringUtils;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -24,7 +26,6 @@ public class Config {
   private static final String HTTPS = "https://";
 
   // Fields
-
   /** The Constant API_VERSION. */
   private static final String API_VERSION = "2";
 
@@ -60,38 +61,6 @@ public class Config {
 
   /** The cname. Replaces issuer field if present. */
   @Getter @Setter private String cname;
-
-  // Constructors
-  /**
-   * Instantiates a new config.
-   *
-   * @param projectId the project id
-   * @param apiSecret the api secret
-   */
-  public Config(@NonNull final String projectId, @NonNull final String apiSecret) {
-
-    setProjectId(projectId); // set and validate
-    setApiSecret(apiSecret);
-
-    // default values
-    setFrontendApi(projectId);
-    setIssuer(this.frontendApi);
-  }
-
-  /**
-   * Instantiates a new config.
-   *
-   * @param projectId the project id
-   * @param apiSecret the api secret
-   * @param backendApi the backend api
-   */
-  public Config(
-      @NonNull final String projectId,
-      @NonNull final String apiSecret,
-      @NonNull final String backendApi) {
-    this(projectId, apiSecret);
-    setBackendApi(backendApi);
-  }
 
   // Custom Getters and Setters
   /**
