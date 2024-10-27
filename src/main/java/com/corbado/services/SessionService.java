@@ -121,7 +121,7 @@ public class SessionService {
    * @throws JwkException the jwk exception
    * @throws IncorrectClaimException the incorrect claim exception
    */
-  private SessionValidationResult getAndValidateUserFromShortSessionValue(final String sessionToken)
+  public SessionValidationResult validateToken(final String sessionToken)
       throws JWTVerificationException, JwkException, IncorrectClaimException {
 
     if (sessionToken == null || sessionToken.isEmpty()) {
@@ -162,20 +162,5 @@ public class SessionService {
     } catch (final JwkException | JWTVerificationException e) {
       throw e;
     }
-  }
-
-  /**
-   * Retrieves userID and full name if 'sessionToken' is valid.
-   *
-   * @param sessionToken the short session
-   * @return the and validate current user
-   * @throws IncorrectClaimException the incorrect claim exception
-   * @throws JWTVerificationException the JWT verification exception
-   * @throws JwkException the jwk exception
-   */
-  public SessionValidationResult getAndValidateCurrentUser(final String sessionToken)
-      throws IncorrectClaimException, JWTVerificationException, JwkException {
-
-    return getAndValidateUserFromShortSessionValue(sessionToken);
   }
 }
