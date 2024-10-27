@@ -24,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CorbadoSdk {
 
+  private static final String CURRENT_SDK_VERSION = "2.0.0";
+
   /** The Constant CORBADO_HEADER_NAME. */
   private static final String CORBADO_HEADER_NAME = "X-Corbado-SDK";
 
@@ -101,7 +103,7 @@ public class CorbadoSdk {
    *
    * @return the version
    */
-  public String getVersion() {
-    return "2.0.0";
+  public static String getVersion() {
+    return CURRENT_SDK_VERSION;
   }
 }
