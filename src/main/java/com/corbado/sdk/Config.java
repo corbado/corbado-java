@@ -2,7 +2,9 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import org.apache.commons.lang3.StringUtils;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -40,8 +42,8 @@ public class Config {
   /** The api secret with custom setter. Must be provided. */
   @NonNull @Getter private String apiSecret;
 
-  /** The backend api with custom setter. Default value: "https://backendapi.cloud.corbado.io/v2" */
-  @Getter @Builder.Default private String backendApi = "https://backendapi.cloud.corbado.io/v2";
+  /** The backend api with custom setter. */
+  @Getter private String backendApi;
 
   /** The short session cookie name. Default value: "cbo_short_session" */
   @Getter @Setter @Builder.Default private String shortSessionCookieName = "cbo_short_session";
@@ -60,38 +62,6 @@ public class Config {
 
   /** The cname. Replaces issuer field if present. */
   @Getter @Setter private String cname;
-
-  // Constructors
-  /**
-   * Instantiates a new config.
-   *
-   * @param projectId the project id
-   * @param apiSecret the api secret
-   */
-  public Config(@NonNull final String projectId, @NonNull final String apiSecret) {
-
-    setProjectId(projectId); // set and validate
-    setApiSecret(apiSecret);
-
-    // default values
-    setFrontendApi(projectId);
-    setIssuer(this.frontendApi);
-  }
-
-  /**
-   * Instantiates a new config.
-   *
-   * @param projectId the project id
-   * @param apiSecret the api secret
-   * @param backendApi the backend api
-   */
-  public Config(
-      @NonNull final String projectId,
-      @NonNull final String apiSecret,
-      @NonNull final String backendApi) {
-    this(projectId, apiSecret);
-    setBackendApi(backendApi);
-  }
 
   // Custom Getters and Setters
   /**
@@ -136,8 +106,6 @@ public class Config {
    */
   public void setFrontendApi(String frontendApi) {
     frontendApi = StringUtils.trim(frontendApi);
-    frontendApi = StringUtils.prependIfMissing(frontendApi, HTTPS);
-    frontendApi = StringUtils.appendIfMissing(frontendApi, ".frontendapi.corbado.io");
 
     try {
       new URL(frontendApi); // Validate URL syntax
@@ -178,10 +146,10 @@ public class Config {
   public Config(
       @NonNull final String projectId,
       @NonNull final String apiSecret,
-      final String backendApi,
+      @NonNull final String backendApi,
       final String shortSessionCookieName,
       final String issuer,
-      final String frontendApi,
+      @NonNull final String frontendApi,
       final Integer shortSessionLength,
       final boolean cacheKeys,
       String cname) {
@@ -190,11 +158,8 @@ public class Config {
     setApiSecret(apiSecret);
     setBackendApi(backendApi);
     setShortSessionCookieName(shortSessionCookieName);
-    if (StringUtils.isEmpty(frontendApi)) {
-      setFrontendApi(projectId);
-    } else {
-      setFrontendApi(frontendApi);
-    }
+    setFrontendApi(frontendApi);
+
     setShortSessionLength(shortSessionLength);
     setCacheKeys(cacheKeys);
     setCname(cname);
