@@ -2,9 +2,7 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import org.apache.commons.lang3.StringUtils;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -45,8 +43,8 @@ public class Config {
   /** The backend api with custom setter. */
   @Getter private String backendApi;
 
-  /** The short session cookie name. Default value: "cbo_short_session" */
-  @Getter @Setter @Builder.Default private String shortSessionCookieName = "cbo_short_session";
+  /** The short session cookie name. Default value: "cbo_session_token" */
+  @Getter @Setter @Builder.Default private String shortSessionCookieName = "cbo_session_token";
 
   /** The issuer. Used for session verification. */
   @Getter @Setter private String issuer;

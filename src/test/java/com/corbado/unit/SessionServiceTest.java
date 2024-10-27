@@ -5,7 +5,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
-
+import com.auth0.jwk.Jwk;
+import com.auth0.jwk.JwkException;
+import com.auth0.jwk.JwkProvider;
+import com.auth0.jwk.SigningKeyNotFoundException;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.IncorrectClaimException;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
+import com.corbado.entities.SessionValidationResult;
+import com.corbado.exceptions.StandardException;
+import com.corbado.services.SessionService;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,7 +40,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,24 +50,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import com.auth0.jwk.Jwk;
-import com.auth0.jwk.JwkException;
-import com.auth0.jwk.JwkProvider;
-import com.auth0.jwk.SigningKeyNotFoundException;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.IncorrectClaimException;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.corbado.entities.SessionValidationResult;
-import com.corbado.exceptions.StandardException;
-import com.corbado.services.SessionService;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
 
 /** Unit Test for session service. */
 @ExtendWith(MockitoExtension.class)
@@ -186,7 +183,7 @@ public class SessionServiceTest {
    */
   @ParameterizedTest
   @MethodSource("provideJwts")
-  void test_getCurrentUser(final String jwt, Class<Exception> e)
+  void test_getCurrentUser(final String jwt, final Class<Exception> e)
       throws StandardException, IncorrectClaimException, JWTVerificationException, JwkException {
 
     if (e != null) {
@@ -340,7 +337,7 @@ public class SessionServiceTest {
    */
   private static SessionService createSessionService() {
     return new SessionService(
-        "cbo_short_session",
+        "cbo_session_token",
         "https://auth.acme.com",
         "https://example_uri.com",
         10,
