@@ -1,12 +1,5 @@
 package com.corbado.services;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.interfaces.RSAPublicKey;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.auth0.jwk.Jwk;
 import com.auth0.jwk.JwkException;
 import com.auth0.jwk.JwkProvider;
@@ -21,7 +14,11 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.corbado.entities.SessionValidationResult;
 import com.corbado.sdk.Config;
 import com.corbado.utils.ValidationUtils;
-
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.interfaces.RSAPublicKey;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.StringUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -40,8 +37,8 @@ public class SessionService {
   /** The Constant DEFAULT_SESSION_LENGTH. */
   private static final int DEFAULT_SESSION_LENGTH = 300;
 
-  /** The short session cookie name. */
-  private String shortSessionCookieName;
+  /** The session token cookie name. */
+  private String sessionTokenCookieName;
 
   /** The issuer. */
   private String issuer;
@@ -50,7 +47,7 @@ public class SessionService {
   private String jwksUri;
 
   /** The last short session validation result. */
-  private String lastShortSessionValidationResult;
+  private String lastSessionTokenValidationResult;
 
   /** The jwk provider. */
   private JwkProvider jwkProvider;
@@ -58,23 +55,23 @@ public class SessionService {
   /**
    * Instantiates a new session service.
    *
-   * @param shortSessionCookieName the short session cookie name
+   * @param sessionTokenCookieName the short session cookie name
    * @param issuer the issuer
    * @param jwksUri the jwks uri
-   * @param shortSessionLength the short session length
+   * @param sessionTokenLength the short session length
    * @param cacheKeys the cache keys
    */
   public SessionService(
-      final String shortSessionCookieName,
+      final String sessionTokenCookieName,
       final String issuer,
       final String jwksUri,
-      Integer shortSessionLength,
+      Integer sessionTokenLength,
       final boolean cacheKeys) {
 
-    ValidationUtils.validateNotEmpty(shortSessionCookieName, issuer, jwksUri);
-    shortSessionLength = (shortSessionLength != null) ? shortSessionLength : DEFAULT_SESSION_LENGTH;
+    ValidationUtils.validateNotEmpty(sessionTokenCookieName, issuer, jwksUri);
+    sessionTokenLength = (sessionTokenLength != null) ? sessionTokenLength : DEFAULT_SESSION_LENGTH;
 
-    this.shortSessionCookieName = shortSessionCookieName;
+    this.sessionTokenCookieName = sessionTokenCookieName;
     this.issuer = issuer;
     this.jwksUri = jwksUri;
 
@@ -82,7 +79,7 @@ public class SessionService {
     try {
       jwkProviderBuilder = new JwkProviderBuilder(new URL(jwksUri));
       if (cacheKeys) {
-        jwkProviderBuilder.cached(JWK_CACHE_SIZE, shortSessionLength, TimeUnit.SECONDS);
+        jwkProviderBuilder.cached(JWK_CACHE_SIZE, sessionTokenLength, TimeUnit.SECONDS);
       }
       this.jwkProvider = jwkProviderBuilder.build();
     } catch (final MalformedURLException e) {
@@ -98,10 +95,10 @@ public class SessionService {
    */
   public SessionService(@NonNull final Config config) {
     this(
-        config.getShortSessionCookieName(),
+        config.getSessionTokenCookieName(),
         config.getIssuer(),
         config.getFrontendApi() + "/.well-known/jwks",
-        config.getShortSessionLength(),
+        config.getSessionTokenLength(),
         config.isCacheKeys());
   }
 
@@ -111,38 +108,38 @@ public class SessionService {
    * @param issuer the new issuer mismatch error
    */
   public void setIssuerMismatchError(final String issuer) {
-    this.lastShortSessionValidationResult =
+    this.lastSessionTokenValidationResult =
         String.format("Mismatch in issuer (configured: %s, JWT: %s)", this.issuer, issuer);
   }
 
   /**
    * Gets the and validate user from short session value.
    *
-   * @param shortSession the short session
+   * @param sessionToken the short session
    * @return the and validate user from short session value
    * @throws JWTVerificationException the JWT verification exception
    * @throws JwkException the jwk exception
    * @throws IncorrectClaimException the incorrect claim exception
    */
-  private SessionValidationResult getAndValidateUserFromShortSessionValue(final String shortSession)
+  private SessionValidationResult getAndValidateUserFromShortSessionValue(final String sessionToken)
       throws JWTVerificationException, JwkException, IncorrectClaimException {
 
-    if (shortSession == null || shortSession.isEmpty()) {
+    if (sessionToken == null || sessionToken.isEmpty()) {
       throw new IllegalArgumentException("Session value cannot be null or empty");
     }
     try {
       // Get the signing key
-      DecodedJWT decodedJwt = JWT.decode(shortSession);
+      DecodedJWT decodedJwt = JWT.decode(sessionToken);
       final Jwk jwk = this.jwkProvider.get(decodedJwt.getKeyId());
       if (jwk == null) {
-        throw new SigningKeyNotFoundException(shortSession, null);
+        throw new SigningKeyNotFoundException(sessionToken, null);
       }
       final RSAPublicKey publicKey = (RSAPublicKey) jwk.getPublicKey();
 
       // Verify and decode the JWT using the signing key
       final Algorithm algorithm = Algorithm.RSA256(publicKey);
       final JWTVerifier verifier = JWT.require(algorithm).withIssuer(this.issuer).build();
-      decodedJwt = verifier.verify(shortSession);
+      decodedJwt = verifier.verify(sessionToken);
 
       return SessionValidationResult.builder()
           .fullName(decodedJwt.getClaim("name").asString())
@@ -168,17 +165,17 @@ public class SessionService {
   }
 
   /**
-   * Retrieves userID and full name if 'shortSession' is valid.
+   * Retrieves userID and full name if 'sessionToken' is valid.
    *
-   * @param shortSession the short session
+   * @param sessionToken the short session
    * @return the and validate current user
    * @throws IncorrectClaimException the incorrect claim exception
    * @throws JWTVerificationException the JWT verification exception
    * @throws JwkException the jwk exception
    */
-  public SessionValidationResult getAndValidateCurrentUser(final String shortSession)
+  public SessionValidationResult getAndValidateCurrentUser(final String sessionToken)
       throws IncorrectClaimException, JWTVerificationException, JwkException {
 
-    return getAndValidateUserFromShortSessionValue(shortSession);
+    return getAndValidateUserFromShortSessionValue(sessionToken);
   }
 }

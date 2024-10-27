@@ -43,8 +43,8 @@ public class Config {
   /** The backend api with custom setter. */
   @Getter private String backendApi;
 
-  /** The short session cookie name. Default value: "cbo_session_token" */
-  @Getter @Setter @Builder.Default private String shortSessionCookieName = "cbo_session_token";
+  /** The session token cookie name. Default value: "cbo_session_token." */
+  @Getter @Setter @Builder.Default private String sessionTokenCookieName = "cbo_session_token";
 
   /** The issuer. Used for session verification. */
   @Getter @Setter private String issuer;
@@ -52,8 +52,8 @@ public class Config {
   /** The frontend api with custom setter. */
   @Getter private String frontendApi;
 
-  /** The short session length for session service. Default = 300. */
-  @Getter @Setter @Builder.Default private Integer shortSessionLength = 300;
+  /** The life duration for session service token. Default = 300. */
+  @Getter @Setter @Builder.Default private Integer sessionTokenLength = 300;
 
   /** Flag to cache keys in session service. Default = true. */
   @Getter @Setter @Builder.Default private boolean cacheKeys = true;
@@ -134,10 +134,10 @@ public class Config {
    * @param projectId the project id
    * @param apiSecret the api secret
    * @param backendApi the backend api
-   * @param shortSessionCookieName the short session cookie name
+   * @param sessionTokenCookieName the short session cookie name
    * @param issuer the issuer
    * @param frontendApi the frontend api
-   * @param shortSessionLength the short session length
+   * @param sessionTokenLength the short session length
    * @param cacheKeys the cache keys
    * @param cname the cname
    */
@@ -145,20 +145,20 @@ public class Config {
       @NonNull final String projectId,
       @NonNull final String apiSecret,
       @NonNull final String backendApi,
-      final String shortSessionCookieName,
+      final String sessionTokenCookieName,
       final String issuer,
       @NonNull final String frontendApi,
-      final Integer shortSessionLength,
+      final Integer sessionTokenLength,
       final boolean cacheKeys,
       String cname) {
 
     setProjectId(projectId);
     setApiSecret(apiSecret);
     setBackendApi(backendApi);
-    setShortSessionCookieName(shortSessionCookieName);
+    setSessionTokenCookieName(sessionTokenCookieName);
     setFrontendApi(frontendApi);
 
-    setShortSessionLength(shortSessionLength);
+    setSessionTokenLength(sessionTokenLength);
     setCacheKeys(cacheKeys);
     setCname(cname);
 

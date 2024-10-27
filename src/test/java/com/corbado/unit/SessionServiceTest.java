@@ -148,7 +148,7 @@ public class SessionServiceTest {
    *
    * @param issuer the issuer
    * @param jwksUri the jwks uri
-   * @param shortSessionCookieName the short session cookie name
+   * @param sessionTokenCookieName the short session cookie name
    * @param expectValid the expect valid
    */
   @ParameterizedTest
@@ -156,17 +156,17 @@ public class SessionServiceTest {
   void testInitParametersValidation(
       final String issuer,
       final String jwksUri,
-      final String shortSessionCookieName,
+      final String sessionTokenCookieName,
       final boolean expectValid) {
     if (expectValid) {
       // No exception should be raised
       assertDoesNotThrow(
-          () -> new SessionService(shortSessionCookieName, issuer, jwksUri, 0, false));
+          () -> new SessionService(sessionTokenCookieName, issuer, jwksUri, 0, false));
     } else {
       // ValidationError should be raised
       assertThrows(
           IllegalArgumentException.class,
-          () -> new SessionService(shortSessionCookieName, issuer, jwksUri, 0, false));
+          () -> new SessionService(sessionTokenCookieName, issuer, jwksUri, 0, false));
     }
   }
 
