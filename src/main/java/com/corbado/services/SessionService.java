@@ -138,7 +138,7 @@ public class SessionService {
 
       // Verify and decode the JWT using the signing key
       final Algorithm algorithm = Algorithm.RSA256(publicKey);
-      final JWTVerifier verifier = JWT.require(algorithm).withIssuer(this.issuer).build();
+      final JWTVerifier verifier = JWT.require(algorithm).build();
       decodedJwt = verifier.verify(sessionToken);
 
       return SessionValidationResult.builder()
