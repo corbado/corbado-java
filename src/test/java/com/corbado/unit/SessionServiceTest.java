@@ -187,13 +187,17 @@ public class SessionServiceTest {
       throws StandardException, IncorrectClaimException, JWTVerificationException, JwkException {
 
     if (e != null) {
-      assertThrows(e, () -> sessionService.getAndValidateCurrentUser(jwt));
+      assertThrows(e, () -> sessionService.validateToken(jwt));
     } else {
-      final SessionValidationResult validationResult =
-          sessionService.getAndValidateCurrentUser(jwt);
+      final SessionValidationResult validationResult = sessionService.validateToken(jwt);
       assertEquals(TEST_NAME, validationResult.getFullName());
       assertEquals(TEST_USER_ID, validationResult.getUserID());
     }
+    /**
+     * Inits the parameters test data.
+     *
+     * @return the stream
+     */
   }
 
   // ------------------ Test data --------------------- //
@@ -213,6 +217,13 @@ public class SessionServiceTest {
         new Object[] {"s", "", "name", false},
         // Test empty short_session_cookie_name
         new Object[] {"s", "2", "", false});
+    /**
+     * Provide jwts.
+     *
+     * @return the list
+     * @throws InvalidKeySpecException the invalid key spec exception
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     */
   }
 
   /**
@@ -275,6 +286,15 @@ public class SessionServiceTest {
         });
 
     return testData;
+    /**
+     * Read private key.
+     *
+     * @param privateKeyPath the private key path
+     * @return the RSA private key
+     * @throws IOException Signals that an I/O exception has occurred.
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     * @throws InvalidKeySpecException the invalid key spec exception
+     */
   }
 
   // ------------------ Utility functions--------------------- //
@@ -302,6 +322,16 @@ public class SessionServiceTest {
     final KeyFactory keyFactory = KeyFactory.getInstance("RSA");
     final PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(encoded);
     return (RSAPrivateKey) keyFactory.generatePrivate(keySpec);
+    /**
+     * Generate jwt.
+     *
+     * @param iss the iss
+     * @param exp the exp
+     * @param nbf the nbf
+     * @return the string
+     * @throws InvalidKeySpecException the invalid key spec exception
+     * @throws NoSuchAlgorithmException the no such algorithm exception
+     */
   }
 
   /**
@@ -329,6 +359,11 @@ public class SessionServiceTest {
         .withClaim("email", TEST_EMAIL)
         .withClaim("phone_number", TEST_PHONE_NUMBER)
         .sign(algorithm);
+    /**
+     * Creates the session service.
+     *
+     * @return the session service
+     */
   }
 
   /**
@@ -342,6 +377,12 @@ public class SessionServiceTest {
         "https://example_uri.com",
         10,
         false); // URLs do not matter, url access is mocked
+    /**
+     * Read jwks.
+     *
+     * @return the json array
+     * @throws FileNotFoundException the file not found exception
+     */
   }
 
   /**
