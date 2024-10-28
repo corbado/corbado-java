@@ -8,14 +8,19 @@ public enum ValidationErrorType {
   /** The invalid token. */
   INVALID_TOKEN("Invalid token"),
 
-  /** The signing key error. */
-  SIGNING_KEY_ERROR("Could not retrieve signing key"),
-
   /** The empty session token. */
   EMPTY_SESSION_TOKEN("Session token is empty"),
 
   /** The empty issuer. */
   EMPTY_ISSUER("Issuer is empty"),
+
+  JWT_BEFORE("Token is not valid yet"),
+
+  JWT_EXPIRED("Token is expired"),
+
+  INVALID_PUBLIC_KEY("Public key is invalid"),
+
+  JWT_INVALID_SIGNATURE("Token signature is invalid"),
 
   /** The issuer missmatch. */
   ISSUER_MISSMATCH("Token issuer does not match");
@@ -39,6 +44,6 @@ public enum ValidationErrorType {
    */
   @Override
   public String toString() {
-    return description;
+    return this.description;
   }
 }

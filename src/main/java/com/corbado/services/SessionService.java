@@ -1,5 +1,13 @@
 package com.corbado.services;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.interfaces.RSAPublicKey;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.auth0.jwk.InvalidPublicKeyException;
 import com.auth0.jwk.Jwk;
 import com.auth0.jwk.JwkException;
 import com.auth0.jwk.JwkProvider;
@@ -10,15 +18,15 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.IncorrectClaimException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.corbado.entities.SessionValidationResult;
+import com.corbado.entities.UserEntity;
+import com.corbado.enums.exception.ValidationErrorType;
+import com.corbado.exceptions.TokenValidationException;
 import com.corbado.sdk.Config;
 import com.corbado.utils.ValidationUtils;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.interfaces.RSAPublicKey;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.StringUtils;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -52,13 +60,15 @@ public class SessionService {
   /** The jwk provider. */
   private JwkProvider jwkProvider;
 
+  private final String projectId;
+
   /**
    * Instantiates a new session service.
    *
    * @param sessionTokenCookieName the short session cookie name
    * @param issuer the issuer
    * @param jwksUri the jwks uri
-   * @param sessionTokenLength the short session length
+   * @param sessionTokenLength the short session length. Defaults to 300.
    * @param cacheKeys the cache keys
    */
   public SessionService(
@@ -66,14 +76,16 @@ public class SessionService {
       final String issuer,
       final String jwksUri,
       Integer sessionTokenLength,
-      final boolean cacheKeys) {
+      final boolean cacheKeys,
+      final String projectId) {
 
-    ValidationUtils.validateNotEmpty(sessionTokenCookieName, issuer, jwksUri);
+    ValidationUtils.validateNotEmpty(sessionTokenCookieName, issuer, jwksUri, projectId);
     sessionTokenLength = (sessionTokenLength != null) ? sessionTokenLength : DEFAULT_SESSION_LENGTH;
 
     this.sessionTokenCookieName = sessionTokenCookieName;
     this.issuer = issuer;
     this.jwksUri = jwksUri;
+    this.projectId = projectId;
 
     JwkProviderBuilder jwkProviderBuilder;
     try {
@@ -99,7 +111,8 @@ public class SessionService {
         config.getIssuer(),
         config.getFrontendApi() + "/.well-known/jwks",
         config.getSessionTokenLength(),
-        config.isCacheKeys());
+        config.isCacheKeys(),
+        config.getProjectId());
   }
 
   /**
@@ -116,20 +129,21 @@ public class SessionService {
    * Gets the and validate user from short session value.
    *
    * @param sessionToken the short session
-   * @return the and validate user from short session value
+   * @return User entity from short session value
    * @throws JWTVerificationException the JWT verification exception
    * @throws JwkException the jwk exception
    * @throws IncorrectClaimException the incorrect claim exception
    */
-  public SessionValidationResult validateToken(final String sessionToken)
-      throws JWTVerificationException, JwkException, IncorrectClaimException {
+  public UserEntity validateToken(final String sessionToken) throws TokenValidationException {
 
     if (sessionToken == null || sessionToken.isEmpty()) {
-      throw new IllegalArgumentException("Session value cannot be null or empty");
+      throw new TokenValidationException(
+          ValidationErrorType.EMPTY_SESSION_TOKEN, "Session token is empty");
     }
+    DecodedJWT decodedJwt = null;
     try {
       // Get the signing key
-      DecodedJWT decodedJwt = JWT.decode(sessionToken);
+      decodedJwt = JWT.decode(sessionToken);
       final Jwk jwk = this.jwkProvider.get(decodedJwt.getKeyId());
       if (jwk == null) {
         throw new SigningKeyNotFoundException(sessionToken, null);
@@ -140,27 +154,70 @@ public class SessionService {
       final Algorithm algorithm = Algorithm.RSA256(publicKey);
       final JWTVerifier verifier = JWT.require(algorithm).build();
       decodedJwt = verifier.verify(sessionToken);
+    } catch (final InvalidPublicKeyException e) {
+      throw new TokenValidationException(ValidationErrorType.INVALID_PUBLIC_KEY, e.getMessage(), e);
+    } catch (final TokenExpiredException e) {
+      throw new TokenValidationException(ValidationErrorType.JWT_EXPIRED, e.getMessage(), e);
 
-      return SessionValidationResult.builder()
-          .fullName(decodedJwt.getClaim("name").asString())
-          .userID(decodedJwt.getClaim("sub").asString())
-          .build();
+    } catch (final SignatureVerificationException e) {
+      throw new TokenValidationException(
+          ValidationErrorType.JWT_INVALID_SIGNATURE, e.getMessage(), e);
 
-    } catch (final IncorrectClaimException e) {
-      // Be careful of the case where issuer does not match. You have probably forgotten to set
-      // the cname in config class. We add an additional message to the exception and retrow it to
-      // underline its importance.
-      if (StringUtils.equals(e.getClaimName(), "iss")) {
-        final String message =
-            e.getMessage()
-                + "Be careful of the case where issuer does not match. "
-                + "You have probably forgotten to set the cname in config class.";
-        throw new IncorrectClaimException(message, e.getClaimName(), e.getClaimValue());
+    } catch (final JWTVerificationException e) {
+      ValidationErrorType errorType = null;
+      if (StringUtils.startsWith(e.getMessage(), "The Token can't be used before")) {
+        errorType = ValidationErrorType.JWT_BEFORE;
+      } else {
+        errorType = ValidationErrorType.INVALID_TOKEN;
       }
-      throw e;
+      throw new TokenValidationException(
+          errorType,
+          "JWTVerificationException exception during token validation: "
+              + sessionToken
+              + ". Detailed message: "
+              + e.getMessage(),
+          e);
+    } catch (final Exception e) {
+      throw new TokenValidationException(
+          ValidationErrorType.INVALID_TOKEN,
+          "Unexpected exception during token validation: " + sessionToken,
+          e);
+    }
+    validateIssuer(decodedJwt.getClaim("iss").asString(), this.projectId);
+    return new UserEntity(
+        // TODO: add UserStatus
+        decodedJwt.getClaim("sub").asString(), null, decodedJwt.getClaim("name").asString(), null);
+  }
 
-    } catch (final JwkException | JWTVerificationException e) {
-      throw e;
+  private void validateIssuer(String tokenIssuer, String sessionToken)
+      throws TokenValidationException {
+    // Check if issuer is empty
+    if (tokenIssuer == null || StringUtils.isBlank(tokenIssuer)) {
+      throw new TokenValidationException(
+          ValidationErrorType.EMPTY_ISSUER, "Issuer is empty. Session token: " + sessionToken);
+    }
+
+    // Check for old Frontend API (without .cloud.)
+    final String expectedOld = "https://" + this.projectId + ".frontendapi.corbado.io";
+    if (tokenIssuer.equals(expectedOld)) {
+      return;
+    }
+
+    // Check for new Frontend API (with .cloud.)
+    final String expectedNew = "https://" + this.projectId + ".frontendapi.cloud.corbado.io";
+    if (tokenIssuer.equals(expectedNew)) {
+      return;
+    }
+
+    // Check against the configured issuer (e.g., a custom domain or CNAME)
+    if (!tokenIssuer.equals(this.issuer)) {
+      throw new TokenValidationException(
+          ValidationErrorType.ISSUER_MISSMATCH,
+          "Issuer mismatch (configured via FrontendAPI: '"
+              + this.issuer
+              + "', JWT issuer: '"
+              + tokenIssuer
+              + "')");
     }
   }
 }
