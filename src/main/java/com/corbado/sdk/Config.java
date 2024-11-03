@@ -2,7 +2,9 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
 import org.apache.commons.lang3.StringUtils;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
@@ -23,8 +25,7 @@ public class Config {
   /** The Constant HTTPS prefix. */
   private static final String HTTPS = "https://";
 
-  // Fields
-
+  // ---------- Constants ----------
   /** The Constant API_VERSION. */
   private static final String API_VERSION = "2";
 
@@ -34,23 +35,24 @@ public class Config {
   /** Project Id must begin with this prefix. */
   private static final String PROJECT_ID_PREFIX = "pro-";
 
+  // ---------- Mandatory fields ----------
+
   /** The project id with custom setter. Must be provided. */
   @NonNull @Getter private String projectId;
 
   /** The api secret with custom setter. Must be provided. */
   @NonNull @Getter private String apiSecret;
 
+  /** The frontend api with custom setter. */
+  @Getter private String frontendApi;
+
   /** The backend api with custom setter. */
   @Getter private String backendApi;
 
-  /** The session token cookie name. Default value: "cbo_session_token." */
-  @Getter @Setter @Builder.Default private String sessionTokenCookieName = "cbo_session_token";
+  // ---------- Non-mandatory fields ----------
 
   /** The issuer. Used for session verification. */
   @Getter @Setter private String issuer;
-
-  /** The frontend api with custom setter. */
-  @Getter private String frontendApi;
 
   /** The life duration for session service token. Default = 300. */
   @Getter @Setter @Builder.Default private Integer sessionTokenLength = 300;
@@ -134,28 +136,24 @@ public class Config {
    * @param projectId the project id
    * @param apiSecret the api secret
    * @param backendApi the backend api
-   * @param sessionTokenCookieName the short session cookie name
-   * @param issuer the issuer
    * @param frontendApi the frontend api
+   * @param issuer the issuer
    * @param sessionTokenLength the short session length
    * @param cacheKeys the cache keys
    * @param cname the cname
    */
   public Config(
-      @NonNull final String projectId,
-      @NonNull final String apiSecret,
-      @NonNull final String backendApi,
-      final String sessionTokenCookieName,
-      final String issuer,
-      @NonNull final String frontendApi,
-      final Integer sessionTokenLength,
-      final boolean cacheKeys,
+      @NonNull String projectId,
+      @NonNull String apiSecret,
+      String frontendApi,
+      String backendApi,
+      String issuer,
+      Integer sessionTokenLength,
+      boolean cacheKeys,
       String cname) {
-
     setProjectId(projectId);
     setApiSecret(apiSecret);
     setBackendApi(backendApi);
-    setSessionTokenCookieName(sessionTokenCookieName);
     setFrontendApi(frontendApi);
 
     setSessionTokenLength(sessionTokenLength);

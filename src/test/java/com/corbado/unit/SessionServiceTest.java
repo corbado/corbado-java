@@ -158,29 +158,20 @@ public class SessionServiceTest {
    *
    * @param issuer the issuer
    * @param jwksUri the jwks uri
-   * @param sessionTokenCookieName the short session cookie name
    * @param expectValid the expect valid
    */
   @ParameterizedTest
   @MethodSource("initParametersTestData")
   void testInitParametersValidation(
-      final String issuer,
-      final String jwksUri,
-      final String sessionTokenCookieName,
-      final boolean expectValid) {
+      final String issuer, final String jwksUri, final boolean expectValid) {
     if (expectValid) {
       // No exception should be raised
-      assertDoesNotThrow(
-          () ->
-              new SessionService(
-                  sessionTokenCookieName, issuer, jwksUri, 0, false, TEST_PROJECT_ID));
+      assertDoesNotThrow(() -> new SessionService(issuer, jwksUri, 0, false, TEST_PROJECT_ID));
     } else {
       // ValidationError should be raised
       assertThrows(
           IllegalArgumentException.class,
-          () ->
-              new SessionService(
-                  sessionTokenCookieName, issuer, jwksUri, 0, false, TEST_PROJECT_ID));
+          () -> new SessionService(issuer, jwksUri, 0, false, TEST_PROJECT_ID));
     }
   }
 
@@ -231,13 +222,11 @@ public class SessionServiceTest {
   static Stream<Object[]> initParametersTestData() {
     return Stream.of(
         // Valid session service
-        new Object[] {"s", "2", "name", true},
+        new Object[] {"s", "2", true},
         // Test empty issuer
-        new Object[] {"", "2", "name", false},
+        new Object[] {"", "2", false},
         // Test empty jwks_uri
-        new Object[] {"s", "", "name", false},
-        // Test empty short_session_cookie_name
-        new Object[] {"s", "2", "", false});
+        new Object[] {"s", "", false});
     /**
      * Provide jwts.
      *
@@ -460,7 +449,6 @@ public class SessionServiceTest {
    */
   private static SessionService createSessionService() {
     return new SessionService(
-        "cbo_session_token",
         "https://auth.acme.com",
         "https://example_uri.com",
         10,

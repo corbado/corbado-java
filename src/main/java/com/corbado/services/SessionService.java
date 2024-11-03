@@ -45,9 +45,6 @@ public class SessionService {
   /** The Constant DEFAULT_SESSION_LENGTH. */
   private static final int DEFAULT_SESSION_LENGTH = 300;
 
-  /** The session token cookie name. */
-  private String sessionTokenCookieName;
-
   /** The issuer. */
   private String issuer;
 
@@ -65,24 +62,21 @@ public class SessionService {
   /**
    * Instantiates a new session service.
    *
-   * @param sessionTokenCookieName the short session cookie name
    * @param issuer the issuer
    * @param jwksUri the jwks uri
    * @param sessionTokenLength the short session length. Defaults to 300.
    * @param cacheKeys the cache keys
    */
   public SessionService(
-      final String sessionTokenCookieName,
       final String issuer,
       final String jwksUri,
       Integer sessionTokenLength,
       final boolean cacheKeys,
       final String projectId) {
 
-    ValidationUtils.validateNotEmpty(sessionTokenCookieName, issuer, jwksUri, projectId);
+    ValidationUtils.validateNotEmpty(issuer, jwksUri, projectId);
     sessionTokenLength = (sessionTokenLength != null) ? sessionTokenLength : DEFAULT_SESSION_LENGTH;
 
-    this.sessionTokenCookieName = sessionTokenCookieName;
     this.issuer = issuer;
     this.jwksUri = jwksUri;
     this.projectId = projectId;
@@ -107,7 +101,6 @@ public class SessionService {
    */
   public SessionService(@NonNull final Config config) {
     this(
-        config.getSessionTokenCookieName(),
         config.getIssuer(),
         config.getFrontendApi() + "/.well-known/jwks",
         config.getSessionTokenLength(),
