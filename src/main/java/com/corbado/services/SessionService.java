@@ -131,7 +131,7 @@ public class SessionService {
 
     if (sessionToken == null || sessionToken.isEmpty()) {
       throw new TokenValidationException(
-          ValidationErrorType.EMPTY_SESSION_TOKEN, "Session token is empty");
+          ValidationErrorType.CODE_EMPTY_SESSION_TOKEN, "Session token is empty");
     }
     DecodedJWT decodedJwt = null;
     try {
@@ -148,20 +148,20 @@ public class SessionService {
       final JWTVerifier verifier = JWT.require(algorithm).build();
       decodedJwt = verifier.verify(sessionToken);
     } catch (final InvalidPublicKeyException e) {
-      throw new TokenValidationException(ValidationErrorType.INVALID_PUBLIC_KEY, e.getMessage(), e);
+      throw new TokenValidationException(ValidationErrorType.CODE_INVALID_PUBLIC_KEY, e.getMessage(), e);
     } catch (final TokenExpiredException e) {
-      throw new TokenValidationException(ValidationErrorType.JWT_EXPIRED, e.getMessage(), e);
+      throw new TokenValidationException(ValidationErrorType.CODE_JWT_EXPIRED, e.getMessage(), e);
 
     } catch (final SignatureVerificationException e) {
       throw new TokenValidationException(
-          ValidationErrorType.JWT_INVALID_SIGNATURE, e.getMessage(), e);
+          ValidationErrorType.CODE_JWT_INVALID_SIGNATURE, e.getMessage(), e);
 
     } catch (final JWTVerificationException e) {
       ValidationErrorType errorType = null;
       if (StringUtils.startsWith(e.getMessage(), "The Token can't be used before")) {
-        errorType = ValidationErrorType.JWT_BEFORE;
+        errorType = ValidationErrorType.CODE_JWT_BEFORE;
       } else {
-        errorType = ValidationErrorType.INVALID_TOKEN;
+        errorType = ValidationErrorType.CODE_INVALID_TOKEN;
       }
       throw new TokenValidationException(
           errorType,
@@ -172,7 +172,7 @@ public class SessionService {
           e);
     } catch (final Exception e) {
       throw new TokenValidationException(
-          ValidationErrorType.INVALID_TOKEN,
+          ValidationErrorType.CODE_INVALID_TOKEN,
           "Unexpected exception during token validation: " + sessionToken,
           e);
     }
@@ -187,7 +187,7 @@ public class SessionService {
     // Check if issuer is empty
     if (tokenIssuer == null || StringUtils.isBlank(tokenIssuer)) {
       throw new TokenValidationException(
-          ValidationErrorType.EMPTY_ISSUER, "Issuer is empty. Session token: " + sessionToken);
+          ValidationErrorType.CODE_EMPTY_ISSUER, "Issuer is empty. Session token: " + sessionToken);
     }
 
     // Check for old Frontend API (without .cloud.)
@@ -205,7 +205,7 @@ public class SessionService {
     // Check against the configured issuer (e.g., a custom domain or CNAME)
     if (!tokenIssuer.equals(this.issuer)) {
       throw new TokenValidationException(
-          ValidationErrorType.ISSUER_MISSMATCH,
+          ValidationErrorType.CODE_ISSUER_MISSMATCH,
           "Issuer mismatch (configured via FrontendAPI: '"
               + this.issuer
               + "', JWT issuer: '"

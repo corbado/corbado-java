@@ -6,24 +6,24 @@ import com.corbado.exceptions.TokenValidationException;
 public enum ValidationErrorType {
 
   /** The invalid token. */
-  INVALID_TOKEN("Invalid token"),
+  CODE_INVALID_TOKEN("Invalid token"),
 
   /** The empty session token. */
-  EMPTY_SESSION_TOKEN("Session token is empty"),
+  CODE_EMPTY_SESSION_TOKEN("Session token is empty"),
 
   /** The empty issuer. */
-  EMPTY_ISSUER("Issuer is empty"),
+  CODE_EMPTY_ISSUER("Issuer is empty"),
 
-  JWT_BEFORE("Token is not valid yet"),
+  CODE_JWT_BEFORE("Token is not valid yet"),
 
-  JWT_EXPIRED("Token is expired"),
+  CODE_JWT_EXPIRED("Token is expired"),
 
-  INVALID_PUBLIC_KEY("Public key is invalid"),
+  CODE_INVALID_PUBLIC_KEY("Public key is invalid"),
 
-  JWT_INVALID_SIGNATURE("Token signature is invalid"),
+  CODE_JWT_INVALID_SIGNATURE("Token signature is invalid"),
 
   /** The issuer missmatch. */
-  ISSUER_MISSMATCH("Token issuer does not match");
+  CODE_ISSUER_MISSMATCH("Token issuer does not match");
 
   /** The description. */
   private final String description;

@@ -252,12 +252,12 @@ public class SessionServiceTest {
             + "pvaG4gRG9lIiwiYWRtaW4iOnRydWV9.dyt0CoTl4WoVjAHI9Q_CwSKhl6d_9rhM3NrXuJttkao";
     testData.add(
         new Object[] {
-          jwtWithWrongAlgorithm, TokenValidationException.class, ValidationErrorType.INVALID_TOKEN
+          jwtWithWrongAlgorithm, TokenValidationException.class, ValidationErrorType.CODE_INVALID_TOKEN
         });
 
     // Empty JWT
     testData.add(
-        new Object[] {"", TokenValidationException.class, ValidationErrorType.EMPTY_SESSION_TOKEN});
+        new Object[] {"", TokenValidationException.class, ValidationErrorType.CODE_EMPTY_SESSION_TOKEN});
     // Not before (nbf) in future
     testData.add(
         new Object[] {
@@ -267,7 +267,7 @@ public class SessionServiceTest {
               System.currentTimeMillis() / 1000 + 100,
               privateKey),
           TokenValidationException.class,
-          ValidationErrorType.JWT_BEFORE
+          ValidationErrorType.CODE_JWT_BEFORE
         });
 
     // Expired (exp)
@@ -279,7 +279,7 @@ public class SessionServiceTest {
               System.currentTimeMillis() / 1000 - 100,
               privateKey),
           TokenValidationException.class,
-          ValidationErrorType.JWT_EXPIRED
+          ValidationErrorType.CODE_JWT_EXPIRED
         });
 
     // Invalid issuer (iss)
@@ -291,7 +291,7 @@ public class SessionServiceTest {
               System.currentTimeMillis() / 1000 - 100,
               privateKey),
           TokenValidationException.class,
-          ValidationErrorType.ISSUER_MISSMATCH
+          ValidationErrorType.CODE_ISSUER_MISSMATCH
         });
     // Wrong private key
     testData.add(
@@ -302,7 +302,7 @@ public class SessionServiceTest {
               System.currentTimeMillis() / 1000 - 100,
               invalidPrivateKey),
           TokenValidationException.class,
-          ValidationErrorType.JWT_INVALID_SIGNATURE
+          ValidationErrorType.CODE_JWT_INVALID_SIGNATURE
         });
     // Success with cname
     testData.add(
@@ -313,7 +313,7 @@ public class SessionServiceTest {
               System.currentTimeMillis() / 1000 - 100,
               privateKey),
           null,
-          ValidationErrorType.JWT_INVALID_SIGNATURE
+          ValidationErrorType.CODE_JWT_INVALID_SIGNATURE
         });
     // Empty issuer
     testData.add(
@@ -324,7 +324,7 @@ public class SessionServiceTest {
               System.currentTimeMillis() / 1000 - 100,
               privateKey),
           TokenValidationException.class,
-          ValidationErrorType.EMPTY_ISSUER
+          ValidationErrorType.CODE_EMPTY_ISSUER
         });
     // "Success with new Frontend API URL in JWT",
     testData.add(
@@ -358,7 +358,7 @@ public class SessionServiceTest {
               System.currentTimeMillis() / 1000 - 100,
               privateKey),
           TokenValidationException.class,
-          ValidationErrorType.ISSUER_MISSMATCH
+          ValidationErrorType.CODE_ISSUER_MISSMATCH
         });
 
     return testData;
