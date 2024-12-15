@@ -37,7 +37,7 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
    * Create a new login identifier.
    *
    * @param userID ID of user (required)
-   * @param identifierCreateReq
+   * @param identifierCreateReq Identifier create request
    * @return Identifier
    * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
    *     the response body
@@ -47,24 +47,26 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
       throws CorbadoServerException {
     Objects.requireNonNull(
         identifierCreateReq.getIdentifierType(),
-        "Required field 'IdentifierCreateReq.identifierType' in 'identifierCreateReq' cannot be null\"");
+        "Required field 'IdentifierCreateReq.identifierType' in"
+            + " 'identifierCreateReq' cannot be null\"");
     Objects.requireNonNull(
         identifierCreateReq.getIdentifierValue(),
-        "Required field 'IdentifierCreateReq.identifierValue' in 'identifierCreateReq' cannot be null\"");
+        "Required field 'IdentifierCreateReq.identifierValue' in"
+            + " 'identifierCreateReq' cannot be null\"");
     Objects.requireNonNull(
         identifierCreateReq.getStatus(),
         "Required field 'IdentifierCreateReq.status' in 'identifierCreateReq' cannot be null\"");
 
     try {
-      return client.identifierCreate(userID, identifierCreateReq);
-      //      client.identifierList(userID, null, null, null)
+      return this.client.identifierCreate(userID, identifierCreateReq);
+      // client.identifierList(userID, null, null, null)
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);
     }
   }
 
   /**
-   * Returns a list of matching identifiers
+   * Returns a list of matching identifiers.
    *
    * @param sort Field sorting (optional)
    * @param filter Field filtering (optional)
@@ -81,14 +83,14 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
       @Nullable final Integer pageSize)
       throws CorbadoServerException {
     try {
-      return client.identifierList(sort, filter, page, pageSize);
+      return this.client.identifierList(sort, filter, page, pageSize);
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);
     }
   }
 
   /**
-   * Returns a list of matching identifiers
+   * Returns a list of matching identifiers.
    *
    * @param page Page number (optional, default to 1)
    * @param pageSize Number of items per page (optional, default to 10)
@@ -259,7 +261,7 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
       @NonNull final IdentifierUpdateReq identifierUpdateReq)
       throws CorbadoServerException {
     try {
-      return client.identifierUpdate(userID, identifierID, identifierUpdateReq);
+      return this.client.identifierUpdate(userID, identifierID, identifierUpdateReq);
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);
     }
@@ -293,7 +295,7 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   public void delete(@NonNull final String userID, @NonNull final String identifierID)
       throws CorbadoServerException {
     try {
-      client.identifierDelete(userID, identifierID);
+      this.client.identifierDelete(userID, identifierID);
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);
     }
