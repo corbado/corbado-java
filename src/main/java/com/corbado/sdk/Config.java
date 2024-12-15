@@ -2,14 +2,12 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import org.apache.commons.lang3.StringUtils;
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Configuration class for setting up project parameters.

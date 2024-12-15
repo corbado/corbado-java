@@ -3,6 +3,7 @@ package com.corbado.integration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import com.corbado.base.AbstractSdkTest;
 import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
@@ -36,9 +37,9 @@ class UserServiceIT extends AbstractSdkTest {
   }
 
   /**
-   * Test case for user creation with validation error. *
+   * Test case for user creation with validation error.
    *
-   * @throws CorbadoServerException
+   * @throws CorbadoServerException the standard exception
    */
   @Test
   void test_UserCreateBlankName_ExpectSuccess() throws CorbadoServerException {
@@ -72,7 +73,7 @@ class UserServiceIT extends AbstractSdkTest {
         assertThrows(
             CorbadoServerException.class,
             () -> {
-              final UserEntity ret = this.fixture.get("usr-1234567890");
+              this.fixture.get("usr-1234567890");
             });
     assertNotNull(e);
     assertEquals(400, e.getHttpStatusCode());
@@ -113,7 +114,7 @@ class UserServiceIT extends AbstractSdkTest {
         assertThrows(
             CorbadoServerException.class,
             () -> {
-              final UserEntity ret = this.fixture.get(user.getUserID());
+              this.fixture.get(user.getUserID());
             });
     assertNotNull(e);
     assertEquals(400, e.getHttpStatusCode());

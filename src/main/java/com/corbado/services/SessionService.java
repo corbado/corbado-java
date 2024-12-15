@@ -1,12 +1,5 @@
 package com.corbado.services;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.security.interfaces.RSAPublicKey;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.auth0.jwk.InvalidPublicKeyException;
 import com.auth0.jwk.Jwk;
 import com.auth0.jwk.JwkException;
@@ -26,10 +19,14 @@ import com.corbado.enums.exception.ValidationErrorType;
 import com.corbado.exceptions.TokenValidationException;
 import com.corbado.sdk.Config;
 import com.corbado.utils.ValidationUtils;
-
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.security.interfaces.RSAPublicKey;
+import java.util.concurrent.TimeUnit;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * This class provides functionality for managing sessions, including validation and retrieval of
@@ -148,7 +145,8 @@ public class SessionService {
       final JWTVerifier verifier = JWT.require(algorithm).build();
       decodedJwt = verifier.verify(sessionToken);
     } catch (final InvalidPublicKeyException e) {
-      throw new TokenValidationException(ValidationErrorType.CODE_INVALID_PUBLIC_KEY, e.getMessage(), e);
+      throw new TokenValidationException(
+          ValidationErrorType.CODE_INVALID_PUBLIC_KEY, e.getMessage(), e);
     } catch (final TokenExpiredException e) {
       throw new TokenValidationException(ValidationErrorType.CODE_JWT_EXPIRED, e.getMessage(), e);
 

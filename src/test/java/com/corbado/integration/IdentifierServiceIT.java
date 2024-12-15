@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import com.corbado.base.AbstractSdkTest;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -18,9 +19,9 @@ import com.corbado.generated.model.IdentifierType;
 import com.corbado.services.IdentifierService;
 import com.corbado.util.TestUtils;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import lombok.extern.slf4j.Slf4j;
 
 /** The Class UserServiceIT. */
 @Slf4j
@@ -61,7 +62,7 @@ class IdentifierServiceIT extends AbstractSdkTest {
    * Sets the up class.
    *
    * @throws StandardException the standard exception
-   * @throws CorbadoServerException
+   * @throws CorbadoServerException the server side error
    */
   @BeforeAll
   public void setUpClass() throws StandardException, CorbadoServerException {
@@ -220,7 +221,7 @@ class IdentifierServiceIT extends AbstractSdkTest {
   /**
    * Test list all emails by user id expect success.
    *
-   * @throws CorbadoServerException
+   * @throws CorbadoServerException the server side error
    */
   @Test
   void test_listAllEmailsByUserId_expectSuccess() throws CorbadoServerException {

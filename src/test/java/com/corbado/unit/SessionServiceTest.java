@@ -6,6 +6,22 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 
+import com.auth0.jwk.Jwk;
+import com.auth0.jwk.JwkException;
+import com.auth0.jwk.JwkProvider;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.IncorrectClaimException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.corbado.entities.UserEntity;
+import com.corbado.enums.exception.ValidationErrorType;
+import com.corbado.exceptions.StandardException;
+import com.corbado.exceptions.TokenValidationException;
+import com.corbado.services.SessionService;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,7 +40,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,23 +50,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import com.auth0.jwk.Jwk;
-import com.auth0.jwk.JwkException;
-import com.auth0.jwk.JwkProvider;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.IncorrectClaimException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.corbado.entities.UserEntity;
-import com.corbado.enums.exception.ValidationErrorType;
-import com.corbado.exceptions.StandardException;
-import com.corbado.exceptions.TokenValidationException;
-import com.corbado.services.SessionService;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
 
 /** Unit Test for session service. */
 @ExtendWith(MockitoExtension.class)
@@ -205,11 +203,6 @@ public class SessionServiceTest {
       assertEquals(TEST_NAME, validationResult.getFullName());
       assertEquals(TEST_USER_ID, validationResult.getUserID());
     }
-    /**
-     * Inits the parameters test data.
-     *
-     * @return the stream
-     */
   }
 
   // ------------------ Test data --------------------- //
@@ -227,13 +220,6 @@ public class SessionServiceTest {
         new Object[] {"", "2", false},
         // Test empty jwks_uri
         new Object[] {"s", "", false});
-    /**
-     * Provide jwts.
-     *
-     * @return the list
-     * @throws InvalidKeySpecException the invalid key spec exception
-     * @throws NoSuchAlgorithmException the no such algorithm exception
-     */
   }
 
   /**
@@ -366,15 +352,6 @@ public class SessionServiceTest {
         });
 
     return testData;
-    /**
-     * Read private key.
-     *
-     * @param privateKeyPath the private key path
-     * @return the RSA private key
-     * @throws IOException Signals that an I/O exception has occurred.
-     * @throws NoSuchAlgorithmException the no such algorithm exception
-     * @throws InvalidKeySpecException the invalid key spec exception
-     */
   }
 
   // ------------------ Utility functions--------------------- //
@@ -402,16 +379,6 @@ public class SessionServiceTest {
     final KeyFactory keyFactory = KeyFactory.getInstance("RSA");
     final PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(encoded);
     return (RSAPrivateKey) keyFactory.generatePrivate(keySpec);
-    /**
-     * Generate jwt.
-     *
-     * @param iss the iss
-     * @param exp the exp
-     * @param nbf the nbf
-     * @return the string
-     * @throws InvalidKeySpecException the invalid key spec exception
-     * @throws NoSuchAlgorithmException the no such algorithm exception
-     */
   }
 
   /**
@@ -440,11 +407,6 @@ public class SessionServiceTest {
         .withClaim("email", TEST_EMAIL)
         .withClaim("phone_number", TEST_PHONE_NUMBER)
         .sign(algorithm);
-    /**
-     * Creates the session service.
-     *
-     * @return the session service
-     */
   }
 
   /**
@@ -458,12 +420,6 @@ public class SessionServiceTest {
         10,
         false,
         TEST_PROJECT_ID); // URLs do not matter, url access is mocked
-    /**
-     * Read jwks.
-     *
-     * @return the json array
-     * @throws FileNotFoundException the file not found exception
-     */
   }
 
   /**

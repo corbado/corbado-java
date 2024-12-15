@@ -1,9 +1,5 @@
 package com.corbado.services;
 
-import java.util.Objects;
-
-import javax.annotation.Nullable;
-
 import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.generated.api.UsersApi;
@@ -11,7 +7,8 @@ import com.corbado.generated.invoker.ApiException;
 import com.corbado.generated.model.UserCreateReq;
 import com.corbado.generated.model.UserStatus;
 import com.corbado.services.base.ApiService;
-
+import java.util.Objects;
+import javax.annotation.Nullable;
 import lombok.NonNull;
 
 /** Service for managing users. */
