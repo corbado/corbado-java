@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,28 +51,32 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ErrorRspAllOfError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class ErrorRspAllOfError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nonnull
   private String type;
 
   public static final String SERIALIZED_NAME_DETAILS = "details";
   @SerializedName(SERIALIZED_NAME_DETAILS)
+  @javax.annotation.Nullable
   private String details;
 
   public static final String SERIALIZED_NAME_VALIDATION = "validation";
   @SerializedName(SERIALIZED_NAME_VALIDATION)
+  @javax.annotation.Nullable
   private List<ErrorRspAllOfErrorValidation> validation = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
+  @javax.annotation.Nullable
   private List<String> links = new ArrayList<>();
 
   public ErrorRspAllOfError() {
   }
 
-  public ErrorRspAllOfError type(String type) {
+  public ErrorRspAllOfError type(@javax.annotation.Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -87,12 +90,12 @@ public class ErrorRspAllOfError {
     return type;
   }
 
-  public void setType(String type) {
+  public void setType(@javax.annotation.Nonnull String type) {
     this.type = type;
   }
 
 
-  public ErrorRspAllOfError details(String details) {
+  public ErrorRspAllOfError details(@javax.annotation.Nullable String details) {
     this.details = details;
     return this;
   }
@@ -106,12 +109,12 @@ public class ErrorRspAllOfError {
     return details;
   }
 
-  public void setDetails(String details) {
+  public void setDetails(@javax.annotation.Nullable String details) {
     this.details = details;
   }
 
 
-  public ErrorRspAllOfError validation(List<ErrorRspAllOfErrorValidation> validation) {
+  public ErrorRspAllOfError validation(@javax.annotation.Nullable List<ErrorRspAllOfErrorValidation> validation) {
     this.validation = validation;
     return this;
   }
@@ -133,12 +136,12 @@ public class ErrorRspAllOfError {
     return validation;
   }
 
-  public void setValidation(List<ErrorRspAllOfErrorValidation> validation) {
+  public void setValidation(@javax.annotation.Nullable List<ErrorRspAllOfErrorValidation> validation) {
     this.validation = validation;
   }
 
 
-  public ErrorRspAllOfError links(List<String> links) {
+  public ErrorRspAllOfError links(@javax.annotation.Nullable List<String> links) {
     this.links = links;
     return this;
   }
@@ -155,12 +158,12 @@ public class ErrorRspAllOfError {
    * Additional links to help understand the error
    * @return links
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<String> getLinks() {
     return links;
   }
 
-  public void setLinks(List<String> links) {
+  public void setLinks(@javax.annotation.Nullable List<String> links) {
     this.links = links;
   }
 
@@ -224,7 +227,6 @@ public class ErrorRspAllOfError {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("type");
-    openapiRequiredFields.add("links");
   }
 
   /**
@@ -275,10 +277,8 @@ public class ErrorRspAllOfError {
           };
         }
       }
-      // ensure the required json array is present
-      if (jsonObj.get("links") == null) {
-        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
-      } else if (!jsonObj.get("links").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull() && !jsonObj.get("links").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
       }
   }

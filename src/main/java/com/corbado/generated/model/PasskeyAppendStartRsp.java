@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,28 +52,37 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyAppendStartRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class PasskeyAppendStartRsp {
   public static final String SERIALIZED_NAME_APPEND_ALLOW = "appendAllow";
   @SerializedName(SERIALIZED_NAME_APPEND_ALLOW)
+  @javax.annotation.Nonnull
   private Boolean appendAllow;
 
   public static final String SERIALIZED_NAME_DETECTION_TAGS = "detectionTags";
   @SerializedName(SERIALIZED_NAME_DETECTION_TAGS)
+  @javax.annotation.Nonnull
   private List<DetectionTag> detectionTags = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DECISION_TAG = "decisionTag";
   @SerializedName(SERIALIZED_NAME_DECISION_TAG)
+  @javax.annotation.Nonnull
   private DecisionTag decisionTag;
+
+  public static final String SERIALIZED_NAME_CREDENTIAL_COUNT = "credentialCount";
+  @SerializedName(SERIALIZED_NAME_CREDENTIAL_COUNT)
+  @javax.annotation.Nonnull
+  private Integer credentialCount;
 
   public static final String SERIALIZED_NAME_ATTESTATION_OPTIONS = "attestationOptions";
   @SerializedName(SERIALIZED_NAME_ATTESTATION_OPTIONS)
+  @javax.annotation.Nonnull
   private String attestationOptions;
 
   public PasskeyAppendStartRsp() {
   }
 
-  public PasskeyAppendStartRsp appendAllow(Boolean appendAllow) {
+  public PasskeyAppendStartRsp appendAllow(@javax.annotation.Nonnull Boolean appendAllow) {
     this.appendAllow = appendAllow;
     return this;
   }
@@ -88,12 +96,12 @@ public class PasskeyAppendStartRsp {
     return appendAllow;
   }
 
-  public void setAppendAllow(Boolean appendAllow) {
+  public void setAppendAllow(@javax.annotation.Nonnull Boolean appendAllow) {
     this.appendAllow = appendAllow;
   }
 
 
-  public PasskeyAppendStartRsp detectionTags(List<DetectionTag> detectionTags) {
+  public PasskeyAppendStartRsp detectionTags(@javax.annotation.Nonnull List<DetectionTag> detectionTags) {
     this.detectionTags = detectionTags;
     return this;
   }
@@ -115,12 +123,12 @@ public class PasskeyAppendStartRsp {
     return detectionTags;
   }
 
-  public void setDetectionTags(List<DetectionTag> detectionTags) {
+  public void setDetectionTags(@javax.annotation.Nonnull List<DetectionTag> detectionTags) {
     this.detectionTags = detectionTags;
   }
 
 
-  public PasskeyAppendStartRsp decisionTag(DecisionTag decisionTag) {
+  public PasskeyAppendStartRsp decisionTag(@javax.annotation.Nonnull DecisionTag decisionTag) {
     this.decisionTag = decisionTag;
     return this;
   }
@@ -134,12 +142,31 @@ public class PasskeyAppendStartRsp {
     return decisionTag;
   }
 
-  public void setDecisionTag(DecisionTag decisionTag) {
+  public void setDecisionTag(@javax.annotation.Nonnull DecisionTag decisionTag) {
     this.decisionTag = decisionTag;
   }
 
 
-  public PasskeyAppendStartRsp attestationOptions(String attestationOptions) {
+  public PasskeyAppendStartRsp credentialCount(@javax.annotation.Nonnull Integer credentialCount) {
+    this.credentialCount = credentialCount;
+    return this;
+  }
+
+  /**
+   * Get credentialCount
+   * @return credentialCount
+   */
+  @javax.annotation.Nonnull
+  public Integer getCredentialCount() {
+    return credentialCount;
+  }
+
+  public void setCredentialCount(@javax.annotation.Nonnull Integer credentialCount) {
+    this.credentialCount = credentialCount;
+  }
+
+
+  public PasskeyAppendStartRsp attestationOptions(@javax.annotation.Nonnull String attestationOptions) {
     this.attestationOptions = attestationOptions;
     return this;
   }
@@ -153,7 +180,7 @@ public class PasskeyAppendStartRsp {
     return attestationOptions;
   }
 
-  public void setAttestationOptions(String attestationOptions) {
+  public void setAttestationOptions(@javax.annotation.Nonnull String attestationOptions) {
     this.attestationOptions = attestationOptions;
   }
 
@@ -171,12 +198,13 @@ public class PasskeyAppendStartRsp {
     return Objects.equals(this.appendAllow, passkeyAppendStartRsp.appendAllow) &&
         Objects.equals(this.detectionTags, passkeyAppendStartRsp.detectionTags) &&
         Objects.equals(this.decisionTag, passkeyAppendStartRsp.decisionTag) &&
+        Objects.equals(this.credentialCount, passkeyAppendStartRsp.credentialCount) &&
         Objects.equals(this.attestationOptions, passkeyAppendStartRsp.attestationOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appendAllow, detectionTags, decisionTag, attestationOptions);
+    return Objects.hash(appendAllow, detectionTags, decisionTag, credentialCount, attestationOptions);
   }
 
   @Override
@@ -186,6 +214,7 @@ public class PasskeyAppendStartRsp {
     sb.append("    appendAllow: ").append(toIndentedString(appendAllow)).append("\n");
     sb.append("    detectionTags: ").append(toIndentedString(detectionTags)).append("\n");
     sb.append("    decisionTag: ").append(toIndentedString(decisionTag)).append("\n");
+    sb.append("    credentialCount: ").append(toIndentedString(credentialCount)).append("\n");
     sb.append("    attestationOptions: ").append(toIndentedString(attestationOptions)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -212,6 +241,7 @@ public class PasskeyAppendStartRsp {
     openapiFields.add("appendAllow");
     openapiFields.add("detectionTags");
     openapiFields.add("decisionTag");
+    openapiFields.add("credentialCount");
     openapiFields.add("attestationOptions");
 
     // a set of required properties/fields (JSON key names)
@@ -219,6 +249,7 @@ public class PasskeyAppendStartRsp {
     openapiRequiredFields.add("appendAllow");
     openapiRequiredFields.add("detectionTags");
     openapiRequiredFields.add("decisionTag");
+    openapiRequiredFields.add("credentialCount");
     openapiRequiredFields.add("attestationOptions");
   }
 

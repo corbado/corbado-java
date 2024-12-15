@@ -63,7 +63,9 @@ public enum DecisionTag {
   
   PROCESS_PK_LOGIN_INCOMPLETE("process-pk-login-incomplete"),
   
-  PROCESS_PK_LOGIN_CROSS_PLATFORM_COMPLETED("process-pk-login-cross-platform-completed");
+  PROCESS_PK_LOGIN_CROSS_PLATFORM_COMPLETED("process-pk-login-cross-platform-completed"),
+  
+  DEVICE_LOCAL_PLATFORM_PASSKEY_EXPERIMENT("device-local-platform-passkey-experiment");
 
   private String value;
 

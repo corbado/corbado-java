@@ -29,9 +29,9 @@ import java.io.IOException;
 
 import com.corbado.generated.model.ErrorRsp;
 import com.corbado.generated.model.GenericRsp;
-import com.corbado.generated.model.PasskeyEvent;
-import com.corbado.generated.model.PasskeyEventCreateReq;
-import com.corbado.generated.model.PasskeyEventList;
+import com.corbado.generated.model.WebhookEndpoint;
+import com.corbado.generated.model.WebhookEndpointCreateReq;
+import com.corbado.generated.model.WebhookEndpointList;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -39,16 +39,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PasskeyEventsApi {
+public class WebhookEndpointsApi {
     private ApiClient localVarApiClient;
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public PasskeyEventsApi() {
+    public WebhookEndpointsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public PasskeyEventsApi(ApiClient apiClient) {
+    public WebhookEndpointsApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -77,9 +77,8 @@ public class PasskeyEventsApi {
     }
 
     /**
-     * Build call for passkeyEventCreate
-     * @param userID ID of user (required)
-     * @param passkeyEventCreateReq  (required)
+     * Build call for webhookEndpointCreate
+     * @param webhookEndpointCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -87,11 +86,11 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been created </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventCreateCall(String userID, PasskeyEventCreateReq passkeyEventCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointCreateCall(WebhookEndpointCreateReq webhookEndpointCreateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -105,11 +104,10 @@ public class PasskeyEventsApi {
             basePath = null;
         }
 
-        Object localVarPostBody = passkeyEventCreateReq;
+        Object localVarPostBody = webhookEndpointCreateReq;
 
         // create path and map variables
-        String localVarPath = "/users/{userID}/passkeyEvents"
-            .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()));
+        String localVarPath = "/webhookEndpoints";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -138,67 +136,59 @@ public class PasskeyEventsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyEventCreateValidateBeforeCall(String userID, PasskeyEventCreateReq passkeyEventCreateReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'userID' is set
-        if (userID == null) {
-            throw new ApiException("Missing the required parameter 'userID' when calling passkeyEventCreate(Async)");
+    private okhttp3.Call webhookEndpointCreateValidateBeforeCall(WebhookEndpointCreateReq webhookEndpointCreateReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'webhookEndpointCreateReq' is set
+        if (webhookEndpointCreateReq == null) {
+            throw new ApiException("Missing the required parameter 'webhookEndpointCreateReq' when calling webhookEndpointCreate(Async)");
         }
 
-        // verify the required parameter 'passkeyEventCreateReq' is set
-        if (passkeyEventCreateReq == null) {
-            throw new ApiException("Missing the required parameter 'passkeyEventCreateReq' when calling passkeyEventCreate(Async)");
-        }
-
-        return passkeyEventCreateCall(userID, passkeyEventCreateReq, _callback);
+        return webhookEndpointCreateCall(webhookEndpointCreateReq, _callback);
 
     }
 
     /**
      * 
-     * Create a new passkey event for a user
-     * @param userID ID of user (required)
-     * @param passkeyEventCreateReq  (required)
-     * @return PasskeyEvent
+     * Creates a new webhook endpoint
+     * @param webhookEndpointCreateReq  (required)
+     * @return WebhookEndpoint
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been created </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyEvent passkeyEventCreate(String userID, PasskeyEventCreateReq passkeyEventCreateReq) throws ApiException {
-        ApiResponse<PasskeyEvent> localVarResp = passkeyEventCreateWithHttpInfo(userID, passkeyEventCreateReq);
+    public WebhookEndpoint webhookEndpointCreate(WebhookEndpointCreateReq webhookEndpointCreateReq) throws ApiException {
+        ApiResponse<WebhookEndpoint> localVarResp = webhookEndpointCreateWithHttpInfo(webhookEndpointCreateReq);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Create a new passkey event for a user
-     * @param userID ID of user (required)
-     * @param passkeyEventCreateReq  (required)
-     * @return ApiResponse&lt;PasskeyEvent&gt;
+     * Creates a new webhook endpoint
+     * @param webhookEndpointCreateReq  (required)
+     * @return ApiResponse&lt;WebhookEndpoint&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been created </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyEvent> passkeyEventCreateWithHttpInfo(String userID, PasskeyEventCreateReq passkeyEventCreateReq) throws ApiException {
-        okhttp3.Call localVarCall = passkeyEventCreateValidateBeforeCall(userID, passkeyEventCreateReq, null);
-        Type localVarReturnType = new TypeToken<PasskeyEvent>(){}.getType();
+    public ApiResponse<WebhookEndpoint> webhookEndpointCreateWithHttpInfo(WebhookEndpointCreateReq webhookEndpointCreateReq) throws ApiException {
+        okhttp3.Call localVarCall = webhookEndpointCreateValidateBeforeCall(webhookEndpointCreateReq, null);
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Create a new passkey event for a user
-     * @param userID ID of user (required)
-     * @param passkeyEventCreateReq  (required)
+     * Creates a new webhook endpoint
+     * @param webhookEndpointCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -206,21 +196,20 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been created </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventCreateAsync(String userID, PasskeyEventCreateReq passkeyEventCreateReq, final ApiCallback<PasskeyEvent> _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointCreateAsync(WebhookEndpointCreateReq webhookEndpointCreateReq, final ApiCallback<WebhookEndpoint> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = passkeyEventCreateValidateBeforeCall(userID, passkeyEventCreateReq, _callback);
-        Type localVarReturnType = new TypeToken<PasskeyEvent>(){}.getType();
+        okhttp3.Call localVarCall = webhookEndpointCreateValidateBeforeCall(webhookEndpointCreateReq, _callback);
+        Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for passkeyEventDelete
-     * @param userID ID of user (required)
-     * @param passkeyEventID ID of a passkey event (required)
+     * Build call for webhookEndpointDelete
+     * @param webhookEndpointID ID of a webhook endpoint (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -232,7 +221,7 @@ public class PasskeyEventsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventDeleteCall(String userID, String passkeyEventID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointDeleteCall(String webhookEndpointID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -249,9 +238,8 @@ public class PasskeyEventsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/users/{userID}/passkeyEvents/{passkeyEventID}"
-            .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()))
-            .replace("{" + "passkeyEventID" + "}", localVarApiClient.escapeString(passkeyEventID.toString()));
+        String localVarPath = "/webhookEndpoints/{webhookEndpointID}"
+            .replace("{" + "webhookEndpointID" + "}", localVarApiClient.escapeString(webhookEndpointID.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -279,26 +267,20 @@ public class PasskeyEventsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyEventDeleteValidateBeforeCall(String userID, String passkeyEventID, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'userID' is set
-        if (userID == null) {
-            throw new ApiException("Missing the required parameter 'userID' when calling passkeyEventDelete(Async)");
+    private okhttp3.Call webhookEndpointDeleteValidateBeforeCall(String webhookEndpointID, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'webhookEndpointID' is set
+        if (webhookEndpointID == null) {
+            throw new ApiException("Missing the required parameter 'webhookEndpointID' when calling webhookEndpointDelete(Async)");
         }
 
-        // verify the required parameter 'passkeyEventID' is set
-        if (passkeyEventID == null) {
-            throw new ApiException("Missing the required parameter 'passkeyEventID' when calling passkeyEventDelete(Async)");
-        }
-
-        return passkeyEventDeleteCall(userID, passkeyEventID, _callback);
+        return webhookEndpointDeleteCall(webhookEndpointID, _callback);
 
     }
 
     /**
      * 
-     * Deletes an existing passkey event
-     * @param userID ID of user (required)
-     * @param passkeyEventID ID of a passkey event (required)
+     * Deletes an existing webhook endpoint
+     * @param webhookEndpointID ID of a webhook endpoint (required)
      * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -309,16 +291,15 @@ public class PasskeyEventsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp passkeyEventDelete(String userID, String passkeyEventID) throws ApiException {
-        ApiResponse<GenericRsp> localVarResp = passkeyEventDeleteWithHttpInfo(userID, passkeyEventID);
+    public GenericRsp webhookEndpointDelete(String webhookEndpointID) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = webhookEndpointDeleteWithHttpInfo(webhookEndpointID);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Deletes an existing passkey event
-     * @param userID ID of user (required)
-     * @param passkeyEventID ID of a passkey event (required)
+     * Deletes an existing webhook endpoint
+     * @param webhookEndpointID ID of a webhook endpoint (required)
      * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -329,17 +310,16 @@ public class PasskeyEventsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> passkeyEventDeleteWithHttpInfo(String userID, String passkeyEventID) throws ApiException {
-        okhttp3.Call localVarCall = passkeyEventDeleteValidateBeforeCall(userID, passkeyEventID, null);
+    public ApiResponse<GenericRsp> webhookEndpointDeleteWithHttpInfo(String webhookEndpointID) throws ApiException {
+        okhttp3.Call localVarCall = webhookEndpointDeleteValidateBeforeCall(webhookEndpointID, null);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Deletes an existing passkey event
-     * @param userID ID of user (required)
-     * @param passkeyEventID ID of a passkey event (required)
+     * Deletes an existing webhook endpoint
+     * @param webhookEndpointID ID of a webhook endpoint (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -351,20 +331,15 @@ public class PasskeyEventsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventDeleteAsync(String userID, String passkeyEventID, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointDeleteAsync(String webhookEndpointID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = passkeyEventDeleteValidateBeforeCall(userID, passkeyEventID, _callback);
+        okhttp3.Call localVarCall = webhookEndpointDeleteValidateBeforeCall(webhookEndpointID, _callback);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for passkeyEventList
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * Build call for webhookEndpointList
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -372,11 +347,11 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of webhook endpoints </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventListCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointListCall(final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -393,30 +368,13 @@ public class PasskeyEventsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/users/{userID}/passkeyEvents"
-            .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()));
+        String localVarPath = "/webhookEndpoints";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (sort != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
-        }
-
-        if (filter != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filter[]", filter));
-        }
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (pageSize != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
-        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -438,71 +396,51 @@ public class PasskeyEventsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyEventListValidateBeforeCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'userID' is set
-        if (userID == null) {
-            throw new ApiException("Missing the required parameter 'userID' when calling passkeyEventList(Async)");
-        }
-
-        return passkeyEventListCall(userID, sort, filter, page, pageSize, _callback);
+    private okhttp3.Call webhookEndpointListValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+        return webhookEndpointListCall(_callback);
 
     }
 
     /**
      * 
-     * Returns a list of matching passkey events
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
-     * @return PasskeyEventList
+     * Returns a list of webhook endpoints
+     * @return WebhookEndpointList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of webhook endpoints </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyEventList passkeyEventList(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
-        ApiResponse<PasskeyEventList> localVarResp = passkeyEventListWithHttpInfo(userID, sort, filter, page, pageSize);
+    public WebhookEndpointList webhookEndpointList() throws ApiException {
+        ApiResponse<WebhookEndpointList> localVarResp = webhookEndpointListWithHttpInfo();
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Returns a list of matching passkey events
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
-     * @return ApiResponse&lt;PasskeyEventList&gt;
+     * Returns a list of webhook endpoints
+     * @return ApiResponse&lt;WebhookEndpointList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of webhook endpoints </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyEventList> passkeyEventListWithHttpInfo(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
-        okhttp3.Call localVarCall = passkeyEventListValidateBeforeCall(userID, sort, filter, page, pageSize, null);
-        Type localVarReturnType = new TypeToken<PasskeyEventList>(){}.getType();
+    public ApiResponse<WebhookEndpointList> webhookEndpointListWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = webhookEndpointListValidateBeforeCall(null);
+        Type localVarReturnType = new TypeToken<WebhookEndpointList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Returns a list of matching passkey events
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * Returns a list of webhook endpoints
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -510,14 +448,14 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of webhook endpoints </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventListAsync(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<PasskeyEventList> _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointListAsync(final ApiCallback<WebhookEndpointList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = passkeyEventListValidateBeforeCall(userID, sort, filter, page, pageSize, _callback);
-        Type localVarReturnType = new TypeToken<PasskeyEventList>(){}.getType();
+        okhttp3.Call localVarCall = webhookEndpointListValidateBeforeCall(_callback);
+        Type localVarReturnType = new TypeToken<WebhookEndpointList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

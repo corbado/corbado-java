@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,24 +48,27 @@ import com.corbado.generated.invoker.JSON;
 /**
  * Paging
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class Paging {
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)
+  @javax.annotation.Nonnull
   private Integer page = 1;
 
   public static final String SERIALIZED_NAME_TOTAL_PAGES = "totalPages";
   @SerializedName(SERIALIZED_NAME_TOTAL_PAGES)
+  @javax.annotation.Nonnull
   private Integer totalPages;
 
   public static final String SERIALIZED_NAME_TOTAL_ITEMS = "totalItems";
   @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS)
+  @javax.annotation.Nonnull
   private Integer totalItems;
 
   public Paging() {
   }
 
-  public Paging page(Integer page) {
+  public Paging page(@javax.annotation.Nonnull Integer page) {
     this.page = page;
     return this;
   }
@@ -80,12 +82,12 @@ public class Paging {
     return page;
   }
 
-  public void setPage(Integer page) {
+  public void setPage(@javax.annotation.Nonnull Integer page) {
     this.page = page;
   }
 
 
-  public Paging totalPages(Integer totalPages) {
+  public Paging totalPages(@javax.annotation.Nonnull Integer totalPages) {
     this.totalPages = totalPages;
     return this;
   }
@@ -99,12 +101,12 @@ public class Paging {
     return totalPages;
   }
 
-  public void setTotalPages(Integer totalPages) {
+  public void setTotalPages(@javax.annotation.Nonnull Integer totalPages) {
     this.totalPages = totalPages;
   }
 
 
-  public Paging totalItems(Integer totalItems) {
+  public Paging totalItems(@javax.annotation.Nonnull Integer totalItems) {
     this.totalItems = totalItems;
     return this;
   }
@@ -118,7 +120,7 @@ public class Paging {
     return totalItems;
   }
 
-  public void setTotalItems(Integer totalItems) {
+  public void setTotalItems(@javax.annotation.Nonnull Integer totalItems) {
     this.totalItems = totalItems;
   }
 

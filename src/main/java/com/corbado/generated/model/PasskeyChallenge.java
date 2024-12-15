@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,36 +50,42 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyChallenge
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class PasskeyChallenge {
   public static final String SERIALIZED_NAME_CHALLENGE_I_D = "challengeID";
   @SerializedName(SERIALIZED_NAME_CHALLENGE_I_D)
+  @javax.annotation.Nonnull
   private String challengeID;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nonnull
   private PasskeyChallengeType type;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nonnull
   private String value;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private PasskeyChallengeStatus status;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
+  @javax.annotation.Nonnull
   private Long created;
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
+  @javax.annotation.Nonnull
   private Long expires;
 
   public PasskeyChallenge() {
   }
 
-  public PasskeyChallenge challengeID(String challengeID) {
+  public PasskeyChallenge challengeID(@javax.annotation.Nonnull String challengeID) {
     this.challengeID = challengeID;
     return this;
   }
@@ -94,12 +99,12 @@ public class PasskeyChallenge {
     return challengeID;
   }
 
-  public void setChallengeID(String challengeID) {
+  public void setChallengeID(@javax.annotation.Nonnull String challengeID) {
     this.challengeID = challengeID;
   }
 
 
-  public PasskeyChallenge type(PasskeyChallengeType type) {
+  public PasskeyChallenge type(@javax.annotation.Nonnull PasskeyChallengeType type) {
     this.type = type;
     return this;
   }
@@ -113,12 +118,12 @@ public class PasskeyChallenge {
     return type;
   }
 
-  public void setType(PasskeyChallengeType type) {
+  public void setType(@javax.annotation.Nonnull PasskeyChallengeType type) {
     this.type = type;
   }
 
 
-  public PasskeyChallenge value(String value) {
+  public PasskeyChallenge value(@javax.annotation.Nonnull String value) {
     this.value = value;
     return this;
   }
@@ -132,12 +137,12 @@ public class PasskeyChallenge {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nonnull String value) {
     this.value = value;
   }
 
 
-  public PasskeyChallenge status(PasskeyChallengeStatus status) {
+  public PasskeyChallenge status(@javax.annotation.Nonnull PasskeyChallengeStatus status) {
     this.status = status;
     return this;
   }
@@ -151,12 +156,12 @@ public class PasskeyChallenge {
     return status;
   }
 
-  public void setStatus(PasskeyChallengeStatus status) {
+  public void setStatus(@javax.annotation.Nonnull PasskeyChallengeStatus status) {
     this.status = status;
   }
 
 
-  public PasskeyChallenge created(Long created) {
+  public PasskeyChallenge created(@javax.annotation.Nonnull Long created) {
     this.created = created;
     return this;
   }
@@ -170,12 +175,12 @@ public class PasskeyChallenge {
     return created;
   }
 
-  public void setCreated(Long created) {
+  public void setCreated(@javax.annotation.Nonnull Long created) {
     this.created = created;
   }
 
 
-  public PasskeyChallenge expires(Long expires) {
+  public PasskeyChallenge expires(@javax.annotation.Nonnull Long expires) {
     this.expires = expires;
     return this;
   }
@@ -189,7 +194,7 @@ public class PasskeyChallenge {
     return expires;
   }
 
-  public void setExpires(Long expires) {
+  public void setExpires(@javax.annotation.Nonnull Long expires) {
     this.expires = expires;
   }
 

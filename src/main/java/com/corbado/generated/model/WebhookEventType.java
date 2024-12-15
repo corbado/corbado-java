@@ -24,22 +24,20 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Gets or Sets connectTokenType
+ * Gets or Sets webhookEventType
  */
-@JsonAdapter(ConnectTokenType.Adapter.class)
-public enum ConnectTokenType {
+@JsonAdapter(WebhookEventType.Adapter.class)
+public enum WebhookEventType {
   
-  APPEND("passkey-append"),
+  PASSKEY_LOGIN_COMPLETED("passkey-login.completed"),
   
-  DELETE("passkey-delete"),
+  PASSKEY_CREATED("passkey.created"),
   
-  LIST("passkey-list"),
-  
-  LOGIN("passkey-login");
+  PASSKEY_DELETED("passkey.deleted");
 
   private String value;
 
-  ConnectTokenType(String value) {
+  WebhookEventType(String value) {
     this.value = value;
   }
 
@@ -52,8 +50,8 @@ public enum ConnectTokenType {
     return String.valueOf(value);
   }
 
-  public static ConnectTokenType fromValue(String value) {
-    for (ConnectTokenType b : ConnectTokenType.values()) {
+  public static WebhookEventType fromValue(String value) {
+    for (WebhookEventType b : WebhookEventType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -61,22 +59,22 @@ public enum ConnectTokenType {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<ConnectTokenType> {
+  public static class Adapter extends TypeAdapter<WebhookEventType> {
     @Override
-    public void write(final JsonWriter jsonWriter, final ConnectTokenType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final WebhookEventType enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public ConnectTokenType read(final JsonReader jsonReader) throws IOException {
+    public WebhookEventType read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return ConnectTokenType.fromValue(value);
+      return WebhookEventType.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    ConnectTokenType.fromValue(value);
+    WebhookEventType.fromValue(value);
   }
 }
 

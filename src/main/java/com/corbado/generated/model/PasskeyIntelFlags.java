@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,16 +48,17 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyIntelFlags
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class PasskeyIntelFlags {
   public static final String SERIALIZED_NAME_FORCE_PASSKEY_APPEND = "forcePasskeyAppend";
   @SerializedName(SERIALIZED_NAME_FORCE_PASSKEY_APPEND)
+  @javax.annotation.Nonnull
   private Boolean forcePasskeyAppend;
 
   public PasskeyIntelFlags() {
   }
 
-  public PasskeyIntelFlags forcePasskeyAppend(Boolean forcePasskeyAppend) {
+  public PasskeyIntelFlags forcePasskeyAppend(@javax.annotation.Nonnull Boolean forcePasskeyAppend) {
     this.forcePasskeyAppend = forcePasskeyAppend;
     return this;
   }
@@ -72,7 +72,7 @@ public class PasskeyIntelFlags {
     return forcePasskeyAppend;
   }
 
-  public void setForcePasskeyAppend(Boolean forcePasskeyAppend) {
+  public void setForcePasskeyAppend(@javax.annotation.Nonnull Boolean forcePasskeyAppend) {
     this.forcePasskeyAppend = forcePasskeyAppend;
   }
 

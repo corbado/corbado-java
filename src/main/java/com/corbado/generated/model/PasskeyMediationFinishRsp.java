@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,16 +49,17 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyMediationFinishRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class PasskeyMediationFinishRsp {
   public static final String SERIALIZED_NAME_PASSKEY_DATA = "passkeyData";
   @SerializedName(SERIALIZED_NAME_PASSKEY_DATA)
+  @javax.annotation.Nonnull
   private PasskeyData passkeyData;
 
   public PasskeyMediationFinishRsp() {
   }
 
-  public PasskeyMediationFinishRsp passkeyData(PasskeyData passkeyData) {
+  public PasskeyMediationFinishRsp passkeyData(@javax.annotation.Nonnull PasskeyData passkeyData) {
     this.passkeyData = passkeyData;
     return this;
   }
@@ -73,7 +73,7 @@ public class PasskeyMediationFinishRsp {
     return passkeyData;
   }
 
-  public void setPasskeyData(PasskeyData passkeyData) {
+  public void setPasskeyData(@javax.annotation.Nonnull PasskeyData passkeyData) {
     this.passkeyData = passkeyData;
   }
 

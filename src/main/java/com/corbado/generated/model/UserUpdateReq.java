@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,20 +49,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * UserUpdateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class UserUpdateReq {
   public static final String SERIALIZED_NAME_FULL_NAME = "fullName";
   @SerializedName(SERIALIZED_NAME_FULL_NAME)
+  @javax.annotation.Nullable
   private String fullName;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nullable
   private UserStatus status;
 
   public UserUpdateReq() {
   }
 
-  public UserUpdateReq fullName(String fullName) {
+  public UserUpdateReq fullName(@javax.annotation.Nullable String fullName) {
     this.fullName = fullName;
     return this;
   }
@@ -77,12 +78,12 @@ public class UserUpdateReq {
     return fullName;
   }
 
-  public void setFullName(String fullName) {
+  public void setFullName(@javax.annotation.Nullable String fullName) {
     this.fullName = fullName;
   }
 
 
-  public UserUpdateReq status(UserStatus status) {
+  public UserUpdateReq status(@javax.annotation.Nullable UserStatus status) {
     this.status = status;
     return this;
   }
@@ -96,7 +97,7 @@ public class UserUpdateReq {
     return status;
   }
 
-  public void setStatus(UserStatus status) {
+  public void setStatus(@javax.annotation.Nullable UserStatus status) {
     this.status = status;
   }
 

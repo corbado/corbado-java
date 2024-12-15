@@ -14,13 +14,16 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import com.corbado.generated.model.WebhookEndpoint;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -46,34 +49,42 @@ import java.util.Set;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * ShortSession
+ * WebhookEndpointList
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
-public class ShortSession {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+public class WebhookEndpointList {
+  public static final String SERIALIZED_NAME_WEBHOOK_ENDPOINTS = "webhookEndpoints";
+  @SerializedName(SERIALIZED_NAME_WEBHOOK_ENDPOINTS)
   @javax.annotation.Nonnull
-  private String value;
+  private List<WebhookEndpoint> webhookEndpoints = new ArrayList<>();
 
-  public ShortSession() {
+  public WebhookEndpointList() {
   }
 
-  public ShortSession value(@javax.annotation.Nonnull String value) {
-    this.value = value;
+  public WebhookEndpointList webhookEndpoints(@javax.annotation.Nonnull List<WebhookEndpoint> webhookEndpoints) {
+    this.webhookEndpoints = webhookEndpoints;
+    return this;
+  }
+
+  public WebhookEndpointList addWebhookEndpointsItem(WebhookEndpoint webhookEndpointsItem) {
+    if (this.webhookEndpoints == null) {
+      this.webhookEndpoints = new ArrayList<>();
+    }
+    this.webhookEndpoints.add(webhookEndpointsItem);
     return this;
   }
 
   /**
-   * Get value
-   * @return value
+   * Get webhookEndpoints
+   * @return webhookEndpoints
    */
   @javax.annotation.Nonnull
-  public String getValue() {
-    return value;
+  public List<WebhookEndpoint> getWebhookEndpoints() {
+    return webhookEndpoints;
   }
 
-  public void setValue(@javax.annotation.Nonnull String value) {
-    this.value = value;
+  public void setWebhookEndpoints(@javax.annotation.Nonnull List<WebhookEndpoint> webhookEndpoints) {
+    this.webhookEndpoints = webhookEndpoints;
   }
 
 
@@ -86,20 +97,20 @@ public class ShortSession {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ShortSession shortSession = (ShortSession) o;
-    return Objects.equals(this.value, shortSession.value);
+    WebhookEndpointList webhookEndpointList = (WebhookEndpointList) o;
+    return Objects.equals(this.webhookEndpoints, webhookEndpointList.webhookEndpoints);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value);
+    return Objects.hash(webhookEndpoints);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ShortSession {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class WebhookEndpointList {\n");
+    sb.append("    webhookEndpoints: ").append(toIndentedString(webhookEndpoints)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -122,66 +133,73 @@ public class ShortSession {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("value");
+    openapiFields.add("webhookEndpoints");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("value");
+    openapiRequiredFields.add("webhookEndpoints");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ShortSession
+   * @throws IOException if the JSON Element is invalid with respect to WebhookEndpointList
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ShortSession.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ShortSession is not found in the empty JSON string", ShortSession.openapiRequiredFields.toString()));
+        if (!WebhookEndpointList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in WebhookEndpointList is not found in the empty JSON string", WebhookEndpointList.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ShortSession.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ShortSession` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!WebhookEndpointList.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `WebhookEndpointList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ShortSession.openapiRequiredFields) {
+      for (String requiredField : WebhookEndpointList.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+      // ensure the json data is an array
+      if (!jsonObj.get("webhookEndpoints").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `webhookEndpoints` to be an array in the JSON string but got `%s`", jsonObj.get("webhookEndpoints").toString()));
       }
+
+      JsonArray jsonArraywebhookEndpoints = jsonObj.getAsJsonArray("webhookEndpoints");
+      // validate the required field `webhookEndpoints` (array)
+      for (int i = 0; i < jsonArraywebhookEndpoints.size(); i++) {
+        WebhookEndpoint.validateJsonElement(jsonArraywebhookEndpoints.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ShortSession.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ShortSession' and its subtypes
+       if (!WebhookEndpointList.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'WebhookEndpointList' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ShortSession> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ShortSession.class));
+       final TypeAdapter<WebhookEndpointList> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(WebhookEndpointList.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ShortSession>() {
+       return (TypeAdapter<T>) new TypeAdapter<WebhookEndpointList>() {
            @Override
-           public void write(JsonWriter out, ShortSession value) throws IOException {
+           public void write(JsonWriter out, WebhookEndpointList value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ShortSession read(JsonReader in) throws IOException {
+           public WebhookEndpointList read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -192,18 +210,18 @@ public class ShortSession {
   }
 
   /**
-   * Create an instance of ShortSession given an JSON string
+   * Create an instance of WebhookEndpointList given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ShortSession
-   * @throws IOException if the JSON string is invalid with respect to ShortSession
+   * @return An instance of WebhookEndpointList
+   * @throws IOException if the JSON string is invalid with respect to WebhookEndpointList
    */
-  public static ShortSession fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ShortSession.class);
+  public static WebhookEndpointList fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, WebhookEndpointList.class);
   }
 
   /**
-   * Convert an instance of ShortSession to an JSON string
+   * Convert an instance of WebhookEndpointList to an JSON string
    *
    * @return JSON string
    */

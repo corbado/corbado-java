@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,32 +52,42 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyLoginStartRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class PasskeyLoginStartRsp {
   public static final String SERIALIZED_NAME_LOGIN_ALLOW = "loginAllow";
   @SerializedName(SERIALIZED_NAME_LOGIN_ALLOW)
+  @javax.annotation.Nonnull
   private Boolean loginAllow;
 
   public static final String SERIALIZED_NAME_DETECTION_TAGS = "detectionTags";
   @SerializedName(SERIALIZED_NAME_DETECTION_TAGS)
+  @javax.annotation.Nonnull
   private List<DetectionTag> detectionTags = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DECISION_TAG = "decisionTag";
   @SerializedName(SERIALIZED_NAME_DECISION_TAG)
+  @javax.annotation.Nonnull
   private DecisionTag decisionTag;
+
+  public static final String SERIALIZED_NAME_CREDENTIAL_COUNT = "credentialCount";
+  @SerializedName(SERIALIZED_NAME_CREDENTIAL_COUNT)
+  @javax.annotation.Nonnull
+  private Integer credentialCount;
 
   public static final String SERIALIZED_NAME_ASSERTION_OPTIONS = "assertionOptions";
   @SerializedName(SERIALIZED_NAME_ASSERTION_OPTIONS)
+  @javax.annotation.Nonnull
   private String assertionOptions;
 
   public static final String SERIALIZED_NAME_IS_C_D_A_CANDIDATE = "isCDACandidate";
   @SerializedName(SERIALIZED_NAME_IS_C_D_A_CANDIDATE)
+  @javax.annotation.Nonnull
   private Boolean isCDACandidate;
 
   public PasskeyLoginStartRsp() {
   }
 
-  public PasskeyLoginStartRsp loginAllow(Boolean loginAllow) {
+  public PasskeyLoginStartRsp loginAllow(@javax.annotation.Nonnull Boolean loginAllow) {
     this.loginAllow = loginAllow;
     return this;
   }
@@ -92,12 +101,12 @@ public class PasskeyLoginStartRsp {
     return loginAllow;
   }
 
-  public void setLoginAllow(Boolean loginAllow) {
+  public void setLoginAllow(@javax.annotation.Nonnull Boolean loginAllow) {
     this.loginAllow = loginAllow;
   }
 
 
-  public PasskeyLoginStartRsp detectionTags(List<DetectionTag> detectionTags) {
+  public PasskeyLoginStartRsp detectionTags(@javax.annotation.Nonnull List<DetectionTag> detectionTags) {
     this.detectionTags = detectionTags;
     return this;
   }
@@ -119,12 +128,12 @@ public class PasskeyLoginStartRsp {
     return detectionTags;
   }
 
-  public void setDetectionTags(List<DetectionTag> detectionTags) {
+  public void setDetectionTags(@javax.annotation.Nonnull List<DetectionTag> detectionTags) {
     this.detectionTags = detectionTags;
   }
 
 
-  public PasskeyLoginStartRsp decisionTag(DecisionTag decisionTag) {
+  public PasskeyLoginStartRsp decisionTag(@javax.annotation.Nonnull DecisionTag decisionTag) {
     this.decisionTag = decisionTag;
     return this;
   }
@@ -138,12 +147,31 @@ public class PasskeyLoginStartRsp {
     return decisionTag;
   }
 
-  public void setDecisionTag(DecisionTag decisionTag) {
+  public void setDecisionTag(@javax.annotation.Nonnull DecisionTag decisionTag) {
     this.decisionTag = decisionTag;
   }
 
 
-  public PasskeyLoginStartRsp assertionOptions(String assertionOptions) {
+  public PasskeyLoginStartRsp credentialCount(@javax.annotation.Nonnull Integer credentialCount) {
+    this.credentialCount = credentialCount;
+    return this;
+  }
+
+  /**
+   * Get credentialCount
+   * @return credentialCount
+   */
+  @javax.annotation.Nonnull
+  public Integer getCredentialCount() {
+    return credentialCount;
+  }
+
+  public void setCredentialCount(@javax.annotation.Nonnull Integer credentialCount) {
+    this.credentialCount = credentialCount;
+  }
+
+
+  public PasskeyLoginStartRsp assertionOptions(@javax.annotation.Nonnull String assertionOptions) {
     this.assertionOptions = assertionOptions;
     return this;
   }
@@ -157,12 +185,12 @@ public class PasskeyLoginStartRsp {
     return assertionOptions;
   }
 
-  public void setAssertionOptions(String assertionOptions) {
+  public void setAssertionOptions(@javax.annotation.Nonnull String assertionOptions) {
     this.assertionOptions = assertionOptions;
   }
 
 
-  public PasskeyLoginStartRsp isCDACandidate(Boolean isCDACandidate) {
+  public PasskeyLoginStartRsp isCDACandidate(@javax.annotation.Nonnull Boolean isCDACandidate) {
     this.isCDACandidate = isCDACandidate;
     return this;
   }
@@ -176,7 +204,7 @@ public class PasskeyLoginStartRsp {
     return isCDACandidate;
   }
 
-  public void setIsCDACandidate(Boolean isCDACandidate) {
+  public void setIsCDACandidate(@javax.annotation.Nonnull Boolean isCDACandidate) {
     this.isCDACandidate = isCDACandidate;
   }
 
@@ -194,13 +222,14 @@ public class PasskeyLoginStartRsp {
     return Objects.equals(this.loginAllow, passkeyLoginStartRsp.loginAllow) &&
         Objects.equals(this.detectionTags, passkeyLoginStartRsp.detectionTags) &&
         Objects.equals(this.decisionTag, passkeyLoginStartRsp.decisionTag) &&
+        Objects.equals(this.credentialCount, passkeyLoginStartRsp.credentialCount) &&
         Objects.equals(this.assertionOptions, passkeyLoginStartRsp.assertionOptions) &&
         Objects.equals(this.isCDACandidate, passkeyLoginStartRsp.isCDACandidate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loginAllow, detectionTags, decisionTag, assertionOptions, isCDACandidate);
+    return Objects.hash(loginAllow, detectionTags, decisionTag, credentialCount, assertionOptions, isCDACandidate);
   }
 
   @Override
@@ -210,6 +239,7 @@ public class PasskeyLoginStartRsp {
     sb.append("    loginAllow: ").append(toIndentedString(loginAllow)).append("\n");
     sb.append("    detectionTags: ").append(toIndentedString(detectionTags)).append("\n");
     sb.append("    decisionTag: ").append(toIndentedString(decisionTag)).append("\n");
+    sb.append("    credentialCount: ").append(toIndentedString(credentialCount)).append("\n");
     sb.append("    assertionOptions: ").append(toIndentedString(assertionOptions)).append("\n");
     sb.append("    isCDACandidate: ").append(toIndentedString(isCDACandidate)).append("\n");
     sb.append("}");
@@ -237,6 +267,7 @@ public class PasskeyLoginStartRsp {
     openapiFields.add("loginAllow");
     openapiFields.add("detectionTags");
     openapiFields.add("decisionTag");
+    openapiFields.add("credentialCount");
     openapiFields.add("assertionOptions");
     openapiFields.add("isCDACandidate");
 
@@ -245,6 +276,7 @@ public class PasskeyLoginStartRsp {
     openapiRequiredFields.add("loginAllow");
     openapiRequiredFields.add("detectionTags");
     openapiRequiredFields.add("decisionTag");
+    openapiRequiredFields.add("credentialCount");
     openapiRequiredFields.add("assertionOptions");
     openapiRequiredFields.add("isCDACandidate");
   }

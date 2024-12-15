@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,44 +49,52 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyEvent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class PasskeyEvent {
   public static final String SERIALIZED_NAME_PASSKEY_EVENT_I_D = "passkeyEventID";
   @SerializedName(SERIALIZED_NAME_PASSKEY_EVENT_I_D)
+  @javax.annotation.Nonnull
   private String passkeyEventID;
 
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nonnull
   private PasskeyEventType eventType;
 
   public static final String SERIALIZED_NAME_CLIENT_ENV_I_D = "clientEnvID";
   @SerializedName(SERIALIZED_NAME_CLIENT_ENV_I_D)
+  @javax.annotation.Nullable
   private String clientEnvID;
 
   public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
+  @javax.annotation.Nullable
   private String processID;
 
   public static final String SERIALIZED_NAME_CREDENTIAL_I_D = "credentialID";
   @SerializedName(SERIALIZED_NAME_CREDENTIAL_I_D)
+  @javax.annotation.Nullable
   private String credentialID;
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
+  @javax.annotation.Nullable
   private Integer expires;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
+  @javax.annotation.Nonnull
   private String created;
 
   public PasskeyEvent() {
   }
 
-  public PasskeyEvent passkeyEventID(String passkeyEventID) {
+  public PasskeyEvent passkeyEventID(@javax.annotation.Nonnull String passkeyEventID) {
     this.passkeyEventID = passkeyEventID;
     return this;
   }
@@ -101,12 +108,12 @@ public class PasskeyEvent {
     return passkeyEventID;
   }
 
-  public void setPasskeyEventID(String passkeyEventID) {
+  public void setPasskeyEventID(@javax.annotation.Nonnull String passkeyEventID) {
     this.passkeyEventID = passkeyEventID;
   }
 
 
-  public PasskeyEvent userID(String userID) {
+  public PasskeyEvent userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -120,12 +127,12 @@ public class PasskeyEvent {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 
 
-  public PasskeyEvent eventType(PasskeyEventType eventType) {
+  public PasskeyEvent eventType(@javax.annotation.Nonnull PasskeyEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -139,12 +146,12 @@ public class PasskeyEvent {
     return eventType;
   }
 
-  public void setEventType(PasskeyEventType eventType) {
+  public void setEventType(@javax.annotation.Nonnull PasskeyEventType eventType) {
     this.eventType = eventType;
   }
 
 
-  public PasskeyEvent clientEnvID(String clientEnvID) {
+  public PasskeyEvent clientEnvID(@javax.annotation.Nullable String clientEnvID) {
     this.clientEnvID = clientEnvID;
     return this;
   }
@@ -158,12 +165,12 @@ public class PasskeyEvent {
     return clientEnvID;
   }
 
-  public void setClientEnvID(String clientEnvID) {
+  public void setClientEnvID(@javax.annotation.Nullable String clientEnvID) {
     this.clientEnvID = clientEnvID;
   }
 
 
-  public PasskeyEvent processID(String processID) {
+  public PasskeyEvent processID(@javax.annotation.Nullable String processID) {
     this.processID = processID;
     return this;
   }
@@ -177,12 +184,12 @@ public class PasskeyEvent {
     return processID;
   }
 
-  public void setProcessID(String processID) {
+  public void setProcessID(@javax.annotation.Nullable String processID) {
     this.processID = processID;
   }
 
 
-  public PasskeyEvent credentialID(String credentialID) {
+  public PasskeyEvent credentialID(@javax.annotation.Nullable String credentialID) {
     this.credentialID = credentialID;
     return this;
   }
@@ -196,12 +203,12 @@ public class PasskeyEvent {
     return credentialID;
   }
 
-  public void setCredentialID(String credentialID) {
+  public void setCredentialID(@javax.annotation.Nullable String credentialID) {
     this.credentialID = credentialID;
   }
 
 
-  public PasskeyEvent expires(Integer expires) {
+  public PasskeyEvent expires(@javax.annotation.Nullable Integer expires) {
     this.expires = expires;
     return this;
   }
@@ -215,12 +222,12 @@ public class PasskeyEvent {
     return expires;
   }
 
-  public void setExpires(Integer expires) {
+  public void setExpires(@javax.annotation.Nullable Integer expires) {
     this.expires = expires;
   }
 
 
-  public PasskeyEvent created(String created) {
+  public PasskeyEvent created(@javax.annotation.Nonnull String created) {
     this.created = created;
     return this;
   }
@@ -234,7 +241,7 @@ public class PasskeyEvent {
     return created;
   }
 
-  public void setCreated(String created) {
+  public void setCreated(@javax.annotation.Nonnull String created) {
     this.created = created;
   }
 

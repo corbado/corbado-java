@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,20 +49,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * LongSessionCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class LongSessionCreateReq {
   public static final String SERIALIZED_NAME_APP_TYPE = "appType";
   @SerializedName(SERIALIZED_NAME_APP_TYPE)
+  @javax.annotation.Nonnull
   private AppType appType;
 
   public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
+  @javax.annotation.Nonnull
   private String identifierValue;
 
   public LongSessionCreateReq() {
   }
 
-  public LongSessionCreateReq appType(AppType appType) {
+  public LongSessionCreateReq appType(@javax.annotation.Nonnull AppType appType) {
     this.appType = appType;
     return this;
   }
@@ -77,12 +78,12 @@ public class LongSessionCreateReq {
     return appType;
   }
 
-  public void setAppType(AppType appType) {
+  public void setAppType(@javax.annotation.Nonnull AppType appType) {
     this.appType = appType;
   }
 
 
-  public LongSessionCreateReq identifierValue(String identifierValue) {
+  public LongSessionCreateReq identifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
     return this;
   }
@@ -96,7 +97,7 @@ public class LongSessionCreateReq {
     return identifierValue;
   }
 
-  public void setIdentifierValue(String identifierValue) {
+  public void setIdentifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
   }
 

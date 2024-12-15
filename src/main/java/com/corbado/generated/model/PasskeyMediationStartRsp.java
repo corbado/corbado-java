@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,20 +48,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyMediationStartRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class PasskeyMediationStartRsp {
   public static final String SERIALIZED_NAME_LOGIN_ALLOW = "loginAllow";
   @SerializedName(SERIALIZED_NAME_LOGIN_ALLOW)
+  @javax.annotation.Nonnull
   private Boolean loginAllow;
 
   public static final String SERIALIZED_NAME_ASSERTION_OPTIONS = "assertionOptions";
   @SerializedName(SERIALIZED_NAME_ASSERTION_OPTIONS)
+  @javax.annotation.Nonnull
   private String assertionOptions;
 
   public PasskeyMediationStartRsp() {
   }
 
-  public PasskeyMediationStartRsp loginAllow(Boolean loginAllow) {
+  public PasskeyMediationStartRsp loginAllow(@javax.annotation.Nonnull Boolean loginAllow) {
     this.loginAllow = loginAllow;
     return this;
   }
@@ -76,12 +77,12 @@ public class PasskeyMediationStartRsp {
     return loginAllow;
   }
 
-  public void setLoginAllow(Boolean loginAllow) {
+  public void setLoginAllow(@javax.annotation.Nonnull Boolean loginAllow) {
     this.loginAllow = loginAllow;
   }
 
 
-  public PasskeyMediationStartRsp assertionOptions(String assertionOptions) {
+  public PasskeyMediationStartRsp assertionOptions(@javax.annotation.Nonnull String assertionOptions) {
     this.assertionOptions = assertionOptions;
     return this;
   }
@@ -95,7 +96,7 @@ public class PasskeyMediationStartRsp {
     return assertionOptions;
   }
 
-  public void setAssertionOptions(String assertionOptions) {
+  public void setAssertionOptions(@javax.annotation.Nonnull String assertionOptions) {
     this.assertionOptions = assertionOptions;
   }
 

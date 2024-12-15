@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,24 +49,27 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyMediationFinishReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class PasskeyMediationFinishReq {
   public static final String SERIALIZED_NAME_ASSERTION_RESPONSE = "assertionResponse";
   @SerializedName(SERIALIZED_NAME_ASSERTION_RESPONSE)
+  @javax.annotation.Nonnull
   private String assertionResponse;
 
   public static final String SERIALIZED_NAME_CLIENT_INFORMATION = "clientInformation";
   @SerializedName(SERIALIZED_NAME_CLIENT_INFORMATION)
+  @javax.annotation.Nonnull
   private ClientInformation clientInformation;
 
   public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
+  @javax.annotation.Nonnull
   private String processID;
 
   public PasskeyMediationFinishReq() {
   }
 
-  public PasskeyMediationFinishReq assertionResponse(String assertionResponse) {
+  public PasskeyMediationFinishReq assertionResponse(@javax.annotation.Nonnull String assertionResponse) {
     this.assertionResponse = assertionResponse;
     return this;
   }
@@ -81,12 +83,12 @@ public class PasskeyMediationFinishReq {
     return assertionResponse;
   }
 
-  public void setAssertionResponse(String assertionResponse) {
+  public void setAssertionResponse(@javax.annotation.Nonnull String assertionResponse) {
     this.assertionResponse = assertionResponse;
   }
 
 
-  public PasskeyMediationFinishReq clientInformation(ClientInformation clientInformation) {
+  public PasskeyMediationFinishReq clientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
     return this;
   }
@@ -100,12 +102,12 @@ public class PasskeyMediationFinishReq {
     return clientInformation;
   }
 
-  public void setClientInformation(ClientInformation clientInformation) {
+  public void setClientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
   }
 
 
-  public PasskeyMediationFinishReq processID(String processID) {
+  public PasskeyMediationFinishReq processID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
     return this;
   }
@@ -119,7 +121,7 @@ public class PasskeyMediationFinishReq {
     return processID;
   }
 
-  public void setProcessID(String processID) {
+  public void setProcessID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
   }
 

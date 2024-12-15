@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,20 +49,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ShortSessionCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class ShortSessionCreateReq {
   public static final String SERIALIZED_NAME_APP_TYPE = "appType";
   @SerializedName(SERIALIZED_NAME_APP_TYPE)
+  @javax.annotation.Nonnull
   private AppType appType;
 
   public static final String SERIALIZED_NAME_ISSUER = "issuer";
   @SerializedName(SERIALIZED_NAME_ISSUER)
+  @javax.annotation.Nonnull
   private String issuer;
 
   public ShortSessionCreateReq() {
   }
 
-  public ShortSessionCreateReq appType(AppType appType) {
+  public ShortSessionCreateReq appType(@javax.annotation.Nonnull AppType appType) {
     this.appType = appType;
     return this;
   }
@@ -77,12 +78,12 @@ public class ShortSessionCreateReq {
     return appType;
   }
 
-  public void setAppType(AppType appType) {
+  public void setAppType(@javax.annotation.Nonnull AppType appType) {
     this.appType = appType;
   }
 
 
-  public ShortSessionCreateReq issuer(String issuer) {
+  public ShortSessionCreateReq issuer(@javax.annotation.Nonnull String issuer) {
     this.issuer = issuer;
     return this;
   }
@@ -96,7 +97,7 @@ public class ShortSessionCreateReq {
     return issuer;
   }
 
-  public void setIssuer(String issuer) {
+  public void setIssuer(@javax.annotation.Nonnull String issuer) {
     this.issuer = issuer;
   }
 

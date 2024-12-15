@@ -46,34 +46,34 @@ import java.util.Set;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * ShortSession
+ * ConnectTokenDataPasskeyLogin
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
-public class ShortSession {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+public class ConnectTokenDataPasskeyLogin {
+  public static final String SERIALIZED_NAME_IDENTIFIER = "identifier";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIER)
   @javax.annotation.Nonnull
-  private String value;
+  private String identifier;
 
-  public ShortSession() {
+  public ConnectTokenDataPasskeyLogin() {
   }
 
-  public ShortSession value(@javax.annotation.Nonnull String value) {
-    this.value = value;
+  public ConnectTokenDataPasskeyLogin identifier(@javax.annotation.Nonnull String identifier) {
+    this.identifier = identifier;
     return this;
   }
 
   /**
-   * Get value
-   * @return value
+   * Get identifier
+   * @return identifier
    */
   @javax.annotation.Nonnull
-  public String getValue() {
-    return value;
+  public String getIdentifier() {
+    return identifier;
   }
 
-  public void setValue(@javax.annotation.Nonnull String value) {
-    this.value = value;
+  public void setIdentifier(@javax.annotation.Nonnull String identifier) {
+    this.identifier = identifier;
   }
 
 
@@ -86,20 +86,20 @@ public class ShortSession {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ShortSession shortSession = (ShortSession) o;
-    return Objects.equals(this.value, shortSession.value);
+    ConnectTokenDataPasskeyLogin connectTokenDataPasskeyLogin = (ConnectTokenDataPasskeyLogin) o;
+    return Objects.equals(this.identifier, connectTokenDataPasskeyLogin.identifier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value);
+    return Objects.hash(identifier);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ShortSession {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class ConnectTokenDataPasskeyLogin {\n");
+    sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -122,43 +122,43 @@ public class ShortSession {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("value");
+    openapiFields.add("identifier");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("value");
+    openapiRequiredFields.add("identifier");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ShortSession
+   * @throws IOException if the JSON Element is invalid with respect to ConnectTokenDataPasskeyLogin
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ShortSession.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ShortSession is not found in the empty JSON string", ShortSession.openapiRequiredFields.toString()));
+        if (!ConnectTokenDataPasskeyLogin.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ConnectTokenDataPasskeyLogin is not found in the empty JSON string", ConnectTokenDataPasskeyLogin.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ShortSession.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ShortSession` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ConnectTokenDataPasskeyLogin.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConnectTokenDataPasskeyLogin` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ShortSession.openapiRequiredFields) {
+      for (String requiredField : ConnectTokenDataPasskeyLogin.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+      if (!jsonObj.get("identifier").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `identifier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifier").toString()));
       }
   }
 
@@ -166,22 +166,22 @@ public class ShortSession {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ShortSession.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ShortSession' and its subtypes
+       if (!ConnectTokenDataPasskeyLogin.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ConnectTokenDataPasskeyLogin' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ShortSession> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ShortSession.class));
+       final TypeAdapter<ConnectTokenDataPasskeyLogin> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ConnectTokenDataPasskeyLogin.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ShortSession>() {
+       return (TypeAdapter<T>) new TypeAdapter<ConnectTokenDataPasskeyLogin>() {
            @Override
-           public void write(JsonWriter out, ShortSession value) throws IOException {
+           public void write(JsonWriter out, ConnectTokenDataPasskeyLogin value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ShortSession read(JsonReader in) throws IOException {
+           public ConnectTokenDataPasskeyLogin read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -192,18 +192,18 @@ public class ShortSession {
   }
 
   /**
-   * Create an instance of ShortSession given an JSON string
+   * Create an instance of ConnectTokenDataPasskeyLogin given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ShortSession
-   * @throws IOException if the JSON string is invalid with respect to ShortSession
+   * @return An instance of ConnectTokenDataPasskeyLogin
+   * @throws IOException if the JSON string is invalid with respect to ConnectTokenDataPasskeyLogin
    */
-  public static ShortSession fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ShortSession.class);
+  public static ConnectTokenDataPasskeyLogin fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ConnectTokenDataPasskeyLogin.class);
   }
 
   /**
-   * Convert an instance of ShortSession to an JSON string
+   * Convert an instance of ConnectTokenDataPasskeyLogin to an JSON string
    *
    * @return JSON string
    */

@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,20 +52,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ConnectTokenList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class ConnectTokenList {
   public static final String SERIALIZED_NAME_CONNECT_TOKENS = "connectTokens";
   @SerializedName(SERIALIZED_NAME_CONNECT_TOKENS)
+  @javax.annotation.Nonnull
   private List<ConnectToken> connectTokens = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PAGING = "paging";
   @SerializedName(SERIALIZED_NAME_PAGING)
+  @javax.annotation.Nonnull
   private Paging paging;
 
   public ConnectTokenList() {
   }
 
-  public ConnectTokenList connectTokens(List<ConnectToken> connectTokens) {
+  public ConnectTokenList connectTokens(@javax.annotation.Nonnull List<ConnectToken> connectTokens) {
     this.connectTokens = connectTokens;
     return this;
   }
@@ -88,12 +89,12 @@ public class ConnectTokenList {
     return connectTokens;
   }
 
-  public void setConnectTokens(List<ConnectToken> connectTokens) {
+  public void setConnectTokens(@javax.annotation.Nonnull List<ConnectToken> connectTokens) {
     this.connectTokens = connectTokens;
   }
 
 
-  public ConnectTokenList paging(Paging paging) {
+  public ConnectTokenList paging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
     return this;
   }
@@ -107,7 +108,7 @@ public class ConnectTokenList {
     return paging;
   }
 
-  public void setPaging(Paging paging) {
+  public void setPaging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
   }
 

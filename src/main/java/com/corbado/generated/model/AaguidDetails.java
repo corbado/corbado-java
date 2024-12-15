@@ -14,17 +14,13 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
-import com.corbado.generated.model.Identifier;
-import com.corbado.generated.model.Paging;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,66 +46,82 @@ import java.util.Set;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * IdentifierList
+ * AaguidDetails
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
-public class IdentifierList {
-  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
-  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+public class AaguidDetails {
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nonnull
-  private List<Identifier> identifiers = new ArrayList<>();
+  private String name;
 
-  public static final String SERIALIZED_NAME_PAGING = "paging";
-  @SerializedName(SERIALIZED_NAME_PAGING)
+  public static final String SERIALIZED_NAME_ICON_LIGHT = "iconLight";
+  @SerializedName(SERIALIZED_NAME_ICON_LIGHT)
   @javax.annotation.Nonnull
-  private Paging paging;
+  private String iconLight;
 
-  public IdentifierList() {
-  }
-
-  public IdentifierList identifiers(@javax.annotation.Nonnull List<Identifier> identifiers) {
-    this.identifiers = identifiers;
-    return this;
-  }
-
-  public IdentifierList addIdentifiersItem(Identifier identifiersItem) {
-    if (this.identifiers == null) {
-      this.identifiers = new ArrayList<>();
-    }
-    this.identifiers.add(identifiersItem);
-    return this;
-  }
-
-  /**
-   * Get identifiers
-   * @return identifiers
-   */
+  public static final String SERIALIZED_NAME_ICON_DARK = "iconDark";
+  @SerializedName(SERIALIZED_NAME_ICON_DARK)
   @javax.annotation.Nonnull
-  public List<Identifier> getIdentifiers() {
-    return identifiers;
+  private String iconDark;
+
+  public AaguidDetails() {
   }
 
-  public void setIdentifiers(@javax.annotation.Nonnull List<Identifier> identifiers) {
-    this.identifiers = identifiers;
-  }
-
-
-  public IdentifierList paging(@javax.annotation.Nonnull Paging paging) {
-    this.paging = paging;
+  public AaguidDetails name(@javax.annotation.Nonnull String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Get paging
-   * @return paging
+   * Get name
+   * @return name
    */
   @javax.annotation.Nonnull
-  public Paging getPaging() {
-    return paging;
+  public String getName() {
+    return name;
   }
 
-  public void setPaging(@javax.annotation.Nonnull Paging paging) {
-    this.paging = paging;
+  public void setName(@javax.annotation.Nonnull String name) {
+    this.name = name;
+  }
+
+
+  public AaguidDetails iconLight(@javax.annotation.Nonnull String iconLight) {
+    this.iconLight = iconLight;
+    return this;
+  }
+
+  /**
+   * Get iconLight
+   * @return iconLight
+   */
+  @javax.annotation.Nonnull
+  public String getIconLight() {
+    return iconLight;
+  }
+
+  public void setIconLight(@javax.annotation.Nonnull String iconLight) {
+    this.iconLight = iconLight;
+  }
+
+
+  public AaguidDetails iconDark(@javax.annotation.Nonnull String iconDark) {
+    this.iconDark = iconDark;
+    return this;
+  }
+
+  /**
+   * Get iconDark
+   * @return iconDark
+   */
+  @javax.annotation.Nonnull
+  public String getIconDark() {
+    return iconDark;
+  }
+
+  public void setIconDark(@javax.annotation.Nonnull String iconDark) {
+    this.iconDark = iconDark;
   }
 
 
@@ -122,22 +134,24 @@ public class IdentifierList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IdentifierList identifierList = (IdentifierList) o;
-    return Objects.equals(this.identifiers, identifierList.identifiers) &&
-        Objects.equals(this.paging, identifierList.paging);
+    AaguidDetails aaguidDetails = (AaguidDetails) o;
+    return Objects.equals(this.name, aaguidDetails.name) &&
+        Objects.equals(this.iconLight, aaguidDetails.iconLight) &&
+        Objects.equals(this.iconDark, aaguidDetails.iconDark);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, paging);
+    return Objects.hash(name, iconLight, iconDark);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IdentifierList {\n");
-    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
-    sb.append("    paging: ").append(toIndentedString(paging)).append("\n");
+    sb.append("class AaguidDetails {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    iconLight: ").append(toIndentedString(iconLight)).append("\n");
+    sb.append("    iconDark: ").append(toIndentedString(iconDark)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -160,77 +174,76 @@ public class IdentifierList {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("identifiers");
-    openapiFields.add("paging");
+    openapiFields.add("name");
+    openapiFields.add("iconLight");
+    openapiFields.add("iconDark");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("identifiers");
-    openapiRequiredFields.add("paging");
+    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("iconLight");
+    openapiRequiredFields.add("iconDark");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to IdentifierList
+   * @throws IOException if the JSON Element is invalid with respect to AaguidDetails
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!IdentifierList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IdentifierList is not found in the empty JSON string", IdentifierList.openapiRequiredFields.toString()));
+        if (!AaguidDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in AaguidDetails is not found in the empty JSON string", AaguidDetails.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!IdentifierList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `IdentifierList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!AaguidDetails.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AaguidDetails` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : IdentifierList.openapiRequiredFields) {
+      for (String requiredField : AaguidDetails.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("identifiers").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identifiers` to be an array in the JSON string but got `%s`", jsonObj.get("identifiers").toString()));
+      if (!jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-
-      JsonArray jsonArrayidentifiers = jsonObj.getAsJsonArray("identifiers");
-      // validate the required field `identifiers` (array)
-      for (int i = 0; i < jsonArrayidentifiers.size(); i++) {
-        Identifier.validateJsonElement(jsonArrayidentifiers.get(i));
-      };
-      // validate the required field `paging`
-      Paging.validateJsonElement(jsonObj.get("paging"));
+      if (!jsonObj.get("iconLight").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `iconLight` to be a primitive type in the JSON string but got `%s`", jsonObj.get("iconLight").toString()));
+      }
+      if (!jsonObj.get("iconDark").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `iconDark` to be a primitive type in the JSON string but got `%s`", jsonObj.get("iconDark").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IdentifierList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IdentifierList' and its subtypes
+       if (!AaguidDetails.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'AaguidDetails' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IdentifierList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IdentifierList.class));
+       final TypeAdapter<AaguidDetails> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(AaguidDetails.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<IdentifierList>() {
+       return (TypeAdapter<T>) new TypeAdapter<AaguidDetails>() {
            @Override
-           public void write(JsonWriter out, IdentifierList value) throws IOException {
+           public void write(JsonWriter out, AaguidDetails value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public IdentifierList read(JsonReader in) throws IOException {
+           public AaguidDetails read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -241,18 +254,18 @@ public class IdentifierList {
   }
 
   /**
-   * Create an instance of IdentifierList given an JSON string
+   * Create an instance of AaguidDetails given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of IdentifierList
-   * @throws IOException if the JSON string is invalid with respect to IdentifierList
+   * @return An instance of AaguidDetails
+   * @throws IOException if the JSON string is invalid with respect to AaguidDetails
    */
-  public static IdentifierList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IdentifierList.class);
+  public static AaguidDetails fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, AaguidDetails.class);
   }
 
   /**
-   * Convert an instance of IdentifierList to an JSON string
+   * Convert an instance of AaguidDetails to an JSON string
    *
    * @return JSON string
    */

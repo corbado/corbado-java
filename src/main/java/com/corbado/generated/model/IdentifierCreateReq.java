@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,24 +50,27 @@ import com.corbado.generated.invoker.JSON;
 /**
  * IdentifierCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class IdentifierCreateReq {
   public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
+  @javax.annotation.Nonnull
   private IdentifierType identifierType;
 
   public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
+  @javax.annotation.Nonnull
   private String identifierValue;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private IdentifierStatus status;
 
   public IdentifierCreateReq() {
   }
 
-  public IdentifierCreateReq identifierType(IdentifierType identifierType) {
+  public IdentifierCreateReq identifierType(@javax.annotation.Nonnull IdentifierType identifierType) {
     this.identifierType = identifierType;
     return this;
   }
@@ -82,12 +84,12 @@ public class IdentifierCreateReq {
     return identifierType;
   }
 
-  public void setIdentifierType(IdentifierType identifierType) {
+  public void setIdentifierType(@javax.annotation.Nonnull IdentifierType identifierType) {
     this.identifierType = identifierType;
   }
 
 
-  public IdentifierCreateReq identifierValue(String identifierValue) {
+  public IdentifierCreateReq identifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
     return this;
   }
@@ -101,12 +103,12 @@ public class IdentifierCreateReq {
     return identifierValue;
   }
 
-  public void setIdentifierValue(String identifierValue) {
+  public void setIdentifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
   }
 
 
-  public IdentifierCreateReq status(IdentifierStatus status) {
+  public IdentifierCreateReq status(@javax.annotation.Nonnull IdentifierStatus status) {
     this.status = status;
     return this;
   }
@@ -120,7 +122,7 @@ public class IdentifierCreateReq {
     return status;
   }
 
-  public void setStatus(IdentifierStatus status) {
+  public void setStatus(@javax.annotation.Nonnull IdentifierStatus status) {
     this.status = status;
   }
 

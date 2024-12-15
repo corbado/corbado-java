@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,24 +48,27 @@ import com.corbado.generated.invoker.JSON;
 /**
  * JavaScriptHighEntropy
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class JavaScriptHighEntropy {
   public static final String SERIALIZED_NAME_PLATFORM = "platform";
   @SerializedName(SERIALIZED_NAME_PLATFORM)
+  @javax.annotation.Nonnull
   private String platform;
 
   public static final String SERIALIZED_NAME_PLATFORM_VERSION = "platformVersion";
   @SerializedName(SERIALIZED_NAME_PLATFORM_VERSION)
+  @javax.annotation.Nonnull
   private String platformVersion;
 
   public static final String SERIALIZED_NAME_MOBILE = "mobile";
   @SerializedName(SERIALIZED_NAME_MOBILE)
+  @javax.annotation.Nonnull
   private Boolean mobile;
 
   public JavaScriptHighEntropy() {
   }
 
-  public JavaScriptHighEntropy platform(String platform) {
+  public JavaScriptHighEntropy platform(@javax.annotation.Nonnull String platform) {
     this.platform = platform;
     return this;
   }
@@ -80,12 +82,12 @@ public class JavaScriptHighEntropy {
     return platform;
   }
 
-  public void setPlatform(String platform) {
+  public void setPlatform(@javax.annotation.Nonnull String platform) {
     this.platform = platform;
   }
 
 
-  public JavaScriptHighEntropy platformVersion(String platformVersion) {
+  public JavaScriptHighEntropy platformVersion(@javax.annotation.Nonnull String platformVersion) {
     this.platformVersion = platformVersion;
     return this;
   }
@@ -99,12 +101,12 @@ public class JavaScriptHighEntropy {
     return platformVersion;
   }
 
-  public void setPlatformVersion(String platformVersion) {
+  public void setPlatformVersion(@javax.annotation.Nonnull String platformVersion) {
     this.platformVersion = platformVersion;
   }
 
 
-  public JavaScriptHighEntropy mobile(Boolean mobile) {
+  public JavaScriptHighEntropy mobile(@javax.annotation.Nonnull Boolean mobile) {
     this.mobile = mobile;
     return this;
   }
@@ -118,7 +120,7 @@ public class JavaScriptHighEntropy {
     return mobile;
   }
 
-  public void setMobile(Boolean mobile) {
+  public void setMobile(@javax.annotation.Nonnull Boolean mobile) {
     this.mobile = mobile;
   }
 

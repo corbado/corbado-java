@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,32 +49,37 @@ import com.corbado.generated.invoker.JSON;
 /**
  * LongSession
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class LongSession {
   public static final String SERIALIZED_NAME_LONG_SESSION_I_D = "longSessionID";
   @SerializedName(SERIALIZED_NAME_LONG_SESSION_I_D)
+  @javax.annotation.Nonnull
   private String longSessionID;
 
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
+  @javax.annotation.Nonnull
   private String identifierValue;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private LongSessionStatus status;
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
+  @javax.annotation.Nonnull
   private String expires;
 
   public LongSession() {
   }
 
-  public LongSession longSessionID(String longSessionID) {
+  public LongSession longSessionID(@javax.annotation.Nonnull String longSessionID) {
     this.longSessionID = longSessionID;
     return this;
   }
@@ -89,12 +93,12 @@ public class LongSession {
     return longSessionID;
   }
 
-  public void setLongSessionID(String longSessionID) {
+  public void setLongSessionID(@javax.annotation.Nonnull String longSessionID) {
     this.longSessionID = longSessionID;
   }
 
 
-  public LongSession userID(String userID) {
+  public LongSession userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -108,12 +112,12 @@ public class LongSession {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 
 
-  public LongSession identifierValue(String identifierValue) {
+  public LongSession identifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
     return this;
   }
@@ -127,12 +131,12 @@ public class LongSession {
     return identifierValue;
   }
 
-  public void setIdentifierValue(String identifierValue) {
+  public void setIdentifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
   }
 
 
-  public LongSession status(LongSessionStatus status) {
+  public LongSession status(@javax.annotation.Nonnull LongSessionStatus status) {
     this.status = status;
     return this;
   }
@@ -146,12 +150,12 @@ public class LongSession {
     return status;
   }
 
-  public void setStatus(LongSessionStatus status) {
+  public void setStatus(@javax.annotation.Nonnull LongSessionStatus status) {
     this.status = status;
   }
 
 
-  public LongSession expires(String expires) {
+  public LongSession expires(@javax.annotation.Nonnull String expires) {
     this.expires = expires;
     return this;
   }
@@ -165,7 +169,7 @@ public class LongSession {
     return expires;
   }
 
-  public void setExpires(String expires) {
+  public void setExpires(@javax.annotation.Nonnull String expires) {
     this.expires = expires;
   }
 

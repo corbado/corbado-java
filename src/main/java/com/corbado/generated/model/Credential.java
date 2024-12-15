@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import com.corbado.generated.model.AaguidDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -39,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,18 +51,21 @@ import com.corbado.generated.invoker.JSON;
 /**
  * Credential
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class Credential {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_CREDENTIAL_I_D = "credentialID";
   @SerializedName(SERIALIZED_NAME_CREDENTIAL_I_D)
+  @javax.annotation.Nonnull
   private String credentialID;
 
   public static final String SERIALIZED_NAME_ATTESTATION_TYPE = "attestationType";
   @SerializedName(SERIALIZED_NAME_ATTESTATION_TYPE)
+  @javax.annotation.Nonnull
   private String attestationType;
 
   /**
@@ -127,34 +130,42 @@ public class Credential {
 
   public static final String SERIALIZED_NAME_TRANSPORT = "transport";
   @SerializedName(SERIALIZED_NAME_TRANSPORT)
+  @javax.annotation.Nonnull
   private List<TransportEnum> transport = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_BACKUP_ELIGIBLE = "backupEligible";
   @SerializedName(SERIALIZED_NAME_BACKUP_ELIGIBLE)
+  @javax.annotation.Nonnull
   private Boolean backupEligible;
 
   public static final String SERIALIZED_NAME_BACKUP_STATE = "backupState";
   @SerializedName(SERIALIZED_NAME_BACKUP_STATE)
+  @javax.annotation.Nonnull
   private Boolean backupState;
 
   public static final String SERIALIZED_NAME_AUTHENTICATOR_A_A_G_U_I_D = "authenticatorAAGUID";
   @SerializedName(SERIALIZED_NAME_AUTHENTICATOR_A_A_G_U_I_D)
+  @javax.annotation.Nonnull
   private String authenticatorAAGUID;
 
   public static final String SERIALIZED_NAME_SOURCE_O_S = "sourceOS";
   @SerializedName(SERIALIZED_NAME_SOURCE_O_S)
+  @javax.annotation.Nonnull
   private String sourceOS;
 
   public static final String SERIALIZED_NAME_SOURCE_BROWSER = "sourceBrowser";
   @SerializedName(SERIALIZED_NAME_SOURCE_BROWSER)
+  @javax.annotation.Nonnull
   private String sourceBrowser;
 
   public static final String SERIALIZED_NAME_LAST_USED = "lastUsed";
   @SerializedName(SERIALIZED_NAME_LAST_USED)
+  @javax.annotation.Nonnull
   private String lastUsed;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
+  @javax.annotation.Nonnull
   private String created;
 
   /**
@@ -211,12 +222,18 @@ public class Credential {
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private StatusEnum status;
+
+  public static final String SERIALIZED_NAME_AAGUID_DETAILS = "aaguidDetails";
+  @SerializedName(SERIALIZED_NAME_AAGUID_DETAILS)
+  @javax.annotation.Nonnull
+  private AaguidDetails aaguidDetails;
 
   public Credential() {
   }
 
-  public Credential id(String id) {
+  public Credential id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -230,12 +247,12 @@ public class Credential {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public Credential credentialID(String credentialID) {
+  public Credential credentialID(@javax.annotation.Nonnull String credentialID) {
     this.credentialID = credentialID;
     return this;
   }
@@ -249,12 +266,12 @@ public class Credential {
     return credentialID;
   }
 
-  public void setCredentialID(String credentialID) {
+  public void setCredentialID(@javax.annotation.Nonnull String credentialID) {
     this.credentialID = credentialID;
   }
 
 
-  public Credential attestationType(String attestationType) {
+  public Credential attestationType(@javax.annotation.Nonnull String attestationType) {
     this.attestationType = attestationType;
     return this;
   }
@@ -268,12 +285,12 @@ public class Credential {
     return attestationType;
   }
 
-  public void setAttestationType(String attestationType) {
+  public void setAttestationType(@javax.annotation.Nonnull String attestationType) {
     this.attestationType = attestationType;
   }
 
 
-  public Credential transport(List<TransportEnum> transport) {
+  public Credential transport(@javax.annotation.Nonnull List<TransportEnum> transport) {
     this.transport = transport;
     return this;
   }
@@ -295,12 +312,12 @@ public class Credential {
     return transport;
   }
 
-  public void setTransport(List<TransportEnum> transport) {
+  public void setTransport(@javax.annotation.Nonnull List<TransportEnum> transport) {
     this.transport = transport;
   }
 
 
-  public Credential backupEligible(Boolean backupEligible) {
+  public Credential backupEligible(@javax.annotation.Nonnull Boolean backupEligible) {
     this.backupEligible = backupEligible;
     return this;
   }
@@ -314,12 +331,12 @@ public class Credential {
     return backupEligible;
   }
 
-  public void setBackupEligible(Boolean backupEligible) {
+  public void setBackupEligible(@javax.annotation.Nonnull Boolean backupEligible) {
     this.backupEligible = backupEligible;
   }
 
 
-  public Credential backupState(Boolean backupState) {
+  public Credential backupState(@javax.annotation.Nonnull Boolean backupState) {
     this.backupState = backupState;
     return this;
   }
@@ -333,12 +350,12 @@ public class Credential {
     return backupState;
   }
 
-  public void setBackupState(Boolean backupState) {
+  public void setBackupState(@javax.annotation.Nonnull Boolean backupState) {
     this.backupState = backupState;
   }
 
 
-  public Credential authenticatorAAGUID(String authenticatorAAGUID) {
+  public Credential authenticatorAAGUID(@javax.annotation.Nonnull String authenticatorAAGUID) {
     this.authenticatorAAGUID = authenticatorAAGUID;
     return this;
   }
@@ -352,12 +369,12 @@ public class Credential {
     return authenticatorAAGUID;
   }
 
-  public void setAuthenticatorAAGUID(String authenticatorAAGUID) {
+  public void setAuthenticatorAAGUID(@javax.annotation.Nonnull String authenticatorAAGUID) {
     this.authenticatorAAGUID = authenticatorAAGUID;
   }
 
 
-  public Credential sourceOS(String sourceOS) {
+  public Credential sourceOS(@javax.annotation.Nonnull String sourceOS) {
     this.sourceOS = sourceOS;
     return this;
   }
@@ -371,12 +388,12 @@ public class Credential {
     return sourceOS;
   }
 
-  public void setSourceOS(String sourceOS) {
+  public void setSourceOS(@javax.annotation.Nonnull String sourceOS) {
     this.sourceOS = sourceOS;
   }
 
 
-  public Credential sourceBrowser(String sourceBrowser) {
+  public Credential sourceBrowser(@javax.annotation.Nonnull String sourceBrowser) {
     this.sourceBrowser = sourceBrowser;
     return this;
   }
@@ -390,12 +407,12 @@ public class Credential {
     return sourceBrowser;
   }
 
-  public void setSourceBrowser(String sourceBrowser) {
+  public void setSourceBrowser(@javax.annotation.Nonnull String sourceBrowser) {
     this.sourceBrowser = sourceBrowser;
   }
 
 
-  public Credential lastUsed(String lastUsed) {
+  public Credential lastUsed(@javax.annotation.Nonnull String lastUsed) {
     this.lastUsed = lastUsed;
     return this;
   }
@@ -409,12 +426,12 @@ public class Credential {
     return lastUsed;
   }
 
-  public void setLastUsed(String lastUsed) {
+  public void setLastUsed(@javax.annotation.Nonnull String lastUsed) {
     this.lastUsed = lastUsed;
   }
 
 
-  public Credential created(String created) {
+  public Credential created(@javax.annotation.Nonnull String created) {
     this.created = created;
     return this;
   }
@@ -428,12 +445,12 @@ public class Credential {
     return created;
   }
 
-  public void setCreated(String created) {
+  public void setCreated(@javax.annotation.Nonnull String created) {
     this.created = created;
   }
 
 
-  public Credential status(StatusEnum status) {
+  public Credential status(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -447,8 +464,27 @@ public class Credential {
     return status;
   }
 
-  public void setStatus(StatusEnum status) {
+  public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
+  }
+
+
+  public Credential aaguidDetails(@javax.annotation.Nonnull AaguidDetails aaguidDetails) {
+    this.aaguidDetails = aaguidDetails;
+    return this;
+  }
+
+  /**
+   * Get aaguidDetails
+   * @return aaguidDetails
+   */
+  @javax.annotation.Nonnull
+  public AaguidDetails getAaguidDetails() {
+    return aaguidDetails;
+  }
+
+  public void setAaguidDetails(@javax.annotation.Nonnull AaguidDetails aaguidDetails) {
+    this.aaguidDetails = aaguidDetails;
   }
 
 
@@ -473,12 +509,13 @@ public class Credential {
         Objects.equals(this.sourceBrowser, credential.sourceBrowser) &&
         Objects.equals(this.lastUsed, credential.lastUsed) &&
         Objects.equals(this.created, credential.created) &&
-        Objects.equals(this.status, credential.status);
+        Objects.equals(this.status, credential.status) &&
+        Objects.equals(this.aaguidDetails, credential.aaguidDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, credentialID, attestationType, transport, backupEligible, backupState, authenticatorAAGUID, sourceOS, sourceBrowser, lastUsed, created, status);
+    return Objects.hash(id, credentialID, attestationType, transport, backupEligible, backupState, authenticatorAAGUID, sourceOS, sourceBrowser, lastUsed, created, status, aaguidDetails);
   }
 
   @Override
@@ -497,6 +534,7 @@ public class Credential {
     sb.append("    lastUsed: ").append(toIndentedString(lastUsed)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    aaguidDetails: ").append(toIndentedString(aaguidDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -531,6 +569,7 @@ public class Credential {
     openapiFields.add("lastUsed");
     openapiFields.add("created");
     openapiFields.add("status");
+    openapiFields.add("aaguidDetails");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -546,6 +585,7 @@ public class Credential {
     openapiRequiredFields.add("lastUsed");
     openapiRequiredFields.add("created");
     openapiRequiredFields.add("status");
+    openapiRequiredFields.add("aaguidDetails");
   }
 
   /**
@@ -611,6 +651,8 @@ public class Credential {
       }
       // validate the required field `status`
       StatusEnum.validateJsonElement(jsonObj.get("status"));
+      // validate the required field `aaguidDetails`
+      AaguidDetails.validateJsonElement(jsonObj.get("aaguidDetails"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

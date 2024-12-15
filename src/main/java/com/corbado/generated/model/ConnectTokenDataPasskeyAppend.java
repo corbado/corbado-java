@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,20 +48,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ConnectTokenDataPasskeyAppend
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
 public class ConnectTokenDataPasskeyAppend {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  @javax.annotation.Nonnull
   private String displayName;
 
   public static final String SERIALIZED_NAME_IDENTIFIER = "identifier";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER)
+  @javax.annotation.Nonnull
   private String identifier;
 
   public ConnectTokenDataPasskeyAppend() {
   }
 
-  public ConnectTokenDataPasskeyAppend displayName(String displayName) {
+  public ConnectTokenDataPasskeyAppend displayName(@javax.annotation.Nonnull String displayName) {
     this.displayName = displayName;
     return this;
   }
@@ -76,12 +77,12 @@ public class ConnectTokenDataPasskeyAppend {
     return displayName;
   }
 
-  public void setDisplayName(String displayName) {
+  public void setDisplayName(@javax.annotation.Nonnull String displayName) {
     this.displayName = displayName;
   }
 
 
-  public ConnectTokenDataPasskeyAppend identifier(String identifier) {
+  public ConnectTokenDataPasskeyAppend identifier(@javax.annotation.Nonnull String identifier) {
     this.identifier = identifier;
     return this;
   }
@@ -95,7 +96,7 @@ public class ConnectTokenDataPasskeyAppend {
     return identifier;
   }
 
-  public void setIdentifier(String identifier) {
+  public void setIdentifier(@javax.annotation.Nonnull String identifier) {
     this.identifier = identifier;
   }
 
