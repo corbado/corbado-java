@@ -24,7 +24,6 @@ on:
       - 'sdk-release/**'
       - 'feature/**'
       - development
-	  
 
 jobs:
   build:
