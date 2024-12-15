@@ -3,7 +3,7 @@
     <groupId>com.corbado</groupId>
     <artifactId>corbado-java</artifactId>
     <packaging>jar</packaging>
-    <version>2.0.0</version>
+    <version>2.0.0b</version>
     <name>Corbado Java</name>
     <description>Corbado Java SDK</description>
     <url>https://github.com/corbado/corbado-java</url>
