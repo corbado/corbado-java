@@ -63,7 +63,7 @@ public class SessionServiceTest {
   private static final String PRIVATE_KEY_PATH = "src/test/java/com/corbado/unit/data/rsakey.pem";
 
   private static final String INVALID_PRIVATE_KEY_PATH =
-      "src/test/java/com/corbado/unit/data/invalidRsakey.pem";
+      "src/test/java/com/corbado/unit/data/invalidRsaKey.pem";
 
   /** The Constant JWKS_PATH. */
   private static final String JWKS_PATH = "src/test/java/com/corbado/unit/data/jwks.json";
@@ -252,12 +252,16 @@ public class SessionServiceTest {
             + "pvaG4gRG9lIiwiYWRtaW4iOnRydWV9.dyt0CoTl4WoVjAHI9Q_CwSKhl6d_9rhM3NrXuJttkao";
     testData.add(
         new Object[] {
-          jwtWithWrongAlgorithm, TokenValidationException.class, ValidationErrorType.CODE_INVALID_TOKEN
+          jwtWithWrongAlgorithm,
+          TokenValidationException.class,
+          ValidationErrorType.CODE_INVALID_TOKEN
         });
 
     // Empty JWT
     testData.add(
-        new Object[] {"", TokenValidationException.class, ValidationErrorType.CODE_EMPTY_SESSION_TOKEN});
+        new Object[] {
+          "", TokenValidationException.class, ValidationErrorType.CODE_EMPTY_SESSION_TOKEN
+        });
     // Not before (nbf) in future
     testData.add(
         new Object[] {
