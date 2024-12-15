@@ -12,10 +12,10 @@ on:
       - development
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+*'
-  	paths-ignore:
-		- '**/*.md'   # Ignore markdown files
-		- '**/LICENSE' 
-		- 'scripts/**' 
+    paths-ignore:
+      - '**/*.md'   # Ignore markdown files
+      - '**/LICENSE' 
+      - 'scripts/**' 
   pull_request:
     branches:
       - main
@@ -28,7 +28,7 @@ on:
 
 jobs:
   build:
-	if: "!startsWith(github.event.head_commit.message, 'style:') && !startsWith(github.event.head_commit.message, 'docs:')"  #do not run workflow on style or documentation changes
+    if: "!startsWith(github.event.head_commit.message, 'style:') && !startsWith(github.event.head_commit.message, 'docs:')"  #do not run workflow on style or documentation changes
     name: Build
     runs-on: ubuntu-latest
 
@@ -69,7 +69,7 @@ jobs:
           path: target/
 
   test:
-	if: "!startsWith(github.event.head_commit.message, 'style:') && !startsWith(github.event.head_commit.message, 'docs:')"  #do not run workflow on style or documentation changes
+    if: "!startsWith(github.event.head_commit.message, 'style:') && !startsWith(github.event.head_commit.message, 'docs:')"  #do not run workflow on style or documentation changes
     name: Test
     runs-on: ubuntu-latest
     needs: build  # Ensure build job runs before this one
