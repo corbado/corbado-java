@@ -49,7 +49,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyMediationFinishReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyMediationFinishReq {
   public static final String SERIALIZED_NAME_ASSERTION_RESPONSE = "assertionResponse";
   @SerializedName(SERIALIZED_NAME_ASSERTION_RESPONSE)
@@ -65,6 +65,11 @@ public class PasskeyMediationFinishReq {
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
   @javax.annotation.Nonnull
   private String processID;
+
+  public static final String SERIALIZED_NAME_SIGN_PASSKEY_DATA = "signPasskeyData";
+  @SerializedName(SERIALIZED_NAME_SIGN_PASSKEY_DATA)
+  @javax.annotation.Nullable
+  private Boolean signPasskeyData;
 
   public PasskeyMediationFinishReq() {
   }
@@ -126,6 +131,25 @@ public class PasskeyMediationFinishReq {
   }
 
 
+  public PasskeyMediationFinishReq signPasskeyData(@javax.annotation.Nullable Boolean signPasskeyData) {
+    this.signPasskeyData = signPasskeyData;
+    return this;
+  }
+
+  /**
+   * Get signPasskeyData
+   * @return signPasskeyData
+   */
+  @javax.annotation.Nullable
+  public Boolean getSignPasskeyData() {
+    return signPasskeyData;
+  }
+
+  public void setSignPasskeyData(@javax.annotation.Nullable Boolean signPasskeyData) {
+    this.signPasskeyData = signPasskeyData;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -138,12 +162,13 @@ public class PasskeyMediationFinishReq {
     PasskeyMediationFinishReq passkeyMediationFinishReq = (PasskeyMediationFinishReq) o;
     return Objects.equals(this.assertionResponse, passkeyMediationFinishReq.assertionResponse) &&
         Objects.equals(this.clientInformation, passkeyMediationFinishReq.clientInformation) &&
-        Objects.equals(this.processID, passkeyMediationFinishReq.processID);
+        Objects.equals(this.processID, passkeyMediationFinishReq.processID) &&
+        Objects.equals(this.signPasskeyData, passkeyMediationFinishReq.signPasskeyData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assertionResponse, clientInformation, processID);
+    return Objects.hash(assertionResponse, clientInformation, processID, signPasskeyData);
   }
 
   @Override
@@ -153,6 +178,7 @@ public class PasskeyMediationFinishReq {
     sb.append("    assertionResponse: ").append(toIndentedString(assertionResponse)).append("\n");
     sb.append("    clientInformation: ").append(toIndentedString(clientInformation)).append("\n");
     sb.append("    processID: ").append(toIndentedString(processID)).append("\n");
+    sb.append("    signPasskeyData: ").append(toIndentedString(signPasskeyData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -178,6 +204,7 @@ public class PasskeyMediationFinishReq {
     openapiFields.add("assertionResponse");
     openapiFields.add("clientInformation");
     openapiFields.add("processID");
+    openapiFields.add("signPasskeyData");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

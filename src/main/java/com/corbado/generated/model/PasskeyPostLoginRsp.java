@@ -14,7 +14,6 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
-import com.corbado.generated.model.LongSessionStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -47,34 +46,34 @@ import java.util.Set;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * LongSessionUpdateReq
+ * PasskeyPostLoginRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
-public class LongSessionUpdateReq {
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
+public class PasskeyPostLoginRsp {
+  public static final String SERIALIZED_NAME_SESSION = "session";
+  @SerializedName(SERIALIZED_NAME_SESSION)
   @javax.annotation.Nonnull
-  private LongSessionStatus status;
+  private String session;
 
-  public LongSessionUpdateReq() {
+  public PasskeyPostLoginRsp() {
   }
 
-  public LongSessionUpdateReq status(@javax.annotation.Nonnull LongSessionStatus status) {
-    this.status = status;
+  public PasskeyPostLoginRsp session(@javax.annotation.Nonnull String session) {
+    this.session = session;
     return this;
   }
 
   /**
-   * Get status
-   * @return status
+   * Get session
+   * @return session
    */
   @javax.annotation.Nonnull
-  public LongSessionStatus getStatus() {
-    return status;
+  public String getSession() {
+    return session;
   }
 
-  public void setStatus(@javax.annotation.Nonnull LongSessionStatus status) {
-    this.status = status;
+  public void setSession(@javax.annotation.Nonnull String session) {
+    this.session = session;
   }
 
 
@@ -87,20 +86,20 @@ public class LongSessionUpdateReq {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LongSessionUpdateReq longSessionUpdateReq = (LongSessionUpdateReq) o;
-    return Objects.equals(this.status, longSessionUpdateReq.status);
+    PasskeyPostLoginRsp passkeyPostLoginRsp = (PasskeyPostLoginRsp) o;
+    return Objects.equals(this.session, passkeyPostLoginRsp.session);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(status);
+    return Objects.hash(session);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LongSessionUpdateReq {\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("class PasskeyPostLoginRsp {\n");
+    sb.append("    session: ").append(toIndentedString(session)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -123,65 +122,66 @@ public class LongSessionUpdateReq {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("status");
+    openapiFields.add("session");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("status");
+    openapiRequiredFields.add("session");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LongSessionUpdateReq
+   * @throws IOException if the JSON Element is invalid with respect to PasskeyPostLoginRsp
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!LongSessionUpdateReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LongSessionUpdateReq is not found in the empty JSON string", LongSessionUpdateReq.openapiRequiredFields.toString()));
+        if (!PasskeyPostLoginRsp.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyPostLoginRsp is not found in the empty JSON string", PasskeyPostLoginRsp.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LongSessionUpdateReq.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LongSessionUpdateReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!PasskeyPostLoginRsp.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyPostLoginRsp` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LongSessionUpdateReq.openapiRequiredFields) {
+      for (String requiredField : PasskeyPostLoginRsp.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `status`
-      LongSessionStatus.validateJsonElement(jsonObj.get("status"));
+      if (!jsonObj.get("session").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `session` to be a primitive type in the JSON string but got `%s`", jsonObj.get("session").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LongSessionUpdateReq.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LongSessionUpdateReq' and its subtypes
+       if (!PasskeyPostLoginRsp.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PasskeyPostLoginRsp' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LongSessionUpdateReq> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LongSessionUpdateReq.class));
+       final TypeAdapter<PasskeyPostLoginRsp> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PasskeyPostLoginRsp.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LongSessionUpdateReq>() {
+       return (TypeAdapter<T>) new TypeAdapter<PasskeyPostLoginRsp>() {
            @Override
-           public void write(JsonWriter out, LongSessionUpdateReq value) throws IOException {
+           public void write(JsonWriter out, PasskeyPostLoginRsp value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public LongSessionUpdateReq read(JsonReader in) throws IOException {
+           public PasskeyPostLoginRsp read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -192,18 +192,18 @@ public class LongSessionUpdateReq {
   }
 
   /**
-   * Create an instance of LongSessionUpdateReq given an JSON string
+   * Create an instance of PasskeyPostLoginRsp given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of LongSessionUpdateReq
-   * @throws IOException if the JSON string is invalid with respect to LongSessionUpdateReq
+   * @return An instance of PasskeyPostLoginRsp
+   * @throws IOException if the JSON string is invalid with respect to PasskeyPostLoginRsp
    */
-  public static LongSessionUpdateReq fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LongSessionUpdateReq.class);
+  public static PasskeyPostLoginRsp fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PasskeyPostLoginRsp.class);
   }
 
   /**
-   * Convert an instance of LongSessionUpdateReq to an JSON string
+   * Convert an instance of PasskeyPostLoginRsp to an JSON string
    *
    * @return JSON string
    */

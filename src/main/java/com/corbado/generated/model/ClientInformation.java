@@ -15,6 +15,7 @@ package com.corbado.generated.model;
 
 import java.util.Objects;
 import com.corbado.generated.model.JavaScriptHighEntropy;
+import com.corbado.generated.model.ParsedDeviceInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -49,7 +50,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ClientInformation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ClientInformation {
   public static final String SERIALIZED_NAME_REMOTE_ADDRESS = "remoteAddress";
   @SerializedName(SERIALIZED_NAME_REMOTE_ADDRESS)
@@ -95,6 +96,16 @@ public class ClientInformation {
   @SerializedName(SERIALIZED_NAME_CONDITIONAL_MEDIATION_AVAILABLE)
   @javax.annotation.Nonnull
   private Boolean conditionalMediationAvailable;
+
+  public static final String SERIALIZED_NAME_PRIVATE_MODE = "privateMode";
+  @SerializedName(SERIALIZED_NAME_PRIVATE_MODE)
+  @javax.annotation.Nullable
+  private Boolean privateMode;
+
+  public static final String SERIALIZED_NAME_PARSED_DEVICE_INFO = "parsedDeviceInfo";
+  @SerializedName(SERIALIZED_NAME_PARSED_DEVICE_INFO)
+  @javax.annotation.Nonnull
+  private ParsedDeviceInfo parsedDeviceInfo;
 
   public ClientInformation() {
   }
@@ -270,6 +281,44 @@ public class ClientInformation {
   }
 
 
+  public ClientInformation privateMode(@javax.annotation.Nullable Boolean privateMode) {
+    this.privateMode = privateMode;
+    return this;
+  }
+
+  /**
+   * Get privateMode
+   * @return privateMode
+   */
+  @javax.annotation.Nullable
+  public Boolean getPrivateMode() {
+    return privateMode;
+  }
+
+  public void setPrivateMode(@javax.annotation.Nullable Boolean privateMode) {
+    this.privateMode = privateMode;
+  }
+
+
+  public ClientInformation parsedDeviceInfo(@javax.annotation.Nonnull ParsedDeviceInfo parsedDeviceInfo) {
+    this.parsedDeviceInfo = parsedDeviceInfo;
+    return this;
+  }
+
+  /**
+   * Get parsedDeviceInfo
+   * @return parsedDeviceInfo
+   */
+  @javax.annotation.Nonnull
+  public ParsedDeviceInfo getParsedDeviceInfo() {
+    return parsedDeviceInfo;
+  }
+
+  public void setParsedDeviceInfo(@javax.annotation.Nonnull ParsedDeviceInfo parsedDeviceInfo) {
+    this.parsedDeviceInfo = parsedDeviceInfo;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -288,12 +337,14 @@ public class ClientInformation {
         Objects.equals(this.bluetoothAvailable, clientInformation.bluetoothAvailable) &&
         Objects.equals(this.passwordManagerAvailable, clientInformation.passwordManagerAvailable) &&
         Objects.equals(this.userVerifyingPlatformAuthenticatorAvailable, clientInformation.userVerifyingPlatformAuthenticatorAvailable) &&
-        Objects.equals(this.conditionalMediationAvailable, clientInformation.conditionalMediationAvailable);
+        Objects.equals(this.conditionalMediationAvailable, clientInformation.conditionalMediationAvailable) &&
+        Objects.equals(this.privateMode, clientInformation.privateMode) &&
+        Objects.equals(this.parsedDeviceInfo, clientInformation.parsedDeviceInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(remoteAddress, userAgent, clientEnvHandle, javascriptFingerprint, javaScriptHighEntropy, bluetoothAvailable, passwordManagerAvailable, userVerifyingPlatformAuthenticatorAvailable, conditionalMediationAvailable);
+    return Objects.hash(remoteAddress, userAgent, clientEnvHandle, javascriptFingerprint, javaScriptHighEntropy, bluetoothAvailable, passwordManagerAvailable, userVerifyingPlatformAuthenticatorAvailable, conditionalMediationAvailable, privateMode, parsedDeviceInfo);
   }
 
   @Override
@@ -309,6 +360,8 @@ public class ClientInformation {
     sb.append("    passwordManagerAvailable: ").append(toIndentedString(passwordManagerAvailable)).append("\n");
     sb.append("    userVerifyingPlatformAuthenticatorAvailable: ").append(toIndentedString(userVerifyingPlatformAuthenticatorAvailable)).append("\n");
     sb.append("    conditionalMediationAvailable: ").append(toIndentedString(conditionalMediationAvailable)).append("\n");
+    sb.append("    privateMode: ").append(toIndentedString(privateMode)).append("\n");
+    sb.append("    parsedDeviceInfo: ").append(toIndentedString(parsedDeviceInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -340,6 +393,8 @@ public class ClientInformation {
     openapiFields.add("passwordManagerAvailable");
     openapiFields.add("userVerifyingPlatformAuthenticatorAvailable");
     openapiFields.add("conditionalMediationAvailable");
+    openapiFields.add("privateMode");
+    openapiFields.add("parsedDeviceInfo");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -347,6 +402,7 @@ public class ClientInformation {
     openapiRequiredFields.add("userAgent");
     openapiRequiredFields.add("userVerifyingPlatformAuthenticatorAvailable");
     openapiRequiredFields.add("conditionalMediationAvailable");
+    openapiRequiredFields.add("parsedDeviceInfo");
   }
 
   /**
@@ -393,6 +449,8 @@ public class ClientInformation {
       if (jsonObj.get("javaScriptHighEntropy") != null && !jsonObj.get("javaScriptHighEntropy").isJsonNull()) {
         JavaScriptHighEntropy.validateJsonElement(jsonObj.get("javaScriptHighEntropy"));
       }
+      // validate the required field `parsedDeviceInfo`
+      ParsedDeviceInfo.validateJsonElement(jsonObj.get("parsedDeviceInfo"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

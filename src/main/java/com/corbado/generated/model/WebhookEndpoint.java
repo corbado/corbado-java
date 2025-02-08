@@ -51,7 +51,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * WebhookEndpoint
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class WebhookEndpoint {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -78,10 +78,20 @@ public class WebhookEndpoint {
   @javax.annotation.Nonnull
   private String created;
 
+  public static final String SERIALIZED_NAME_CREATED_MS = "createdMs";
+  @SerializedName(SERIALIZED_NAME_CREATED_MS)
+  @javax.annotation.Nonnull
+  private Long createdMs;
+
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
   @javax.annotation.Nonnull
   private String updated;
+
+  public static final String SERIALIZED_NAME_UPDATED_MS = "updatedMs";
+  @SerializedName(SERIALIZED_NAME_UPDATED_MS)
+  @javax.annotation.Nonnull
+  private Long updatedMs;
 
   public WebhookEndpoint() {
   }
@@ -189,6 +199,25 @@ public class WebhookEndpoint {
   }
 
 
+  public WebhookEndpoint createdMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
+    return this;
+  }
+
+  /**
+   * Get createdMs
+   * @return createdMs
+   */
+  @javax.annotation.Nonnull
+  public Long getCreatedMs() {
+    return createdMs;
+  }
+
+  public void setCreatedMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
+  }
+
+
   public WebhookEndpoint updated(@javax.annotation.Nonnull String updated) {
     this.updated = updated;
     return this;
@@ -208,6 +237,25 @@ public class WebhookEndpoint {
   }
 
 
+  public WebhookEndpoint updatedMs(@javax.annotation.Nonnull Long updatedMs) {
+    this.updatedMs = updatedMs;
+    return this;
+  }
+
+  /**
+   * Get updatedMs
+   * @return updatedMs
+   */
+  @javax.annotation.Nonnull
+  public Long getUpdatedMs() {
+    return updatedMs;
+  }
+
+  public void setUpdatedMs(@javax.annotation.Nonnull Long updatedMs) {
+    this.updatedMs = updatedMs;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -223,12 +271,14 @@ public class WebhookEndpoint {
         Objects.equals(this.customHeaders, webhookEndpoint.customHeaders) &&
         Objects.equals(this.subscribedEvents, webhookEndpoint.subscribedEvents) &&
         Objects.equals(this.created, webhookEndpoint.created) &&
-        Objects.equals(this.updated, webhookEndpoint.updated);
+        Objects.equals(this.createdMs, webhookEndpoint.createdMs) &&
+        Objects.equals(this.updated, webhookEndpoint.updated) &&
+        Objects.equals(this.updatedMs, webhookEndpoint.updatedMs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, url, customHeaders, subscribedEvents, created, updated);
+    return Objects.hash(id, url, customHeaders, subscribedEvents, created, createdMs, updated, updatedMs);
   }
 
   @Override
@@ -240,7 +290,9 @@ public class WebhookEndpoint {
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    subscribedEvents: ").append(toIndentedString(subscribedEvents)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    createdMs: ").append(toIndentedString(createdMs)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
+    sb.append("    updatedMs: ").append(toIndentedString(updatedMs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -268,7 +320,9 @@ public class WebhookEndpoint {
     openapiFields.add("customHeaders");
     openapiFields.add("subscribedEvents");
     openapiFields.add("created");
+    openapiFields.add("createdMs");
     openapiFields.add("updated");
+    openapiFields.add("updatedMs");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -277,7 +331,9 @@ public class WebhookEndpoint {
     openapiRequiredFields.add("customHeaders");
     openapiRequiredFields.add("subscribedEvents");
     openapiRequiredFields.add("created");
+    openapiRequiredFields.add("createdMs");
     openapiRequiredFields.add("updated");
+    openapiRequiredFields.add("updatedMs");
   }
 
   /**

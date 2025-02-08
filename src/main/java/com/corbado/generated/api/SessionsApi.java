@@ -28,11 +28,8 @@ import java.io.IOException;
 
 
 import com.corbado.generated.model.ErrorRsp;
-import com.corbado.generated.model.LongSession;
-import com.corbado.generated.model.LongSessionCreateReq;
-import com.corbado.generated.model.LongSessionUpdateReq;
-import com.corbado.generated.model.ShortSession;
-import com.corbado.generated.model.ShortSessionCreateReq;
+import com.corbado.generated.model.GenericRsp;
+import com.corbado.generated.model.SessionList;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -78,9 +75,11 @@ public class SessionsApi {
     }
 
     /**
-     * Build call for longSessionCreate
-     * @param userID ID of user (required)
-     * @param longSessionCreateReq  (required)
+     * Build call for sessionList
+     * @param sort Field sorting (optional)
+     * @param filter Field filtering (optional)
+     * @param page Page number (optional, default to 1)
+     * @param pageSize Number of items per page (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -88,151 +87,11 @@ public class SessionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching sessions </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call longSessionCreateCall(String userID, LongSessionCreateReq longSessionCreateReq, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = longSessionCreateReq;
-
-        // create path and map variables
-        String localVarPath = "/users/{userID}/longSessions"
-            .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "basicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call longSessionCreateValidateBeforeCall(String userID, LongSessionCreateReq longSessionCreateReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'userID' is set
-        if (userID == null) {
-            throw new ApiException("Missing the required parameter 'userID' when calling longSessionCreate(Async)");
-        }
-
-        // verify the required parameter 'longSessionCreateReq' is set
-        if (longSessionCreateReq == null) {
-            throw new ApiException("Missing the required parameter 'longSessionCreateReq' when calling longSessionCreate(Async)");
-        }
-
-        return longSessionCreateCall(userID, longSessionCreateReq, _callback);
-
-    }
-
-    /**
-     * 
-     * Create a new long session
-     * @param userID ID of user (required)
-     * @param longSessionCreateReq  (required)
-     * @return LongSession
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public LongSession longSessionCreate(String userID, LongSessionCreateReq longSessionCreateReq) throws ApiException {
-        ApiResponse<LongSession> localVarResp = longSessionCreateWithHttpInfo(userID, longSessionCreateReq);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Create a new long session
-     * @param userID ID of user (required)
-     * @param longSessionCreateReq  (required)
-     * @return ApiResponse&lt;LongSession&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LongSession> longSessionCreateWithHttpInfo(String userID, LongSessionCreateReq longSessionCreateReq) throws ApiException {
-        okhttp3.Call localVarCall = longSessionCreateValidateBeforeCall(userID, longSessionCreateReq, null);
-        Type localVarReturnType = new TypeToken<LongSession>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Create a new long session
-     * @param userID ID of user (required)
-     * @param longSessionCreateReq  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call longSessionCreateAsync(String userID, LongSessionCreateReq longSessionCreateReq, final ApiCallback<LongSession> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = longSessionCreateValidateBeforeCall(userID, longSessionCreateReq, _callback);
-        Type localVarReturnType = new TypeToken<LongSession>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for longSessionGet
-     * @param longSessionID ID of long session (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been returned </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call longSessionGetCall(String longSessionID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call sessionListCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -249,14 +108,29 @@ public class SessionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/longSessions/{longSessionID}"
-            .replace("{" + "longSessionID" + "}", localVarApiClient.escapeString(longSessionID.toString()));
+        String localVarPath = "/sessions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (filter != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filter[]", filter));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -278,59 +152,63 @@ public class SessionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call longSessionGetValidateBeforeCall(String longSessionID, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'longSessionID' is set
-        if (longSessionID == null) {
-            throw new ApiException("Missing the required parameter 'longSessionID' when calling longSessionGet(Async)");
-        }
-
-        return longSessionGetCall(longSessionID, _callback);
+    private okhttp3.Call sessionListValidateBeforeCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+        return sessionListCall(sort, filter, page, pageSize, _callback);
 
     }
 
     /**
      * 
-     * Retrieves a long session by ID
-     * @param longSessionID ID of long session (required)
-     * @return LongSession
+     * Returns a list of matching sessions
+     * @param sort Field sorting (optional)
+     * @param filter Field filtering (optional)
+     * @param page Page number (optional, default to 1)
+     * @param pageSize Number of items per page (optional, default to 10)
+     * @return SessionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching sessions </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public LongSession longSessionGet(String longSessionID) throws ApiException {
-        ApiResponse<LongSession> localVarResp = longSessionGetWithHttpInfo(longSessionID);
+    public SessionList sessionList(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+        ApiResponse<SessionList> localVarResp = sessionListWithHttpInfo(sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Retrieves a long session by ID
-     * @param longSessionID ID of long session (required)
-     * @return ApiResponse&lt;LongSession&gt;
+     * Returns a list of matching sessions
+     * @param sort Field sorting (optional)
+     * @param filter Field filtering (optional)
+     * @param page Page number (optional, default to 1)
+     * @param pageSize Number of items per page (optional, default to 10)
+     * @return ApiResponse&lt;SessionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching sessions </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LongSession> longSessionGetWithHttpInfo(String longSessionID) throws ApiException {
-        okhttp3.Call localVarCall = longSessionGetValidateBeforeCall(longSessionID, null);
-        Type localVarReturnType = new TypeToken<LongSession>(){}.getType();
+    public ApiResponse<SessionList> sessionListWithHttpInfo(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = sessionListValidateBeforeCall(sort, filter, page, pageSize, null);
+        Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Retrieves a long session by ID
-     * @param longSessionID ID of long session (required)
+     * Returns a list of matching sessions
+     * @param sort Field sorting (optional)
+     * @param filter Field filtering (optional)
+     * @param page Page number (optional, default to 1)
+     * @param pageSize Number of items per page (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -338,22 +216,20 @@ public class SessionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching sessions </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call longSessionGetAsync(String longSessionID, final ApiCallback<LongSession> _callback) throws ApiException {
+    public okhttp3.Call sessionListAsync(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<SessionList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = longSessionGetValidateBeforeCall(longSessionID, _callback);
-        Type localVarReturnType = new TypeToken<LongSession>(){}.getType();
+        okhttp3.Call localVarCall = sessionListValidateBeforeCall(sort, filter, page, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for longSessionUpdate
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @param longSessionUpdateReq  (required)
+     * Build call for sessionRevoke
+     * @param sessionID ID of session (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -361,312 +237,11 @@ public class SessionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call longSessionUpdateCall(String userID, String longSessionID, LongSessionUpdateReq longSessionUpdateReq, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = longSessionUpdateReq;
-
-        // create path and map variables
-        String localVarPath = "/users/{userID}/longSessions/{longSessionID}"
-            .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()))
-            .replace("{" + "longSessionID" + "}", localVarApiClient.escapeString(longSessionID.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "basicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call longSessionUpdateValidateBeforeCall(String userID, String longSessionID, LongSessionUpdateReq longSessionUpdateReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'userID' is set
-        if (userID == null) {
-            throw new ApiException("Missing the required parameter 'userID' when calling longSessionUpdate(Async)");
-        }
-
-        // verify the required parameter 'longSessionID' is set
-        if (longSessionID == null) {
-            throw new ApiException("Missing the required parameter 'longSessionID' when calling longSessionUpdate(Async)");
-        }
-
-        // verify the required parameter 'longSessionUpdateReq' is set
-        if (longSessionUpdateReq == null) {
-            throw new ApiException("Missing the required parameter 'longSessionUpdateReq' when calling longSessionUpdate(Async)");
-        }
-
-        return longSessionUpdateCall(userID, longSessionID, longSessionUpdateReq, _callback);
-
-    }
-
-    /**
-     * 
-     * Updates long session status
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @param longSessionUpdateReq  (required)
-     * @return LongSession
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been updated </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public LongSession longSessionUpdate(String userID, String longSessionID, LongSessionUpdateReq longSessionUpdateReq) throws ApiException {
-        ApiResponse<LongSession> localVarResp = longSessionUpdateWithHttpInfo(userID, longSessionID, longSessionUpdateReq);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Updates long session status
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @param longSessionUpdateReq  (required)
-     * @return ApiResponse&lt;LongSession&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been updated </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LongSession> longSessionUpdateWithHttpInfo(String userID, String longSessionID, LongSessionUpdateReq longSessionUpdateReq) throws ApiException {
-        okhttp3.Call localVarCall = longSessionUpdateValidateBeforeCall(userID, longSessionID, longSessionUpdateReq, null);
-        Type localVarReturnType = new TypeToken<LongSession>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Updates long session status
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @param longSessionUpdateReq  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been updated </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call longSessionUpdateAsync(String userID, String longSessionID, LongSessionUpdateReq longSessionUpdateReq, final ApiCallback<LongSession> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = longSessionUpdateValidateBeforeCall(userID, longSessionID, longSessionUpdateReq, _callback);
-        Type localVarReturnType = new TypeToken<LongSession>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for shortSessionCreate
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @param shortSessionCreateReq  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Short session has been created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call shortSessionCreateCall(String userID, String longSessionID, ShortSessionCreateReq shortSessionCreateReq, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
-
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = shortSessionCreateReq;
-
-        // create path and map variables
-        String localVarPath = "/users/{userID}/longSessions/{longSessionID}/shortSessions"
-            .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()))
-            .replace("{" + "longSessionID" + "}", localVarApiClient.escapeString(longSessionID.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarContentType != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] { "basicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call shortSessionCreateValidateBeforeCall(String userID, String longSessionID, ShortSessionCreateReq shortSessionCreateReq, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'userID' is set
-        if (userID == null) {
-            throw new ApiException("Missing the required parameter 'userID' when calling shortSessionCreate(Async)");
-        }
-
-        // verify the required parameter 'longSessionID' is set
-        if (longSessionID == null) {
-            throw new ApiException("Missing the required parameter 'longSessionID' when calling shortSessionCreate(Async)");
-        }
-
-        // verify the required parameter 'shortSessionCreateReq' is set
-        if (shortSessionCreateReq == null) {
-            throw new ApiException("Missing the required parameter 'shortSessionCreateReq' when calling shortSessionCreate(Async)");
-        }
-
-        return shortSessionCreateCall(userID, longSessionID, shortSessionCreateReq, _callback);
-
-    }
-
-    /**
-     * 
-     * Create a new short session
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @param shortSessionCreateReq  (required)
-     * @return ShortSession
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Short session has been created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ShortSession shortSessionCreate(String userID, String longSessionID, ShortSessionCreateReq shortSessionCreateReq) throws ApiException {
-        ApiResponse<ShortSession> localVarResp = shortSessionCreateWithHttpInfo(userID, longSessionID, shortSessionCreateReq);
-        return localVarResp.getData();
-    }
-
-    /**
-     * 
-     * Create a new short session
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @param shortSessionCreateReq  (required)
-     * @return ApiResponse&lt;ShortSession&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Short session has been created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ShortSession> shortSessionCreateWithHttpInfo(String userID, String longSessionID, ShortSessionCreateReq shortSessionCreateReq) throws ApiException {
-        okhttp3.Call localVarCall = shortSessionCreateValidateBeforeCall(userID, longSessionID, shortSessionCreateReq, null);
-        Type localVarReturnType = new TypeToken<ShortSession>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Create a new short session
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @param shortSessionCreateReq  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Short session has been created </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call shortSessionCreateAsync(String userID, String longSessionID, ShortSessionCreateReq shortSessionCreateReq, final ApiCallback<ShortSession> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = shortSessionCreateValidateBeforeCall(userID, longSessionID, shortSessionCreateReq, _callback);
-        Type localVarReturnType = new TypeToken<ShortSession>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for userLongSessionGet
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table border="1">
-       <caption>Response Details</caption>
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been returned </td><td>  -  </td></tr>
-        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call userLongSessionGetCall(String userID, String longSessionID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call sessionRevokeCall(String sessionID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -683,9 +258,8 @@ public class SessionsApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/users/{userID}/longSessions/{longSessionID}"
-            .replace("{" + "userID" + "}", localVarApiClient.escapeString(userID.toString()))
-            .replace("{" + "longSessionID" + "}", localVarApiClient.escapeString(longSessionID.toString()));
+        String localVarPath = "/sessions/{sessionID}/revoke"
+            .replace("{" + "sessionID" + "}", localVarApiClient.escapeString(sessionID.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -709,71 +283,63 @@ public class SessionsApi {
         }
 
         String[] localVarAuthNames = new String[] { "basicAuth" };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call userLongSessionGetValidateBeforeCall(String userID, String longSessionID, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'userID' is set
-        if (userID == null) {
-            throw new ApiException("Missing the required parameter 'userID' when calling userLongSessionGet(Async)");
+    private okhttp3.Call sessionRevokeValidateBeforeCall(String sessionID, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'sessionID' is set
+        if (sessionID == null) {
+            throw new ApiException("Missing the required parameter 'sessionID' when calling sessionRevoke(Async)");
         }
 
-        // verify the required parameter 'longSessionID' is set
-        if (longSessionID == null) {
-            throw new ApiException("Missing the required parameter 'longSessionID' when calling userLongSessionGet(Async)");
-        }
-
-        return userLongSessionGetCall(userID, longSessionID, _callback);
+        return sessionRevokeCall(sessionID, _callback);
 
     }
 
     /**
      * 
-     * Retrieves a long session by ID and user ID
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @return LongSession
+     * Revokes an existing session
+     * @param sessionID ID of session (required)
+     * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public LongSession userLongSessionGet(String userID, String longSessionID) throws ApiException {
-        ApiResponse<LongSession> localVarResp = userLongSessionGetWithHttpInfo(userID, longSessionID);
+    public GenericRsp sessionRevoke(String sessionID) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = sessionRevokeWithHttpInfo(sessionID);
         return localVarResp.getData();
     }
 
     /**
      * 
-     * Retrieves a long session by ID and user ID
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
-     * @return ApiResponse&lt;LongSession&gt;
+     * Revokes an existing session
+     * @param sessionID ID of session (required)
+     * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LongSession> userLongSessionGetWithHttpInfo(String userID, String longSessionID) throws ApiException {
-        okhttp3.Call localVarCall = userLongSessionGetValidateBeforeCall(userID, longSessionID, null);
-        Type localVarReturnType = new TypeToken<LongSession>(){}.getType();
+    public ApiResponse<GenericRsp> sessionRevokeWithHttpInfo(String sessionID) throws ApiException {
+        okhttp3.Call localVarCall = sessionRevokeValidateBeforeCall(sessionID, null);
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Retrieves a long session by ID and user ID
-     * @param userID ID of user (required)
-     * @param longSessionID ID of long session (required)
+     * Revokes an existing session
+     * @param sessionID ID of session (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -781,14 +347,14 @@ public class SessionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Long session has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userLongSessionGetAsync(String userID, String longSessionID, final ApiCallback<LongSession> _callback) throws ApiException {
+    public okhttp3.Call sessionRevokeAsync(String sessionID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = userLongSessionGetValidateBeforeCall(userID, longSessionID, _callback);
-        Type localVarReturnType = new TypeToken<LongSession>(){}.getType();
+        okhttp3.Call localVarCall = sessionRevokeValidateBeforeCall(sessionID, _callback);
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -51,7 +51,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * Credential
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class Credential {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -163,10 +163,20 @@ public class Credential {
   @javax.annotation.Nonnull
   private String lastUsed;
 
+  public static final String SERIALIZED_NAME_LAST_USED_MS = "lastUsedMs";
+  @SerializedName(SERIALIZED_NAME_LAST_USED_MS)
+  @javax.annotation.Nonnull
+  private Long lastUsedMs;
+
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nonnull
   private String created;
+
+  public static final String SERIALIZED_NAME_CREATED_MS = "createdMs";
+  @SerializedName(SERIALIZED_NAME_CREATED_MS)
+  @javax.annotation.Nonnull
+  private Long createdMs;
 
   /**
    * Status
@@ -431,6 +441,25 @@ public class Credential {
   }
 
 
+  public Credential lastUsedMs(@javax.annotation.Nonnull Long lastUsedMs) {
+    this.lastUsedMs = lastUsedMs;
+    return this;
+  }
+
+  /**
+   * Get lastUsedMs
+   * @return lastUsedMs
+   */
+  @javax.annotation.Nonnull
+  public Long getLastUsedMs() {
+    return lastUsedMs;
+  }
+
+  public void setLastUsedMs(@javax.annotation.Nonnull Long lastUsedMs) {
+    this.lastUsedMs = lastUsedMs;
+  }
+
+
   public Credential created(@javax.annotation.Nonnull String created) {
     this.created = created;
     return this;
@@ -447,6 +476,25 @@ public class Credential {
 
   public void setCreated(@javax.annotation.Nonnull String created) {
     this.created = created;
+  }
+
+
+  public Credential createdMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
+    return this;
+  }
+
+  /**
+   * Get createdMs
+   * @return createdMs
+   */
+  @javax.annotation.Nonnull
+  public Long getCreatedMs() {
+    return createdMs;
+  }
+
+  public void setCreatedMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
   }
 
 
@@ -508,14 +556,16 @@ public class Credential {
         Objects.equals(this.sourceOS, credential.sourceOS) &&
         Objects.equals(this.sourceBrowser, credential.sourceBrowser) &&
         Objects.equals(this.lastUsed, credential.lastUsed) &&
+        Objects.equals(this.lastUsedMs, credential.lastUsedMs) &&
         Objects.equals(this.created, credential.created) &&
+        Objects.equals(this.createdMs, credential.createdMs) &&
         Objects.equals(this.status, credential.status) &&
         Objects.equals(this.aaguidDetails, credential.aaguidDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, credentialID, attestationType, transport, backupEligible, backupState, authenticatorAAGUID, sourceOS, sourceBrowser, lastUsed, created, status, aaguidDetails);
+    return Objects.hash(id, credentialID, attestationType, transport, backupEligible, backupState, authenticatorAAGUID, sourceOS, sourceBrowser, lastUsed, lastUsedMs, created, createdMs, status, aaguidDetails);
   }
 
   @Override
@@ -532,7 +582,9 @@ public class Credential {
     sb.append("    sourceOS: ").append(toIndentedString(sourceOS)).append("\n");
     sb.append("    sourceBrowser: ").append(toIndentedString(sourceBrowser)).append("\n");
     sb.append("    lastUsed: ").append(toIndentedString(lastUsed)).append("\n");
+    sb.append("    lastUsedMs: ").append(toIndentedString(lastUsedMs)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    createdMs: ").append(toIndentedString(createdMs)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    aaguidDetails: ").append(toIndentedString(aaguidDetails)).append("\n");
     sb.append("}");
@@ -567,7 +619,9 @@ public class Credential {
     openapiFields.add("sourceOS");
     openapiFields.add("sourceBrowser");
     openapiFields.add("lastUsed");
+    openapiFields.add("lastUsedMs");
     openapiFields.add("created");
+    openapiFields.add("createdMs");
     openapiFields.add("status");
     openapiFields.add("aaguidDetails");
 
@@ -583,7 +637,9 @@ public class Credential {
     openapiRequiredFields.add("sourceOS");
     openapiRequiredFields.add("sourceBrowser");
     openapiRequiredFields.add("lastUsed");
+    openapiRequiredFields.add("lastUsedMs");
     openapiRequiredFields.add("created");
+    openapiRequiredFields.add("createdMs");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("aaguidDetails");
   }

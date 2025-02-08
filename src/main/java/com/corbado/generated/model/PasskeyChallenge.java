@@ -50,7 +50,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyChallenge
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyChallenge {
   public static final String SERIALIZED_NAME_CHALLENGE_I_D = "challengeID";
   @SerializedName(SERIALIZED_NAME_CHALLENGE_I_D)
@@ -76,6 +76,11 @@ public class PasskeyChallenge {
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nonnull
   private Long created;
+
+  public static final String SERIALIZED_NAME_CREATED_MS = "createdMs";
+  @SerializedName(SERIALIZED_NAME_CREATED_MS)
+  @javax.annotation.Nonnull
+  private Long createdMs;
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
@@ -180,6 +185,25 @@ public class PasskeyChallenge {
   }
 
 
+  public PasskeyChallenge createdMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
+    return this;
+  }
+
+  /**
+   * Get createdMs
+   * @return createdMs
+   */
+  @javax.annotation.Nonnull
+  public Long getCreatedMs() {
+    return createdMs;
+  }
+
+  public void setCreatedMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
+  }
+
+
   public PasskeyChallenge expires(@javax.annotation.Nonnull Long expires) {
     this.expires = expires;
     return this;
@@ -214,12 +238,13 @@ public class PasskeyChallenge {
         Objects.equals(this.value, passkeyChallenge.value) &&
         Objects.equals(this.status, passkeyChallenge.status) &&
         Objects.equals(this.created, passkeyChallenge.created) &&
+        Objects.equals(this.createdMs, passkeyChallenge.createdMs) &&
         Objects.equals(this.expires, passkeyChallenge.expires);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(challengeID, type, value, status, created, expires);
+    return Objects.hash(challengeID, type, value, status, created, createdMs, expires);
   }
 
   @Override
@@ -231,6 +256,7 @@ public class PasskeyChallenge {
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    createdMs: ").append(toIndentedString(createdMs)).append("\n");
     sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -259,6 +285,7 @@ public class PasskeyChallenge {
     openapiFields.add("value");
     openapiFields.add("status");
     openapiFields.add("created");
+    openapiFields.add("createdMs");
     openapiFields.add("expires");
 
     // a set of required properties/fields (JSON key names)
@@ -268,6 +295,7 @@ public class PasskeyChallenge {
     openapiRequiredFields.add("value");
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("created");
+    openapiRequiredFields.add("createdMs");
     openapiRequiredFields.add("expires");
   }
 

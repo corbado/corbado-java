@@ -50,7 +50,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * IdentifierCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class IdentifierCreateReq {
   public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)

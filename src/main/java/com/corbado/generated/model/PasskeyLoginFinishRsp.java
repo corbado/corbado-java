@@ -49,12 +49,17 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyLoginFinishRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyLoginFinishRsp {
   public static final String SERIALIZED_NAME_PASSKEY_DATA = "passkeyData";
   @SerializedName(SERIALIZED_NAME_PASSKEY_DATA)
   @javax.annotation.Nonnull
   private PasskeyData passkeyData;
+
+  public static final String SERIALIZED_NAME_SIGNED_PASSKEY_DATA = "signedPasskeyData";
+  @SerializedName(SERIALIZED_NAME_SIGNED_PASSKEY_DATA)
+  @javax.annotation.Nullable
+  private String signedPasskeyData;
 
   public PasskeyLoginFinishRsp() {
   }
@@ -78,6 +83,25 @@ public class PasskeyLoginFinishRsp {
   }
 
 
+  public PasskeyLoginFinishRsp signedPasskeyData(@javax.annotation.Nullable String signedPasskeyData) {
+    this.signedPasskeyData = signedPasskeyData;
+    return this;
+  }
+
+  /**
+   * Get signedPasskeyData
+   * @return signedPasskeyData
+   */
+  @javax.annotation.Nullable
+  public String getSignedPasskeyData() {
+    return signedPasskeyData;
+  }
+
+  public void setSignedPasskeyData(@javax.annotation.Nullable String signedPasskeyData) {
+    this.signedPasskeyData = signedPasskeyData;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,12 +112,13 @@ public class PasskeyLoginFinishRsp {
       return false;
     }
     PasskeyLoginFinishRsp passkeyLoginFinishRsp = (PasskeyLoginFinishRsp) o;
-    return Objects.equals(this.passkeyData, passkeyLoginFinishRsp.passkeyData);
+    return Objects.equals(this.passkeyData, passkeyLoginFinishRsp.passkeyData) &&
+        Objects.equals(this.signedPasskeyData, passkeyLoginFinishRsp.signedPasskeyData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(passkeyData);
+    return Objects.hash(passkeyData, signedPasskeyData);
   }
 
   @Override
@@ -101,6 +126,7 @@ public class PasskeyLoginFinishRsp {
     StringBuilder sb = new StringBuilder();
     sb.append("class PasskeyLoginFinishRsp {\n");
     sb.append("    passkeyData: ").append(toIndentedString(passkeyData)).append("\n");
+    sb.append("    signedPasskeyData: ").append(toIndentedString(signedPasskeyData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -124,6 +150,7 @@ public class PasskeyLoginFinishRsp {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("passkeyData");
+    openapiFields.add("signedPasskeyData");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -160,6 +187,9 @@ public class PasskeyLoginFinishRsp {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `passkeyData`
       PasskeyData.validateJsonElement(jsonObj.get("passkeyData"));
+      if ((jsonObj.get("signedPasskeyData") != null && !jsonObj.get("signedPasskeyData").isJsonNull()) && !jsonObj.get("signedPasskeyData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `signedPasskeyData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signedPasskeyData").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

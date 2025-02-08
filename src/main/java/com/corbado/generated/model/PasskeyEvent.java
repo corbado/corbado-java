@@ -49,7 +49,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyEvent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyEvent {
   public static final String SERIALIZED_NAME_PASSKEY_EVENT_I_D = "passkeyEventID";
   @SerializedName(SERIALIZED_NAME_PASSKEY_EVENT_I_D)
@@ -90,6 +90,11 @@ public class PasskeyEvent {
   @SerializedName(SERIALIZED_NAME_CREATED)
   @javax.annotation.Nonnull
   private String created;
+
+  public static final String SERIALIZED_NAME_CREATED_MS = "createdMs";
+  @SerializedName(SERIALIZED_NAME_CREATED_MS)
+  @javax.annotation.Nonnull
+  private Long createdMs;
 
   public PasskeyEvent() {
   }
@@ -246,6 +251,25 @@ public class PasskeyEvent {
   }
 
 
+  public PasskeyEvent createdMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
+    return this;
+  }
+
+  /**
+   * Get createdMs
+   * @return createdMs
+   */
+  @javax.annotation.Nonnull
+  public Long getCreatedMs() {
+    return createdMs;
+  }
+
+  public void setCreatedMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -263,12 +287,13 @@ public class PasskeyEvent {
         Objects.equals(this.processID, passkeyEvent.processID) &&
         Objects.equals(this.credentialID, passkeyEvent.credentialID) &&
         Objects.equals(this.expires, passkeyEvent.expires) &&
-        Objects.equals(this.created, passkeyEvent.created);
+        Objects.equals(this.created, passkeyEvent.created) &&
+        Objects.equals(this.createdMs, passkeyEvent.createdMs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(passkeyEventID, userID, eventType, clientEnvID, processID, credentialID, expires, created);
+    return Objects.hash(passkeyEventID, userID, eventType, clientEnvID, processID, credentialID, expires, created, createdMs);
   }
 
   @Override
@@ -283,6 +308,7 @@ public class PasskeyEvent {
     sb.append("    credentialID: ").append(toIndentedString(credentialID)).append("\n");
     sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    createdMs: ").append(toIndentedString(createdMs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -313,6 +339,7 @@ public class PasskeyEvent {
     openapiFields.add("credentialID");
     openapiFields.add("expires");
     openapiFields.add("created");
+    openapiFields.add("createdMs");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -320,6 +347,7 @@ public class PasskeyEvent {
     openapiRequiredFields.add("userID");
     openapiRequiredFields.add("eventType");
     openapiRequiredFields.add("created");
+    openapiRequiredFields.add("createdMs");
   }
 
   /**

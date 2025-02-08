@@ -49,7 +49,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyLoginFinishReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyLoginFinishReq {
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
@@ -70,6 +70,11 @@ public class PasskeyLoginFinishReq {
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
   @javax.annotation.Nonnull
   private String processID;
+
+  public static final String SERIALIZED_NAME_SIGN_PASSKEY_DATA = "signPasskeyData";
+  @SerializedName(SERIALIZED_NAME_SIGN_PASSKEY_DATA)
+  @javax.annotation.Nullable
+  private Boolean signPasskeyData;
 
   public PasskeyLoginFinishReq() {
   }
@@ -150,6 +155,25 @@ public class PasskeyLoginFinishReq {
   }
 
 
+  public PasskeyLoginFinishReq signPasskeyData(@javax.annotation.Nullable Boolean signPasskeyData) {
+    this.signPasskeyData = signPasskeyData;
+    return this;
+  }
+
+  /**
+   * Get signPasskeyData
+   * @return signPasskeyData
+   */
+  @javax.annotation.Nullable
+  public Boolean getSignPasskeyData() {
+    return signPasskeyData;
+  }
+
+  public void setSignPasskeyData(@javax.annotation.Nullable Boolean signPasskeyData) {
+    this.signPasskeyData = signPasskeyData;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -163,12 +187,13 @@ public class PasskeyLoginFinishReq {
     return Objects.equals(this.userID, passkeyLoginFinishReq.userID) &&
         Objects.equals(this.assertionResponse, passkeyLoginFinishReq.assertionResponse) &&
         Objects.equals(this.clientInformation, passkeyLoginFinishReq.clientInformation) &&
-        Objects.equals(this.processID, passkeyLoginFinishReq.processID);
+        Objects.equals(this.processID, passkeyLoginFinishReq.processID) &&
+        Objects.equals(this.signPasskeyData, passkeyLoginFinishReq.signPasskeyData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userID, assertionResponse, clientInformation, processID);
+    return Objects.hash(userID, assertionResponse, clientInformation, processID, signPasskeyData);
   }
 
   @Override
@@ -179,6 +204,7 @@ public class PasskeyLoginFinishReq {
     sb.append("    assertionResponse: ").append(toIndentedString(assertionResponse)).append("\n");
     sb.append("    clientInformation: ").append(toIndentedString(clientInformation)).append("\n");
     sb.append("    processID: ").append(toIndentedString(processID)).append("\n");
+    sb.append("    signPasskeyData: ").append(toIndentedString(signPasskeyData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -205,6 +231,7 @@ public class PasskeyLoginFinishReq {
     openapiFields.add("assertionResponse");
     openapiFields.add("clientInformation");
     openapiFields.add("processID");
+    openapiFields.add("signPasskeyData");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

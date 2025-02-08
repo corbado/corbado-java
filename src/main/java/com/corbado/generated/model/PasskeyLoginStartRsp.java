@@ -14,17 +14,15 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
-import com.corbado.generated.model.DecisionTag;
-import com.corbado.generated.model.DetectionTag;
+import com.corbado.generated.model.DecisionInsights;
+import com.corbado.generated.model.DetectionInsights;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,37 +50,27 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyLoginStartRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyLoginStartRsp {
   public static final String SERIALIZED_NAME_LOGIN_ALLOW = "loginAllow";
   @SerializedName(SERIALIZED_NAME_LOGIN_ALLOW)
   @javax.annotation.Nonnull
   private Boolean loginAllow;
 
-  public static final String SERIALIZED_NAME_DETECTION_TAGS = "detectionTags";
-  @SerializedName(SERIALIZED_NAME_DETECTION_TAGS)
-  @javax.annotation.Nonnull
-  private List<DetectionTag> detectionTags = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_DECISION_TAG = "decisionTag";
-  @SerializedName(SERIALIZED_NAME_DECISION_TAG)
-  @javax.annotation.Nonnull
-  private DecisionTag decisionTag;
-
-  public static final String SERIALIZED_NAME_CREDENTIAL_COUNT = "credentialCount";
-  @SerializedName(SERIALIZED_NAME_CREDENTIAL_COUNT)
-  @javax.annotation.Nonnull
-  private Integer credentialCount;
-
   public static final String SERIALIZED_NAME_ASSERTION_OPTIONS = "assertionOptions";
   @SerializedName(SERIALIZED_NAME_ASSERTION_OPTIONS)
   @javax.annotation.Nonnull
   private String assertionOptions;
 
-  public static final String SERIALIZED_NAME_IS_C_D_A_CANDIDATE = "isCDACandidate";
-  @SerializedName(SERIALIZED_NAME_IS_C_D_A_CANDIDATE)
+  public static final String SERIALIZED_NAME_DETECTION_INSIGHTS = "detectionInsights";
+  @SerializedName(SERIALIZED_NAME_DETECTION_INSIGHTS)
   @javax.annotation.Nonnull
-  private Boolean isCDACandidate;
+  private DetectionInsights detectionInsights;
+
+  public static final String SERIALIZED_NAME_DECISION_INSIGHTS = "decisionInsights";
+  @SerializedName(SERIALIZED_NAME_DECISION_INSIGHTS)
+  @javax.annotation.Nonnull
+  private DecisionInsights decisionInsights;
 
   public PasskeyLoginStartRsp() {
   }
@@ -106,71 +94,6 @@ public class PasskeyLoginStartRsp {
   }
 
 
-  public PasskeyLoginStartRsp detectionTags(@javax.annotation.Nonnull List<DetectionTag> detectionTags) {
-    this.detectionTags = detectionTags;
-    return this;
-  }
-
-  public PasskeyLoginStartRsp addDetectionTagsItem(DetectionTag detectionTagsItem) {
-    if (this.detectionTags == null) {
-      this.detectionTags = new ArrayList<>();
-    }
-    this.detectionTags.add(detectionTagsItem);
-    return this;
-  }
-
-  /**
-   * Get detectionTags
-   * @return detectionTags
-   */
-  @javax.annotation.Nonnull
-  public List<DetectionTag> getDetectionTags() {
-    return detectionTags;
-  }
-
-  public void setDetectionTags(@javax.annotation.Nonnull List<DetectionTag> detectionTags) {
-    this.detectionTags = detectionTags;
-  }
-
-
-  public PasskeyLoginStartRsp decisionTag(@javax.annotation.Nonnull DecisionTag decisionTag) {
-    this.decisionTag = decisionTag;
-    return this;
-  }
-
-  /**
-   * Get decisionTag
-   * @return decisionTag
-   */
-  @javax.annotation.Nonnull
-  public DecisionTag getDecisionTag() {
-    return decisionTag;
-  }
-
-  public void setDecisionTag(@javax.annotation.Nonnull DecisionTag decisionTag) {
-    this.decisionTag = decisionTag;
-  }
-
-
-  public PasskeyLoginStartRsp credentialCount(@javax.annotation.Nonnull Integer credentialCount) {
-    this.credentialCount = credentialCount;
-    return this;
-  }
-
-  /**
-   * Get credentialCount
-   * @return credentialCount
-   */
-  @javax.annotation.Nonnull
-  public Integer getCredentialCount() {
-    return credentialCount;
-  }
-
-  public void setCredentialCount(@javax.annotation.Nonnull Integer credentialCount) {
-    this.credentialCount = credentialCount;
-  }
-
-
   public PasskeyLoginStartRsp assertionOptions(@javax.annotation.Nonnull String assertionOptions) {
     this.assertionOptions = assertionOptions;
     return this;
@@ -190,22 +113,41 @@ public class PasskeyLoginStartRsp {
   }
 
 
-  public PasskeyLoginStartRsp isCDACandidate(@javax.annotation.Nonnull Boolean isCDACandidate) {
-    this.isCDACandidate = isCDACandidate;
+  public PasskeyLoginStartRsp detectionInsights(@javax.annotation.Nonnull DetectionInsights detectionInsights) {
+    this.detectionInsights = detectionInsights;
     return this;
   }
 
   /**
-   * Get isCDACandidate
-   * @return isCDACandidate
+   * Get detectionInsights
+   * @return detectionInsights
    */
   @javax.annotation.Nonnull
-  public Boolean getIsCDACandidate() {
-    return isCDACandidate;
+  public DetectionInsights getDetectionInsights() {
+    return detectionInsights;
   }
 
-  public void setIsCDACandidate(@javax.annotation.Nonnull Boolean isCDACandidate) {
-    this.isCDACandidate = isCDACandidate;
+  public void setDetectionInsights(@javax.annotation.Nonnull DetectionInsights detectionInsights) {
+    this.detectionInsights = detectionInsights;
+  }
+
+
+  public PasskeyLoginStartRsp decisionInsights(@javax.annotation.Nonnull DecisionInsights decisionInsights) {
+    this.decisionInsights = decisionInsights;
+    return this;
+  }
+
+  /**
+   * Get decisionInsights
+   * @return decisionInsights
+   */
+  @javax.annotation.Nonnull
+  public DecisionInsights getDecisionInsights() {
+    return decisionInsights;
+  }
+
+  public void setDecisionInsights(@javax.annotation.Nonnull DecisionInsights decisionInsights) {
+    this.decisionInsights = decisionInsights;
   }
 
 
@@ -220,16 +162,14 @@ public class PasskeyLoginStartRsp {
     }
     PasskeyLoginStartRsp passkeyLoginStartRsp = (PasskeyLoginStartRsp) o;
     return Objects.equals(this.loginAllow, passkeyLoginStartRsp.loginAllow) &&
-        Objects.equals(this.detectionTags, passkeyLoginStartRsp.detectionTags) &&
-        Objects.equals(this.decisionTag, passkeyLoginStartRsp.decisionTag) &&
-        Objects.equals(this.credentialCount, passkeyLoginStartRsp.credentialCount) &&
         Objects.equals(this.assertionOptions, passkeyLoginStartRsp.assertionOptions) &&
-        Objects.equals(this.isCDACandidate, passkeyLoginStartRsp.isCDACandidate);
+        Objects.equals(this.detectionInsights, passkeyLoginStartRsp.detectionInsights) &&
+        Objects.equals(this.decisionInsights, passkeyLoginStartRsp.decisionInsights);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(loginAllow, detectionTags, decisionTag, credentialCount, assertionOptions, isCDACandidate);
+    return Objects.hash(loginAllow, assertionOptions, detectionInsights, decisionInsights);
   }
 
   @Override
@@ -237,11 +177,9 @@ public class PasskeyLoginStartRsp {
     StringBuilder sb = new StringBuilder();
     sb.append("class PasskeyLoginStartRsp {\n");
     sb.append("    loginAllow: ").append(toIndentedString(loginAllow)).append("\n");
-    sb.append("    detectionTags: ").append(toIndentedString(detectionTags)).append("\n");
-    sb.append("    decisionTag: ").append(toIndentedString(decisionTag)).append("\n");
-    sb.append("    credentialCount: ").append(toIndentedString(credentialCount)).append("\n");
     sb.append("    assertionOptions: ").append(toIndentedString(assertionOptions)).append("\n");
-    sb.append("    isCDACandidate: ").append(toIndentedString(isCDACandidate)).append("\n");
+    sb.append("    detectionInsights: ").append(toIndentedString(detectionInsights)).append("\n");
+    sb.append("    decisionInsights: ").append(toIndentedString(decisionInsights)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -265,20 +203,16 @@ public class PasskeyLoginStartRsp {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("loginAllow");
-    openapiFields.add("detectionTags");
-    openapiFields.add("decisionTag");
-    openapiFields.add("credentialCount");
     openapiFields.add("assertionOptions");
-    openapiFields.add("isCDACandidate");
+    openapiFields.add("detectionInsights");
+    openapiFields.add("decisionInsights");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("loginAllow");
-    openapiRequiredFields.add("detectionTags");
-    openapiRequiredFields.add("decisionTag");
-    openapiRequiredFields.add("credentialCount");
     openapiRequiredFields.add("assertionOptions");
-    openapiRequiredFields.add("isCDACandidate");
+    openapiRequiredFields.add("detectionInsights");
+    openapiRequiredFields.add("decisionInsights");
   }
 
   /**
@@ -309,21 +243,13 @@ public class PasskeyLoginStartRsp {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("detectionTags").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `detectionTags` to be an array in the JSON string but got `%s`", jsonObj.get("detectionTags").toString()));
-      }
-
-      JsonArray jsonArraydetectionTags = jsonObj.getAsJsonArray("detectionTags");
-      // validate the required field `detectionTags` (array)
-      for (int i = 0; i < jsonArraydetectionTags.size(); i++) {
-        DetectionTag.validateJsonElement(jsonArraydetectionTags.get(i));
-      };
-      // validate the required field `decisionTag`
-      DecisionTag.validateJsonElement(jsonObj.get("decisionTag"));
       if (!jsonObj.get("assertionOptions").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `assertionOptions` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assertionOptions").toString()));
       }
+      // validate the required field `detectionInsights`
+      DetectionInsights.validateJsonElement(jsonObj.get("detectionInsights"));
+      // validate the required field `decisionInsights`
+      DecisionInsights.validateJsonElement(jsonObj.get("decisionInsights"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

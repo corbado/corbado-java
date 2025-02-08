@@ -48,8 +48,13 @@ import com.corbado.generated.invoker.JSON;
 /**
  * AaguidDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-12-15T13:05:51.424266690Z[Etc/UTC]", comments = "Generator version: 7.11.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class AaguidDetails {
+  public static final String SERIALIZED_NAME_AAGUID = "aaguid";
+  @SerializedName(SERIALIZED_NAME_AAGUID)
+  @javax.annotation.Nonnull
+  private String aaguid;
+
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nonnull
@@ -67,6 +72,25 @@ public class AaguidDetails {
 
   public AaguidDetails() {
   }
+
+  public AaguidDetails aaguid(@javax.annotation.Nonnull String aaguid) {
+    this.aaguid = aaguid;
+    return this;
+  }
+
+  /**
+   * Get aaguid
+   * @return aaguid
+   */
+  @javax.annotation.Nonnull
+  public String getAaguid() {
+    return aaguid;
+  }
+
+  public void setAaguid(@javax.annotation.Nonnull String aaguid) {
+    this.aaguid = aaguid;
+  }
+
 
   public AaguidDetails name(@javax.annotation.Nonnull String name) {
     this.name = name;
@@ -135,20 +159,22 @@ public class AaguidDetails {
       return false;
     }
     AaguidDetails aaguidDetails = (AaguidDetails) o;
-    return Objects.equals(this.name, aaguidDetails.name) &&
+    return Objects.equals(this.aaguid, aaguidDetails.aaguid) &&
+        Objects.equals(this.name, aaguidDetails.name) &&
         Objects.equals(this.iconLight, aaguidDetails.iconLight) &&
         Objects.equals(this.iconDark, aaguidDetails.iconDark);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, iconLight, iconDark);
+    return Objects.hash(aaguid, name, iconLight, iconDark);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AaguidDetails {\n");
+    sb.append("    aaguid: ").append(toIndentedString(aaguid)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    iconLight: ").append(toIndentedString(iconLight)).append("\n");
     sb.append("    iconDark: ").append(toIndentedString(iconDark)).append("\n");
@@ -174,12 +200,14 @@ public class AaguidDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("aaguid");
     openapiFields.add("name");
     openapiFields.add("iconLight");
     openapiFields.add("iconDark");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("aaguid");
     openapiRequiredFields.add("name");
     openapiRequiredFields.add("iconLight");
     openapiRequiredFields.add("iconDark");
@@ -213,6 +241,9 @@ public class AaguidDetails {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("aaguid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `aaguid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aaguid").toString()));
+      }
       if (!jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
