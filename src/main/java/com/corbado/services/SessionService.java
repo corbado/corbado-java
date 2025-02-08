@@ -48,9 +48,6 @@ public class SessionService {
   /** The jwks uri. */
   private String jwksUri;
 
-  /** The last short session validation result. */
-  private String lastSessionTokenValidationResult;
-
   /** The jwk provider. */
   private JwkProvider jwkProvider;
 
@@ -103,16 +100,6 @@ public class SessionService {
         config.getSessionTokenLength(),
         config.isCacheKeys(),
         config.getProjectId());
-  }
-
-  /**
-   * Sets the issuer mismatch error.
-   *
-   * @param issuer the new issuer mismatch error
-   */
-  public void setIssuerMismatchError(final String issuer) {
-    this.lastSessionTokenValidationResult =
-        String.format("Mismatch in issuer (configured: %s, JWT: %s)", this.issuer, issuer);
   }
 
   /**
