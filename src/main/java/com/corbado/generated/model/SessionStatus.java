@@ -24,20 +24,24 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Application type
+ * Gets or Sets sessionStatus
  */
-@JsonAdapter(AppType.Adapter.class)
-public enum AppType {
+@JsonAdapter(SessionStatus.Adapter.class)
+public enum SessionStatus {
   
-  EMPTY("empty"),
+  ACTIVE("active"),
   
-  WEB("web"),
+  LOGGED_OUT("logged_out"),
   
-  NATIVE("native");
+  EXPIRED("expired"),
+  
+  INACTIVITY_REACHED("inactivity_reached"),
+  
+  REVOKED("revoked");
 
   private String value;
 
-  AppType(String value) {
+  SessionStatus(String value) {
     this.value = value;
   }
 
@@ -50,8 +54,8 @@ public enum AppType {
     return String.valueOf(value);
   }
 
-  public static AppType fromValue(String value) {
-    for (AppType b : AppType.values()) {
+  public static SessionStatus fromValue(String value) {
+    for (SessionStatus b : SessionStatus.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -59,22 +63,22 @@ public enum AppType {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<AppType> {
+  public static class Adapter extends TypeAdapter<SessionStatus> {
     @Override
-    public void write(final JsonWriter jsonWriter, final AppType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final SessionStatus enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public AppType read(final JsonReader jsonReader) throws IOException {
+    public SessionStatus read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return AppType.fromValue(value);
+      return SessionStatus.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    AppType.fromValue(value);
+    SessionStatus.fromValue(value);
   }
 }
 

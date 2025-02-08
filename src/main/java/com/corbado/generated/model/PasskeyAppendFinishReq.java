@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,32 +49,37 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyAppendFinishReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyAppendFinishReq {
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
+  @javax.annotation.Nonnull
   private String processID;
 
   public static final String SERIALIZED_NAME_ATTESTATION_RESPONSE = "attestationResponse";
   @SerializedName(SERIALIZED_NAME_ATTESTATION_RESPONSE)
+  @javax.annotation.Nonnull
   private String attestationResponse;
 
   public static final String SERIALIZED_NAME_CLIENT_INFORMATION = "clientInformation";
   @SerializedName(SERIALIZED_NAME_CLIENT_INFORMATION)
+  @javax.annotation.Nonnull
   private ClientInformation clientInformation;
 
   public static final String SERIALIZED_NAME_SEND_NOTIFICATION = "sendNotification";
   @SerializedName(SERIALIZED_NAME_SEND_NOTIFICATION)
+  @javax.annotation.Nullable
   private Boolean sendNotification;
 
   public PasskeyAppendFinishReq() {
   }
 
-  public PasskeyAppendFinishReq userID(String userID) {
+  public PasskeyAppendFinishReq userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -89,12 +93,12 @@ public class PasskeyAppendFinishReq {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 
 
-  public PasskeyAppendFinishReq processID(String processID) {
+  public PasskeyAppendFinishReq processID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
     return this;
   }
@@ -108,12 +112,12 @@ public class PasskeyAppendFinishReq {
     return processID;
   }
 
-  public void setProcessID(String processID) {
+  public void setProcessID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
   }
 
 
-  public PasskeyAppendFinishReq attestationResponse(String attestationResponse) {
+  public PasskeyAppendFinishReq attestationResponse(@javax.annotation.Nonnull String attestationResponse) {
     this.attestationResponse = attestationResponse;
     return this;
   }
@@ -127,12 +131,12 @@ public class PasskeyAppendFinishReq {
     return attestationResponse;
   }
 
-  public void setAttestationResponse(String attestationResponse) {
+  public void setAttestationResponse(@javax.annotation.Nonnull String attestationResponse) {
     this.attestationResponse = attestationResponse;
   }
 
 
-  public PasskeyAppendFinishReq clientInformation(ClientInformation clientInformation) {
+  public PasskeyAppendFinishReq clientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
     return this;
   }
@@ -146,12 +150,12 @@ public class PasskeyAppendFinishReq {
     return clientInformation;
   }
 
-  public void setClientInformation(ClientInformation clientInformation) {
+  public void setClientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
   }
 
 
-  public PasskeyAppendFinishReq sendNotification(Boolean sendNotification) {
+  public PasskeyAppendFinishReq sendNotification(@javax.annotation.Nullable Boolean sendNotification) {
     this.sendNotification = sendNotification;
     return this;
   }
@@ -165,7 +169,7 @@ public class PasskeyAppendFinishReq {
     return sendNotification;
   }
 
-  public void setSendNotification(Boolean sendNotification) {
+  public void setSendNotification(@javax.annotation.Nullable Boolean sendNotification) {
     this.sendNotification = sendNotification;
   }
 

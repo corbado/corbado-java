@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,28 +50,37 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ChallengeCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ChallengeCreateReq {
   public static final String SERIALIZED_NAME_CHALLENGE_TYPE = "challengeType";
   @SerializedName(SERIALIZED_NAME_CHALLENGE_TYPE)
+  @javax.annotation.Nonnull
   private ChallengeType challengeType;
 
   public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
+  @javax.annotation.Nonnull
   private String identifierValue;
 
   public static final String SERIALIZED_NAME_CHALLENGE_METADATA = "challengeMetadata";
   @SerializedName(SERIALIZED_NAME_CHALLENGE_METADATA)
+  @javax.annotation.Nullable
   private Object challengeMetadata;
+
+  public static final String SERIALIZED_NAME_LIFETIME_SECONDS = "lifetimeSeconds";
+  @SerializedName(SERIALIZED_NAME_LIFETIME_SECONDS)
+  @javax.annotation.Nullable
+  private Integer lifetimeSeconds;
 
   public static final String SERIALIZED_NAME_CLIENT_INFORMATION = "clientInformation";
   @SerializedName(SERIALIZED_NAME_CLIENT_INFORMATION)
+  @javax.annotation.Nonnull
   private ClientInformation clientInformation;
 
   public ChallengeCreateReq() {
   }
 
-  public ChallengeCreateReq challengeType(ChallengeType challengeType) {
+  public ChallengeCreateReq challengeType(@javax.annotation.Nonnull ChallengeType challengeType) {
     this.challengeType = challengeType;
     return this;
   }
@@ -86,12 +94,12 @@ public class ChallengeCreateReq {
     return challengeType;
   }
 
-  public void setChallengeType(ChallengeType challengeType) {
+  public void setChallengeType(@javax.annotation.Nonnull ChallengeType challengeType) {
     this.challengeType = challengeType;
   }
 
 
-  public ChallengeCreateReq identifierValue(String identifierValue) {
+  public ChallengeCreateReq identifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
     return this;
   }
@@ -105,12 +113,12 @@ public class ChallengeCreateReq {
     return identifierValue;
   }
 
-  public void setIdentifierValue(String identifierValue) {
+  public void setIdentifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
   }
 
 
-  public ChallengeCreateReq challengeMetadata(Object challengeMetadata) {
+  public ChallengeCreateReq challengeMetadata(@javax.annotation.Nullable Object challengeMetadata) {
     this.challengeMetadata = challengeMetadata;
     return this;
   }
@@ -124,12 +132,31 @@ public class ChallengeCreateReq {
     return challengeMetadata;
   }
 
-  public void setChallengeMetadata(Object challengeMetadata) {
+  public void setChallengeMetadata(@javax.annotation.Nullable Object challengeMetadata) {
     this.challengeMetadata = challengeMetadata;
   }
 
 
-  public ChallengeCreateReq clientInformation(ClientInformation clientInformation) {
+  public ChallengeCreateReq lifetimeSeconds(@javax.annotation.Nullable Integer lifetimeSeconds) {
+    this.lifetimeSeconds = lifetimeSeconds;
+    return this;
+  }
+
+  /**
+   * Get lifetimeSeconds
+   * @return lifetimeSeconds
+   */
+  @javax.annotation.Nullable
+  public Integer getLifetimeSeconds() {
+    return lifetimeSeconds;
+  }
+
+  public void setLifetimeSeconds(@javax.annotation.Nullable Integer lifetimeSeconds) {
+    this.lifetimeSeconds = lifetimeSeconds;
+  }
+
+
+  public ChallengeCreateReq clientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
     return this;
   }
@@ -143,7 +170,7 @@ public class ChallengeCreateReq {
     return clientInformation;
   }
 
-  public void setClientInformation(ClientInformation clientInformation) {
+  public void setClientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
   }
 
@@ -161,12 +188,13 @@ public class ChallengeCreateReq {
     return Objects.equals(this.challengeType, challengeCreateReq.challengeType) &&
         Objects.equals(this.identifierValue, challengeCreateReq.identifierValue) &&
         Objects.equals(this.challengeMetadata, challengeCreateReq.challengeMetadata) &&
+        Objects.equals(this.lifetimeSeconds, challengeCreateReq.lifetimeSeconds) &&
         Objects.equals(this.clientInformation, challengeCreateReq.clientInformation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(challengeType, identifierValue, challengeMetadata, clientInformation);
+    return Objects.hash(challengeType, identifierValue, challengeMetadata, lifetimeSeconds, clientInformation);
   }
 
   @Override
@@ -176,6 +204,7 @@ public class ChallengeCreateReq {
     sb.append("    challengeType: ").append(toIndentedString(challengeType)).append("\n");
     sb.append("    identifierValue: ").append(toIndentedString(identifierValue)).append("\n");
     sb.append("    challengeMetadata: ").append(toIndentedString(challengeMetadata)).append("\n");
+    sb.append("    lifetimeSeconds: ").append(toIndentedString(lifetimeSeconds)).append("\n");
     sb.append("    clientInformation: ").append(toIndentedString(clientInformation)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -202,6 +231,7 @@ public class ChallengeCreateReq {
     openapiFields.add("challengeType");
     openapiFields.add("identifierValue");
     openapiFields.add("challengeMetadata");
+    openapiFields.add("lifetimeSeconds");
     openapiFields.add("clientInformation");
 
     // a set of required properties/fields (JSON key names)

@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,40 +51,52 @@ import com.corbado.generated.invoker.JSON;
 /**
  * AuthEvent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class AuthEvent {
   public static final String SERIALIZED_NAME_AUTH_EVENT_I_D = "authEventID";
   @SerializedName(SERIALIZED_NAME_AUTH_EVENT_I_D)
+  @javax.annotation.Nonnull
   private String authEventID;
 
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nonnull
   private String username;
 
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nonnull
   private AuthEventType eventType;
 
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
+  @javax.annotation.Nonnull
   private AuthEventMethod method;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
+  @javax.annotation.Nonnull
   private String created;
+
+  public static final String SERIALIZED_NAME_CREATED_MS = "createdMs";
+  @SerializedName(SERIALIZED_NAME_CREATED_MS)
+  @javax.annotation.Nonnull
+  private Long createdMs;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private AuthEventStatus status;
 
   public AuthEvent() {
   }
 
-  public AuthEvent authEventID(String authEventID) {
+  public AuthEvent authEventID(@javax.annotation.Nonnull String authEventID) {
     this.authEventID = authEventID;
     return this;
   }
@@ -99,12 +110,12 @@ public class AuthEvent {
     return authEventID;
   }
 
-  public void setAuthEventID(String authEventID) {
+  public void setAuthEventID(@javax.annotation.Nonnull String authEventID) {
     this.authEventID = authEventID;
   }
 
 
-  public AuthEvent userID(String userID) {
+  public AuthEvent userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -118,12 +129,12 @@ public class AuthEvent {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 
 
-  public AuthEvent username(String username) {
+  public AuthEvent username(@javax.annotation.Nonnull String username) {
     this.username = username;
     return this;
   }
@@ -137,12 +148,12 @@ public class AuthEvent {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nonnull String username) {
     this.username = username;
   }
 
 
-  public AuthEvent eventType(AuthEventType eventType) {
+  public AuthEvent eventType(@javax.annotation.Nonnull AuthEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -156,12 +167,12 @@ public class AuthEvent {
     return eventType;
   }
 
-  public void setEventType(AuthEventType eventType) {
+  public void setEventType(@javax.annotation.Nonnull AuthEventType eventType) {
     this.eventType = eventType;
   }
 
 
-  public AuthEvent method(AuthEventMethod method) {
+  public AuthEvent method(@javax.annotation.Nonnull AuthEventMethod method) {
     this.method = method;
     return this;
   }
@@ -175,12 +186,12 @@ public class AuthEvent {
     return method;
   }
 
-  public void setMethod(AuthEventMethod method) {
+  public void setMethod(@javax.annotation.Nonnull AuthEventMethod method) {
     this.method = method;
   }
 
 
-  public AuthEvent created(String created) {
+  public AuthEvent created(@javax.annotation.Nonnull String created) {
     this.created = created;
     return this;
   }
@@ -194,12 +205,31 @@ public class AuthEvent {
     return created;
   }
 
-  public void setCreated(String created) {
+  public void setCreated(@javax.annotation.Nonnull String created) {
     this.created = created;
   }
 
 
-  public AuthEvent status(AuthEventStatus status) {
+  public AuthEvent createdMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
+    return this;
+  }
+
+  /**
+   * Get createdMs
+   * @return createdMs
+   */
+  @javax.annotation.Nonnull
+  public Long getCreatedMs() {
+    return createdMs;
+  }
+
+  public void setCreatedMs(@javax.annotation.Nonnull Long createdMs) {
+    this.createdMs = createdMs;
+  }
+
+
+  public AuthEvent status(@javax.annotation.Nonnull AuthEventStatus status) {
     this.status = status;
     return this;
   }
@@ -213,7 +243,7 @@ public class AuthEvent {
     return status;
   }
 
-  public void setStatus(AuthEventStatus status) {
+  public void setStatus(@javax.annotation.Nonnull AuthEventStatus status) {
     this.status = status;
   }
 
@@ -234,12 +264,13 @@ public class AuthEvent {
         Objects.equals(this.eventType, authEvent.eventType) &&
         Objects.equals(this.method, authEvent.method) &&
         Objects.equals(this.created, authEvent.created) &&
+        Objects.equals(this.createdMs, authEvent.createdMs) &&
         Objects.equals(this.status, authEvent.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(authEventID, userID, username, eventType, method, created, status);
+    return Objects.hash(authEventID, userID, username, eventType, method, created, createdMs, status);
   }
 
   @Override
@@ -252,6 +283,7 @@ public class AuthEvent {
     sb.append("    eventType: ").append(toIndentedString(eventType)).append("\n");
     sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    createdMs: ").append(toIndentedString(createdMs)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -281,6 +313,7 @@ public class AuthEvent {
     openapiFields.add("eventType");
     openapiFields.add("method");
     openapiFields.add("created");
+    openapiFields.add("createdMs");
     openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
@@ -291,6 +324,7 @@ public class AuthEvent {
     openapiRequiredFields.add("eventType");
     openapiRequiredFields.add("method");
     openapiRequiredFields.add("created");
+    openapiRequiredFields.add("createdMs");
     openapiRequiredFields.add("status");
   }
 

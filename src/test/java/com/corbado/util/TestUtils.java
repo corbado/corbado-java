@@ -1,9 +1,5 @@
 package com.corbado.util;
 
-import java.util.Random;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.corbado.entities.UserEntity;
 import com.corbado.exceptions.CorbadoServerException;
 import com.corbado.exceptions.StandardException;
@@ -11,8 +7,9 @@ import com.corbado.generated.model.UserCreateReq;
 import com.corbado.generated.model.UserStatus;
 import com.corbado.sdk.Config;
 import com.corbado.sdk.CorbadoSdk;
-
 import io.github.cdimascio.dotenv.Dotenv;
+import java.util.Random;
+import org.apache.commons.lang3.StringUtils;
 
 /** The Class TestUtils. */
 public class TestUtils {
@@ -25,6 +22,9 @@ public class TestUtils {
 
   /** The Constant CORBADO_BACKEND_API. */
   public static final String CORBADO_BACKEND_API = "CORBADO_BACKEND_API";
+
+  /** The Constant CORBADO_FRONTEND_API. */
+  public static final String CORBADO_FRONTEND_API = "CORBADO_FRONTEND_API";
 
   /** The Constant CANNOT_BE_BLANK_MESSAGE. */
   public static final String CANNOT_BE_BLANK_MESSAGE = "cannot be blank";
@@ -120,13 +120,19 @@ public class TestUtils {
     if (StringUtils.isEmpty(backendApi)) {
       backendApi = dotenv.get(CORBADO_BACKEND_API);
     }
-    Config config = null;
-    if (StringUtils.isEmpty(backendApi)) {
-      config = Config.builder().apiSecret(apiSecret).projectId(projectId).build();
-    } else {
-      config =
-          Config.builder().apiSecret(apiSecret).projectId(projectId).backendApi(backendApi).build();
+
+    // Check for CORBADO_BACKEND_API
+    String frontendApi = System.getenv(CORBADO_FRONTEND_API);
+    if (StringUtils.isEmpty(frontendApi)) {
+      frontendApi = dotenv.get(CORBADO_FRONTEND_API);
     }
+    final Config config =
+        Config.builder()
+            .apiSecret(apiSecret)
+            .projectId(projectId)
+            .backendApi(backendApi)
+            .frontendApi(frontendApi)
+            .build();
 
     return new CorbadoSdk(config);
   }

@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,32 +50,42 @@ import com.corbado.generated.invoker.JSON;
 /**
  * Challenge
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class Challenge {
   public static final String SERIALIZED_NAME_CHALLENGE_I_D = "challengeID";
   @SerializedName(SERIALIZED_NAME_CHALLENGE_I_D)
+  @javax.annotation.Nonnull
   private String challengeID;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nonnull
   private ChallengeType type;
 
   public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
+  @javax.annotation.Nonnull
   private String identifierValue;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nonnull
   private String value;
+
+  public static final String SERIALIZED_NAME_EXPIRES = "expires";
+  @SerializedName(SERIALIZED_NAME_EXPIRES)
+  @javax.annotation.Nonnull
+  private Long expires;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private ChallengeStatus status;
 
   public Challenge() {
   }
 
-  public Challenge challengeID(String challengeID) {
+  public Challenge challengeID(@javax.annotation.Nonnull String challengeID) {
     this.challengeID = challengeID;
     return this;
   }
@@ -90,12 +99,12 @@ public class Challenge {
     return challengeID;
   }
 
-  public void setChallengeID(String challengeID) {
+  public void setChallengeID(@javax.annotation.Nonnull String challengeID) {
     this.challengeID = challengeID;
   }
 
 
-  public Challenge type(ChallengeType type) {
+  public Challenge type(@javax.annotation.Nonnull ChallengeType type) {
     this.type = type;
     return this;
   }
@@ -109,12 +118,12 @@ public class Challenge {
     return type;
   }
 
-  public void setType(ChallengeType type) {
+  public void setType(@javax.annotation.Nonnull ChallengeType type) {
     this.type = type;
   }
 
 
-  public Challenge identifierValue(String identifierValue) {
+  public Challenge identifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
     return this;
   }
@@ -128,12 +137,12 @@ public class Challenge {
     return identifierValue;
   }
 
-  public void setIdentifierValue(String identifierValue) {
+  public void setIdentifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
   }
 
 
-  public Challenge value(String value) {
+  public Challenge value(@javax.annotation.Nonnull String value) {
     this.value = value;
     return this;
   }
@@ -147,12 +156,31 @@ public class Challenge {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nonnull String value) {
     this.value = value;
   }
 
 
-  public Challenge status(ChallengeStatus status) {
+  public Challenge expires(@javax.annotation.Nonnull Long expires) {
+    this.expires = expires;
+    return this;
+  }
+
+  /**
+   * Get expires
+   * @return expires
+   */
+  @javax.annotation.Nonnull
+  public Long getExpires() {
+    return expires;
+  }
+
+  public void setExpires(@javax.annotation.Nonnull Long expires) {
+    this.expires = expires;
+  }
+
+
+  public Challenge status(@javax.annotation.Nonnull ChallengeStatus status) {
     this.status = status;
     return this;
   }
@@ -166,7 +194,7 @@ public class Challenge {
     return status;
   }
 
-  public void setStatus(ChallengeStatus status) {
+  public void setStatus(@javax.annotation.Nonnull ChallengeStatus status) {
     this.status = status;
   }
 
@@ -185,12 +213,13 @@ public class Challenge {
         Objects.equals(this.type, challenge.type) &&
         Objects.equals(this.identifierValue, challenge.identifierValue) &&
         Objects.equals(this.value, challenge.value) &&
+        Objects.equals(this.expires, challenge.expires) &&
         Objects.equals(this.status, challenge.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(challengeID, type, identifierValue, value, status);
+    return Objects.hash(challengeID, type, identifierValue, value, expires, status);
   }
 
   @Override
@@ -201,6 +230,7 @@ public class Challenge {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    identifierValue: ").append(toIndentedString(identifierValue)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    expires: ").append(toIndentedString(expires)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -228,6 +258,7 @@ public class Challenge {
     openapiFields.add("type");
     openapiFields.add("identifierValue");
     openapiFields.add("value");
+    openapiFields.add("expires");
     openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
@@ -236,6 +267,7 @@ public class Challenge {
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("identifierValue");
     openapiRequiredFields.add("value");
+    openapiRequiredFields.add("expires");
     openapiRequiredFields.add("status");
   }
 

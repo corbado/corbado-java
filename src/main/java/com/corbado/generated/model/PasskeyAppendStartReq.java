@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,32 +50,37 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyAppendStartReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyAppendStartReq {
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
+  @javax.annotation.Nonnull
   private String processID;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nonnull
   private String username;
 
   public static final String SERIALIZED_NAME_CLIENT_INFORMATION = "clientInformation";
   @SerializedName(SERIALIZED_NAME_CLIENT_INFORMATION)
+  @javax.annotation.Nonnull
   private ClientInformation clientInformation;
 
   public static final String SERIALIZED_NAME_PASSKEY_INTEL_FLAGS = "passkeyIntelFlags";
   @SerializedName(SERIALIZED_NAME_PASSKEY_INTEL_FLAGS)
+  @javax.annotation.Nonnull
   private PasskeyIntelFlags passkeyIntelFlags;
 
   public PasskeyAppendStartReq() {
   }
 
-  public PasskeyAppendStartReq userID(String userID) {
+  public PasskeyAppendStartReq userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -90,12 +94,12 @@ public class PasskeyAppendStartReq {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 
 
-  public PasskeyAppendStartReq processID(String processID) {
+  public PasskeyAppendStartReq processID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
     return this;
   }
@@ -109,12 +113,12 @@ public class PasskeyAppendStartReq {
     return processID;
   }
 
-  public void setProcessID(String processID) {
+  public void setProcessID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
   }
 
 
-  public PasskeyAppendStartReq username(String username) {
+  public PasskeyAppendStartReq username(@javax.annotation.Nonnull String username) {
     this.username = username;
     return this;
   }
@@ -128,12 +132,12 @@ public class PasskeyAppendStartReq {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nonnull String username) {
     this.username = username;
   }
 
 
-  public PasskeyAppendStartReq clientInformation(ClientInformation clientInformation) {
+  public PasskeyAppendStartReq clientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
     return this;
   }
@@ -147,12 +151,12 @@ public class PasskeyAppendStartReq {
     return clientInformation;
   }
 
-  public void setClientInformation(ClientInformation clientInformation) {
+  public void setClientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
   }
 
 
-  public PasskeyAppendStartReq passkeyIntelFlags(PasskeyIntelFlags passkeyIntelFlags) {
+  public PasskeyAppendStartReq passkeyIntelFlags(@javax.annotation.Nonnull PasskeyIntelFlags passkeyIntelFlags) {
     this.passkeyIntelFlags = passkeyIntelFlags;
     return this;
   }
@@ -166,7 +170,7 @@ public class PasskeyAppendStartReq {
     return passkeyIntelFlags;
   }
 
-  public void setPasskeyIntelFlags(PasskeyIntelFlags passkeyIntelFlags) {
+  public void setPasskeyIntelFlags(@javax.annotation.Nonnull PasskeyIntelFlags passkeyIntelFlags) {
     this.passkeyIntelFlags = passkeyIntelFlags;
   }
 

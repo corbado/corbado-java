@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,20 +48,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ErrorRspAllOfErrorValidation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ErrorRspAllOfErrorValidation {
   public static final String SERIALIZED_NAME_FIELD = "field";
   @SerializedName(SERIALIZED_NAME_FIELD)
+  @javax.annotation.Nonnull
   private String field;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nonnull
   private String message;
 
   public ErrorRspAllOfErrorValidation() {
   }
 
-  public ErrorRspAllOfErrorValidation field(String field) {
+  public ErrorRspAllOfErrorValidation field(@javax.annotation.Nonnull String field) {
     this.field = field;
     return this;
   }
@@ -76,12 +77,12 @@ public class ErrorRspAllOfErrorValidation {
     return field;
   }
 
-  public void setField(String field) {
+  public void setField(@javax.annotation.Nonnull String field) {
     this.field = field;
   }
 
 
-  public ErrorRspAllOfErrorValidation message(String message) {
+  public ErrorRspAllOfErrorValidation message(@javax.annotation.Nonnull String message) {
     this.message = message;
     return this;
   }
@@ -95,7 +96,7 @@ public class ErrorRspAllOfErrorValidation {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nonnull String message) {
     this.message = message;
   }
 

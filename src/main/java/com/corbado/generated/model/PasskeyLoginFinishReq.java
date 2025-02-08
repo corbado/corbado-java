@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,28 +49,37 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyLoginFinishReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyLoginFinishReq {
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public static final String SERIALIZED_NAME_ASSERTION_RESPONSE = "assertionResponse";
   @SerializedName(SERIALIZED_NAME_ASSERTION_RESPONSE)
+  @javax.annotation.Nonnull
   private String assertionResponse;
 
   public static final String SERIALIZED_NAME_CLIENT_INFORMATION = "clientInformation";
   @SerializedName(SERIALIZED_NAME_CLIENT_INFORMATION)
+  @javax.annotation.Nonnull
   private ClientInformation clientInformation;
 
   public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
+  @javax.annotation.Nonnull
   private String processID;
+
+  public static final String SERIALIZED_NAME_SIGN_PASSKEY_DATA = "signPasskeyData";
+  @SerializedName(SERIALIZED_NAME_SIGN_PASSKEY_DATA)
+  @javax.annotation.Nullable
+  private Boolean signPasskeyData;
 
   public PasskeyLoginFinishReq() {
   }
 
-  public PasskeyLoginFinishReq userID(String userID) {
+  public PasskeyLoginFinishReq userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -85,12 +93,12 @@ public class PasskeyLoginFinishReq {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 
 
-  public PasskeyLoginFinishReq assertionResponse(String assertionResponse) {
+  public PasskeyLoginFinishReq assertionResponse(@javax.annotation.Nonnull String assertionResponse) {
     this.assertionResponse = assertionResponse;
     return this;
   }
@@ -104,12 +112,12 @@ public class PasskeyLoginFinishReq {
     return assertionResponse;
   }
 
-  public void setAssertionResponse(String assertionResponse) {
+  public void setAssertionResponse(@javax.annotation.Nonnull String assertionResponse) {
     this.assertionResponse = assertionResponse;
   }
 
 
-  public PasskeyLoginFinishReq clientInformation(ClientInformation clientInformation) {
+  public PasskeyLoginFinishReq clientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
     return this;
   }
@@ -123,12 +131,12 @@ public class PasskeyLoginFinishReq {
     return clientInformation;
   }
 
-  public void setClientInformation(ClientInformation clientInformation) {
+  public void setClientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
   }
 
 
-  public PasskeyLoginFinishReq processID(String processID) {
+  public PasskeyLoginFinishReq processID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
     return this;
   }
@@ -142,8 +150,27 @@ public class PasskeyLoginFinishReq {
     return processID;
   }
 
-  public void setProcessID(String processID) {
+  public void setProcessID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
+  }
+
+
+  public PasskeyLoginFinishReq signPasskeyData(@javax.annotation.Nullable Boolean signPasskeyData) {
+    this.signPasskeyData = signPasskeyData;
+    return this;
+  }
+
+  /**
+   * Get signPasskeyData
+   * @return signPasskeyData
+   */
+  @javax.annotation.Nullable
+  public Boolean getSignPasskeyData() {
+    return signPasskeyData;
+  }
+
+  public void setSignPasskeyData(@javax.annotation.Nullable Boolean signPasskeyData) {
+    this.signPasskeyData = signPasskeyData;
   }
 
 
@@ -160,12 +187,13 @@ public class PasskeyLoginFinishReq {
     return Objects.equals(this.userID, passkeyLoginFinishReq.userID) &&
         Objects.equals(this.assertionResponse, passkeyLoginFinishReq.assertionResponse) &&
         Objects.equals(this.clientInformation, passkeyLoginFinishReq.clientInformation) &&
-        Objects.equals(this.processID, passkeyLoginFinishReq.processID);
+        Objects.equals(this.processID, passkeyLoginFinishReq.processID) &&
+        Objects.equals(this.signPasskeyData, passkeyLoginFinishReq.signPasskeyData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userID, assertionResponse, clientInformation, processID);
+    return Objects.hash(userID, assertionResponse, clientInformation, processID, signPasskeyData);
   }
 
   @Override
@@ -176,6 +204,7 @@ public class PasskeyLoginFinishReq {
     sb.append("    assertionResponse: ").append(toIndentedString(assertionResponse)).append("\n");
     sb.append("    clientInformation: ").append(toIndentedString(clientInformation)).append("\n");
     sb.append("    processID: ").append(toIndentedString(processID)).append("\n");
+    sb.append("    signPasskeyData: ").append(toIndentedString(signPasskeyData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -202,6 +231,7 @@ public class PasskeyLoginFinishReq {
     openapiFields.add("assertionResponse");
     openapiFields.add("clientInformation");
     openapiFields.add("processID");
+    openapiFields.add("signPasskeyData");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,7 +48,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * DetectionTag
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class DetectionTag {
   /**
    * Gets or Sets category
@@ -109,16 +108,18 @@ public class DetectionTag {
 
   public static final String SERIALIZED_NAME_CATEGORY = "category";
   @SerializedName(SERIALIZED_NAME_CATEGORY)
+  @javax.annotation.Nonnull
   private CategoryEnum category;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
+  @javax.annotation.Nonnull
   private String name;
 
   public DetectionTag() {
   }
 
-  public DetectionTag category(CategoryEnum category) {
+  public DetectionTag category(@javax.annotation.Nonnull CategoryEnum category) {
     this.category = category;
     return this;
   }
@@ -132,12 +133,12 @@ public class DetectionTag {
     return category;
   }
 
-  public void setCategory(CategoryEnum category) {
+  public void setCategory(@javax.annotation.Nonnull CategoryEnum category) {
     this.category = category;
   }
 
 
-  public DetectionTag name(String name) {
+  public DetectionTag name(@javax.annotation.Nonnull String name) {
     this.name = name;
     return this;
   }
@@ -151,7 +152,7 @@ public class DetectionTag {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(@javax.annotation.Nonnull String name) {
     this.name = name;
   }
 

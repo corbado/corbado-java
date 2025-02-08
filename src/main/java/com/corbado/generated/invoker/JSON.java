@@ -93,6 +93,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(OffsetDateTime.class, offsetDateTimeTypeAdapter);
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.AaguidDetails.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.AuthEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.AuthEventCreateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.Challenge.CustomTypeAdapterFactory());
@@ -105,10 +106,13 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ConnectTokenDataPasskeyAppend.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ConnectTokenDataPasskeyDelete.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ConnectTokenDataPasskeyList.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ConnectTokenDataPasskeyLogin.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ConnectTokenList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ConnectTokenUpdateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.Credential.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.CredentialList.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.DecisionInsights.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.DetectionInsights.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.DetectionTag.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ErrorRsp.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ErrorRspAllOfError.CustomTypeAdapterFactory());
@@ -119,10 +123,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.IdentifierList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.IdentifierUpdateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.JavaScriptHighEntropy.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.LongSession.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.LongSessionCreateReq.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.LongSessionUpdateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.Paging.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ParsedDeviceInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyAppendFinishReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyAppendFinishRsp.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyAppendStartReq.CustomTypeAdapterFactory());
@@ -143,16 +145,23 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyMediationFinishRsp.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyMediationStartReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyMediationStartRsp.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyPostLoginReq.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyPostLoginRsp.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasswordManager.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasswordManagerList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ProjectConfigUpdateCnameReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.RequestData.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ShortSession.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ShortSessionCreateReq.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.Session.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.SessionList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.SocialAccount.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.SocialAccountCreateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.SocialAccountList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.User.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.UserCreateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.UserUpdateReq.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.WebhookEndpoint.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.WebhookEndpointCreateReq.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.WebhookEndpointList.CustomTypeAdapterFactory());
         gson = gsonBuilder.create();
     }
 

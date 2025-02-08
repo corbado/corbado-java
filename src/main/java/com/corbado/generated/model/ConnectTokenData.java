@@ -17,6 +17,7 @@ import java.util.Objects;
 import com.corbado.generated.model.ConnectTokenDataPasskeyAppend;
 import com.corbado.generated.model.ConnectTokenDataPasskeyDelete;
 import com.corbado.generated.model.ConnectTokenDataPasskeyList;
+import com.corbado.generated.model.ConnectTokenDataPasskeyLogin;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -60,7 +61,7 @@ import com.google.gson.JsonParseException;
 
 import com.corbado.generated.invoker.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ConnectTokenData extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ConnectTokenData.class.getName());
 
@@ -75,6 +76,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
             final TypeAdapter<ConnectTokenDataPasskeyAppend> adapterConnectTokenDataPasskeyAppend = gson.getDelegateAdapter(this, TypeToken.get(ConnectTokenDataPasskeyAppend.class));
             final TypeAdapter<ConnectTokenDataPasskeyDelete> adapterConnectTokenDataPasskeyDelete = gson.getDelegateAdapter(this, TypeToken.get(ConnectTokenDataPasskeyDelete.class));
             final TypeAdapter<ConnectTokenDataPasskeyList> adapterConnectTokenDataPasskeyList = gson.getDelegateAdapter(this, TypeToken.get(ConnectTokenDataPasskeyList.class));
+            final TypeAdapter<ConnectTokenDataPasskeyLogin> adapterConnectTokenDataPasskeyLogin = gson.getDelegateAdapter(this, TypeToken.get(ConnectTokenDataPasskeyLogin.class));
 
             return (TypeAdapter<T>) new TypeAdapter<ConnectTokenData>() {
                 @Override
@@ -102,7 +104,13 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList");
+                    // check if the actual instance is of the type `ConnectTokenDataPasskeyLogin`
+                    if (value.getActualInstance() instanceof ConnectTokenDataPasskeyLogin) {
+                        JsonElement element = adapterConnectTokenDataPasskeyLogin.toJsonTree((ConnectTokenDataPasskeyLogin)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList, ConnectTokenDataPasskeyLogin");
                 }
 
                 @Override
@@ -150,6 +158,18 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
                         errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyList failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ConnectTokenDataPasskeyList'", e);
                     }
+                    // deserialize ConnectTokenDataPasskeyLogin
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        ConnectTokenDataPasskeyLogin.validateJsonElement(jsonElement);
+                        actualAdapter = adapterConnectTokenDataPasskeyLogin;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'ConnectTokenDataPasskeyLogin'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyLogin failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'ConnectTokenDataPasskeyLogin'", e);
+                    }
 
                     if (match == 1) {
                         ConnectTokenData ret = new ConnectTokenData();
@@ -179,6 +199,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
         schemas.put("ConnectTokenDataPasskeyAppend", ConnectTokenDataPasskeyAppend.class);
         schemas.put("ConnectTokenDataPasskeyDelete", ConnectTokenDataPasskeyDelete.class);
         schemas.put("ConnectTokenDataPasskeyList", ConnectTokenDataPasskeyList.class);
+        schemas.put("ConnectTokenDataPasskeyLogin", ConnectTokenDataPasskeyLogin.class);
     }
 
     @Override
@@ -189,7 +210,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the oneOf child schema, check
      * the instance parameter is valid against the oneOf child schemas:
-     * ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList
+     * ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList, ConnectTokenDataPasskeyLogin
      *
      * It could be an instance of the 'oneOf' schemas.
      */
@@ -210,14 +231,19 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList");
+        if (instance instanceof ConnectTokenDataPasskeyLogin) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList, ConnectTokenDataPasskeyLogin");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList
+     * ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList, ConnectTokenDataPasskeyLogin
      *
-     * @return The actual instance (ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList)
+     * @return The actual instance (ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList, ConnectTokenDataPasskeyLogin)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -235,6 +261,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
     public ConnectTokenDataPasskeyAppend getConnectTokenDataPasskeyAppend() throws ClassCastException {
         return (ConnectTokenDataPasskeyAppend)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ConnectTokenDataPasskeyDelete`. If the actual instance is not `ConnectTokenDataPasskeyDelete`,
      * the ClassCastException will be thrown.
@@ -245,6 +272,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
     public ConnectTokenDataPasskeyDelete getConnectTokenDataPasskeyDelete() throws ClassCastException {
         return (ConnectTokenDataPasskeyDelete)super.getActualInstance();
     }
+
     /**
      * Get the actual instance of `ConnectTokenDataPasskeyList`. If the actual instance is not `ConnectTokenDataPasskeyList`,
      * the ClassCastException will be thrown.
@@ -254,6 +282,17 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
      */
     public ConnectTokenDataPasskeyList getConnectTokenDataPasskeyList() throws ClassCastException {
         return (ConnectTokenDataPasskeyList)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `ConnectTokenDataPasskeyLogin`. If the actual instance is not `ConnectTokenDataPasskeyLogin`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `ConnectTokenDataPasskeyLogin`
+     * @throws ClassCastException if the instance is not `ConnectTokenDataPasskeyLogin`
+     */
+    public ConnectTokenDataPasskeyLogin getConnectTokenDataPasskeyLogin() throws ClassCastException {
+        return (ConnectTokenDataPasskeyLogin)super.getActualInstance();
     }
 
     /**
@@ -290,8 +329,16 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
             errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyList failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
+        // validate the json string with ConnectTokenDataPasskeyLogin
+        try {
+            ConnectTokenDataPasskeyLogin.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyLogin failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for ConnectTokenData with oneOf schemas: ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format("The JSON string is invalid for ConnectTokenData with oneOf schemas: ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList, ConnectTokenDataPasskeyLogin. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

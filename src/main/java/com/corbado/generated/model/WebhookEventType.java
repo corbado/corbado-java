@@ -24,24 +24,20 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Gets or Sets longSessionStatus
+ * Gets or Sets webhookEventType
  */
-@JsonAdapter(LongSessionStatus.Adapter.class)
-public enum LongSessionStatus {
+@JsonAdapter(WebhookEventType.Adapter.class)
+public enum WebhookEventType {
   
-  ACTIVE("active"),
+  PASSKEY_LOGIN_COMPLETED("passkey-login.completed"),
   
-  LOGGED_OUT("logged_out"),
+  PASSKEY_CREATED("passkey.created"),
   
-  EXPIRED("expired"),
-  
-  INACTIVITY_REACHED("inactivity_reached"),
-  
-  REVOKED("revoked");
+  PASSKEY_DELETED("passkey.deleted");
 
   private String value;
 
-  LongSessionStatus(String value) {
+  WebhookEventType(String value) {
     this.value = value;
   }
 
@@ -54,8 +50,8 @@ public enum LongSessionStatus {
     return String.valueOf(value);
   }
 
-  public static LongSessionStatus fromValue(String value) {
-    for (LongSessionStatus b : LongSessionStatus.values()) {
+  public static WebhookEventType fromValue(String value) {
+    for (WebhookEventType b : WebhookEventType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -63,22 +59,22 @@ public enum LongSessionStatus {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<LongSessionStatus> {
+  public static class Adapter extends TypeAdapter<WebhookEventType> {
     @Override
-    public void write(final JsonWriter jsonWriter, final LongSessionStatus enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final WebhookEventType enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public LongSessionStatus read(final JsonReader jsonReader) throws IOException {
+    public WebhookEventType read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return LongSessionStatus.fromValue(value);
+      return WebhookEventType.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    LongSessionStatus.fromValue(value);
+    WebhookEventType.fromValue(value);
   }
 }
 

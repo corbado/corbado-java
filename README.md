@@ -27,7 +27,7 @@ You can find the latest SDK version at [central repository](https://repo1.maven.
 Add this dependency to your project's build file:
 
 ```groovy
-implementation "com.corbado:corbado-java:1.0.4"
+implementation "com.corbado:corbado-java:2.0.0b"
 ```
 
 #### Maven users
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.corbado</groupId>
   <artifactId>corbado-java</artifactId>
-  <version>1.0.4</version>
+  <version>2.0.0b</version>
 </dependency>
 ```
 

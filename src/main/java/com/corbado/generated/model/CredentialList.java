@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,20 +52,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * CredentialList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class CredentialList {
   public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
   @SerializedName(SERIALIZED_NAME_CREDENTIALS)
+  @javax.annotation.Nonnull
   private List<Credential> credentials = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PAGING = "paging";
   @SerializedName(SERIALIZED_NAME_PAGING)
+  @javax.annotation.Nonnull
   private Paging paging;
 
   public CredentialList() {
   }
 
-  public CredentialList credentials(List<Credential> credentials) {
+  public CredentialList credentials(@javax.annotation.Nonnull List<Credential> credentials) {
     this.credentials = credentials;
     return this;
   }
@@ -88,12 +89,12 @@ public class CredentialList {
     return credentials;
   }
 
-  public void setCredentials(List<Credential> credentials) {
+  public void setCredentials(@javax.annotation.Nonnull List<Credential> credentials) {
     this.credentials = credentials;
   }
 
 
-  public CredentialList paging(Paging paging) {
+  public CredentialList paging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
     return this;
   }
@@ -107,7 +108,7 @@ public class CredentialList {
     return paging;
   }
 
-  public void setPaging(Paging paging) {
+  public void setPaging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
   }
 

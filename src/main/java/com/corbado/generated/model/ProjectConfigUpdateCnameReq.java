@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,16 +48,17 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ProjectConfigUpdateCnameReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ProjectConfigUpdateCnameReq {
   public static final String SERIALIZED_NAME_CNAME = "cname";
   @SerializedName(SERIALIZED_NAME_CNAME)
+  @javax.annotation.Nonnull
   private String cname;
 
   public ProjectConfigUpdateCnameReq() {
   }
 
-  public ProjectConfigUpdateCnameReq cname(String cname) {
+  public ProjectConfigUpdateCnameReq cname(@javax.annotation.Nonnull String cname) {
     this.cname = cname;
     return this;
   }
@@ -72,7 +72,7 @@ public class ProjectConfigUpdateCnameReq {
     return cname;
   }
 
-  public void setCname(String cname) {
+  public void setCname(@javax.annotation.Nonnull String cname) {
     this.cname = cname;
   }
 

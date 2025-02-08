@@ -14,14 +14,17 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
-import com.corbado.generated.model.AppType;
+import com.corbado.generated.model.Paging;
+import com.corbado.generated.model.Session;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -48,56 +50,66 @@ import java.util.Set;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * LongSessionCreateReq
+ * SessionList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
-public class LongSessionCreateReq {
-  public static final String SERIALIZED_NAME_APP_TYPE = "appType";
-  @SerializedName(SERIALIZED_NAME_APP_TYPE)
-  private AppType appType;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
+public class SessionList {
+  public static final String SERIALIZED_NAME_SESSIONS = "sessions";
+  @SerializedName(SERIALIZED_NAME_SESSIONS)
+  @javax.annotation.Nonnull
+  private List<Session> sessions = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
-  @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
-  private String identifierValue;
+  public static final String SERIALIZED_NAME_PAGING = "paging";
+  @SerializedName(SERIALIZED_NAME_PAGING)
+  @javax.annotation.Nonnull
+  private Paging paging;
 
-  public LongSessionCreateReq() {
+  public SessionList() {
   }
 
-  public LongSessionCreateReq appType(AppType appType) {
-    this.appType = appType;
+  public SessionList sessions(@javax.annotation.Nonnull List<Session> sessions) {
+    this.sessions = sessions;
+    return this;
+  }
+
+  public SessionList addSessionsItem(Session sessionsItem) {
+    if (this.sessions == null) {
+      this.sessions = new ArrayList<>();
+    }
+    this.sessions.add(sessionsItem);
     return this;
   }
 
   /**
-   * Get appType
-   * @return appType
+   * Get sessions
+   * @return sessions
    */
   @javax.annotation.Nonnull
-  public AppType getAppType() {
-    return appType;
+  public List<Session> getSessions() {
+    return sessions;
   }
 
-  public void setAppType(AppType appType) {
-    this.appType = appType;
+  public void setSessions(@javax.annotation.Nonnull List<Session> sessions) {
+    this.sessions = sessions;
   }
 
 
-  public LongSessionCreateReq identifierValue(String identifierValue) {
-    this.identifierValue = identifierValue;
+  public SessionList paging(@javax.annotation.Nonnull Paging paging) {
+    this.paging = paging;
     return this;
   }
 
   /**
-   * Get identifierValue
-   * @return identifierValue
+   * Get paging
+   * @return paging
    */
   @javax.annotation.Nonnull
-  public String getIdentifierValue() {
-    return identifierValue;
+  public Paging getPaging() {
+    return paging;
   }
 
-  public void setIdentifierValue(String identifierValue) {
-    this.identifierValue = identifierValue;
+  public void setPaging(@javax.annotation.Nonnull Paging paging) {
+    this.paging = paging;
   }
 
 
@@ -110,22 +122,22 @@ public class LongSessionCreateReq {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LongSessionCreateReq longSessionCreateReq = (LongSessionCreateReq) o;
-    return Objects.equals(this.appType, longSessionCreateReq.appType) &&
-        Objects.equals(this.identifierValue, longSessionCreateReq.identifierValue);
+    SessionList sessionList = (SessionList) o;
+    return Objects.equals(this.sessions, sessionList.sessions) &&
+        Objects.equals(this.paging, sessionList.paging);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appType, identifierValue);
+    return Objects.hash(sessions, paging);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LongSessionCreateReq {\n");
-    sb.append("    appType: ").append(toIndentedString(appType)).append("\n");
-    sb.append("    identifierValue: ").append(toIndentedString(identifierValue)).append("\n");
+    sb.append("class SessionList {\n");
+    sb.append("    sessions: ").append(toIndentedString(sessions)).append("\n");
+    sb.append("    paging: ").append(toIndentedString(paging)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -148,70 +160,77 @@ public class LongSessionCreateReq {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("appType");
-    openapiFields.add("identifierValue");
+    openapiFields.add("sessions");
+    openapiFields.add("paging");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("appType");
-    openapiRequiredFields.add("identifierValue");
+    openapiRequiredFields.add("sessions");
+    openapiRequiredFields.add("paging");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to LongSessionCreateReq
+   * @throws IOException if the JSON Element is invalid with respect to SessionList
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!LongSessionCreateReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in LongSessionCreateReq is not found in the empty JSON string", LongSessionCreateReq.openapiRequiredFields.toString()));
+        if (!SessionList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in SessionList is not found in the empty JSON string", SessionList.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!LongSessionCreateReq.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `LongSessionCreateReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!SessionList.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SessionList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : LongSessionCreateReq.openapiRequiredFields) {
+      for (String requiredField : SessionList.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the required field `appType`
-      AppType.validateJsonElement(jsonObj.get("appType"));
-      if (!jsonObj.get("identifierValue").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identifierValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierValue").toString()));
+      // ensure the json data is an array
+      if (!jsonObj.get("sessions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `sessions` to be an array in the JSON string but got `%s`", jsonObj.get("sessions").toString()));
       }
+
+      JsonArray jsonArraysessions = jsonObj.getAsJsonArray("sessions");
+      // validate the required field `sessions` (array)
+      for (int i = 0; i < jsonArraysessions.size(); i++) {
+        Session.validateJsonElement(jsonArraysessions.get(i));
+      };
+      // validate the required field `paging`
+      Paging.validateJsonElement(jsonObj.get("paging"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!LongSessionCreateReq.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'LongSessionCreateReq' and its subtypes
+       if (!SessionList.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SessionList' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<LongSessionCreateReq> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(LongSessionCreateReq.class));
+       final TypeAdapter<SessionList> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SessionList.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<LongSessionCreateReq>() {
+       return (TypeAdapter<T>) new TypeAdapter<SessionList>() {
            @Override
-           public void write(JsonWriter out, LongSessionCreateReq value) throws IOException {
+           public void write(JsonWriter out, SessionList value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public LongSessionCreateReq read(JsonReader in) throws IOException {
+           public SessionList read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -222,18 +241,18 @@ public class LongSessionCreateReq {
   }
 
   /**
-   * Create an instance of LongSessionCreateReq given an JSON string
+   * Create an instance of SessionList given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of LongSessionCreateReq
-   * @throws IOException if the JSON string is invalid with respect to LongSessionCreateReq
+   * @return An instance of SessionList
+   * @throws IOException if the JSON string is invalid with respect to SessionList
    */
-  public static LongSessionCreateReq fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, LongSessionCreateReq.class);
+  public static SessionList fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SessionList.class);
   }
 
   /**
-   * Convert an instance of LongSessionCreateReq to an JSON string
+   * Convert an instance of SessionList to an JSON string
    *
    * @return JSON string
    */

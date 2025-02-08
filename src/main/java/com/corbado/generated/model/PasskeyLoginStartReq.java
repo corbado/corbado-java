@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,28 +50,32 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyLoginStartReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyLoginStartReq {
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public static final String SERIALIZED_NAME_CLIENT_INFORMATION = "clientInformation";
   @SerializedName(SERIALIZED_NAME_CLIENT_INFORMATION)
+  @javax.annotation.Nonnull
   private ClientInformation clientInformation;
 
   public static final String SERIALIZED_NAME_CROSS_DEVICE_AUTHENTICATION_STRATEGY = "crossDeviceAuthenticationStrategy";
   @SerializedName(SERIALIZED_NAME_CROSS_DEVICE_AUTHENTICATION_STRATEGY)
+  @javax.annotation.Nonnull
   private CrossDeviceAuthenticationStrategy crossDeviceAuthenticationStrategy;
 
   public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
+  @javax.annotation.Nonnull
   private String processID;
 
   public PasskeyLoginStartReq() {
   }
 
-  public PasskeyLoginStartReq userID(String userID) {
+  public PasskeyLoginStartReq userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -86,12 +89,12 @@ public class PasskeyLoginStartReq {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 
 
-  public PasskeyLoginStartReq clientInformation(ClientInformation clientInformation) {
+  public PasskeyLoginStartReq clientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
     return this;
   }
@@ -105,12 +108,12 @@ public class PasskeyLoginStartReq {
     return clientInformation;
   }
 
-  public void setClientInformation(ClientInformation clientInformation) {
+  public void setClientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
   }
 
 
-  public PasskeyLoginStartReq crossDeviceAuthenticationStrategy(CrossDeviceAuthenticationStrategy crossDeviceAuthenticationStrategy) {
+  public PasskeyLoginStartReq crossDeviceAuthenticationStrategy(@javax.annotation.Nonnull CrossDeviceAuthenticationStrategy crossDeviceAuthenticationStrategy) {
     this.crossDeviceAuthenticationStrategy = crossDeviceAuthenticationStrategy;
     return this;
   }
@@ -124,12 +127,12 @@ public class PasskeyLoginStartReq {
     return crossDeviceAuthenticationStrategy;
   }
 
-  public void setCrossDeviceAuthenticationStrategy(CrossDeviceAuthenticationStrategy crossDeviceAuthenticationStrategy) {
+  public void setCrossDeviceAuthenticationStrategy(@javax.annotation.Nonnull CrossDeviceAuthenticationStrategy crossDeviceAuthenticationStrategy) {
     this.crossDeviceAuthenticationStrategy = crossDeviceAuthenticationStrategy;
   }
 
 
-  public PasskeyLoginStartReq processID(String processID) {
+  public PasskeyLoginStartReq processID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
     return this;
   }
@@ -143,7 +146,7 @@ public class PasskeyLoginStartReq {
     return processID;
   }
 
-  public void setProcessID(String processID) {
+  public void setProcessID(@javax.annotation.Nonnull String processID) {
     this.processID = processID;
   }
 

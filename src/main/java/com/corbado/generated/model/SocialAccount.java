@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,40 +48,47 @@ import com.corbado.generated.invoker.JSON;
 /**
  * SocialAccount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class SocialAccount {
   public static final String SERIALIZED_NAME_SOCIAL_ACCOUNT_I_D = "socialAccountID";
   @SerializedName(SERIALIZED_NAME_SOCIAL_ACCOUNT_I_D)
+  @javax.annotation.Nonnull
   private String socialAccountID;
 
   public static final String SERIALIZED_NAME_PROVIDER_TYPE = "providerType";
   @SerializedName(SERIALIZED_NAME_PROVIDER_TYPE)
+  @javax.annotation.Nonnull
   private String providerType;
 
   public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
+  @javax.annotation.Nonnull
   private String identifierValue;
 
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public static final String SERIALIZED_NAME_FOREIGN_I_D = "foreignID";
   @SerializedName(SERIALIZED_NAME_FOREIGN_I_D)
+  @javax.annotation.Nonnull
   private String foreignID;
 
   public static final String SERIALIZED_NAME_AVATAR_U_R_L = "avatarURL";
   @SerializedName(SERIALIZED_NAME_AVATAR_U_R_L)
+  @javax.annotation.Nonnull
   private String avatarURL;
 
   public static final String SERIALIZED_NAME_FULL_NAME = "fullName";
   @SerializedName(SERIALIZED_NAME_FULL_NAME)
+  @javax.annotation.Nonnull
   private String fullName;
 
   public SocialAccount() {
   }
 
-  public SocialAccount socialAccountID(String socialAccountID) {
+  public SocialAccount socialAccountID(@javax.annotation.Nonnull String socialAccountID) {
     this.socialAccountID = socialAccountID;
     return this;
   }
@@ -96,12 +102,12 @@ public class SocialAccount {
     return socialAccountID;
   }
 
-  public void setSocialAccountID(String socialAccountID) {
+  public void setSocialAccountID(@javax.annotation.Nonnull String socialAccountID) {
     this.socialAccountID = socialAccountID;
   }
 
 
-  public SocialAccount providerType(String providerType) {
+  public SocialAccount providerType(@javax.annotation.Nonnull String providerType) {
     this.providerType = providerType;
     return this;
   }
@@ -115,12 +121,12 @@ public class SocialAccount {
     return providerType;
   }
 
-  public void setProviderType(String providerType) {
+  public void setProviderType(@javax.annotation.Nonnull String providerType) {
     this.providerType = providerType;
   }
 
 
-  public SocialAccount identifierValue(String identifierValue) {
+  public SocialAccount identifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
     return this;
   }
@@ -134,12 +140,12 @@ public class SocialAccount {
     return identifierValue;
   }
 
-  public void setIdentifierValue(String identifierValue) {
+  public void setIdentifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
   }
 
 
-  public SocialAccount userID(String userID) {
+  public SocialAccount userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -153,12 +159,12 @@ public class SocialAccount {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 
 
-  public SocialAccount foreignID(String foreignID) {
+  public SocialAccount foreignID(@javax.annotation.Nonnull String foreignID) {
     this.foreignID = foreignID;
     return this;
   }
@@ -172,12 +178,12 @@ public class SocialAccount {
     return foreignID;
   }
 
-  public void setForeignID(String foreignID) {
+  public void setForeignID(@javax.annotation.Nonnull String foreignID) {
     this.foreignID = foreignID;
   }
 
 
-  public SocialAccount avatarURL(String avatarURL) {
+  public SocialAccount avatarURL(@javax.annotation.Nonnull String avatarURL) {
     this.avatarURL = avatarURL;
     return this;
   }
@@ -191,12 +197,12 @@ public class SocialAccount {
     return avatarURL;
   }
 
-  public void setAvatarURL(String avatarURL) {
+  public void setAvatarURL(@javax.annotation.Nonnull String avatarURL) {
     this.avatarURL = avatarURL;
   }
 
 
-  public SocialAccount fullName(String fullName) {
+  public SocialAccount fullName(@javax.annotation.Nonnull String fullName) {
     this.fullName = fullName;
     return this;
   }
@@ -210,7 +216,7 @@ public class SocialAccount {
     return fullName;
   }
 
-  public void setFullName(String fullName) {
+  public void setFullName(@javax.annotation.Nonnull String fullName) {
     this.fullName = fullName;
   }
 

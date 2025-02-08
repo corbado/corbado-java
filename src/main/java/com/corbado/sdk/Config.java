@@ -2,12 +2,12 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import org.apache.commons.lang3.StringUtils;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Configuration class for setting up project parameters.
@@ -23,8 +23,7 @@ public class Config {
   /** The Constant HTTPS prefix. */
   private static final String HTTPS = "https://";
 
-  // Fields
-
+  // ---------- Constants ----------
   /** The Constant API_VERSION. */
   private static final String API_VERSION = "2";
 
@@ -34,64 +33,33 @@ public class Config {
   /** Project Id must begin with this prefix. */
   private static final String PROJECT_ID_PREFIX = "pro-";
 
+  // ---------- Mandatory fields ----------
+
   /** The project id with custom setter. Must be provided. */
   @NonNull @Getter private String projectId;
 
   /** The api secret with custom setter. Must be provided. */
   @NonNull @Getter private String apiSecret;
 
-  /** The backend api with custom setter. Default value: "https://backendapi.cloud.corbado.io/v2" */
-  @Getter @Builder.Default private String backendApi = "https://backendapi.cloud.corbado.io/v2";
+  /** The frontend api with custom setter. */
+  @Getter private String frontendApi;
 
-  /** The short session cookie name. Default value: "cbo_short_session" */
-  @Getter @Setter @Builder.Default private String shortSessionCookieName = "cbo_short_session";
+  /** The backend api with custom setter. */
+  @Getter private String backendApi;
+
+  // ---------- Non-mandatory fields ----------
 
   /** The issuer. Used for session verification. */
   @Getter @Setter private String issuer;
 
-  /** The frontend api with custom setter. */
-  @Getter private String frontendApi;
-
-  /** The short session length for session service. Default = 300. */
-  @Getter @Setter @Builder.Default private Integer shortSessionLength = 300;
+  /** The life duration for session service token. Default = 300. */
+  @Getter @Setter @Builder.Default private Integer sessionTokenLength = 300;
 
   /** Flag to cache keys in session service. Default = true. */
   @Getter @Setter @Builder.Default private boolean cacheKeys = true;
 
   /** The cname. Replaces issuer field if present. */
   @Getter @Setter private String cname;
-
-  // Constructors
-  /**
-   * Instantiates a new config.
-   *
-   * @param projectId the project id
-   * @param apiSecret the api secret
-   */
-  public Config(@NonNull final String projectId, @NonNull final String apiSecret) {
-
-    setProjectId(projectId); // set and validate
-    setApiSecret(apiSecret);
-
-    // default values
-    setFrontendApi(projectId);
-    setIssuer(this.frontendApi);
-  }
-
-  /**
-   * Instantiates a new config.
-   *
-   * @param projectId the project id
-   * @param apiSecret the api secret
-   * @param backendApi the backend api
-   */
-  public Config(
-      @NonNull final String projectId,
-      @NonNull final String apiSecret,
-      @NonNull final String backendApi) {
-    this(projectId, apiSecret);
-    setBackendApi(backendApi);
-  }
 
   // Custom Getters and Setters
   /**
@@ -136,8 +104,6 @@ public class Config {
    */
   public void setFrontendApi(String frontendApi) {
     frontendApi = StringUtils.trim(frontendApi);
-    frontendApi = StringUtils.prependIfMissing(frontendApi, HTTPS);
-    frontendApi = StringUtils.appendIfMissing(frontendApi, ".frontendapi.corbado.io");
 
     try {
       new URL(frontendApi); // Validate URL syntax
@@ -168,34 +134,27 @@ public class Config {
    * @param projectId the project id
    * @param apiSecret the api secret
    * @param backendApi the backend api
-   * @param shortSessionCookieName the short session cookie name
-   * @param issuer the issuer
    * @param frontendApi the frontend api
-   * @param shortSessionLength the short session length
+   * @param issuer the issuer
+   * @param sessionTokenLength the short session length
    * @param cacheKeys the cache keys
    * @param cname the cname
    */
   public Config(
-      @NonNull final String projectId,
-      @NonNull final String apiSecret,
-      final String backendApi,
-      final String shortSessionCookieName,
-      final String issuer,
-      final String frontendApi,
-      final Integer shortSessionLength,
-      final boolean cacheKeys,
+      @NonNull String projectId,
+      @NonNull String apiSecret,
+      String frontendApi,
+      String backendApi,
+      String issuer,
+      Integer sessionTokenLength,
+      boolean cacheKeys,
       String cname) {
-
     setProjectId(projectId);
     setApiSecret(apiSecret);
     setBackendApi(backendApi);
-    setShortSessionCookieName(shortSessionCookieName);
-    if (StringUtils.isEmpty(frontendApi)) {
-      setFrontendApi(projectId);
-    } else {
-      setFrontendApi(frontendApi);
-    }
-    setShortSessionLength(shortSessionLength);
+    setFrontendApi(frontendApi);
+
+    setSessionTokenLength(sessionTokenLength);
     setCacheKeys(cacheKeys);
     setCname(cname);
 

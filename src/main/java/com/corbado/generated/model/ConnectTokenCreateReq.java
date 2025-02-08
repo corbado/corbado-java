@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,24 +50,27 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ConnectTokenCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ConnectTokenCreateReq {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nonnull
   private ConnectTokenType type;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nonnull
   private ConnectTokenData data;
 
   public static final String SERIALIZED_NAME_MAX_LIFETIME_IN_SECONDS = "maxLifetimeInSeconds";
   @SerializedName(SERIALIZED_NAME_MAX_LIFETIME_IN_SECONDS)
+  @javax.annotation.Nullable
   private Integer maxLifetimeInSeconds;
 
   public ConnectTokenCreateReq() {
   }
 
-  public ConnectTokenCreateReq type(ConnectTokenType type) {
+  public ConnectTokenCreateReq type(@javax.annotation.Nonnull ConnectTokenType type) {
     this.type = type;
     return this;
   }
@@ -82,12 +84,12 @@ public class ConnectTokenCreateReq {
     return type;
   }
 
-  public void setType(ConnectTokenType type) {
+  public void setType(@javax.annotation.Nonnull ConnectTokenType type) {
     this.type = type;
   }
 
 
-  public ConnectTokenCreateReq data(ConnectTokenData data) {
+  public ConnectTokenCreateReq data(@javax.annotation.Nonnull ConnectTokenData data) {
     this.data = data;
     return this;
   }
@@ -101,12 +103,12 @@ public class ConnectTokenCreateReq {
     return data;
   }
 
-  public void setData(ConnectTokenData data) {
+  public void setData(@javax.annotation.Nonnull ConnectTokenData data) {
     this.data = data;
   }
 
 
-  public ConnectTokenCreateReq maxLifetimeInSeconds(Integer maxLifetimeInSeconds) {
+  public ConnectTokenCreateReq maxLifetimeInSeconds(@javax.annotation.Nullable Integer maxLifetimeInSeconds) {
     this.maxLifetimeInSeconds = maxLifetimeInSeconds;
     return this;
   }
@@ -120,7 +122,7 @@ public class ConnectTokenCreateReq {
     return maxLifetimeInSeconds;
   }
 
-  public void setMaxLifetimeInSeconds(Integer maxLifetimeInSeconds) {
+  public void setMaxLifetimeInSeconds(@javax.annotation.Nullable Integer maxLifetimeInSeconds) {
     this.maxLifetimeInSeconds = maxLifetimeInSeconds;
   }
 

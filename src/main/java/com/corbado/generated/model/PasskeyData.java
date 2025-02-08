@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import com.corbado.generated.model.AaguidDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -37,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,18 +49,21 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class PasskeyData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nonnull
   private String username;
 
   /**
@@ -119,16 +122,23 @@ public class PasskeyData {
 
   public static final String SERIALIZED_NAME_CEREMONY_TYPE = "ceremonyType";
   @SerializedName(SERIALIZED_NAME_CEREMONY_TYPE)
+  @javax.annotation.Nonnull
   private CeremonyTypeEnum ceremonyType;
 
   public static final String SERIALIZED_NAME_CHALLENGE_I_D = "challengeID";
   @SerializedName(SERIALIZED_NAME_CHALLENGE_I_D)
+  @javax.annotation.Nonnull
   private String challengeID;
+
+  public static final String SERIALIZED_NAME_AAGUID_DETAILS = "aaguidDetails";
+  @SerializedName(SERIALIZED_NAME_AAGUID_DETAILS)
+  @javax.annotation.Nonnull
+  private AaguidDetails aaguidDetails;
 
   public PasskeyData() {
   }
 
-  public PasskeyData id(String id) {
+  public PasskeyData id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -142,12 +152,12 @@ public class PasskeyData {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public PasskeyData userID(String userID) {
+  public PasskeyData userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -161,12 +171,12 @@ public class PasskeyData {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 
 
-  public PasskeyData username(String username) {
+  public PasskeyData username(@javax.annotation.Nonnull String username) {
     this.username = username;
     return this;
   }
@@ -180,12 +190,12 @@ public class PasskeyData {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nonnull String username) {
     this.username = username;
   }
 
 
-  public PasskeyData ceremonyType(CeremonyTypeEnum ceremonyType) {
+  public PasskeyData ceremonyType(@javax.annotation.Nonnull CeremonyTypeEnum ceremonyType) {
     this.ceremonyType = ceremonyType;
     return this;
   }
@@ -199,12 +209,12 @@ public class PasskeyData {
     return ceremonyType;
   }
 
-  public void setCeremonyType(CeremonyTypeEnum ceremonyType) {
+  public void setCeremonyType(@javax.annotation.Nonnull CeremonyTypeEnum ceremonyType) {
     this.ceremonyType = ceremonyType;
   }
 
 
-  public PasskeyData challengeID(String challengeID) {
+  public PasskeyData challengeID(@javax.annotation.Nonnull String challengeID) {
     this.challengeID = challengeID;
     return this;
   }
@@ -218,8 +228,27 @@ public class PasskeyData {
     return challengeID;
   }
 
-  public void setChallengeID(String challengeID) {
+  public void setChallengeID(@javax.annotation.Nonnull String challengeID) {
     this.challengeID = challengeID;
+  }
+
+
+  public PasskeyData aaguidDetails(@javax.annotation.Nonnull AaguidDetails aaguidDetails) {
+    this.aaguidDetails = aaguidDetails;
+    return this;
+  }
+
+  /**
+   * Get aaguidDetails
+   * @return aaguidDetails
+   */
+  @javax.annotation.Nonnull
+  public AaguidDetails getAaguidDetails() {
+    return aaguidDetails;
+  }
+
+  public void setAaguidDetails(@javax.annotation.Nonnull AaguidDetails aaguidDetails) {
+    this.aaguidDetails = aaguidDetails;
   }
 
 
@@ -237,12 +266,13 @@ public class PasskeyData {
         Objects.equals(this.userID, passkeyData.userID) &&
         Objects.equals(this.username, passkeyData.username) &&
         Objects.equals(this.ceremonyType, passkeyData.ceremonyType) &&
-        Objects.equals(this.challengeID, passkeyData.challengeID);
+        Objects.equals(this.challengeID, passkeyData.challengeID) &&
+        Objects.equals(this.aaguidDetails, passkeyData.aaguidDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userID, username, ceremonyType, challengeID);
+    return Objects.hash(id, userID, username, ceremonyType, challengeID, aaguidDetails);
   }
 
   @Override
@@ -254,6 +284,7 @@ public class PasskeyData {
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    ceremonyType: ").append(toIndentedString(ceremonyType)).append("\n");
     sb.append("    challengeID: ").append(toIndentedString(challengeID)).append("\n");
+    sb.append("    aaguidDetails: ").append(toIndentedString(aaguidDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -281,6 +312,7 @@ public class PasskeyData {
     openapiFields.add("username");
     openapiFields.add("ceremonyType");
     openapiFields.add("challengeID");
+    openapiFields.add("aaguidDetails");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -289,6 +321,7 @@ public class PasskeyData {
     openapiRequiredFields.add("username");
     openapiRequiredFields.add("ceremonyType");
     openapiRequiredFields.add("challengeID");
+    openapiRequiredFields.add("aaguidDetails");
   }
 
   /**
@@ -336,6 +369,8 @@ public class PasskeyData {
       if (!jsonObj.get("challengeID").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `challengeID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("challengeID").toString()));
       }
+      // validate the required field `aaguidDetails`
+      AaguidDetails.validateJsonElement(jsonObj.get("aaguidDetails"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

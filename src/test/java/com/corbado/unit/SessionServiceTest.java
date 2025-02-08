@@ -6,6 +6,22 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 
+import com.auth0.jwk.Jwk;
+import com.auth0.jwk.JwkException;
+import com.auth0.jwk.JwkProvider;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.IncorrectClaimException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.corbado.entities.UserEntity;
+import com.corbado.enums.exception.ValidationErrorType;
+import com.corbado.exceptions.StandardException;
+import com.corbado.exceptions.TokenValidationException;
+import com.corbado.services.SessionService;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,7 +40,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -36,30 +51,17 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.auth0.jwk.Jwk;
-import com.auth0.jwk.JwkException;
-import com.auth0.jwk.JwkProvider;
-import com.auth0.jwk.SigningKeyNotFoundException;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.IncorrectClaimException;
-import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.corbado.entities.SessionValidationResult;
-import com.corbado.exceptions.StandardException;
-import com.corbado.services.SessionService;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-
 /** Unit Test for session service. */
 @ExtendWith(MockitoExtension.class)
 public class SessionServiceTest {
 
+  private static final String TEST_PROJECT_ID = "pro-55";
+
   /** The Constant PRIVATE_KEY_PATH. */
   private static final String PRIVATE_KEY_PATH = "src/test/java/com/corbado/unit/data/rsakey.pem";
+
+  private static final String INVALID_PRIVATE_KEY_PATH =
+      "src/test/java/com/corbado/unit/data/invalidRsaKey.pem";
 
   /** The Constant JWKS_PATH. */
   private static final String JWKS_PATH = "src/test/java/com/corbado/unit/data/jwks.json";
@@ -88,6 +90,8 @@ public class SessionServiceTest {
   /** The private key. */
   private static RSAPrivateKey privateKey;
 
+  private static RSAPrivateKey invalidPrivateKey;
+
   // ------------------ Set up --------------------- //
 
   /**
@@ -104,6 +108,7 @@ public class SessionServiceTest {
     sessionService = createSessionService();
     jwks = readJwks();
     privateKey = readPrivateKey(PRIVATE_KEY_PATH);
+    invalidPrivateKey = readPrivateKey(INVALID_PRIVATE_KEY_PATH);
   }
 
   /**
@@ -143,7 +148,7 @@ public class SessionServiceTest {
    */
   @Test
   void test_testGenerateJwt() throws InvalidKeySpecException, NoSuchAlgorithmException {
-    assertNotNull(generateJwt("1", 3, 4));
+    assertNotNull(generateJwt("1", 3, 4, privateKey));
   }
 
   /**
@@ -151,25 +156,20 @@ public class SessionServiceTest {
    *
    * @param issuer the issuer
    * @param jwksUri the jwks uri
-   * @param shortSessionCookieName the short session cookie name
    * @param expectValid the expect valid
    */
   @ParameterizedTest
   @MethodSource("initParametersTestData")
   void testInitParametersValidation(
-      final String issuer,
-      final String jwksUri,
-      final String shortSessionCookieName,
-      final boolean expectValid) {
+      final String issuer, final String jwksUri, final boolean expectValid) {
     if (expectValid) {
       // No exception should be raised
-      assertDoesNotThrow(
-          () -> new SessionService(shortSessionCookieName, issuer, jwksUri, 0, false));
+      assertDoesNotThrow(() -> new SessionService(issuer, jwksUri, 0, false, TEST_PROJECT_ID));
     } else {
       // ValidationError should be raised
       assertThrows(
           IllegalArgumentException.class,
-          () -> new SessionService(shortSessionCookieName, issuer, jwksUri, 0, false));
+          () -> new SessionService(issuer, jwksUri, 0, false, TEST_PROJECT_ID));
     }
   }
 
@@ -186,14 +186,20 @@ public class SessionServiceTest {
    */
   @ParameterizedTest
   @MethodSource("provideJwts")
-  void test_getCurrentUser(final String jwt, Class<Exception> e)
-      throws StandardException, IncorrectClaimException, JWTVerificationException, JwkException {
+  // In all tests SessionService is configured with frontendAPI=https://auth.acme.com
+  void test_getCurrentUser(
+      final String jwt,
+      final Class<TokenValidationException> expectedException,
+      ValidationErrorType expectedValidationErrorType) {
 
-    if (e != null) {
-      assertThrows(e, () -> sessionService.getAndValidateCurrentUser(jwt));
+    if (expectedException != null) {
+      final TokenValidationException exception =
+          assertThrows(expectedException, () -> sessionService.validateToken(jwt));
+      if (expectedValidationErrorType != null || exception.getErrorType() != null) {
+        assertEquals(expectedValidationErrorType, exception.getErrorType());
+      }
     } else {
-      final SessionValidationResult validationResult =
-          sessionService.getAndValidateCurrentUser(jwt);
+      final UserEntity validationResult = sessionService.validateToken(jwt);
       assertEquals(TEST_NAME, validationResult.getFullName());
       assertEquals(TEST_USER_ID, validationResult.getUserID());
     }
@@ -209,13 +215,11 @@ public class SessionServiceTest {
   static Stream<Object[]> initParametersTestData() {
     return Stream.of(
         // Valid session service
-        new Object[] {"s", "2", "name", true},
+        new Object[] {"s", "2", true},
         // Test empty issuer
-        new Object[] {"", "2", "name", false},
+        new Object[] {"", "2", false},
         // Test empty jwks_uri
-        new Object[] {"s", "", "name", false},
-        // Test empty short_session_cookie_name
-        new Object[] {"s", "2", "", false});
+        new Object[] {"s", "", false});
   }
 
   /**
@@ -228,23 +232,32 @@ public class SessionServiceTest {
   static List<Object[]> provideJwts() throws InvalidKeySpecException, NoSuchAlgorithmException {
     final List<Object[]> testData = new ArrayList<>();
 
-    // JWT with invalid format
-    testData.add(new Object[] {"invalid", JWTDecodeException.class});
-
     // JWT signed with wrong algorithm (HS256 instead of RS256)
     final String jwtWithWrongAlgorithm =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik"
             + "pvaG4gRG9lIiwiYWRtaW4iOnRydWV9.dyt0CoTl4WoVjAHI9Q_CwSKhl6d_9rhM3NrXuJttkao";
-    testData.add(new Object[] {jwtWithWrongAlgorithm, SigningKeyNotFoundException.class});
+    testData.add(
+        new Object[] {
+          jwtWithWrongAlgorithm,
+          TokenValidationException.class,
+          ValidationErrorType.CODE_INVALID_TOKEN
+        });
 
+    // Empty JWT
+    testData.add(
+        new Object[] {
+          "", TokenValidationException.class, ValidationErrorType.CODE_EMPTY_SESSION_TOKEN
+        });
     // Not before (nbf) in future
     testData.add(
         new Object[] {
           generateJwt(
               "https://auth.acme.com",
               System.currentTimeMillis() / 1000 + 100,
-              System.currentTimeMillis() / 1000 + 100),
-          IncorrectClaimException.class
+              System.currentTimeMillis() / 1000 + 100,
+              privateKey),
+          TokenValidationException.class,
+          ValidationErrorType.CODE_JWT_BEFORE
         });
 
     // Expired (exp)
@@ -253,8 +266,10 @@ public class SessionServiceTest {
           generateJwt(
               "https://auth.acme.com",
               System.currentTimeMillis() / 1000 - 100,
-              System.currentTimeMillis() / 1000 - 100),
-          TokenExpiredException.class
+              System.currentTimeMillis() / 1000 - 100,
+              privateKey),
+          TokenValidationException.class,
+          ValidationErrorType.CODE_JWT_EXPIRED
         });
 
     // Invalid issuer (iss)
@@ -263,18 +278,77 @@ public class SessionServiceTest {
           generateJwt(
               "https://invalid.com",
               System.currentTimeMillis() / 1000 + 100,
-              System.currentTimeMillis() / 1000 - 100),
-          IncorrectClaimException.class
+              System.currentTimeMillis() / 1000 - 100,
+              privateKey),
+          TokenValidationException.class,
+          ValidationErrorType.CODE_ISSUER_MISSMATCH
         });
-
-    // Success
+    // Wrong private key
     testData.add(
         new Object[] {
           generateJwt(
               "https://auth.acme.com",
               System.currentTimeMillis() / 1000 + 100,
-              System.currentTimeMillis() / 1000 - 100),
+              System.currentTimeMillis() / 1000 - 100,
+              invalidPrivateKey),
+          TokenValidationException.class,
+          ValidationErrorType.CODE_JWT_INVALID_SIGNATURE
+        });
+    // Success with cname
+    testData.add(
+        new Object[] {
+          generateJwt(
+              "https://auth.acme.com",
+              System.currentTimeMillis() / 1000 + 100,
+              System.currentTimeMillis() / 1000 - 100,
+              privateKey),
+          null,
+          ValidationErrorType.CODE_JWT_INVALID_SIGNATURE
+        });
+    // Empty issuer
+    testData.add(
+        new Object[] {
+          generateJwt(
+              "",
+              System.currentTimeMillis() / 1000 + 100,
+              System.currentTimeMillis() / 1000 - 100,
+              privateKey),
+          TokenValidationException.class,
+          ValidationErrorType.CODE_EMPTY_ISSUER
+        });
+    // "Success with new Frontend API URL in JWT",
+    testData.add(
+        new Object[] {
+          generateJwt(
+              "https://" + TEST_PROJECT_ID + ".frontendapi.cloud.corbado.io",
+              System.currentTimeMillis() / 1000 + 100,
+              System.currentTimeMillis() / 1000 - 100,
+              privateKey),
+          null,
           null
+        });
+    // "Success with old Frontend API URL in JWT",
+    testData.add(
+        new Object[] {
+          generateJwt(
+              "https://" + TEST_PROJECT_ID + ".frontendapi.corbado.io",
+              System.currentTimeMillis() / 1000 + 100,
+              System.currentTimeMillis() / 1000 - 100,
+              privateKey),
+          null,
+          null
+        });
+
+    // "Wrong project id",
+    testData.add(
+        new Object[] {
+          generateJwt(
+              "https://" + "pro-1" + ".frontendapi.corbado.io",
+              System.currentTimeMillis() / 1000 + 100,
+              System.currentTimeMillis() / 1000 - 100,
+              privateKey),
+          TokenValidationException.class,
+          ValidationErrorType.CODE_ISSUER_MISSMATCH
         });
 
     return testData;
@@ -317,7 +391,8 @@ public class SessionServiceTest {
    * @throws InvalidKeySpecException the invalid key spec exception
    * @throws NoSuchAlgorithmException the no such algorithm exception
    */
-  private static String generateJwt(final String iss, final long exp, final long nbf)
+  private static String generateJwt(
+      final String iss, final long exp, final long nbf, RSAPrivateKey privateKey)
       throws InvalidKeySpecException, NoSuchAlgorithmException {
 
     final Algorithm algorithm = Algorithm.RSA256(privateKey);
@@ -340,11 +415,11 @@ public class SessionServiceTest {
    */
   private static SessionService createSessionService() {
     return new SessionService(
-        "cbo_short_session",
         "https://auth.acme.com",
         "https://example_uri.com",
         10,
-        false); // URLs do not matter, url access is mocked
+        false,
+        TEST_PROJECT_ID); // URLs do not matter, url access is mocked
   }
 
   /**

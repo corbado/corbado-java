@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,44 +50,48 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ErrorRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-02-08T15:52:19.373962904Z[Etc/UTC]", comments = "Generator version: 7.12.0-SNAPSHOT")
 public class ErrorRsp {
   public static final String SERIALIZED_NAME_HTTP_STATUS_CODE = "httpStatusCode";
   @SerializedName(SERIALIZED_NAME_HTTP_STATUS_CODE)
+  @javax.annotation.Nonnull
   private Integer httpStatusCode;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nonnull
   private String message;
 
   public static final String SERIALIZED_NAME_REQUEST_DATA = "requestData";
   @SerializedName(SERIALIZED_NAME_REQUEST_DATA)
+  @javax.annotation.Nonnull
   private RequestData requestData;
 
   public static final String SERIALIZED_NAME_RUNTIME = "runtime";
   @SerializedName(SERIALIZED_NAME_RUNTIME)
+  @javax.annotation.Nonnull
   private Float runtime;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nullable
   private Object data;
 
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
+  @javax.annotation.Nonnull
   private ErrorRspAllOfError error;
 
   public ErrorRsp() {
   }
 
-  public ErrorRsp httpStatusCode(Integer httpStatusCode) {
+  public ErrorRsp httpStatusCode(@javax.annotation.Nonnull Integer httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
     return this;
   }
 
   /**
    * HTTP status code of operation
-   * minimum: 200
-   * maximum: 599
    * @return httpStatusCode
    */
   @javax.annotation.Nonnull
@@ -96,12 +99,12 @@ public class ErrorRsp {
     return httpStatusCode;
   }
 
-  public void setHttpStatusCode(Integer httpStatusCode) {
+  public void setHttpStatusCode(@javax.annotation.Nonnull Integer httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
   }
 
 
-  public ErrorRsp message(String message) {
+  public ErrorRsp message(@javax.annotation.Nonnull String message) {
     this.message = message;
     return this;
   }
@@ -115,12 +118,12 @@ public class ErrorRsp {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nonnull String message) {
     this.message = message;
   }
 
 
-  public ErrorRsp requestData(RequestData requestData) {
+  public ErrorRsp requestData(@javax.annotation.Nonnull RequestData requestData) {
     this.requestData = requestData;
     return this;
   }
@@ -134,12 +137,12 @@ public class ErrorRsp {
     return requestData;
   }
 
-  public void setRequestData(RequestData requestData) {
+  public void setRequestData(@javax.annotation.Nonnull RequestData requestData) {
     this.requestData = requestData;
   }
 
 
-  public ErrorRsp runtime(Float runtime) {
+  public ErrorRsp runtime(@javax.annotation.Nonnull Float runtime) {
     this.runtime = runtime;
     return this;
   }
@@ -153,12 +156,12 @@ public class ErrorRsp {
     return runtime;
   }
 
-  public void setRuntime(Float runtime) {
+  public void setRuntime(@javax.annotation.Nonnull Float runtime) {
     this.runtime = runtime;
   }
 
 
-  public ErrorRsp data(Object data) {
+  public ErrorRsp data(@javax.annotation.Nullable Object data) {
     this.data = data;
     return this;
   }
@@ -172,12 +175,12 @@ public class ErrorRsp {
     return data;
   }
 
-  public void setData(Object data) {
+  public void setData(@javax.annotation.Nullable Object data) {
     this.data = data;
   }
 
 
-  public ErrorRsp error(ErrorRspAllOfError error) {
+  public ErrorRsp error(@javax.annotation.Nonnull ErrorRspAllOfError error) {
     this.error = error;
     return this;
   }
@@ -191,7 +194,7 @@ public class ErrorRsp {
     return error;
   }
 
-  public void setError(ErrorRspAllOfError error) {
+  public void setError(@javax.annotation.Nonnull ErrorRspAllOfError error) {
     this.error = error;
   }
 

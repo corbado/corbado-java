@@ -35,11 +35,19 @@ public enum PasskeyEventType {
   
   LOGIN_ERROR("login-error"),
   
+  LOGIN_ERROR_UNTYPED("login-error-untyped"),
+  
   LOGIN_ONE_TAP_SWITCH("login-one-tap-switch"),
   
   USER_APPEND_AFTER_CROSS_PLATFORM_BLACKLISTED("user-append-after-cross-platform-blacklisted"),
   
-  USER_APPEND_AFTER_LOGIN_ERROR_BLACKLISTED("user-append-after-login-error-blacklisted");
+  USER_APPEND_AFTER_LOGIN_ERROR_BLACKLISTED("user-append-after-login-error-blacklisted"),
+  
+  APPEND_CREDENTIAL_EXISTS("append-credential-exists"),
+  
+  APPEND_EXPLICIT_ABORT("append-explicit-abort"),
+  
+  APPEND_ERROR("append-error");
 
   private String value;
 

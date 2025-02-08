@@ -1,12 +1,10 @@
 package com.corbado.exceptions;
 
+import com.corbado.generated.invoker.ApiException;
+import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
-import com.corbado.generated.invoker.ApiException;
-import com.google.gson.Gson;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
