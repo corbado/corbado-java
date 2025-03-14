@@ -89,7 +89,7 @@ jobs:
           architecture: x64
 
       - name: Cache Maven dependencies for tests
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ matrix.java-version }}-${{ hashFiles('**/pom.xml') }}-${{ hashFiles('**/src/**') }}
