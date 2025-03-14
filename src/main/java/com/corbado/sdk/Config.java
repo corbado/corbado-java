@@ -59,7 +59,7 @@ public class Config {
   @Getter @Setter private String issuer;
 
   /** The frontend api with custom setter. */
-  @Getter @Builder.Default private String frontendApi = ""; // Will be set in post-build
+  @Getter private String frontendApi;
 
   /** The short session length for session service. Default = 300. */
   @Getter @Setter @Builder.Default
