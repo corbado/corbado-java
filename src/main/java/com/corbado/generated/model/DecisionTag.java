@@ -29,6 +29,8 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(DecisionTag.Adapter.class)
 public enum DecisionTag {
   
+  ENV_NO_PLATFORM_PK_SUPPORT("env-no-platform-pk-support"),
+  
   ENV_NO_PK_SUPPORT("env-no-pk-support"),
   
   USER_NO_PKS("user-no-pks"),
@@ -63,7 +65,13 @@ public enum DecisionTag {
   
   PROCESS_PK_LOGIN_INCOMPLETE("process-pk-login-incomplete"),
   
-  PROCESS_PK_LOGIN_CROSS_PLATFORM_COMPLETED("process-pk-login-cross-platform-completed");
+  PROCESS_PK_LOGIN_CROSS_PLATFORM_COMPLETED("process-pk-login-cross-platform-completed"),
+  
+  DEVICE_LOCAL_PLATFORM_PASSKEY_EXPERIMENT("device-local-platform-passkey-experiment"),
+  
+  ENV_BROKEN("env-broken"),
+  
+  PROCESS_PK_LOGIN_ABORTED("process-pk-login-aborted");
 
   private String value;
 

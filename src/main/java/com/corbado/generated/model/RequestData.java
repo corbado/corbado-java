@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,20 +48,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * Data about the request itself, can be used for debugging
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class RequestData {
   public static final String SERIALIZED_NAME_REQUEST_I_D = "requestID";
   @SerializedName(SERIALIZED_NAME_REQUEST_I_D)
+  @javax.annotation.Nonnull
   private String requestID;
 
   public static final String SERIALIZED_NAME_LINK = "link";
   @SerializedName(SERIALIZED_NAME_LINK)
+  @javax.annotation.Nullable
   private String link;
 
   public RequestData() {
   }
 
-  public RequestData requestID(String requestID) {
+  public RequestData requestID(@javax.annotation.Nonnull String requestID) {
     this.requestID = requestID;
     return this;
   }
@@ -76,12 +77,12 @@ public class RequestData {
     return requestID;
   }
 
-  public void setRequestID(String requestID) {
+  public void setRequestID(@javax.annotation.Nonnull String requestID) {
     this.requestID = requestID;
   }
 
 
-  public RequestData link(String link) {
+  public RequestData link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -90,12 +91,12 @@ public class RequestData {
    * Link to dashboard with details about request
    * @return link
    */
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getLink() {
     return link;
   }
 
-  public void setLink(String link) {
+  public void setLink(@javax.annotation.Nullable String link) {
     this.link = link;
   }
 
@@ -153,7 +154,6 @@ public class RequestData {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("requestID");
-    openapiRequiredFields.add("link");
   }
 
   /**
@@ -187,7 +187,7 @@ public class RequestData {
       if (!jsonObj.get("requestID").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `requestID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestID").toString()));
       }
-      if (!jsonObj.get("link").isJsonPrimitive()) {
+      if ((jsonObj.get("link") != null && !jsonObj.get("link").isJsonNull()) && !jsonObj.get("link").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("link").toString()));
       }
   }

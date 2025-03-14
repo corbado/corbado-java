@@ -15,6 +15,7 @@ package com.corbado.generated.model;
 
 import java.util.Objects;
 import com.corbado.generated.model.JavaScriptHighEntropy;
+import com.corbado.generated.model.ParsedDeviceInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -38,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,44 +50,67 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ClientInformation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class ClientInformation {
   public static final String SERIALIZED_NAME_REMOTE_ADDRESS = "remoteAddress";
   @SerializedName(SERIALIZED_NAME_REMOTE_ADDRESS)
+  @javax.annotation.Nonnull
   private String remoteAddress;
 
   public static final String SERIALIZED_NAME_USER_AGENT = "userAgent";
   @SerializedName(SERIALIZED_NAME_USER_AGENT)
+  @javax.annotation.Nonnull
   private String userAgent;
 
   public static final String SERIALIZED_NAME_CLIENT_ENV_HANDLE = "clientEnvHandle";
   @SerializedName(SERIALIZED_NAME_CLIENT_ENV_HANDLE)
+  @javax.annotation.Nullable
   private String clientEnvHandle;
 
   public static final String SERIALIZED_NAME_JAVASCRIPT_FINGERPRINT = "javascriptFingerprint";
   @SerializedName(SERIALIZED_NAME_JAVASCRIPT_FINGERPRINT)
+  @javax.annotation.Nullable
   private String javascriptFingerprint;
 
   public static final String SERIALIZED_NAME_JAVA_SCRIPT_HIGH_ENTROPY = "javaScriptHighEntropy";
   @SerializedName(SERIALIZED_NAME_JAVA_SCRIPT_HIGH_ENTROPY)
+  @javax.annotation.Nullable
   private JavaScriptHighEntropy javaScriptHighEntropy;
 
   public static final String SERIALIZED_NAME_BLUETOOTH_AVAILABLE = "bluetoothAvailable";
   @SerializedName(SERIALIZED_NAME_BLUETOOTH_AVAILABLE)
+  @javax.annotation.Nullable
   private Boolean bluetoothAvailable;
 
   public static final String SERIALIZED_NAME_PASSWORD_MANAGER_AVAILABLE = "passwordManagerAvailable";
   @SerializedName(SERIALIZED_NAME_PASSWORD_MANAGER_AVAILABLE)
+  @javax.annotation.Nullable
   private Boolean passwordManagerAvailable;
 
   public static final String SERIALIZED_NAME_USER_VERIFYING_PLATFORM_AUTHENTICATOR_AVAILABLE = "userVerifyingPlatformAuthenticatorAvailable";
   @SerializedName(SERIALIZED_NAME_USER_VERIFYING_PLATFORM_AUTHENTICATOR_AVAILABLE)
+  @javax.annotation.Nonnull
   private Boolean userVerifyingPlatformAuthenticatorAvailable;
+
+  public static final String SERIALIZED_NAME_CONDITIONAL_MEDIATION_AVAILABLE = "conditionalMediationAvailable";
+  @SerializedName(SERIALIZED_NAME_CONDITIONAL_MEDIATION_AVAILABLE)
+  @javax.annotation.Nonnull
+  private Boolean conditionalMediationAvailable;
+
+  public static final String SERIALIZED_NAME_PRIVATE_MODE = "privateMode";
+  @SerializedName(SERIALIZED_NAME_PRIVATE_MODE)
+  @javax.annotation.Nullable
+  private Boolean privateMode;
+
+  public static final String SERIALIZED_NAME_PARSED_DEVICE_INFO = "parsedDeviceInfo";
+  @SerializedName(SERIALIZED_NAME_PARSED_DEVICE_INFO)
+  @javax.annotation.Nonnull
+  private ParsedDeviceInfo parsedDeviceInfo;
 
   public ClientInformation() {
   }
 
-  public ClientInformation remoteAddress(String remoteAddress) {
+  public ClientInformation remoteAddress(@javax.annotation.Nonnull String remoteAddress) {
     this.remoteAddress = remoteAddress;
     return this;
   }
@@ -101,12 +124,12 @@ public class ClientInformation {
     return remoteAddress;
   }
 
-  public void setRemoteAddress(String remoteAddress) {
+  public void setRemoteAddress(@javax.annotation.Nonnull String remoteAddress) {
     this.remoteAddress = remoteAddress;
   }
 
 
-  public ClientInformation userAgent(String userAgent) {
+  public ClientInformation userAgent(@javax.annotation.Nonnull String userAgent) {
     this.userAgent = userAgent;
     return this;
   }
@@ -120,12 +143,12 @@ public class ClientInformation {
     return userAgent;
   }
 
-  public void setUserAgent(String userAgent) {
+  public void setUserAgent(@javax.annotation.Nonnull String userAgent) {
     this.userAgent = userAgent;
   }
 
 
-  public ClientInformation clientEnvHandle(String clientEnvHandle) {
+  public ClientInformation clientEnvHandle(@javax.annotation.Nullable String clientEnvHandle) {
     this.clientEnvHandle = clientEnvHandle;
     return this;
   }
@@ -139,12 +162,12 @@ public class ClientInformation {
     return clientEnvHandle;
   }
 
-  public void setClientEnvHandle(String clientEnvHandle) {
+  public void setClientEnvHandle(@javax.annotation.Nullable String clientEnvHandle) {
     this.clientEnvHandle = clientEnvHandle;
   }
 
 
-  public ClientInformation javascriptFingerprint(String javascriptFingerprint) {
+  public ClientInformation javascriptFingerprint(@javax.annotation.Nullable String javascriptFingerprint) {
     this.javascriptFingerprint = javascriptFingerprint;
     return this;
   }
@@ -158,12 +181,12 @@ public class ClientInformation {
     return javascriptFingerprint;
   }
 
-  public void setJavascriptFingerprint(String javascriptFingerprint) {
+  public void setJavascriptFingerprint(@javax.annotation.Nullable String javascriptFingerprint) {
     this.javascriptFingerprint = javascriptFingerprint;
   }
 
 
-  public ClientInformation javaScriptHighEntropy(JavaScriptHighEntropy javaScriptHighEntropy) {
+  public ClientInformation javaScriptHighEntropy(@javax.annotation.Nullable JavaScriptHighEntropy javaScriptHighEntropy) {
     this.javaScriptHighEntropy = javaScriptHighEntropy;
     return this;
   }
@@ -177,12 +200,12 @@ public class ClientInformation {
     return javaScriptHighEntropy;
   }
 
-  public void setJavaScriptHighEntropy(JavaScriptHighEntropy javaScriptHighEntropy) {
+  public void setJavaScriptHighEntropy(@javax.annotation.Nullable JavaScriptHighEntropy javaScriptHighEntropy) {
     this.javaScriptHighEntropy = javaScriptHighEntropy;
   }
 
 
-  public ClientInformation bluetoothAvailable(Boolean bluetoothAvailable) {
+  public ClientInformation bluetoothAvailable(@javax.annotation.Nullable Boolean bluetoothAvailable) {
     this.bluetoothAvailable = bluetoothAvailable;
     return this;
   }
@@ -196,12 +219,12 @@ public class ClientInformation {
     return bluetoothAvailable;
   }
 
-  public void setBluetoothAvailable(Boolean bluetoothAvailable) {
+  public void setBluetoothAvailable(@javax.annotation.Nullable Boolean bluetoothAvailable) {
     this.bluetoothAvailable = bluetoothAvailable;
   }
 
 
-  public ClientInformation passwordManagerAvailable(Boolean passwordManagerAvailable) {
+  public ClientInformation passwordManagerAvailable(@javax.annotation.Nullable Boolean passwordManagerAvailable) {
     this.passwordManagerAvailable = passwordManagerAvailable;
     return this;
   }
@@ -215,12 +238,12 @@ public class ClientInformation {
     return passwordManagerAvailable;
   }
 
-  public void setPasswordManagerAvailable(Boolean passwordManagerAvailable) {
+  public void setPasswordManagerAvailable(@javax.annotation.Nullable Boolean passwordManagerAvailable) {
     this.passwordManagerAvailable = passwordManagerAvailable;
   }
 
 
-  public ClientInformation userVerifyingPlatformAuthenticatorAvailable(Boolean userVerifyingPlatformAuthenticatorAvailable) {
+  public ClientInformation userVerifyingPlatformAuthenticatorAvailable(@javax.annotation.Nonnull Boolean userVerifyingPlatformAuthenticatorAvailable) {
     this.userVerifyingPlatformAuthenticatorAvailable = userVerifyingPlatformAuthenticatorAvailable;
     return this;
   }
@@ -234,8 +257,65 @@ public class ClientInformation {
     return userVerifyingPlatformAuthenticatorAvailable;
   }
 
-  public void setUserVerifyingPlatformAuthenticatorAvailable(Boolean userVerifyingPlatformAuthenticatorAvailable) {
+  public void setUserVerifyingPlatformAuthenticatorAvailable(@javax.annotation.Nonnull Boolean userVerifyingPlatformAuthenticatorAvailable) {
     this.userVerifyingPlatformAuthenticatorAvailable = userVerifyingPlatformAuthenticatorAvailable;
+  }
+
+
+  public ClientInformation conditionalMediationAvailable(@javax.annotation.Nonnull Boolean conditionalMediationAvailable) {
+    this.conditionalMediationAvailable = conditionalMediationAvailable;
+    return this;
+  }
+
+  /**
+   * Get conditionalMediationAvailable
+   * @return conditionalMediationAvailable
+   */
+  @javax.annotation.Nonnull
+  public Boolean getConditionalMediationAvailable() {
+    return conditionalMediationAvailable;
+  }
+
+  public void setConditionalMediationAvailable(@javax.annotation.Nonnull Boolean conditionalMediationAvailable) {
+    this.conditionalMediationAvailable = conditionalMediationAvailable;
+  }
+
+
+  public ClientInformation privateMode(@javax.annotation.Nullable Boolean privateMode) {
+    this.privateMode = privateMode;
+    return this;
+  }
+
+  /**
+   * Get privateMode
+   * @return privateMode
+   */
+  @javax.annotation.Nullable
+  public Boolean getPrivateMode() {
+    return privateMode;
+  }
+
+  public void setPrivateMode(@javax.annotation.Nullable Boolean privateMode) {
+    this.privateMode = privateMode;
+  }
+
+
+  public ClientInformation parsedDeviceInfo(@javax.annotation.Nonnull ParsedDeviceInfo parsedDeviceInfo) {
+    this.parsedDeviceInfo = parsedDeviceInfo;
+    return this;
+  }
+
+  /**
+   * Get parsedDeviceInfo
+   * @return parsedDeviceInfo
+   */
+  @javax.annotation.Nonnull
+  public ParsedDeviceInfo getParsedDeviceInfo() {
+    return parsedDeviceInfo;
+  }
+
+  public void setParsedDeviceInfo(@javax.annotation.Nonnull ParsedDeviceInfo parsedDeviceInfo) {
+    this.parsedDeviceInfo = parsedDeviceInfo;
   }
 
 
@@ -256,12 +336,15 @@ public class ClientInformation {
         Objects.equals(this.javaScriptHighEntropy, clientInformation.javaScriptHighEntropy) &&
         Objects.equals(this.bluetoothAvailable, clientInformation.bluetoothAvailable) &&
         Objects.equals(this.passwordManagerAvailable, clientInformation.passwordManagerAvailable) &&
-        Objects.equals(this.userVerifyingPlatformAuthenticatorAvailable, clientInformation.userVerifyingPlatformAuthenticatorAvailable);
+        Objects.equals(this.userVerifyingPlatformAuthenticatorAvailable, clientInformation.userVerifyingPlatformAuthenticatorAvailable) &&
+        Objects.equals(this.conditionalMediationAvailable, clientInformation.conditionalMediationAvailable) &&
+        Objects.equals(this.privateMode, clientInformation.privateMode) &&
+        Objects.equals(this.parsedDeviceInfo, clientInformation.parsedDeviceInfo);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(remoteAddress, userAgent, clientEnvHandle, javascriptFingerprint, javaScriptHighEntropy, bluetoothAvailable, passwordManagerAvailable, userVerifyingPlatformAuthenticatorAvailable);
+    return Objects.hash(remoteAddress, userAgent, clientEnvHandle, javascriptFingerprint, javaScriptHighEntropy, bluetoothAvailable, passwordManagerAvailable, userVerifyingPlatformAuthenticatorAvailable, conditionalMediationAvailable, privateMode, parsedDeviceInfo);
   }
 
   @Override
@@ -276,6 +359,9 @@ public class ClientInformation {
     sb.append("    bluetoothAvailable: ").append(toIndentedString(bluetoothAvailable)).append("\n");
     sb.append("    passwordManagerAvailable: ").append(toIndentedString(passwordManagerAvailable)).append("\n");
     sb.append("    userVerifyingPlatformAuthenticatorAvailable: ").append(toIndentedString(userVerifyingPlatformAuthenticatorAvailable)).append("\n");
+    sb.append("    conditionalMediationAvailable: ").append(toIndentedString(conditionalMediationAvailable)).append("\n");
+    sb.append("    privateMode: ").append(toIndentedString(privateMode)).append("\n");
+    sb.append("    parsedDeviceInfo: ").append(toIndentedString(parsedDeviceInfo)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -306,12 +392,17 @@ public class ClientInformation {
     openapiFields.add("bluetoothAvailable");
     openapiFields.add("passwordManagerAvailable");
     openapiFields.add("userVerifyingPlatformAuthenticatorAvailable");
+    openapiFields.add("conditionalMediationAvailable");
+    openapiFields.add("privateMode");
+    openapiFields.add("parsedDeviceInfo");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("remoteAddress");
     openapiRequiredFields.add("userAgent");
     openapiRequiredFields.add("userVerifyingPlatformAuthenticatorAvailable");
+    openapiRequiredFields.add("conditionalMediationAvailable");
+    openapiRequiredFields.add("parsedDeviceInfo");
   }
 
   /**
@@ -358,6 +449,8 @@ public class ClientInformation {
       if (jsonObj.get("javaScriptHighEntropy") != null && !jsonObj.get("javaScriptHighEntropy").isJsonNull()) {
         JavaScriptHighEntropy.validateJsonElement(jsonObj.get("javaScriptHighEntropy"));
       }
+      // validate the required field `parsedDeviceInfo`
+      ParsedDeviceInfo.validateJsonElement(jsonObj.get("parsedDeviceInfo"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

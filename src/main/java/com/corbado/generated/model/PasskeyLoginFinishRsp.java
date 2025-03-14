@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,16 +49,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyLoginFinishRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class PasskeyLoginFinishRsp {
   public static final String SERIALIZED_NAME_PASSKEY_DATA = "passkeyData";
   @SerializedName(SERIALIZED_NAME_PASSKEY_DATA)
+  @javax.annotation.Nonnull
   private PasskeyData passkeyData;
+
+  public static final String SERIALIZED_NAME_SIGNED_PASSKEY_DATA = "signedPasskeyData";
+  @SerializedName(SERIALIZED_NAME_SIGNED_PASSKEY_DATA)
+  @javax.annotation.Nullable
+  private String signedPasskeyData;
 
   public PasskeyLoginFinishRsp() {
   }
 
-  public PasskeyLoginFinishRsp passkeyData(PasskeyData passkeyData) {
+  public PasskeyLoginFinishRsp passkeyData(@javax.annotation.Nonnull PasskeyData passkeyData) {
     this.passkeyData = passkeyData;
     return this;
   }
@@ -73,8 +78,27 @@ public class PasskeyLoginFinishRsp {
     return passkeyData;
   }
 
-  public void setPasskeyData(PasskeyData passkeyData) {
+  public void setPasskeyData(@javax.annotation.Nonnull PasskeyData passkeyData) {
     this.passkeyData = passkeyData;
+  }
+
+
+  public PasskeyLoginFinishRsp signedPasskeyData(@javax.annotation.Nullable String signedPasskeyData) {
+    this.signedPasskeyData = signedPasskeyData;
+    return this;
+  }
+
+  /**
+   * Get signedPasskeyData
+   * @return signedPasskeyData
+   */
+  @javax.annotation.Nullable
+  public String getSignedPasskeyData() {
+    return signedPasskeyData;
+  }
+
+  public void setSignedPasskeyData(@javax.annotation.Nullable String signedPasskeyData) {
+    this.signedPasskeyData = signedPasskeyData;
   }
 
 
@@ -88,12 +112,13 @@ public class PasskeyLoginFinishRsp {
       return false;
     }
     PasskeyLoginFinishRsp passkeyLoginFinishRsp = (PasskeyLoginFinishRsp) o;
-    return Objects.equals(this.passkeyData, passkeyLoginFinishRsp.passkeyData);
+    return Objects.equals(this.passkeyData, passkeyLoginFinishRsp.passkeyData) &&
+        Objects.equals(this.signedPasskeyData, passkeyLoginFinishRsp.signedPasskeyData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(passkeyData);
+    return Objects.hash(passkeyData, signedPasskeyData);
   }
 
   @Override
@@ -101,6 +126,7 @@ public class PasskeyLoginFinishRsp {
     StringBuilder sb = new StringBuilder();
     sb.append("class PasskeyLoginFinishRsp {\n");
     sb.append("    passkeyData: ").append(toIndentedString(passkeyData)).append("\n");
+    sb.append("    signedPasskeyData: ").append(toIndentedString(signedPasskeyData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -124,6 +150,7 @@ public class PasskeyLoginFinishRsp {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("passkeyData");
+    openapiFields.add("signedPasskeyData");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -160,6 +187,9 @@ public class PasskeyLoginFinishRsp {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `passkeyData`
       PasskeyData.validateJsonElement(jsonObj.get("passkeyData"));
+      if ((jsonObj.get("signedPasskeyData") != null && !jsonObj.get("signedPasskeyData").isJsonNull()) && !jsonObj.get("signedPasskeyData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `signedPasskeyData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signedPasskeyData").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

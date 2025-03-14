@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,32 +49,42 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyEventCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class PasskeyEventCreateReq {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nonnull
   private PasskeyEventType eventType;
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
+  @javax.annotation.Nullable
   private Integer expires;
 
   public static final String SERIALIZED_NAME_PROCESS_I_D = "processID";
   @SerializedName(SERIALIZED_NAME_PROCESS_I_D)
+  @javax.annotation.Nullable
   private String processID;
 
   public static final String SERIALIZED_NAME_CLIENT_ENV_I_D = "clientEnvID";
   @SerializedName(SERIALIZED_NAME_CLIENT_ENV_I_D)
+  @javax.annotation.Nullable
   private String clientEnvID;
 
   public static final String SERIALIZED_NAME_CREDENTIAL_I_D = "credentialID";
   @SerializedName(SERIALIZED_NAME_CREDENTIAL_I_D)
+  @javax.annotation.Nullable
   private String credentialID;
+
+  public static final String SERIALIZED_NAME_CHALLENGE = "challenge";
+  @SerializedName(SERIALIZED_NAME_CHALLENGE)
+  @javax.annotation.Nullable
+  private String challenge;
 
   public PasskeyEventCreateReq() {
   }
 
-  public PasskeyEventCreateReq eventType(PasskeyEventType eventType) {
+  public PasskeyEventCreateReq eventType(@javax.annotation.Nonnull PasskeyEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -89,12 +98,12 @@ public class PasskeyEventCreateReq {
     return eventType;
   }
 
-  public void setEventType(PasskeyEventType eventType) {
+  public void setEventType(@javax.annotation.Nonnull PasskeyEventType eventType) {
     this.eventType = eventType;
   }
 
 
-  public PasskeyEventCreateReq expires(Integer expires) {
+  public PasskeyEventCreateReq expires(@javax.annotation.Nullable Integer expires) {
     this.expires = expires;
     return this;
   }
@@ -108,12 +117,12 @@ public class PasskeyEventCreateReq {
     return expires;
   }
 
-  public void setExpires(Integer expires) {
+  public void setExpires(@javax.annotation.Nullable Integer expires) {
     this.expires = expires;
   }
 
 
-  public PasskeyEventCreateReq processID(String processID) {
+  public PasskeyEventCreateReq processID(@javax.annotation.Nullable String processID) {
     this.processID = processID;
     return this;
   }
@@ -127,12 +136,12 @@ public class PasskeyEventCreateReq {
     return processID;
   }
 
-  public void setProcessID(String processID) {
+  public void setProcessID(@javax.annotation.Nullable String processID) {
     this.processID = processID;
   }
 
 
-  public PasskeyEventCreateReq clientEnvID(String clientEnvID) {
+  public PasskeyEventCreateReq clientEnvID(@javax.annotation.Nullable String clientEnvID) {
     this.clientEnvID = clientEnvID;
     return this;
   }
@@ -146,12 +155,12 @@ public class PasskeyEventCreateReq {
     return clientEnvID;
   }
 
-  public void setClientEnvID(String clientEnvID) {
+  public void setClientEnvID(@javax.annotation.Nullable String clientEnvID) {
     this.clientEnvID = clientEnvID;
   }
 
 
-  public PasskeyEventCreateReq credentialID(String credentialID) {
+  public PasskeyEventCreateReq credentialID(@javax.annotation.Nullable String credentialID) {
     this.credentialID = credentialID;
     return this;
   }
@@ -165,8 +174,27 @@ public class PasskeyEventCreateReq {
     return credentialID;
   }
 
-  public void setCredentialID(String credentialID) {
+  public void setCredentialID(@javax.annotation.Nullable String credentialID) {
     this.credentialID = credentialID;
+  }
+
+
+  public PasskeyEventCreateReq challenge(@javax.annotation.Nullable String challenge) {
+    this.challenge = challenge;
+    return this;
+  }
+
+  /**
+   * Get challenge
+   * @return challenge
+   */
+  @javax.annotation.Nullable
+  public String getChallenge() {
+    return challenge;
+  }
+
+  public void setChallenge(@javax.annotation.Nullable String challenge) {
+    this.challenge = challenge;
   }
 
 
@@ -184,12 +212,13 @@ public class PasskeyEventCreateReq {
         Objects.equals(this.expires, passkeyEventCreateReq.expires) &&
         Objects.equals(this.processID, passkeyEventCreateReq.processID) &&
         Objects.equals(this.clientEnvID, passkeyEventCreateReq.clientEnvID) &&
-        Objects.equals(this.credentialID, passkeyEventCreateReq.credentialID);
+        Objects.equals(this.credentialID, passkeyEventCreateReq.credentialID) &&
+        Objects.equals(this.challenge, passkeyEventCreateReq.challenge);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(eventType, expires, processID, clientEnvID, credentialID);
+    return Objects.hash(eventType, expires, processID, clientEnvID, credentialID, challenge);
   }
 
   @Override
@@ -201,6 +230,7 @@ public class PasskeyEventCreateReq {
     sb.append("    processID: ").append(toIndentedString(processID)).append("\n");
     sb.append("    clientEnvID: ").append(toIndentedString(clientEnvID)).append("\n");
     sb.append("    credentialID: ").append(toIndentedString(credentialID)).append("\n");
+    sb.append("    challenge: ").append(toIndentedString(challenge)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -228,6 +258,7 @@ public class PasskeyEventCreateReq {
     openapiFields.add("processID");
     openapiFields.add("clientEnvID");
     openapiFields.add("credentialID");
+    openapiFields.add("challenge");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -272,6 +303,9 @@ public class PasskeyEventCreateReq {
       }
       if ((jsonObj.get("credentialID") != null && !jsonObj.get("credentialID").isJsonNull()) && !jsonObj.get("credentialID").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `credentialID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialID").toString()));
+      }
+      if ((jsonObj.get("challenge") != null && !jsonObj.get("challenge").isJsonNull()) && !jsonObj.get("challenge").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `challenge` to be a primitive type in the JSON string but got `%s`", jsonObj.get("challenge").toString()));
       }
   }
 

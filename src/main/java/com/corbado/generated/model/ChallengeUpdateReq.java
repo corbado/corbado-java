@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,16 +48,17 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ChallengeUpdateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class ChallengeUpdateReq {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nonnull
   private String value;
 
   public ChallengeUpdateReq() {
   }
 
-  public ChallengeUpdateReq value(String value) {
+  public ChallengeUpdateReq value(@javax.annotation.Nonnull String value) {
     this.value = value;
     return this;
   }
@@ -72,7 +72,7 @@ public class ChallengeUpdateReq {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nonnull String value) {
     this.value = value;
   }
 

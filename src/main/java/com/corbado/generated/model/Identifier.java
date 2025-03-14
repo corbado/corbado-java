@@ -39,7 +39,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -51,32 +50,37 @@ import com.corbado.generated.invoker.JSON;
 /**
  * Identifier
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class Identifier {
   public static final String SERIALIZED_NAME_IDENTIFIER_I_D = "identifierID";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_I_D)
+  @javax.annotation.Nonnull
   private String identifierID;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
+  @javax.annotation.Nonnull
   private IdentifierType type;
 
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
+  @javax.annotation.Nonnull
   private String value;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private IdentifierStatus status;
 
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
+  @javax.annotation.Nonnull
   private String userID;
 
   public Identifier() {
   }
 
-  public Identifier identifierID(String identifierID) {
+  public Identifier identifierID(@javax.annotation.Nonnull String identifierID) {
     this.identifierID = identifierID;
     return this;
   }
@@ -90,12 +94,12 @@ public class Identifier {
     return identifierID;
   }
 
-  public void setIdentifierID(String identifierID) {
+  public void setIdentifierID(@javax.annotation.Nonnull String identifierID) {
     this.identifierID = identifierID;
   }
 
 
-  public Identifier type(IdentifierType type) {
+  public Identifier type(@javax.annotation.Nonnull IdentifierType type) {
     this.type = type;
     return this;
   }
@@ -109,12 +113,12 @@ public class Identifier {
     return type;
   }
 
-  public void setType(IdentifierType type) {
+  public void setType(@javax.annotation.Nonnull IdentifierType type) {
     this.type = type;
   }
 
 
-  public Identifier value(String value) {
+  public Identifier value(@javax.annotation.Nonnull String value) {
     this.value = value;
     return this;
   }
@@ -128,12 +132,12 @@ public class Identifier {
     return value;
   }
 
-  public void setValue(String value) {
+  public void setValue(@javax.annotation.Nonnull String value) {
     this.value = value;
   }
 
 
-  public Identifier status(IdentifierStatus status) {
+  public Identifier status(@javax.annotation.Nonnull IdentifierStatus status) {
     this.status = status;
     return this;
   }
@@ -147,12 +151,12 @@ public class Identifier {
     return status;
   }
 
-  public void setStatus(IdentifierStatus status) {
+  public void setStatus(@javax.annotation.Nonnull IdentifierStatus status) {
     this.status = status;
   }
 
 
-  public Identifier userID(String userID) {
+  public Identifier userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
@@ -166,7 +170,7 @@ public class Identifier {
     return userID;
   }
 
-  public void setUserID(String userID) {
+  public void setUserID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
   }
 

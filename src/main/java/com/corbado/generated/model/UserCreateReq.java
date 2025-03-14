@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,24 +49,27 @@ import com.corbado.generated.invoker.JSON;
 /**
  * UserCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class UserCreateReq {
   public static final String SERIALIZED_NAME_FULL_NAME = "fullName";
   @SerializedName(SERIALIZED_NAME_FULL_NAME)
+  @javax.annotation.Nullable
   private String fullName;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private UserStatus status;
 
   public static final String SERIALIZED_NAME_EXPLICIT_WEBAUTHN_I_D = "explicitWebauthnID";
   @SerializedName(SERIALIZED_NAME_EXPLICIT_WEBAUTHN_I_D)
+  @javax.annotation.Nullable
   private String explicitWebauthnID;
 
   public UserCreateReq() {
   }
 
-  public UserCreateReq fullName(String fullName) {
+  public UserCreateReq fullName(@javax.annotation.Nullable String fullName) {
     this.fullName = fullName;
     return this;
   }
@@ -81,12 +83,12 @@ public class UserCreateReq {
     return fullName;
   }
 
-  public void setFullName(String fullName) {
+  public void setFullName(@javax.annotation.Nullable String fullName) {
     this.fullName = fullName;
   }
 
 
-  public UserCreateReq status(UserStatus status) {
+  public UserCreateReq status(@javax.annotation.Nonnull UserStatus status) {
     this.status = status;
     return this;
   }
@@ -100,12 +102,12 @@ public class UserCreateReq {
     return status;
   }
 
-  public void setStatus(UserStatus status) {
+  public void setStatus(@javax.annotation.Nonnull UserStatus status) {
     this.status = status;
   }
 
 
-  public UserCreateReq explicitWebauthnID(String explicitWebauthnID) {
+  public UserCreateReq explicitWebauthnID(@javax.annotation.Nullable String explicitWebauthnID) {
     this.explicitWebauthnID = explicitWebauthnID;
     return this;
   }
@@ -119,7 +121,7 @@ public class UserCreateReq {
     return explicitWebauthnID;
   }
 
-  public void setExplicitWebauthnID(String explicitWebauthnID) {
+  public void setExplicitWebauthnID(@javax.annotation.Nullable String explicitWebauthnID) {
     this.explicitWebauthnID = explicitWebauthnID;
   }
 

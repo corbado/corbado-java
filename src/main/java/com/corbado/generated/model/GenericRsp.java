@@ -38,7 +38,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -50,36 +49,38 @@ import com.corbado.generated.invoker.JSON;
 /**
  * GenericRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class GenericRsp {
   public static final String SERIALIZED_NAME_HTTP_STATUS_CODE = "httpStatusCode";
   @SerializedName(SERIALIZED_NAME_HTTP_STATUS_CODE)
+  @javax.annotation.Nonnull
   private Integer httpStatusCode;
 
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
+  @javax.annotation.Nonnull
   private String message;
 
   public static final String SERIALIZED_NAME_REQUEST_DATA = "requestData";
   @SerializedName(SERIALIZED_NAME_REQUEST_DATA)
+  @javax.annotation.Nonnull
   private RequestData requestData;
 
   public static final String SERIALIZED_NAME_RUNTIME = "runtime";
   @SerializedName(SERIALIZED_NAME_RUNTIME)
+  @javax.annotation.Nonnull
   private Float runtime;
 
   public GenericRsp() {
   }
 
-  public GenericRsp httpStatusCode(Integer httpStatusCode) {
+  public GenericRsp httpStatusCode(@javax.annotation.Nonnull Integer httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
     return this;
   }
 
   /**
    * HTTP status code of operation
-   * minimum: 200
-   * maximum: 599
    * @return httpStatusCode
    */
   @javax.annotation.Nonnull
@@ -87,12 +88,12 @@ public class GenericRsp {
     return httpStatusCode;
   }
 
-  public void setHttpStatusCode(Integer httpStatusCode) {
+  public void setHttpStatusCode(@javax.annotation.Nonnull Integer httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
   }
 
 
-  public GenericRsp message(String message) {
+  public GenericRsp message(@javax.annotation.Nonnull String message) {
     this.message = message;
     return this;
   }
@@ -106,12 +107,12 @@ public class GenericRsp {
     return message;
   }
 
-  public void setMessage(String message) {
+  public void setMessage(@javax.annotation.Nonnull String message) {
     this.message = message;
   }
 
 
-  public GenericRsp requestData(RequestData requestData) {
+  public GenericRsp requestData(@javax.annotation.Nonnull RequestData requestData) {
     this.requestData = requestData;
     return this;
   }
@@ -125,12 +126,12 @@ public class GenericRsp {
     return requestData;
   }
 
-  public void setRequestData(RequestData requestData) {
+  public void setRequestData(@javax.annotation.Nonnull RequestData requestData) {
     this.requestData = requestData;
   }
 
 
-  public GenericRsp runtime(Float runtime) {
+  public GenericRsp runtime(@javax.annotation.Nonnull Float runtime) {
     this.runtime = runtime;
     return this;
   }
@@ -144,7 +145,7 @@ public class GenericRsp {
     return runtime;
   }
 
-  public void setRuntime(Float runtime) {
+  public void setRuntime(@javax.annotation.Nonnull Float runtime) {
     this.runtime = runtime;
   }
 

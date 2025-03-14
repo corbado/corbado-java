@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -49,16 +48,17 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ConnectTokenDataPasskeyList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class ConnectTokenDataPasskeyList {
   public static final String SERIALIZED_NAME_IDENTIFIER = "identifier";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER)
+  @javax.annotation.Nonnull
   private String identifier;
 
   public ConnectTokenDataPasskeyList() {
   }
 
-  public ConnectTokenDataPasskeyList identifier(String identifier) {
+  public ConnectTokenDataPasskeyList identifier(@javax.annotation.Nonnull String identifier) {
     this.identifier = identifier;
     return this;
   }
@@ -72,7 +72,7 @@ public class ConnectTokenDataPasskeyList {
     return identifier;
   }
 
-  public void setIdentifier(String identifier) {
+  public void setIdentifier(@javax.annotation.Nonnull String identifier) {
     this.identifier = identifier;
   }
 
