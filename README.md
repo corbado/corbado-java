@@ -47,8 +47,18 @@ Add this dependency to your project's POM:
 To create a Corbado Java SDK instance you need to provide your `Project ID` and `API secret` which can be found at the [Developer Panel](https://app.corbado.com).
 
 ```Java
- final Config config = new Config(projectId, apiSecret);
- CorbadoSdk sdk = new CorbadoSDK(config);
+//Example initialization of Config class with builder (preferred).
+  Config config = null;
+    if (StringUtils.isEmpty(backendApi)) {
+      config = Config.builder().apiSecret(apiSecret).projectId(projectId).build();
+    } else {
+      config =
+          Config.builder().apiSecret(apiSecret).projectId(projectId).backendApi(backendApi).build();
+    }
+//Alternative initialization with 'new'.
+  final Config config = new Config(projectId, apiSecret);
+ 
+  CorbadoSdk sdk = new CorbadoSDK(config);
 ```
 
 ### Examples
