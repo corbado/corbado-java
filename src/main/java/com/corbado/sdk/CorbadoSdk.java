@@ -1,8 +1,5 @@
 package com.corbado.sdk;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.corbado.exceptions.StandardException;
 import com.corbado.generated.api.IdentifiersApi;
 import com.corbado.generated.api.UsersApi;
@@ -12,7 +9,8 @@ import com.corbado.services.SessionService;
 import com.corbado.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import java.util.HashMap;
+import java.util.Map;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -104,6 +102,6 @@ public class CorbadoSdk {
    * @return the version
    */
   public String getVersion() {
-    return "1.0.4";
+    return "1.0.5";
   }
 }
