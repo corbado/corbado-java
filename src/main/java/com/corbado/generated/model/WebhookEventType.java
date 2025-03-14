@@ -24,20 +24,26 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Application type
+ * Gets or Sets webhookEventType
  */
-@JsonAdapter(AppType.Adapter.class)
-public enum AppType {
+@JsonAdapter(WebhookEventType.Adapter.class)
+public enum WebhookEventType {
   
-  EMPTY("empty"),
+  PASSKEY_LOGIN_COMPLETED("passkey-login.completed"),
   
-  WEB("web"),
+  PASSKEY_CREATED("passkey.created"),
   
-  NATIVE("native");
+  PASSKEY_DELETED("passkey.deleted"),
+  
+  USER_CREATED("user.created"),
+  
+  USER_UPDATED("user.updated"),
+  
+  USER_DELETED("user.deleted");
 
   private String value;
 
-  AppType(String value) {
+  WebhookEventType(String value) {
     this.value = value;
   }
 
@@ -50,8 +56,8 @@ public enum AppType {
     return String.valueOf(value);
   }
 
-  public static AppType fromValue(String value) {
-    for (AppType b : AppType.values()) {
+  public static WebhookEventType fromValue(String value) {
+    for (WebhookEventType b : WebhookEventType.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -59,22 +65,22 @@ public enum AppType {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<AppType> {
+  public static class Adapter extends TypeAdapter<WebhookEventType> {
     @Override
-    public void write(final JsonWriter jsonWriter, final AppType enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final WebhookEventType enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public AppType read(final JsonReader jsonReader) throws IOException {
+    public WebhookEventType read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return AppType.fromValue(value);
+      return WebhookEventType.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    AppType.fromValue(value);
+    WebhookEventType.fromValue(value);
   }
 }
 

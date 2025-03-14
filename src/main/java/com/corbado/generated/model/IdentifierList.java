@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,20 +52,22 @@ import com.corbado.generated.invoker.JSON;
 /**
  * IdentifierList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class IdentifierList {
   public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
   @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+  @javax.annotation.Nonnull
   private List<Identifier> identifiers = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PAGING = "paging";
   @SerializedName(SERIALIZED_NAME_PAGING)
+  @javax.annotation.Nonnull
   private Paging paging;
 
   public IdentifierList() {
   }
 
-  public IdentifierList identifiers(List<Identifier> identifiers) {
+  public IdentifierList identifiers(@javax.annotation.Nonnull List<Identifier> identifiers) {
     this.identifiers = identifiers;
     return this;
   }
@@ -88,12 +89,12 @@ public class IdentifierList {
     return identifiers;
   }
 
-  public void setIdentifiers(List<Identifier> identifiers) {
+  public void setIdentifiers(@javax.annotation.Nonnull List<Identifier> identifiers) {
     this.identifiers = identifiers;
   }
 
 
-  public IdentifierList paging(Paging paging) {
+  public IdentifierList paging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
     return this;
   }
@@ -107,7 +108,7 @@ public class IdentifierList {
     return paging;
   }
 
-  public void setPaging(Paging paging) {
+  public void setPaging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
   }
 

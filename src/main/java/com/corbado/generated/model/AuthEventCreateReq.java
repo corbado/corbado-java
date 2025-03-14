@@ -41,7 +41,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -53,32 +52,37 @@ import com.corbado.generated.invoker.JSON;
 /**
  * AuthEventCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class AuthEventCreateReq {
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
+  @javax.annotation.Nonnull
   private String username;
 
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
+  @javax.annotation.Nonnull
   private AuthEventType eventType;
 
   public static final String SERIALIZED_NAME_METHOD = "method";
   @SerializedName(SERIALIZED_NAME_METHOD)
+  @javax.annotation.Nonnull
   private AuthEventMethod method;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
+  @javax.annotation.Nonnull
   private AuthEventStatus status;
 
   public static final String SERIALIZED_NAME_CLIENT_INFORMATION = "clientInformation";
   @SerializedName(SERIALIZED_NAME_CLIENT_INFORMATION)
+  @javax.annotation.Nonnull
   private ClientInformation clientInformation;
 
   public AuthEventCreateReq() {
   }
 
-  public AuthEventCreateReq username(String username) {
+  public AuthEventCreateReq username(@javax.annotation.Nonnull String username) {
     this.username = username;
     return this;
   }
@@ -92,12 +96,12 @@ public class AuthEventCreateReq {
     return username;
   }
 
-  public void setUsername(String username) {
+  public void setUsername(@javax.annotation.Nonnull String username) {
     this.username = username;
   }
 
 
-  public AuthEventCreateReq eventType(AuthEventType eventType) {
+  public AuthEventCreateReq eventType(@javax.annotation.Nonnull AuthEventType eventType) {
     this.eventType = eventType;
     return this;
   }
@@ -111,12 +115,12 @@ public class AuthEventCreateReq {
     return eventType;
   }
 
-  public void setEventType(AuthEventType eventType) {
+  public void setEventType(@javax.annotation.Nonnull AuthEventType eventType) {
     this.eventType = eventType;
   }
 
 
-  public AuthEventCreateReq method(AuthEventMethod method) {
+  public AuthEventCreateReq method(@javax.annotation.Nonnull AuthEventMethod method) {
     this.method = method;
     return this;
   }
@@ -130,12 +134,12 @@ public class AuthEventCreateReq {
     return method;
   }
 
-  public void setMethod(AuthEventMethod method) {
+  public void setMethod(@javax.annotation.Nonnull AuthEventMethod method) {
     this.method = method;
   }
 
 
-  public AuthEventCreateReq status(AuthEventStatus status) {
+  public AuthEventCreateReq status(@javax.annotation.Nonnull AuthEventStatus status) {
     this.status = status;
     return this;
   }
@@ -149,12 +153,12 @@ public class AuthEventCreateReq {
     return status;
   }
 
-  public void setStatus(AuthEventStatus status) {
+  public void setStatus(@javax.annotation.Nonnull AuthEventStatus status) {
     this.status = status;
   }
 
 
-  public AuthEventCreateReq clientInformation(ClientInformation clientInformation) {
+  public AuthEventCreateReq clientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
     return this;
   }
@@ -168,7 +172,7 @@ public class AuthEventCreateReq {
     return clientInformation;
   }
 
-  public void setClientInformation(ClientInformation clientInformation) {
+  public void setClientInformation(@javax.annotation.Nonnull ClientInformation clientInformation) {
     this.clientInformation = clientInformation;
   }
 

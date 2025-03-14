@@ -40,7 +40,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,36 +51,42 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ConnectToken
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
 public class ConnectToken {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
+  @javax.annotation.Nonnull
   private String id;
 
   public static final String SERIALIZED_NAME_TOKEN_TYPE = "tokenType";
   @SerializedName(SERIALIZED_NAME_TOKEN_TYPE)
+  @javax.annotation.Nonnull
   private ConnectTokenType tokenType;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
+  @javax.annotation.Nonnull
   private ConnectTokenData data;
 
   public static final String SERIALIZED_NAME_CONNECT_TOKEN_STATUS = "connectTokenStatus";
   @SerializedName(SERIALIZED_NAME_CONNECT_TOKEN_STATUS)
+  @javax.annotation.Nonnull
   private ConnectTokenStatus connectTokenStatus;
 
   public static final String SERIALIZED_NAME_SECRET = "secret";
   @SerializedName(SERIALIZED_NAME_SECRET)
+  @javax.annotation.Nullable
   private String secret;
 
   public static final String SERIALIZED_NAME_EXPIRES = "expires";
   @SerializedName(SERIALIZED_NAME_EXPIRES)
+  @javax.annotation.Nonnull
   private Integer expires;
 
   public ConnectToken() {
   }
 
-  public ConnectToken id(String id) {
+  public ConnectToken id(@javax.annotation.Nonnull String id) {
     this.id = id;
     return this;
   }
@@ -95,12 +100,12 @@ public class ConnectToken {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(@javax.annotation.Nonnull String id) {
     this.id = id;
   }
 
 
-  public ConnectToken tokenType(ConnectTokenType tokenType) {
+  public ConnectToken tokenType(@javax.annotation.Nonnull ConnectTokenType tokenType) {
     this.tokenType = tokenType;
     return this;
   }
@@ -114,12 +119,12 @@ public class ConnectToken {
     return tokenType;
   }
 
-  public void setTokenType(ConnectTokenType tokenType) {
+  public void setTokenType(@javax.annotation.Nonnull ConnectTokenType tokenType) {
     this.tokenType = tokenType;
   }
 
 
-  public ConnectToken data(ConnectTokenData data) {
+  public ConnectToken data(@javax.annotation.Nonnull ConnectTokenData data) {
     this.data = data;
     return this;
   }
@@ -133,12 +138,12 @@ public class ConnectToken {
     return data;
   }
 
-  public void setData(ConnectTokenData data) {
+  public void setData(@javax.annotation.Nonnull ConnectTokenData data) {
     this.data = data;
   }
 
 
-  public ConnectToken connectTokenStatus(ConnectTokenStatus connectTokenStatus) {
+  public ConnectToken connectTokenStatus(@javax.annotation.Nonnull ConnectTokenStatus connectTokenStatus) {
     this.connectTokenStatus = connectTokenStatus;
     return this;
   }
@@ -152,12 +157,12 @@ public class ConnectToken {
     return connectTokenStatus;
   }
 
-  public void setConnectTokenStatus(ConnectTokenStatus connectTokenStatus) {
+  public void setConnectTokenStatus(@javax.annotation.Nonnull ConnectTokenStatus connectTokenStatus) {
     this.connectTokenStatus = connectTokenStatus;
   }
 
 
-  public ConnectToken secret(String secret) {
+  public ConnectToken secret(@javax.annotation.Nullable String secret) {
     this.secret = secret;
     return this;
   }
@@ -171,12 +176,12 @@ public class ConnectToken {
     return secret;
   }
 
-  public void setSecret(String secret) {
+  public void setSecret(@javax.annotation.Nullable String secret) {
     this.secret = secret;
   }
 
 
-  public ConnectToken expires(Integer expires) {
+  public ConnectToken expires(@javax.annotation.Nonnull Integer expires) {
     this.expires = expires;
     return this;
   }
@@ -190,7 +195,7 @@ public class ConnectToken {
     return expires;
   }
 
-  public void setExpires(Integer expires) {
+  public void setExpires(@javax.annotation.Nonnull Integer expires) {
     this.expires = expires;
   }
 

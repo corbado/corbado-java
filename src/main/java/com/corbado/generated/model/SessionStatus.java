@@ -24,10 +24,10 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * Gets or Sets longSessionStatus
+ * Gets or Sets sessionStatus
  */
-@JsonAdapter(LongSessionStatus.Adapter.class)
-public enum LongSessionStatus {
+@JsonAdapter(SessionStatus.Adapter.class)
+public enum SessionStatus {
   
   ACTIVE("active"),
   
@@ -41,7 +41,7 @@ public enum LongSessionStatus {
 
   private String value;
 
-  LongSessionStatus(String value) {
+  SessionStatus(String value) {
     this.value = value;
   }
 
@@ -54,8 +54,8 @@ public enum LongSessionStatus {
     return String.valueOf(value);
   }
 
-  public static LongSessionStatus fromValue(String value) {
-    for (LongSessionStatus b : LongSessionStatus.values()) {
+  public static SessionStatus fromValue(String value) {
+    for (SessionStatus b : SessionStatus.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -63,22 +63,22 @@ public enum LongSessionStatus {
     throw new IllegalArgumentException("Unexpected value '" + value + "'");
   }
 
-  public static class Adapter extends TypeAdapter<LongSessionStatus> {
+  public static class Adapter extends TypeAdapter<SessionStatus> {
     @Override
-    public void write(final JsonWriter jsonWriter, final LongSessionStatus enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final SessionStatus enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public LongSessionStatus read(final JsonReader jsonReader) throws IOException {
+    public SessionStatus read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return LongSessionStatus.fromValue(value);
+      return SessionStatus.fromValue(value);
     }
   }
 
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
     String value = jsonElement.getAsString();
-    LongSessionStatus.fromValue(value);
+    SessionStatus.fromValue(value);
   }
 }
 

@@ -29,11 +29,13 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(ConnectTokenType.Adapter.class)
 public enum ConnectTokenType {
   
-  APPEND("passkey-append"),
+  PASSKEY_APPEND("passkey-append"),
   
-  DELETE("passkey-delete"),
+  PASSKEY_DELETE("passkey-delete"),
   
-  LIST("passkey-list");
+  PASSKEY_LIST("passkey-list"),
+  
+  PASSKEY_LOGIN("passkey-login");
 
   private String value;
 

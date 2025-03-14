@@ -37,7 +37,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -47,33 +46,34 @@ import java.util.Set;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * ShortSession
+ * PasskeyPostLoginReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2024-08-13T12:08:31.183817564Z[Etc/UTC]", comments = "Generator version: 7.8.0-SNAPSHOT")
-public class ShortSession {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private String value;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+public class PasskeyPostLoginReq {
+  public static final String SERIALIZED_NAME_SIGNED_PASSKEY_DATA = "signedPasskeyData";
+  @SerializedName(SERIALIZED_NAME_SIGNED_PASSKEY_DATA)
+  @javax.annotation.Nonnull
+  private String signedPasskeyData;
 
-  public ShortSession() {
+  public PasskeyPostLoginReq() {
   }
 
-  public ShortSession value(String value) {
-    this.value = value;
+  public PasskeyPostLoginReq signedPasskeyData(@javax.annotation.Nonnull String signedPasskeyData) {
+    this.signedPasskeyData = signedPasskeyData;
     return this;
   }
 
   /**
-   * Get value
-   * @return value
+   * Get signedPasskeyData
+   * @return signedPasskeyData
    */
   @javax.annotation.Nonnull
-  public String getValue() {
-    return value;
+  public String getSignedPasskeyData() {
+    return signedPasskeyData;
   }
 
-  public void setValue(String value) {
-    this.value = value;
+  public void setSignedPasskeyData(@javax.annotation.Nonnull String signedPasskeyData) {
+    this.signedPasskeyData = signedPasskeyData;
   }
 
 
@@ -86,20 +86,20 @@ public class ShortSession {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ShortSession shortSession = (ShortSession) o;
-    return Objects.equals(this.value, shortSession.value);
+    PasskeyPostLoginReq passkeyPostLoginReq = (PasskeyPostLoginReq) o;
+    return Objects.equals(this.signedPasskeyData, passkeyPostLoginReq.signedPasskeyData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value);
+    return Objects.hash(signedPasskeyData);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ShortSession {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("class PasskeyPostLoginReq {\n");
+    sb.append("    signedPasskeyData: ").append(toIndentedString(signedPasskeyData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -122,43 +122,43 @@ public class ShortSession {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("value");
+    openapiFields.add("signedPasskeyData");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("value");
+    openapiRequiredFields.add("signedPasskeyData");
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ShortSession
+   * @throws IOException if the JSON Element is invalid with respect to PasskeyPostLoginReq
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ShortSession.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ShortSession is not found in the empty JSON string", ShortSession.openapiRequiredFields.toString()));
+        if (!PasskeyPostLoginReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyPostLoginReq is not found in the empty JSON string", PasskeyPostLoginReq.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ShortSession.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ShortSession` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!PasskeyPostLoginReq.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyPostLoginReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ShortSession.openapiRequiredFields) {
+      for (String requiredField : PasskeyPostLoginReq.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("value").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `value` to be a primitive type in the JSON string but got `%s`", jsonObj.get("value").toString()));
+      if (!jsonObj.get("signedPasskeyData").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `signedPasskeyData` to be a primitive type in the JSON string but got `%s`", jsonObj.get("signedPasskeyData").toString()));
       }
   }
 
@@ -166,22 +166,22 @@ public class ShortSession {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ShortSession.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ShortSession' and its subtypes
+       if (!PasskeyPostLoginReq.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'PasskeyPostLoginReq' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ShortSession> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ShortSession.class));
+       final TypeAdapter<PasskeyPostLoginReq> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(PasskeyPostLoginReq.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ShortSession>() {
+       return (TypeAdapter<T>) new TypeAdapter<PasskeyPostLoginReq>() {
            @Override
-           public void write(JsonWriter out, ShortSession value) throws IOException {
+           public void write(JsonWriter out, PasskeyPostLoginReq value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ShortSession read(JsonReader in) throws IOException {
+           public PasskeyPostLoginReq read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -192,18 +192,18 @@ public class ShortSession {
   }
 
   /**
-   * Create an instance of ShortSession given an JSON string
+   * Create an instance of PasskeyPostLoginReq given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ShortSession
-   * @throws IOException if the JSON string is invalid with respect to ShortSession
+   * @return An instance of PasskeyPostLoginReq
+   * @throws IOException if the JSON string is invalid with respect to PasskeyPostLoginReq
    */
-  public static ShortSession fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ShortSession.class);
+  public static PasskeyPostLoginReq fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, PasskeyPostLoginReq.class);
   }
 
   /**
-   * Convert an instance of ShortSession to an JSON string
+   * Convert an instance of PasskeyPostLoginReq to an JSON string
    *
    * @return JSON string
    */
