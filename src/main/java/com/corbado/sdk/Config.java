@@ -10,63 +10,77 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Configuration class for setting up project parameters.
+ * Configuration class for setting up project parameters in the Corbado SDK.
  *
- * <p>This class encapsulates project configuration details including project ID, API secret,
- * backend API URL, and other parameters. It provides validation for these fields and computes
- * derived properties like frontend API URL and issuer.
+ * <p>This class encapsulates all configuration details required to initialize and use the Corbado
+ * SDK, including project identification, API credentials, and service endpoints. It provides
+ * validation for these fields and computes derived properties like frontend API URL and issuer.
+ *
+ * <p>The configuration supports:
+ *
+ * <ul>
+ *   <li>Project identification with project ID and API secret
+ *   <li>Custom API endpoints for frontend and backend services
+ *   <li>Session token configuration
+ *   <li>Custom domain (CNAME) support
+ *   <li>JWKS caching configuration
+ * </ul>
+ *
+ * <p>All mandatory fields are validated during initialization to ensure proper SDK operation.
+ *
+ * @see com.corbado.sdk.CorbadoSdk
+ * @see com.corbado.services.SessionService
  */
 @Slf4j
 @Builder
 public class Config {
 
-  /** The Constant HTTPS prefix. */
+  /** The HTTPS protocol prefix used for secure connections. */
   private static final String HTTPS = "https://";
 
-  // ---------- Constants ----------
-  /** The Constant API_VERSION. */
+  /** The current version of the Corbado API. */
   private static final String API_VERSION = "2";
 
-  /** API secret must begin with this prefix. */
+  /** The required prefix for API secrets. */
   private static final String API_SERCRET_PREFIX = "corbado1_";
 
-  /** Project Id must begin with this prefix. */
+  /** The required prefix for project IDs. */
   private static final String PROJECT_ID_PREFIX = "pro-";
 
   // ---------- Mandatory fields ----------
-
-  /** The project id with custom setter. Must be provided. */
+  /** The project ID used to identify the project in the Corbado system. Must start with "pro-". */
   @NonNull @Getter private String projectId;
 
-  /** The api secret with custom setter. Must be provided. */
+  /** The API secret used for authentication. Must start with "corbado1_". */
   @NonNull @Getter private String apiSecret;
 
-  /** The frontend api with custom setter. */
+  /** The frontend API endpoint URL. Used for client-side operations. */
   @Getter private String frontendApi;
 
-  /** The backend api with custom setter. */
+  /** The backend API endpoint URL. Used for server-side operations. */
   @Getter private String backendApi;
 
   // ---------- Non-mandatory fields ----------
-
-  /** The issuer. Used for session verification. */
+  /** The issuer URL used for session verification. Defaults to frontend API if not specified. */
   @Getter @Setter private String issuer;
 
-  /** The life duration for session service token. Default = 300. */
+  /**
+   * The lifetime duration for session service tokens in seconds. Defaults to 300 seconds (5
+   * minutes).
+   */
   @Getter @Setter @Builder.Default private Integer sessionTokenLength = 300;
 
-  /** Flag to cache keys in session service. Default = true. */
+  /** Whether to cache JWKS keys in the session service. Defaults to true for better performance. */
   @Getter @Setter @Builder.Default private boolean cacheKeys = true;
 
-  /** The cname. Replaces issuer field if present. */
+  /** The custom domain (CNAME) that replaces the issuer field if present. */
   @Getter @Setter private String cname;
 
-  // Custom Getters and Setters
   /**
-   * Sets the api secret.
+   * Sets the API secret with validation.
    *
-   * @param apiSecret the new api secret
-   * @throws IllegalArgumentException If the API secret does not start with "corbado1_".
+   * @param apiSecret the new API secret to set
+   * @throws IllegalArgumentException if the API secret is null or doesn't start with "corbado1_"
    */
   public void setApiSecret(String apiSecret) {
     apiSecret = StringUtils.trim(apiSecret);
@@ -78,10 +92,10 @@ public class Config {
   }
 
   /**
-   * Sets the backend api.
+   * Sets the backend API URL with validation and version suffix.
    *
-   * @param backendApi the new backend api
-   * @throws IllegalArgumentException If the URL is invalid.
+   * @param backendApi the new backend API URL to set
+   * @throws IllegalArgumentException if the URL is invalid
    */
   public void setBackendApi(String backendApi) {
     backendApi = StringUtils.trim(backendApi);
@@ -97,10 +111,10 @@ public class Config {
   }
 
   /**
-   * Sets the frontend api.
+   * Sets the frontend API URL with validation.
    *
-   * @param frontendApi the new frontend api
-   * @throws IllegalArgumentException If the URL is invalid.
+   * @param frontendApi the new frontend API URL to set
+   * @throws IllegalArgumentException if the URL is invalid
    */
   public void setFrontendApi(String frontendApi) {
     frontendApi = StringUtils.trim(frontendApi);
@@ -114,10 +128,10 @@ public class Config {
   }
 
   /**
-   * Sets the project id.
+   * Sets the project ID with validation.
    *
-   * @param projectId the new project id
-   * @throws IllegalArgumentException If the project Id does not start with "pro-".
+   * @param projectId the new project ID to set
+   * @throws IllegalArgumentException if the project ID is null or doesn't start with "pro-"
    */
   public void setProjectId(@NonNull String projectId) {
     projectId = StringUtils.trim(projectId);
@@ -129,16 +143,26 @@ public class Config {
   }
 
   /**
-   * Instantiates a new config.
+   * Constructs a new Config instance with all parameters.
    *
-   * @param projectId the project id
-   * @param apiSecret the api secret
-   * @param backendApi the backend api
-   * @param frontendApi the frontend api
-   * @param issuer the issuer
-   * @param sessionTokenLength the short session length
-   * @param cacheKeys the cache keys
-   * @param cname the cname
+   * <p>This constructor initializes all configuration fields and performs necessary validations.
+   * The issuer is set based on the following priority:
+   *
+   * <ol>
+   *   <li>CNAME if provided
+   *   <li>Explicit issuer if provided
+   *   <li>Frontend API URL as fallback
+   * </ol>
+   *
+   * @param projectId the project ID (required)
+   * @param apiSecret the API secret (required)
+   * @param frontendApi the frontend API URL (optional)
+   * @param backendApi the backend API URL (optional)
+   * @param issuer the issuer URL (optional)
+   * @param sessionTokenLength the session token lifetime in seconds (optional)
+   * @param cacheKeys whether to cache JWKS keys (optional)
+   * @param cname the custom domain (optional)
+   * @throws IllegalArgumentException if any required field validation fails
    */
   public Config(
       @NonNull String projectId,
