@@ -56,7 +56,6 @@ jobs:
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
 
-
       - name: Install dependencies
         run: mvn clean install -DskipTests
 
