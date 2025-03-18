@@ -2,12 +2,12 @@ package com.corbado.sdk;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import org.apache.commons.lang3.StringUtils;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Configuration class for setting up project parameters.
@@ -24,7 +24,6 @@ public class Config {
   private static final String HTTPS = "https://";
 
   // Fields
-
   /** The Constant API_VERSION. */
   private static final String API_VERSION = "2";
 
@@ -34,6 +33,15 @@ public class Config {
   /** Project Id must begin with this prefix. */
   private static final String PROJECT_ID_PREFIX = "pro-";
 
+  /** Default backend API URL. */
+  private static final String DEFAULT_BACKEND_API = "https://backendapi.cloud.corbado.io/v2";
+
+  /** Default short session cookie name. */
+  private static final String DEFAULT_SHORT_SESSION_COOKIE_NAME = "cbo_short_session";
+
+  /** Default short session length in days. */
+  private static final Integer DEFAULT_SHORT_SESSION_LENGTH = 300;
+
   /** The project id with custom setter. Must be provided. */
   @NonNull @Getter private String projectId;
 
@@ -41,10 +49,11 @@ public class Config {
   @NonNull @Getter private String apiSecret;
 
   /** The backend api with custom setter. Default value: "https://backendapi.cloud.corbado.io/v2" */
-  @Getter @Builder.Default private String backendApi = "https://backendapi.cloud.corbado.io/v2";
+  @Getter @Builder.Default private String backendApi = DEFAULT_BACKEND_API;
 
   /** The short session cookie name. Default value: "cbo_short_session" */
-  @Getter @Setter @Builder.Default private String shortSessionCookieName = "cbo_short_session";
+  @Getter @Setter @Builder.Default
+  private String shortSessionCookieName = DEFAULT_SHORT_SESSION_COOKIE_NAME;
 
   /** The issuer. Used for session verification. */
   @Getter @Setter private String issuer;
@@ -53,7 +62,8 @@ public class Config {
   @Getter private String frontendApi;
 
   /** The short session length for session service. Default = 300. */
-  @Getter @Setter @Builder.Default private Integer shortSessionLength = 300;
+  @Getter @Setter @Builder.Default
+  private Integer shortSessionLength = DEFAULT_SHORT_SESSION_LENGTH;
 
   /** Flag to cache keys in session service. Default = true. */
   @Getter @Setter @Builder.Default private boolean cacheKeys = true;
@@ -69,13 +79,16 @@ public class Config {
    * @param apiSecret the api secret
    */
   public Config(@NonNull final String projectId, @NonNull final String apiSecret) {
-
     setProjectId(projectId); // set and validate
     setApiSecret(apiSecret);
 
     // default values
     setFrontendApi(projectId);
     setIssuer(this.frontendApi);
+    this.backendApi = DEFAULT_BACKEND_API;
+    this.shortSessionCookieName = DEFAULT_SHORT_SESSION_COOKIE_NAME;
+    this.shortSessionLength = DEFAULT_SHORT_SESSION_LENGTH;
+    this.cacheKeys = true;
   }
 
   /**
@@ -163,7 +176,7 @@ public class Config {
   }
 
   /**
-   * Instantiates a new config.
+   * Instantiates a new config. Full constructor used by Lomboc Builder.
    *
    * @param projectId the project id
    * @param apiSecret the api secret
@@ -189,13 +202,17 @@ public class Config {
     setProjectId(projectId);
     setApiSecret(apiSecret);
     setBackendApi(backendApi);
-    setShortSessionCookieName(shortSessionCookieName);
+    setShortSessionCookieName(
+        shortSessionCookieName != null
+            ? shortSessionCookieName
+            : DEFAULT_SHORT_SESSION_COOKIE_NAME);
     if (StringUtils.isEmpty(frontendApi)) {
       setFrontendApi(projectId);
     } else {
       setFrontendApi(frontendApi);
     }
-    setShortSessionLength(shortSessionLength);
+    setShortSessionLength(
+        shortSessionLength != null ? shortSessionLength : DEFAULT_SHORT_SESSION_LENGTH);
     setCacheKeys(cacheKeys);
     setCname(cname);
 
