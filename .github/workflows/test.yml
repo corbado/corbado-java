@@ -2,7 +2,7 @@ name: Daily Test
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # Runs every 10 minutes
+    - cron: '0 0 * * *'  # Run at midnight
 
 jobs:
   test:
