@@ -2,7 +2,7 @@ name: Daily Test
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Run at midnight
+    - cron: '0 3 * * *' 
 
 jobs:
   test:
