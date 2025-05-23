@@ -22,6 +22,7 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Collections;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -336,7 +337,7 @@ public class SessionServiceTest {
       throws InvalidKeySpecException, NoSuchAlgorithmException {
 
     return JWT.create()
-        .withHeader(Map.of("kid", "kid123"))
+        .withHeader(Collections.singletonMap("kid", "kid123"))
         .withIssuer(iss)
         .withIssuedAt(new Date())
         .withExpiresAt(new Date(exp * 1000L))
