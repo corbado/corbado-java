@@ -19,10 +19,10 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Collections;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -42,6 +42,7 @@ import com.auth0.jwk.JwkProvider;
 import com.auth0.jwk.SigningKeyNotFoundException;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.IncorrectClaimException;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
@@ -143,7 +144,7 @@ public class SessionServiceTest {
    */
   @Test
   void test_testGenerateJwt() throws InvalidKeySpecException, NoSuchAlgorithmException {
-    assertNotNull(generateJwt("1", 3, 4));
+    assertNotNull(generateJwt("1", 3, 4, Algorithm.RSA256(privateKey)));
   }
 
   /**
@@ -243,7 +244,8 @@ public class SessionServiceTest {
           generateJwt(
               "https://auth.acme.com",
               System.currentTimeMillis() / 1000 + 100,
-              System.currentTimeMillis() / 1000 + 100),
+              System.currentTimeMillis() / 1000 + 100,
+              Algorithm.RSA256(privateKey)),
           IncorrectClaimException.class
         });
 
@@ -253,7 +255,8 @@ public class SessionServiceTest {
           generateJwt(
               "https://auth.acme.com",
               System.currentTimeMillis() / 1000 - 100,
-              System.currentTimeMillis() / 1000 - 100),
+              System.currentTimeMillis() / 1000 - 100,
+              Algorithm.RSA256(privateKey)),
           TokenExpiredException.class
         });
 
@@ -263,8 +266,20 @@ public class SessionServiceTest {
           generateJwt(
               "https://invalid.com",
               System.currentTimeMillis() / 1000 + 100,
-              System.currentTimeMillis() / 1000 - 100),
+              System.currentTimeMillis() / 1000 - 100,
+              Algorithm.RSA256(privateKey)),
           IncorrectClaimException.class
+        });
+
+    // Invalid alg "none"
+    testData.add(
+        new Object[] {
+          generateJwt(
+              "https://auth.acme.com",
+              System.currentTimeMillis() / 1000 + 100,
+              System.currentTimeMillis() / 1000 - 100,
+              Algorithm.none()),
+          AlgorithmMismatchException.class
         });
 
     // Success
@@ -273,7 +288,8 @@ public class SessionServiceTest {
           generateJwt(
               "https://auth.acme.com",
               System.currentTimeMillis() / 1000 + 100,
-              System.currentTimeMillis() / 1000 - 100),
+              System.currentTimeMillis() / 1000 - 100,
+              Algorithm.RSA256(privateKey)),
           null
         });
 
@@ -317,10 +333,9 @@ public class SessionServiceTest {
    * @throws InvalidKeySpecException the invalid key spec exception
    * @throws NoSuchAlgorithmException the no such algorithm exception
    */
-  private static String generateJwt(final String iss, final long exp, final long nbf)
+  private static String generateJwt(final String iss, final long exp, final long nbf, final Algorithm algorithm)
       throws InvalidKeySpecException, NoSuchAlgorithmException {
 
-    final Algorithm algorithm = Algorithm.RSA256(privateKey);
     return JWT.create()
         .withHeader(Collections.singletonMap("kid", "kid123"))
         .withIssuer(iss)
