@@ -3,10 +3,10 @@
 # Corbado Java SDK
 
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
-[![documentation](https://img.shields.io/badge/documentation-Corbado_Backend_API_Reference-blue.svg)](https://apireference.cloud.corbado.io/backendapi/)
+[![documentation](https://img.shields.io/badge/documentation-Corbado_Backend_API_Reference-blue.svg)](https://docs.corbado.com/api-reference/backend-api)
 [![Slack](https://img.shields.io/badge/slack-join%20chat-brightgreen.svg)](https://join.slack.com/t/corbado/shared_invite/zt-1b7867yz8-V~Xr~ngmSGbt7IA~g16ZsQ)
 
-The [Corbado](https://www.corbado.com) Java SDK provides convenient access to the [Corbado Backend API](https://apireference.cloud.corbado.io/backendapi-v2/) from applications written in the Java language.
+The [Corbado](https://www.corbado.com) Java SDK provides convenient access to the [Corbado Backend API](https://docs.corbado.com/api-reference/backend-api) from applications written in the Java language.
 
 :warning: The Corbado Java SDK is commonly referred to as a private client, specifically designed for usage within closed backend applications. This particular SDK should exclusively be utilized in such environments, as it is crucial to ensure that the API secret remains strictly confidential and is never shared.
 
@@ -57,7 +57,7 @@ To create a Corbado Java SDK instance you need to provide your `Project ID` and 
     }
 //Alternative initialization with 'new'.
   final Config config = new Config(projectId, apiSecret);
- 
+
   CorbadoSdk sdk = new CorbadoSDK(config);
 ```
 
@@ -77,7 +77,7 @@ To use a specific service, such as `users`, invoke it as shown below:
 
 ```Java
 UserService users = sdk.getUsers();
-``` 
+```
 
 ## :books: Advanced
 
@@ -90,6 +90,7 @@ The Corbado Java SDK raises exceptions for all errors except those that occur in
 - `JWTVerificationException` and its subclasses and `JwkException` in session service for JWT/JWK errors.
 
 If the Backend API returns a HTTP status code other than 200, the Corbado Java SDK throws a `CorbadoServerException`. The `CorbadoServerException`class parses the server response to access all important data. One of the test cases:
+
 ```Java
     UserService users = sdk.getUsers();
     final UserEntity user = TestUtils.createUser();
@@ -105,8 +106,8 @@ If the Backend API returns a HTTP status code other than 200, the Corbado Java S
     assertEquals("does not exist", e.getValidationMessages().get(0).getMessage());
     assertEquals("userID", e.getValidationMessages().get(0).getField());
 ```
-Take a look at the `CorbadoServerException` class, if you need get more information out of exception.
 
+Take a look at the `CorbadoServerException` class, if you need get more information out of exception.
 
 ## :speech_balloon: Support & Feedback
 
