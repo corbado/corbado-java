@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com

@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,13 +43,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * AaguidDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class AaguidDetails {
   public static final String SERIALIZED_NAME_AAGUID = "aaguid";
   @SerializedName(SERIALIZED_NAME_AAGUID)
@@ -199,18 +201,10 @@ public class AaguidDetails {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("aaguid");
-    openapiFields.add("name");
-    openapiFields.add("iconLight");
-    openapiFields.add("iconDark");
+    openapiFields = new HashSet<String>(Arrays.asList("aaguid", "name", "iconLight", "iconDark"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("aaguid");
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("iconLight");
-    openapiRequiredFields.add("iconDark");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("aaguid", "name", "iconLight", "iconDark"));
   }
 
   /**
@@ -222,7 +216,7 @@ public class AaguidDetails {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AaguidDetails.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AaguidDetails is not found in the empty JSON string", AaguidDetails.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in AaguidDetails is not found in the empty JSON string", AaguidDetails.openapiRequiredFields.toString()));
         }
       }
 
@@ -230,28 +224,28 @@ public class AaguidDetails {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AaguidDetails.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AaguidDetails` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AaguidDetails` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AaguidDetails.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("aaguid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `aaguid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aaguid").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `aaguid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aaguid").toString()));
       }
       if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if (!jsonObj.get("iconLight").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `iconLight` to be a primitive type in the JSON string but got `%s`", jsonObj.get("iconLight").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `iconLight` to be a primitive type in the JSON string but got `%s`", jsonObj.get("iconLight").toString()));
       }
       if (!jsonObj.get("iconDark").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `iconDark` to be a primitive type in the JSON string but got `%s`", jsonObj.get("iconDark").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `iconDark` to be a primitive type in the JSON string but got `%s`", jsonObj.get("iconDark").toString()));
       }
   }
 

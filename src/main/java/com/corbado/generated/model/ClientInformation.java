@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,7 +14,9 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.JavaScriptHighEntropy;
+import com.corbado.generated.model.NativeMeta;
 import com.corbado.generated.model.ParsedDeviceInfo;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -44,13 +46,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * ClientInformation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class ClientInformation {
   public static final String SERIALIZED_NAME_REMOTE_ADDRESS = "remoteAddress";
   @SerializedName(SERIALIZED_NAME_REMOTE_ADDRESS)
@@ -106,6 +109,11 @@ public class ClientInformation {
   @SerializedName(SERIALIZED_NAME_PARSED_DEVICE_INFO)
   @javax.annotation.Nonnull
   private ParsedDeviceInfo parsedDeviceInfo;
+
+  public static final String SERIALIZED_NAME_NATIVE_META = "nativeMeta";
+  @SerializedName(SERIALIZED_NAME_NATIVE_META)
+  @javax.annotation.Nullable
+  private NativeMeta nativeMeta;
 
   public ClientInformation() {
   }
@@ -319,6 +327,25 @@ public class ClientInformation {
   }
 
 
+  public ClientInformation nativeMeta(@javax.annotation.Nullable NativeMeta nativeMeta) {
+    this.nativeMeta = nativeMeta;
+    return this;
+  }
+
+  /**
+   * Get nativeMeta
+   * @return nativeMeta
+   */
+  @javax.annotation.Nullable
+  public NativeMeta getNativeMeta() {
+    return nativeMeta;
+  }
+
+  public void setNativeMeta(@javax.annotation.Nullable NativeMeta nativeMeta) {
+    this.nativeMeta = nativeMeta;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -339,12 +366,13 @@ public class ClientInformation {
         Objects.equals(this.userVerifyingPlatformAuthenticatorAvailable, clientInformation.userVerifyingPlatformAuthenticatorAvailable) &&
         Objects.equals(this.conditionalMediationAvailable, clientInformation.conditionalMediationAvailable) &&
         Objects.equals(this.privateMode, clientInformation.privateMode) &&
-        Objects.equals(this.parsedDeviceInfo, clientInformation.parsedDeviceInfo);
+        Objects.equals(this.parsedDeviceInfo, clientInformation.parsedDeviceInfo) &&
+        Objects.equals(this.nativeMeta, clientInformation.nativeMeta);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(remoteAddress, userAgent, clientEnvHandle, javascriptFingerprint, javaScriptHighEntropy, bluetoothAvailable, passwordManagerAvailable, userVerifyingPlatformAuthenticatorAvailable, conditionalMediationAvailable, privateMode, parsedDeviceInfo);
+    return Objects.hash(remoteAddress, userAgent, clientEnvHandle, javascriptFingerprint, javaScriptHighEntropy, bluetoothAvailable, passwordManagerAvailable, userVerifyingPlatformAuthenticatorAvailable, conditionalMediationAvailable, privateMode, parsedDeviceInfo, nativeMeta);
   }
 
   @Override
@@ -362,6 +390,7 @@ public class ClientInformation {
     sb.append("    conditionalMediationAvailable: ").append(toIndentedString(conditionalMediationAvailable)).append("\n");
     sb.append("    privateMode: ").append(toIndentedString(privateMode)).append("\n");
     sb.append("    parsedDeviceInfo: ").append(toIndentedString(parsedDeviceInfo)).append("\n");
+    sb.append("    nativeMeta: ").append(toIndentedString(nativeMeta)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -383,26 +412,10 @@ public class ClientInformation {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("remoteAddress");
-    openapiFields.add("userAgent");
-    openapiFields.add("clientEnvHandle");
-    openapiFields.add("javascriptFingerprint");
-    openapiFields.add("javaScriptHighEntropy");
-    openapiFields.add("bluetoothAvailable");
-    openapiFields.add("passwordManagerAvailable");
-    openapiFields.add("userVerifyingPlatformAuthenticatorAvailable");
-    openapiFields.add("conditionalMediationAvailable");
-    openapiFields.add("privateMode");
-    openapiFields.add("parsedDeviceInfo");
+    openapiFields = new HashSet<String>(Arrays.asList("remoteAddress", "userAgent", "clientEnvHandle", "javascriptFingerprint", "javaScriptHighEntropy", "bluetoothAvailable", "passwordManagerAvailable", "userVerifyingPlatformAuthenticatorAvailable", "conditionalMediationAvailable", "privateMode", "parsedDeviceInfo", "nativeMeta"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("remoteAddress");
-    openapiRequiredFields.add("userAgent");
-    openapiRequiredFields.add("userVerifyingPlatformAuthenticatorAvailable");
-    openapiRequiredFields.add("conditionalMediationAvailable");
-    openapiRequiredFields.add("parsedDeviceInfo");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("remoteAddress", "userAgent", "userVerifyingPlatformAuthenticatorAvailable", "conditionalMediationAvailable", "parsedDeviceInfo"));
   }
 
   /**
@@ -414,7 +427,7 @@ public class ClientInformation {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ClientInformation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ClientInformation is not found in the empty JSON string", ClientInformation.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ClientInformation is not found in the empty JSON string", ClientInformation.openapiRequiredFields.toString()));
         }
       }
 
@@ -422,28 +435,28 @@ public class ClientInformation {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ClientInformation.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ClientInformation` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ClientInformation` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ClientInformation.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("remoteAddress").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `remoteAddress` to be a primitive type in the JSON string but got `%s`", jsonObj.get("remoteAddress").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `remoteAddress` to be a primitive type in the JSON string but got `%s`", jsonObj.get("remoteAddress").toString()));
       }
       if (!jsonObj.get("userAgent").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userAgent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userAgent").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `userAgent` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userAgent").toString()));
       }
       if ((jsonObj.get("clientEnvHandle") != null && !jsonObj.get("clientEnvHandle").isJsonNull()) && !jsonObj.get("clientEnvHandle").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clientEnvHandle` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientEnvHandle").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `clientEnvHandle` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientEnvHandle").toString()));
       }
       if ((jsonObj.get("javascriptFingerprint") != null && !jsonObj.get("javascriptFingerprint").isJsonNull()) && !jsonObj.get("javascriptFingerprint").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `javascriptFingerprint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("javascriptFingerprint").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `javascriptFingerprint` to be a primitive type in the JSON string but got `%s`", jsonObj.get("javascriptFingerprint").toString()));
       }
       // validate the optional field `javaScriptHighEntropy`
       if (jsonObj.get("javaScriptHighEntropy") != null && !jsonObj.get("javaScriptHighEntropy").isJsonNull()) {
@@ -451,6 +464,10 @@ public class ClientInformation {
       }
       // validate the required field `parsedDeviceInfo`
       ParsedDeviceInfo.validateJsonElement(jsonObj.get("parsedDeviceInfo"));
+      // validate the optional field `nativeMeta`
+      if (jsonObj.get("nativeMeta") != null && !jsonObj.get("nativeMeta").isJsonNull()) {
+        NativeMeta.validateJsonElement(jsonObj.get("nativeMeta"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

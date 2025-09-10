@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.ConnectTokenData;
 import com.corbado.generated.model.ConnectTokenType;
 import com.google.gson.TypeAdapter;
@@ -44,13 +45,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * ConnectTokenCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class ConnectTokenCreateReq {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -114,7 +116,7 @@ public class ConnectTokenCreateReq {
   }
 
   /**
-   * Get maxLifetimeInSeconds
+   * Maximum lifetime of the connectToken in seconds.
    * @return maxLifetimeInSeconds
    */
   @javax.annotation.Nullable
@@ -175,15 +177,10 @@ public class ConnectTokenCreateReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("data");
-    openapiFields.add("maxLifetimeInSeconds");
+    openapiFields = new HashSet<String>(Arrays.asList("type", "data", "maxLifetimeInSeconds"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("data");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("type", "data"));
   }
 
   /**
@@ -195,7 +192,7 @@ public class ConnectTokenCreateReq {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConnectTokenCreateReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConnectTokenCreateReq is not found in the empty JSON string", ConnectTokenCreateReq.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ConnectTokenCreateReq is not found in the empty JSON string", ConnectTokenCreateReq.openapiRequiredFields.toString()));
         }
       }
 
@@ -203,14 +200,14 @@ public class ConnectTokenCreateReq {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ConnectTokenCreateReq.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConnectTokenCreateReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ConnectTokenCreateReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ConnectTokenCreateReq.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

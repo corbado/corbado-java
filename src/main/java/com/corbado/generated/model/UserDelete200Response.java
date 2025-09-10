@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,7 +14,8 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
-import com.corbado.generated.model.RequestData;
+import java.util.Locale;
+import com.corbado.generated.model.UserListDefaultResponseAllOfRequestData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -43,14 +44,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
- * GenericRsp
+ * UserDelete200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
-public class GenericRsp {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+public class UserDelete200Response {
   public static final String SERIALIZED_NAME_HTTP_STATUS_CODE = "httpStatusCode";
   @SerializedName(SERIALIZED_NAME_HTTP_STATUS_CODE)
   @javax.annotation.Nonnull
@@ -64,17 +66,17 @@ public class GenericRsp {
   public static final String SERIALIZED_NAME_REQUEST_DATA = "requestData";
   @SerializedName(SERIALIZED_NAME_REQUEST_DATA)
   @javax.annotation.Nonnull
-  private RequestData requestData;
+  private UserListDefaultResponseAllOfRequestData requestData;
 
   public static final String SERIALIZED_NAME_RUNTIME = "runtime";
   @SerializedName(SERIALIZED_NAME_RUNTIME)
   @javax.annotation.Nonnull
   private Float runtime;
 
-  public GenericRsp() {
+  public UserDelete200Response() {
   }
 
-  public GenericRsp httpStatusCode(@javax.annotation.Nonnull Integer httpStatusCode) {
+  public UserDelete200Response httpStatusCode(@javax.annotation.Nonnull Integer httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
     return this;
   }
@@ -93,7 +95,7 @@ public class GenericRsp {
   }
 
 
-  public GenericRsp message(@javax.annotation.Nonnull String message) {
+  public UserDelete200Response message(@javax.annotation.Nonnull String message) {
     this.message = message;
     return this;
   }
@@ -112,7 +114,7 @@ public class GenericRsp {
   }
 
 
-  public GenericRsp requestData(@javax.annotation.Nonnull RequestData requestData) {
+  public UserDelete200Response requestData(@javax.annotation.Nonnull UserListDefaultResponseAllOfRequestData requestData) {
     this.requestData = requestData;
     return this;
   }
@@ -122,16 +124,16 @@ public class GenericRsp {
    * @return requestData
    */
   @javax.annotation.Nonnull
-  public RequestData getRequestData() {
+  public UserListDefaultResponseAllOfRequestData getRequestData() {
     return requestData;
   }
 
-  public void setRequestData(@javax.annotation.Nonnull RequestData requestData) {
+  public void setRequestData(@javax.annotation.Nonnull UserListDefaultResponseAllOfRequestData requestData) {
     this.requestData = requestData;
   }
 
 
-  public GenericRsp runtime(@javax.annotation.Nonnull Float runtime) {
+  public UserDelete200Response runtime(@javax.annotation.Nonnull Float runtime) {
     this.runtime = runtime;
     return this;
   }
@@ -159,11 +161,11 @@ public class GenericRsp {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GenericRsp genericRsp = (GenericRsp) o;
-    return Objects.equals(this.httpStatusCode, genericRsp.httpStatusCode) &&
-        Objects.equals(this.message, genericRsp.message) &&
-        Objects.equals(this.requestData, genericRsp.requestData) &&
-        Objects.equals(this.runtime, genericRsp.runtime);
+    UserDelete200Response userDelete200Response = (UserDelete200Response) o;
+    return Objects.equals(this.httpStatusCode, userDelete200Response.httpStatusCode) &&
+        Objects.equals(this.message, userDelete200Response.message) &&
+        Objects.equals(this.requestData, userDelete200Response.requestData) &&
+        Objects.equals(this.runtime, userDelete200Response.runtime);
   }
 
   @Override
@@ -174,7 +176,7 @@ public class GenericRsp {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GenericRsp {\n");
+    sb.append("class UserDelete200Response {\n");
     sb.append("    httpStatusCode: ").append(toIndentedString(httpStatusCode)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    requestData: ").append(toIndentedString(requestData)).append("\n");
@@ -200,75 +202,67 @@ public class GenericRsp {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("httpStatusCode");
-    openapiFields.add("message");
-    openapiFields.add("requestData");
-    openapiFields.add("runtime");
+    openapiFields = new HashSet<String>(Arrays.asList("httpStatusCode", "message", "requestData", "runtime"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("httpStatusCode");
-    openapiRequiredFields.add("message");
-    openapiRequiredFields.add("requestData");
-    openapiRequiredFields.add("runtime");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("httpStatusCode", "message", "requestData", "runtime"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GenericRsp
+   * @throws IOException if the JSON Element is invalid with respect to UserDelete200Response
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!GenericRsp.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in GenericRsp is not found in the empty JSON string", GenericRsp.openapiRequiredFields.toString()));
+        if (!UserDelete200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in UserDelete200Response is not found in the empty JSON string", UserDelete200Response.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GenericRsp.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `GenericRsp` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!UserDelete200Response.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UserDelete200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : GenericRsp.openapiRequiredFields) {
+      for (String requiredField : UserDelete200Response.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
       // validate the required field `requestData`
-      RequestData.validateJsonElement(jsonObj.get("requestData"));
+      UserListDefaultResponseAllOfRequestData.validateJsonElement(jsonObj.get("requestData"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GenericRsp.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GenericRsp' and its subtypes
+       if (!UserDelete200Response.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UserDelete200Response' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GenericRsp> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GenericRsp.class));
+       final TypeAdapter<UserDelete200Response> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UserDelete200Response.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<GenericRsp>() {
+       return (TypeAdapter<T>) new TypeAdapter<UserDelete200Response>() {
            @Override
-           public void write(JsonWriter out, GenericRsp value) throws IOException {
+           public void write(JsonWriter out, UserDelete200Response value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public GenericRsp read(JsonReader in) throws IOException {
+           public UserDelete200Response read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -279,18 +273,18 @@ public class GenericRsp {
   }
 
   /**
-   * Create an instance of GenericRsp given an JSON string
+   * Create an instance of UserDelete200Response given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of GenericRsp
-   * @throws IOException if the JSON string is invalid with respect to GenericRsp
+   * @return An instance of UserDelete200Response
+   * @throws IOException if the JSON string is invalid with respect to UserDelete200Response
    */
-  public static GenericRsp fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GenericRsp.class);
+  public static UserDelete200Response fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UserDelete200Response.class);
   }
 
   /**
-   * Convert an instance of GenericRsp to an JSON string
+   * Convert an instance of UserDelete200Response to an JSON string
    *
    * @return JSON string
    */

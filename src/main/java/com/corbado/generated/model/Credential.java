@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.AaguidDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -45,13 +46,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * Credential
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class Credential {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -239,6 +241,11 @@ public class Credential {
   @SerializedName(SERIALIZED_NAME_AAGUID_DETAILS)
   @javax.annotation.Nonnull
   private AaguidDetails aaguidDetails;
+
+  public static final String SERIALIZED_NAME_TAGS = "tags";
+  @SerializedName(SERIALIZED_NAME_TAGS)
+  @javax.annotation.Nonnull
+  private List<String> tags = new ArrayList<>();
 
   public Credential() {
   }
@@ -536,6 +543,33 @@ public class Credential {
   }
 
 
+  public Credential tags(@javax.annotation.Nonnull List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public Credential addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+  /**
+   * Get tags
+   * @return tags
+   */
+  @javax.annotation.Nonnull
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(@javax.annotation.Nonnull List<String> tags) {
+    this.tags = tags;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -560,12 +594,13 @@ public class Credential {
         Objects.equals(this.created, credential.created) &&
         Objects.equals(this.createdMs, credential.createdMs) &&
         Objects.equals(this.status, credential.status) &&
-        Objects.equals(this.aaguidDetails, credential.aaguidDetails);
+        Objects.equals(this.aaguidDetails, credential.aaguidDetails) &&
+        Objects.equals(this.tags, credential.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, credentialID, attestationType, transport, backupEligible, backupState, authenticatorAAGUID, sourceOS, sourceBrowser, lastUsed, lastUsedMs, created, createdMs, status, aaguidDetails);
+    return Objects.hash(id, credentialID, attestationType, transport, backupEligible, backupState, authenticatorAAGUID, sourceOS, sourceBrowser, lastUsed, lastUsedMs, created, createdMs, status, aaguidDetails, tags);
   }
 
   @Override
@@ -587,6 +622,7 @@ public class Credential {
     sb.append("    createdMs: ").append(toIndentedString(createdMs)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    aaguidDetails: ").append(toIndentedString(aaguidDetails)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -608,40 +644,10 @@ public class Credential {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("credentialID");
-    openapiFields.add("attestationType");
-    openapiFields.add("transport");
-    openapiFields.add("backupEligible");
-    openapiFields.add("backupState");
-    openapiFields.add("authenticatorAAGUID");
-    openapiFields.add("sourceOS");
-    openapiFields.add("sourceBrowser");
-    openapiFields.add("lastUsed");
-    openapiFields.add("lastUsedMs");
-    openapiFields.add("created");
-    openapiFields.add("createdMs");
-    openapiFields.add("status");
-    openapiFields.add("aaguidDetails");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "credentialID", "attestationType", "transport", "backupEligible", "backupState", "authenticatorAAGUID", "sourceOS", "sourceBrowser", "lastUsed", "lastUsedMs", "created", "createdMs", "status", "aaguidDetails", "tags"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("credentialID");
-    openapiRequiredFields.add("attestationType");
-    openapiRequiredFields.add("transport");
-    openapiRequiredFields.add("backupEligible");
-    openapiRequiredFields.add("backupState");
-    openapiRequiredFields.add("authenticatorAAGUID");
-    openapiRequiredFields.add("sourceOS");
-    openapiRequiredFields.add("sourceBrowser");
-    openapiRequiredFields.add("lastUsed");
-    openapiRequiredFields.add("lastUsedMs");
-    openapiRequiredFields.add("created");
-    openapiRequiredFields.add("createdMs");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("aaguidDetails");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "credentialID", "attestationType", "transport", "backupEligible", "backupState", "authenticatorAAGUID", "sourceOS", "sourceBrowser", "lastUsed", "lastUsedMs", "created", "createdMs", "status", "aaguidDetails", "tags"));
   }
 
   /**
@@ -653,7 +659,7 @@ public class Credential {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!Credential.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Credential is not found in the empty JSON string", Credential.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in Credential is not found in the empty JSON string", Credential.openapiRequiredFields.toString()));
         }
       }
 
@@ -661,54 +667,60 @@ public class Credential {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!Credential.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Credential` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `Credential` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : Credential.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("credentialID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credentialID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `credentialID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialID").toString()));
       }
       if (!jsonObj.get("attestationType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `attestationType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attestationType").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `attestationType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attestationType").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("transport") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("transport").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `transport` to be an array in the JSON string but got `%s`", jsonObj.get("transport").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `transport` to be an array in the JSON string but got `%s`", jsonObj.get("transport").toString()));
       }
       if (!jsonObj.get("authenticatorAAGUID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `authenticatorAAGUID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("authenticatorAAGUID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `authenticatorAAGUID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("authenticatorAAGUID").toString()));
       }
       if (!jsonObj.get("sourceOS").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sourceOS` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceOS").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sourceOS` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceOS").toString()));
       }
       if (!jsonObj.get("sourceBrowser").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sourceBrowser` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceBrowser").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sourceBrowser` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sourceBrowser").toString()));
       }
       if (!jsonObj.get("lastUsed").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastUsed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastUsed").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `lastUsed` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastUsed").toString()));
       }
       if (!jsonObj.get("created").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       // validate the required field `status`
       StatusEnum.validateJsonElement(jsonObj.get("status"));
       // validate the required field `aaguidDetails`
       AaguidDetails.validateJsonElement(jsonObj.get("aaguidDetails"));
+      // ensure the required json array is present
+      if (jsonObj.get("tags") == null) {
+        throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
+      } else if (!jsonObj.get("tags").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -30,7 +30,7 @@ import java.io.IOException;
 import com.corbado.generated.model.Challenge;
 import com.corbado.generated.model.ChallengeCreateReq;
 import com.corbado.generated.model.ChallengeUpdateReq;
-import com.corbado.generated.model.ErrorRsp;
+import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public class ChallengesApi {
 
     /**
      * Build call for challengeCreate
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param challengeCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -86,11 +86,11 @@ public class ChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Challenge has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call challengeCreateCall(String userID, ChallengeCreateReq challengeCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call challengeCreateCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull ChallengeCreateReq challengeCreateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,7 +137,7 @@ public class ChallengesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call challengeCreateValidateBeforeCall(String userID, ChallengeCreateReq challengeCreateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call challengeCreateValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull ChallengeCreateReq challengeCreateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling challengeCreate(Async)");
@@ -153,9 +153,9 @@ public class ChallengesApi {
     }
 
     /**
-     * 
-     * Create a new challenge to verify a login identifier
-     * @param userID ID of user (required)
+     * Create a challenge for a user
+     * Creates a new challenge to verify a login identifier for a user by given &#x60;userID&#x60;. Challenges come in three flavors: **Email OTP**, **SMS OTP**, and **Email Magiclink**.  **OTP** stands for One-Time Password. It is a unique code sent to the user via email or SMS, which they must enter to complete the verification process. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param challengeCreateReq  (required)
      * @return Challenge
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -163,19 +163,19 @@ public class ChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Challenge has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public Challenge challengeCreate(String userID, ChallengeCreateReq challengeCreateReq) throws ApiException {
+    public Challenge challengeCreate(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull ChallengeCreateReq challengeCreateReq) throws ApiException {
         ApiResponse<Challenge> localVarResp = challengeCreateWithHttpInfo(userID, challengeCreateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Create a new challenge to verify a login identifier
-     * @param userID ID of user (required)
+     * Create a challenge for a user
+     * Creates a new challenge to verify a login identifier for a user by given &#x60;userID&#x60;. Challenges come in three flavors: **Email OTP**, **SMS OTP**, and **Email Magiclink**.  **OTP** stands for One-Time Password. It is a unique code sent to the user via email or SMS, which they must enter to complete the verification process. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param challengeCreateReq  (required)
      * @return ApiResponse&lt;Challenge&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -183,20 +183,20 @@ public class ChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Challenge has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Challenge> challengeCreateWithHttpInfo(String userID, ChallengeCreateReq challengeCreateReq) throws ApiException {
+    public ApiResponse<Challenge> challengeCreateWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull ChallengeCreateReq challengeCreateReq) throws ApiException {
         okhttp3.Call localVarCall = challengeCreateValidateBeforeCall(userID, challengeCreateReq, null);
         Type localVarReturnType = new TypeToken<Challenge>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Create a new challenge to verify a login identifier
-     * @param userID ID of user (required)
+     * Create a challenge for a user (asynchronously)
+     * Creates a new challenge to verify a login identifier for a user by given &#x60;userID&#x60;. Challenges come in three flavors: **Email OTP**, **SMS OTP**, and **Email Magiclink**.  **OTP** stands for One-Time Password. It is a unique code sent to the user via email or SMS, which they must enter to complete the verification process. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param challengeCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -205,11 +205,11 @@ public class ChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Challenge has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call challengeCreateAsync(String userID, ChallengeCreateReq challengeCreateReq, final ApiCallback<Challenge> _callback) throws ApiException {
+    public okhttp3.Call challengeCreateAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull ChallengeCreateReq challengeCreateReq, final ApiCallback<Challenge> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = challengeCreateValidateBeforeCall(userID, challengeCreateReq, _callback);
         Type localVarReturnType = new TypeToken<Challenge>(){}.getType();
@@ -218,7 +218,7 @@ public class ChallengesApi {
     }
     /**
      * Build call for challengeUpdate
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param challengeID ID of challenge (required)
      * @param challengeUpdateReq  (required)
      * @param _callback Callback for upload/download progress
@@ -228,11 +228,11 @@ public class ChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Challenge has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call challengeUpdateCall(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call challengeUpdateCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String challengeID, @javax.annotation.Nonnull ChallengeUpdateReq challengeUpdateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -280,7 +280,7 @@ public class ChallengesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call challengeUpdateValidateBeforeCall(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call challengeUpdateValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String challengeID, @javax.annotation.Nonnull ChallengeUpdateReq challengeUpdateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling challengeUpdate(Async)");
@@ -301,9 +301,9 @@ public class ChallengesApi {
     }
 
     /**
-     * 
-     * Updates a challenge (e.g. from pending to completed)
-     * @param userID ID of user (required)
+     * Update a challenge for a user
+     * Updates a challenge for a user by given &#x60;userID&#x60; and &#x60;challengeID&#x60;. For example, this can be used to change the challenge status from &#x60;pending&#x60; to &#x60;completed&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param challengeID ID of challenge (required)
      * @param challengeUpdateReq  (required)
      * @return Challenge
@@ -312,19 +312,19 @@ public class ChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Challenge has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public Challenge challengeUpdate(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq) throws ApiException {
+    public Challenge challengeUpdate(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String challengeID, @javax.annotation.Nonnull ChallengeUpdateReq challengeUpdateReq) throws ApiException {
         ApiResponse<Challenge> localVarResp = challengeUpdateWithHttpInfo(userID, challengeID, challengeUpdateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Updates a challenge (e.g. from pending to completed)
-     * @param userID ID of user (required)
+     * Update a challenge for a user
+     * Updates a challenge for a user by given &#x60;userID&#x60; and &#x60;challengeID&#x60;. For example, this can be used to change the challenge status from &#x60;pending&#x60; to &#x60;completed&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param challengeID ID of challenge (required)
      * @param challengeUpdateReq  (required)
      * @return ApiResponse&lt;Challenge&gt;
@@ -333,20 +333,20 @@ public class ChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Challenge has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Challenge> challengeUpdateWithHttpInfo(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq) throws ApiException {
+    public ApiResponse<Challenge> challengeUpdateWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String challengeID, @javax.annotation.Nonnull ChallengeUpdateReq challengeUpdateReq) throws ApiException {
         okhttp3.Call localVarCall = challengeUpdateValidateBeforeCall(userID, challengeID, challengeUpdateReq, null);
         Type localVarReturnType = new TypeToken<Challenge>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Updates a challenge (e.g. from pending to completed)
-     * @param userID ID of user (required)
+     * Update a challenge for a user (asynchronously)
+     * Updates a challenge for a user by given &#x60;userID&#x60; and &#x60;challengeID&#x60;. For example, this can be used to change the challenge status from &#x60;pending&#x60; to &#x60;completed&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param challengeID ID of challenge (required)
      * @param challengeUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -356,11 +356,11 @@ public class ChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Challenge has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call challengeUpdateAsync(String userID, String challengeID, ChallengeUpdateReq challengeUpdateReq, final ApiCallback<Challenge> _callback) throws ApiException {
+    public okhttp3.Call challengeUpdateAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String challengeID, @javax.annotation.Nonnull ChallengeUpdateReq challengeUpdateReq, final ApiCallback<Challenge> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = challengeUpdateValidateBeforeCall(userID, challengeID, challengeUpdateReq, _callback);
         Type localVarReturnType = new TypeToken<Challenge>(){}.getType();

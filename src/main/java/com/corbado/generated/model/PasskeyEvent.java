@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.PasskeyEventType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -43,13 +44,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * PasskeyEvent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyEvent {
   public static final String SERIALIZED_NAME_PASSKEY_EVENT_I_D = "passkeyEventID";
   @SerializedName(SERIALIZED_NAME_PASSKEY_EVENT_I_D)
@@ -330,24 +332,10 @@ public class PasskeyEvent {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("passkeyEventID");
-    openapiFields.add("userID");
-    openapiFields.add("eventType");
-    openapiFields.add("clientEnvID");
-    openapiFields.add("processID");
-    openapiFields.add("credentialID");
-    openapiFields.add("expires");
-    openapiFields.add("created");
-    openapiFields.add("createdMs");
+    openapiFields = new HashSet<String>(Arrays.asList("passkeyEventID", "userID", "eventType", "clientEnvID", "processID", "credentialID", "expires", "created", "createdMs"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("passkeyEventID");
-    openapiRequiredFields.add("userID");
-    openapiRequiredFields.add("eventType");
-    openapiRequiredFields.add("created");
-    openapiRequiredFields.add("createdMs");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("passkeyEventID", "userID", "eventType", "created", "createdMs"));
   }
 
   /**
@@ -359,7 +347,7 @@ public class PasskeyEvent {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PasskeyEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyEvent is not found in the empty JSON string", PasskeyEvent.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in PasskeyEvent is not found in the empty JSON string", PasskeyEvent.openapiRequiredFields.toString()));
         }
       }
 
@@ -367,36 +355,36 @@ public class PasskeyEvent {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PasskeyEvent.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyEvent` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PasskeyEvent` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PasskeyEvent.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("passkeyEventID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `passkeyEventID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("passkeyEventID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `passkeyEventID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("passkeyEventID").toString()));
       }
       if (!jsonObj.get("userID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
       }
       // validate the required field `eventType`
       PasskeyEventType.validateJsonElement(jsonObj.get("eventType"));
       if ((jsonObj.get("clientEnvID") != null && !jsonObj.get("clientEnvID").isJsonNull()) && !jsonObj.get("clientEnvID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clientEnvID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientEnvID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `clientEnvID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientEnvID").toString()));
       }
       if ((jsonObj.get("processID") != null && !jsonObj.get("processID").isJsonNull()) && !jsonObj.get("processID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `processID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `processID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processID").toString()));
       }
       if ((jsonObj.get("credentialID") != null && !jsonObj.get("credentialID").isJsonNull()) && !jsonObj.get("credentialID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credentialID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `credentialID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialID").toString()));
       }
       if (!jsonObj.get("created").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
       }
   }
 

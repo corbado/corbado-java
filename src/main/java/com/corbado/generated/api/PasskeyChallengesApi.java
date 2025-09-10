@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -27,10 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.corbado.generated.model.ErrorRsp;
 import com.corbado.generated.model.PasskeyChallenge;
 import com.corbado.generated.model.PasskeyChallengeList;
 import com.corbado.generated.model.PasskeyChallengeUpdateReq;
+import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -77,11 +77,11 @@ public class PasskeyChallengesApi {
 
     /**
      * Build call for passkeyChallengeList
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -89,11 +89,11 @@ public class PasskeyChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey challenges </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey challenges. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyChallengeListCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyChallengeListCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -155,7 +155,7 @@ public class PasskeyChallengesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyChallengeListValidateBeforeCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyChallengeListValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling passkeyChallengeList(Async)");
@@ -166,60 +166,60 @@ public class PasskeyChallengesApi {
     }
 
     /**
-     * 
-     * Returns a list of matching passkey challenges
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all passkey challenges for a user
+     * Returns a list of passkey challenges for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;projectID&#x60;, &#x60;status&#x60;, and &#x60;type&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;projectID&#x60;, &#x60;status&#x60;, and &#x60;type&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return PasskeyChallengeList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey challenges </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey challenges. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyChallengeList passkeyChallengeList(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public PasskeyChallengeList passkeyChallengeList(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<PasskeyChallengeList> localVarResp = passkeyChallengeListWithHttpInfo(userID, sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Returns a list of matching passkey challenges
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all passkey challenges for a user
+     * Returns a list of passkey challenges for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;projectID&#x60;, &#x60;status&#x60;, and &#x60;type&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;projectID&#x60;, &#x60;status&#x60;, and &#x60;type&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return ApiResponse&lt;PasskeyChallengeList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey challenges </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey challenges. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyChallengeList> passkeyChallengeListWithHttpInfo(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public ApiResponse<PasskeyChallengeList> passkeyChallengeListWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = passkeyChallengeListValidateBeforeCall(userID, sort, filter, page, pageSize, null);
         Type localVarReturnType = new TypeToken<PasskeyChallengeList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Returns a list of matching passkey challenges
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all passkey challenges for a user (asynchronously)
+     * Returns a list of passkey challenges for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;projectID&#x60;, &#x60;status&#x60;, and &#x60;type&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;projectID&#x60;, &#x60;status&#x60;, and &#x60;type&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -227,11 +227,11 @@ public class PasskeyChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey challenges </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey challenges. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyChallengeListAsync(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<PasskeyChallengeList> _callback) throws ApiException {
+    public okhttp3.Call passkeyChallengeListAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback<PasskeyChallengeList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyChallengeListValidateBeforeCall(userID, sort, filter, page, pageSize, _callback);
         Type localVarReturnType = new TypeToken<PasskeyChallengeList>(){}.getType();
@@ -240,7 +240,7 @@ public class PasskeyChallengesApi {
     }
     /**
      * Build call for passkeyChallengeUpdate
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyChallengeID ID of a passkey challenge (required)
      * @param passkeyChallengeUpdateReq  (required)
      * @param _callback Callback for upload/download progress
@@ -250,11 +250,11 @@ public class PasskeyChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey challenge has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyChallengeUpdateCall(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyChallengeUpdateCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyChallengeID, @javax.annotation.Nonnull PasskeyChallengeUpdateReq passkeyChallengeUpdateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -302,7 +302,7 @@ public class PasskeyChallengesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyChallengeUpdateValidateBeforeCall(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyChallengeUpdateValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyChallengeID, @javax.annotation.Nonnull PasskeyChallengeUpdateReq passkeyChallengeUpdateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling passkeyChallengeUpdate(Async)");
@@ -323,9 +323,9 @@ public class PasskeyChallengesApi {
     }
 
     /**
-     * 
-     * Updates a passkey challenge
-     * @param userID ID of user (required)
+     * Update a passkey challenge for a user
+     * Updates a passkey challenge for a user by given &#x60;userID&#x60; and &#x60;passkeyChallengeID&#x60;.
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyChallengeID ID of a passkey challenge (required)
      * @param passkeyChallengeUpdateReq  (required)
      * @return PasskeyChallenge
@@ -334,19 +334,19 @@ public class PasskeyChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey challenge has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyChallenge passkeyChallengeUpdate(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq) throws ApiException {
+    public PasskeyChallenge passkeyChallengeUpdate(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyChallengeID, @javax.annotation.Nonnull PasskeyChallengeUpdateReq passkeyChallengeUpdateReq) throws ApiException {
         ApiResponse<PasskeyChallenge> localVarResp = passkeyChallengeUpdateWithHttpInfo(userID, passkeyChallengeID, passkeyChallengeUpdateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Updates a passkey challenge
-     * @param userID ID of user (required)
+     * Update a passkey challenge for a user
+     * Updates a passkey challenge for a user by given &#x60;userID&#x60; and &#x60;passkeyChallengeID&#x60;.
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyChallengeID ID of a passkey challenge (required)
      * @param passkeyChallengeUpdateReq  (required)
      * @return ApiResponse&lt;PasskeyChallenge&gt;
@@ -355,20 +355,20 @@ public class PasskeyChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey challenge has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyChallenge> passkeyChallengeUpdateWithHttpInfo(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq) throws ApiException {
+    public ApiResponse<PasskeyChallenge> passkeyChallengeUpdateWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyChallengeID, @javax.annotation.Nonnull PasskeyChallengeUpdateReq passkeyChallengeUpdateReq) throws ApiException {
         okhttp3.Call localVarCall = passkeyChallengeUpdateValidateBeforeCall(userID, passkeyChallengeID, passkeyChallengeUpdateReq, null);
         Type localVarReturnType = new TypeToken<PasskeyChallenge>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Updates a passkey challenge
-     * @param userID ID of user (required)
+     * Update a passkey challenge for a user (asynchronously)
+     * Updates a passkey challenge for a user by given &#x60;userID&#x60; and &#x60;passkeyChallengeID&#x60;.
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyChallengeID ID of a passkey challenge (required)
      * @param passkeyChallengeUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -378,11 +378,11 @@ public class PasskeyChallengesApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey challenge has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey challenge has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyChallengeUpdateAsync(String userID, String passkeyChallengeID, PasskeyChallengeUpdateReq passkeyChallengeUpdateReq, final ApiCallback<PasskeyChallenge> _callback) throws ApiException {
+    public okhttp3.Call passkeyChallengeUpdateAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyChallengeID, @javax.annotation.Nonnull PasskeyChallengeUpdateReq passkeyChallengeUpdateReq, final ApiCallback<PasskeyChallenge> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyChallengeUpdateValidateBeforeCall(userID, passkeyChallengeID, passkeyChallengeUpdateReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyChallenge>(){}.getType();

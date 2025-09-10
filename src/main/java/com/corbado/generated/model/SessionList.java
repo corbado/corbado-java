@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,8 +14,9 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
-import com.corbado.generated.model.Paging;
-import com.corbado.generated.model.Session;
+import java.util.Locale;
+import com.corbado.generated.model.SessionListSessionsInner;
+import com.corbado.generated.model.UserListPaging;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -46,33 +47,34 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * SessionList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class SessionList {
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nonnull
-  private List<Session> sessions = new ArrayList<>();
+  private List<SessionListSessionsInner> sessions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PAGING = "paging";
   @SerializedName(SERIALIZED_NAME_PAGING)
   @javax.annotation.Nonnull
-  private Paging paging;
+  private UserListPaging paging;
 
   public SessionList() {
   }
 
-  public SessionList sessions(@javax.annotation.Nonnull List<Session> sessions) {
+  public SessionList sessions(@javax.annotation.Nonnull List<SessionListSessionsInner> sessions) {
     this.sessions = sessions;
     return this;
   }
 
-  public SessionList addSessionsItem(Session sessionsItem) {
+  public SessionList addSessionsItem(SessionListSessionsInner sessionsItem) {
     if (this.sessions == null) {
       this.sessions = new ArrayList<>();
     }
@@ -85,16 +87,16 @@ public class SessionList {
    * @return sessions
    */
   @javax.annotation.Nonnull
-  public List<Session> getSessions() {
+  public List<SessionListSessionsInner> getSessions() {
     return sessions;
   }
 
-  public void setSessions(@javax.annotation.Nonnull List<Session> sessions) {
+  public void setSessions(@javax.annotation.Nonnull List<SessionListSessionsInner> sessions) {
     this.sessions = sessions;
   }
 
 
-  public SessionList paging(@javax.annotation.Nonnull Paging paging) {
+  public SessionList paging(@javax.annotation.Nonnull UserListPaging paging) {
     this.paging = paging;
     return this;
   }
@@ -104,11 +106,11 @@ public class SessionList {
    * @return paging
    */
   @javax.annotation.Nonnull
-  public Paging getPaging() {
+  public UserListPaging getPaging() {
     return paging;
   }
 
-  public void setPaging(@javax.annotation.Nonnull Paging paging) {
+  public void setPaging(@javax.annotation.Nonnull UserListPaging paging) {
     this.paging = paging;
   }
 
@@ -159,14 +161,10 @@ public class SessionList {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("sessions");
-    openapiFields.add("paging");
+    openapiFields = new HashSet<String>(Arrays.asList("sessions", "paging"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("sessions");
-    openapiRequiredFields.add("paging");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("sessions", "paging"));
   }
 
   /**
@@ -178,7 +176,7 @@ public class SessionList {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SessionList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SessionList is not found in the empty JSON string", SessionList.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in SessionList is not found in the empty JSON string", SessionList.openapiRequiredFields.toString()));
         }
       }
 
@@ -186,29 +184,29 @@ public class SessionList {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!SessionList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SessionList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `SessionList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : SessionList.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("sessions").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sessions` to be an array in the JSON string but got `%s`", jsonObj.get("sessions").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sessions` to be an array in the JSON string but got `%s`", jsonObj.get("sessions").toString()));
       }
 
       JsonArray jsonArraysessions = jsonObj.getAsJsonArray("sessions");
       // validate the required field `sessions` (array)
       for (int i = 0; i < jsonArraysessions.size(); i++) {
-        Session.validateJsonElement(jsonArraysessions.get(i));
+        SessionListSessionsInner.validateJsonElement(jsonArraysessions.get(i));
       };
       // validate the required field `paging`
-      Paging.validateJsonElement(jsonObj.get("paging"));
+      UserListPaging.validateJsonElement(jsonObj.get("paging"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

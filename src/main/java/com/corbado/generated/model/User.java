@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.UserStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -43,13 +44,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class User {
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
@@ -70,6 +72,16 @@ public class User {
   @SerializedName(SERIALIZED_NAME_EXPLICIT_WEBAUTHN_I_D)
   @javax.annotation.Nullable
   private String explicitWebauthnID;
+
+  public static final String SERIALIZED_NAME_UPDATED = "updated";
+  @SerializedName(SERIALIZED_NAME_UPDATED)
+  @javax.annotation.Nonnull
+  private String updated;
+
+  public static final String SERIALIZED_NAME_UPDATED_MS = "updatedMs";
+  @SerializedName(SERIALIZED_NAME_UPDATED_MS)
+  @javax.annotation.Nonnull
+  private Long updatedMs;
 
   public User() {
   }
@@ -150,6 +162,44 @@ public class User {
   }
 
 
+  public User updated(@javax.annotation.Nonnull String updated) {
+    this.updated = updated;
+    return this;
+  }
+
+  /**
+   * Get updated
+   * @return updated
+   */
+  @javax.annotation.Nonnull
+  public String getUpdated() {
+    return updated;
+  }
+
+  public void setUpdated(@javax.annotation.Nonnull String updated) {
+    this.updated = updated;
+  }
+
+
+  public User updatedMs(@javax.annotation.Nonnull Long updatedMs) {
+    this.updatedMs = updatedMs;
+    return this;
+  }
+
+  /**
+   * Get updatedMs
+   * @return updatedMs
+   */
+  @javax.annotation.Nonnull
+  public Long getUpdatedMs() {
+    return updatedMs;
+  }
+
+  public void setUpdatedMs(@javax.annotation.Nonnull Long updatedMs) {
+    this.updatedMs = updatedMs;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -163,12 +213,14 @@ public class User {
     return Objects.equals(this.userID, user.userID) &&
         Objects.equals(this.fullName, user.fullName) &&
         Objects.equals(this.status, user.status) &&
-        Objects.equals(this.explicitWebauthnID, user.explicitWebauthnID);
+        Objects.equals(this.explicitWebauthnID, user.explicitWebauthnID) &&
+        Objects.equals(this.updated, user.updated) &&
+        Objects.equals(this.updatedMs, user.updatedMs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userID, fullName, status, explicitWebauthnID);
+    return Objects.hash(userID, fullName, status, explicitWebauthnID, updated, updatedMs);
   }
 
   @Override
@@ -179,6 +231,8 @@ public class User {
     sb.append("    fullName: ").append(toIndentedString(fullName)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    explicitWebauthnID: ").append(toIndentedString(explicitWebauthnID)).append("\n");
+    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
+    sb.append("    updatedMs: ").append(toIndentedString(updatedMs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -200,16 +254,10 @@ public class User {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("userID");
-    openapiFields.add("fullName");
-    openapiFields.add("status");
-    openapiFields.add("explicitWebauthnID");
+    openapiFields = new HashSet<String>(Arrays.asList("userID", "fullName", "status", "explicitWebauthnID", "updated", "updatedMs"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("userID");
-    openapiRequiredFields.add("status");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("userID", "status", "updated", "updatedMs"));
   }
 
   /**
@@ -221,7 +269,7 @@ public class User {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!User.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in User is not found in the empty JSON string", User.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in User is not found in the empty JSON string", User.openapiRequiredFields.toString()));
         }
       }
 
@@ -229,27 +277,30 @@ public class User {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!User.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `User` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `User` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : User.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("userID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
       }
       if ((jsonObj.get("fullName") != null && !jsonObj.get("fullName").isJsonNull()) && !jsonObj.get("fullName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fullName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fullName").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `fullName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fullName").toString()));
       }
       // validate the required field `status`
       UserStatus.validateJsonElement(jsonObj.get("status"));
       if ((jsonObj.get("explicitWebauthnID") != null && !jsonObj.get("explicitWebauthnID").isJsonNull()) && !jsonObj.get("explicitWebauthnID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `explicitWebauthnID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explicitWebauthnID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `explicitWebauthnID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explicitWebauthnID").toString()));
+      }
+      if (!jsonObj.get("updated").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated").toString()));
       }
   }
 

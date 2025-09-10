@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.ClientInformation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -43,13 +44,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * PasskeyMediationFinishReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyMediationFinishReq {
   public static final String SERIALIZED_NAME_ASSERTION_RESPONSE = "assertionResponse";
   @SerializedName(SERIALIZED_NAME_ASSERTION_RESPONSE)
@@ -70,6 +72,11 @@ public class PasskeyMediationFinishReq {
   @SerializedName(SERIALIZED_NAME_SIGN_PASSKEY_DATA)
   @javax.annotation.Nullable
   private Boolean signPasskeyData;
+
+  public static final String SERIALIZED_NAME_TRACKING_I_D = "trackingID";
+  @SerializedName(SERIALIZED_NAME_TRACKING_I_D)
+  @javax.annotation.Nonnull
+  private String trackingID;
 
   public PasskeyMediationFinishReq() {
   }
@@ -150,6 +157,25 @@ public class PasskeyMediationFinishReq {
   }
 
 
+  public PasskeyMediationFinishReq trackingID(@javax.annotation.Nonnull String trackingID) {
+    this.trackingID = trackingID;
+    return this;
+  }
+
+  /**
+   * Get trackingID
+   * @return trackingID
+   */
+  @javax.annotation.Nonnull
+  public String getTrackingID() {
+    return trackingID;
+  }
+
+  public void setTrackingID(@javax.annotation.Nonnull String trackingID) {
+    this.trackingID = trackingID;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -163,12 +189,13 @@ public class PasskeyMediationFinishReq {
     return Objects.equals(this.assertionResponse, passkeyMediationFinishReq.assertionResponse) &&
         Objects.equals(this.clientInformation, passkeyMediationFinishReq.clientInformation) &&
         Objects.equals(this.processID, passkeyMediationFinishReq.processID) &&
-        Objects.equals(this.signPasskeyData, passkeyMediationFinishReq.signPasskeyData);
+        Objects.equals(this.signPasskeyData, passkeyMediationFinishReq.signPasskeyData) &&
+        Objects.equals(this.trackingID, passkeyMediationFinishReq.trackingID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(assertionResponse, clientInformation, processID, signPasskeyData);
+    return Objects.hash(assertionResponse, clientInformation, processID, signPasskeyData, trackingID);
   }
 
   @Override
@@ -179,6 +206,7 @@ public class PasskeyMediationFinishReq {
     sb.append("    clientInformation: ").append(toIndentedString(clientInformation)).append("\n");
     sb.append("    processID: ").append(toIndentedString(processID)).append("\n");
     sb.append("    signPasskeyData: ").append(toIndentedString(signPasskeyData)).append("\n");
+    sb.append("    trackingID: ").append(toIndentedString(trackingID)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -200,17 +228,10 @@ public class PasskeyMediationFinishReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("assertionResponse");
-    openapiFields.add("clientInformation");
-    openapiFields.add("processID");
-    openapiFields.add("signPasskeyData");
+    openapiFields = new HashSet<String>(Arrays.asList("assertionResponse", "clientInformation", "processID", "signPasskeyData", "trackingID"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("assertionResponse");
-    openapiRequiredFields.add("clientInformation");
-    openapiRequiredFields.add("processID");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("assertionResponse", "clientInformation", "processID", "trackingID"));
   }
 
   /**
@@ -222,7 +243,7 @@ public class PasskeyMediationFinishReq {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PasskeyMediationFinishReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyMediationFinishReq is not found in the empty JSON string", PasskeyMediationFinishReq.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in PasskeyMediationFinishReq is not found in the empty JSON string", PasskeyMediationFinishReq.openapiRequiredFields.toString()));
         }
       }
 
@@ -230,24 +251,27 @@ public class PasskeyMediationFinishReq {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PasskeyMediationFinishReq.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyMediationFinishReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PasskeyMediationFinishReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PasskeyMediationFinishReq.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("assertionResponse").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `assertionResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assertionResponse").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `assertionResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("assertionResponse").toString()));
       }
       // validate the required field `clientInformation`
       ClientInformation.validateJsonElement(jsonObj.get("clientInformation"));
       if (!jsonObj.get("processID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `processID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `processID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processID").toString()));
+      }
+      if (!jsonObj.get("trackingID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `trackingID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trackingID").toString()));
       }
   }
 

@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,13 +43,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
- * ConnectTokenDataPasskeyAppend
+ * Data for &#x60;passkey-append&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class ConnectTokenDataPasskeyAppend {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -69,7 +71,7 @@ public class ConnectTokenDataPasskeyAppend {
   }
 
   /**
-   * Get displayName
+   * Display name of the user.
    * @return displayName
    */
   @javax.annotation.Nonnull
@@ -88,7 +90,7 @@ public class ConnectTokenDataPasskeyAppend {
   }
 
   /**
-   * Get identifier
+   * Login identifier of the user (here email address).
    * @return identifier
    */
   @javax.annotation.Nonnull
@@ -147,14 +149,10 @@ public class ConnectTokenDataPasskeyAppend {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("displayName");
-    openapiFields.add("identifier");
+    openapiFields = new HashSet<String>(Arrays.asList("displayName", "identifier"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("displayName");
-    openapiRequiredFields.add("identifier");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("displayName", "identifier"));
   }
 
   /**
@@ -166,7 +164,7 @@ public class ConnectTokenDataPasskeyAppend {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!ConnectTokenDataPasskeyAppend.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ConnectTokenDataPasskeyAppend is not found in the empty JSON string", ConnectTokenDataPasskeyAppend.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ConnectTokenDataPasskeyAppend is not found in the empty JSON string", ConnectTokenDataPasskeyAppend.openapiRequiredFields.toString()));
         }
       }
 
@@ -174,22 +172,22 @@ public class ConnectTokenDataPasskeyAppend {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!ConnectTokenDataPasskeyAppend.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ConnectTokenDataPasskeyAppend` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ConnectTokenDataPasskeyAppend` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : ConnectTokenDataPasskeyAppend.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if (!jsonObj.get("identifier").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identifier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifier").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `identifier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifier").toString()));
       }
   }
 

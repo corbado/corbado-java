@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,14 +43,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * Data about the request itself, can be used for debugging
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
-public class RequestData {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+public class UserListDefaultResponseAllOfRequestData {
   public static final String SERIALIZED_NAME_REQUEST_I_D = "requestID";
   @SerializedName(SERIALIZED_NAME_REQUEST_I_D)
   @javax.annotation.Nonnull
@@ -60,10 +62,10 @@ public class RequestData {
   @javax.annotation.Nullable
   private String link;
 
-  public RequestData() {
+  public UserListDefaultResponseAllOfRequestData() {
   }
 
-  public RequestData requestID(@javax.annotation.Nonnull String requestID) {
+  public UserListDefaultResponseAllOfRequestData requestID(@javax.annotation.Nonnull String requestID) {
     this.requestID = requestID;
     return this;
   }
@@ -82,7 +84,7 @@ public class RequestData {
   }
 
 
-  public RequestData link(@javax.annotation.Nullable String link) {
+  public UserListDefaultResponseAllOfRequestData link(@javax.annotation.Nullable String link) {
     this.link = link;
     return this;
   }
@@ -110,9 +112,9 @@ public class RequestData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RequestData requestData = (RequestData) o;
-    return Objects.equals(this.requestID, requestData.requestID) &&
-        Objects.equals(this.link, requestData.link);
+    UserListDefaultResponseAllOfRequestData userListDefaultResponseAllOfRequestData = (UserListDefaultResponseAllOfRequestData) o;
+    return Objects.equals(this.requestID, userListDefaultResponseAllOfRequestData.requestID) &&
+        Objects.equals(this.link, userListDefaultResponseAllOfRequestData.link);
   }
 
   @Override
@@ -123,7 +125,7 @@ public class RequestData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RequestData {\n");
+    sb.append("class UserListDefaultResponseAllOfRequestData {\n");
     sb.append("    requestID: ").append(toIndentedString(requestID)).append("\n");
     sb.append("    link: ").append(toIndentedString(link)).append("\n");
     sb.append("}");
@@ -147,48 +149,45 @@ public class RequestData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("requestID");
-    openapiFields.add("link");
+    openapiFields = new HashSet<String>(Arrays.asList("requestID", "link"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("requestID");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("requestID"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to RequestData
+   * @throws IOException if the JSON Element is invalid with respect to UserListDefaultResponseAllOfRequestData
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!RequestData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in RequestData is not found in the empty JSON string", RequestData.openapiRequiredFields.toString()));
+        if (!UserListDefaultResponseAllOfRequestData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in UserListDefaultResponseAllOfRequestData is not found in the empty JSON string", UserListDefaultResponseAllOfRequestData.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!RequestData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `RequestData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!UserListDefaultResponseAllOfRequestData.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UserListDefaultResponseAllOfRequestData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : RequestData.openapiRequiredFields) {
+      for (String requiredField : UserListDefaultResponseAllOfRequestData.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("requestID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `requestID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `requestID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestID").toString()));
       }
       if ((jsonObj.get("link") != null && !jsonObj.get("link").isJsonNull()) && !jsonObj.get("link").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("link").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `link` to be a primitive type in the JSON string but got `%s`", jsonObj.get("link").toString()));
       }
   }
 
@@ -196,22 +195,22 @@ public class RequestData {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!RequestData.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'RequestData' and its subtypes
+       if (!UserListDefaultResponseAllOfRequestData.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UserListDefaultResponseAllOfRequestData' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<RequestData> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(RequestData.class));
+       final TypeAdapter<UserListDefaultResponseAllOfRequestData> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UserListDefaultResponseAllOfRequestData.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<RequestData>() {
+       return (TypeAdapter<T>) new TypeAdapter<UserListDefaultResponseAllOfRequestData>() {
            @Override
-           public void write(JsonWriter out, RequestData value) throws IOException {
+           public void write(JsonWriter out, UserListDefaultResponseAllOfRequestData value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public RequestData read(JsonReader in) throws IOException {
+           public UserListDefaultResponseAllOfRequestData read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -222,18 +221,18 @@ public class RequestData {
   }
 
   /**
-   * Create an instance of RequestData given an JSON string
+   * Create an instance of UserListDefaultResponseAllOfRequestData given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of RequestData
-   * @throws IOException if the JSON string is invalid with respect to RequestData
+   * @return An instance of UserListDefaultResponseAllOfRequestData
+   * @throws IOException if the JSON string is invalid with respect to UserListDefaultResponseAllOfRequestData
    */
-  public static RequestData fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, RequestData.class);
+  public static UserListDefaultResponseAllOfRequestData fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UserListDefaultResponseAllOfRequestData.class);
   }
 
   /**
-   * Convert an instance of RequestData to an JSON string
+   * Convert an instance of UserListDefaultResponseAllOfRequestData to an JSON string
    *
    * @return JSON string
    */

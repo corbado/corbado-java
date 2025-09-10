@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.corbado.generated.model.ErrorRsp;
-import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.ProjectConfigUpdateCnameReq;
+import com.corbado.generated.model.UserDelete200Response;
+import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -84,11 +84,11 @@ public class ProjectConfigApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call projectConfigUpdateCNAMECall(ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call projectConfigUpdateCNAMECall(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -134,7 +134,7 @@ public class ProjectConfigApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call projectConfigUpdateCNAMEValidateBeforeCall(ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call projectConfigUpdateCNAMEValidateBeforeCall(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'projectConfigUpdateCnameReq' is set
         if (projectConfigUpdateCnameReq == null) {
             throw new ApiException("Missing the required parameter 'projectConfigUpdateCnameReq' when calling projectConfigUpdateCNAME(Async)");
@@ -145,46 +145,46 @@ public class ProjectConfigApi {
     }
 
     /**
-     * 
+     * Update project CNAME and generate SSL certificate
      * Update project config CNAME and generates new SSL certificate
      * @param projectConfigUpdateCnameReq  (required)
-     * @return GenericRsp
+     * @return UserDelete200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp projectConfigUpdateCNAME(ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq) throws ApiException {
-        ApiResponse<GenericRsp> localVarResp = projectConfigUpdateCNAMEWithHttpInfo(projectConfigUpdateCnameReq);
+    public UserDelete200Response projectConfigUpdateCNAME(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq) throws ApiException {
+        ApiResponse<UserDelete200Response> localVarResp = projectConfigUpdateCNAMEWithHttpInfo(projectConfigUpdateCnameReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
+     * Update project CNAME and generate SSL certificate
      * Update project config CNAME and generates new SSL certificate
      * @param projectConfigUpdateCnameReq  (required)
-     * @return ApiResponse&lt;GenericRsp&gt;
+     * @return ApiResponse&lt;UserDelete200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> projectConfigUpdateCNAMEWithHttpInfo(ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq) throws ApiException {
+    public ApiResponse<UserDelete200Response> projectConfigUpdateCNAMEWithHttpInfo(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq) throws ApiException {
         okhttp3.Call localVarCall = projectConfigUpdateCNAMEValidateBeforeCall(projectConfigUpdateCnameReq, null);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
+     * Update project CNAME and generate SSL certificate (asynchronously)
      * Update project config CNAME and generates new SSL certificate
      * @param projectConfigUpdateCnameReq  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -194,14 +194,14 @@ public class ProjectConfigApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call projectConfigUpdateCNAMEAsync(ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call projectConfigUpdateCNAMEAsync(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = projectConfigUpdateCNAMEValidateBeforeCall(projectConfigUpdateCnameReq, _callback);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

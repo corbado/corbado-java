@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,18 +43,24 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * PasskeyIntelFlags
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyIntelFlags {
   public static final String SERIALIZED_NAME_FORCE_PASSKEY_APPEND = "forcePasskeyAppend";
   @SerializedName(SERIALIZED_NAME_FORCE_PASSKEY_APPEND)
   @javax.annotation.Nonnull
   private Boolean forcePasskeyAppend;
+
+  public static final String SERIALIZED_NAME_ASK_FOR_AUTO_APPEND = "askForAutoAppend";
+  @SerializedName(SERIALIZED_NAME_ASK_FOR_AUTO_APPEND)
+  @javax.annotation.Nullable
+  private Boolean askForAutoAppend;
 
   public PasskeyIntelFlags() {
   }
@@ -77,6 +84,25 @@ public class PasskeyIntelFlags {
   }
 
 
+  public PasskeyIntelFlags askForAutoAppend(@javax.annotation.Nullable Boolean askForAutoAppend) {
+    this.askForAutoAppend = askForAutoAppend;
+    return this;
+  }
+
+  /**
+   * Get askForAutoAppend
+   * @return askForAutoAppend
+   */
+  @javax.annotation.Nullable
+  public Boolean getAskForAutoAppend() {
+    return askForAutoAppend;
+  }
+
+  public void setAskForAutoAppend(@javax.annotation.Nullable Boolean askForAutoAppend) {
+    this.askForAutoAppend = askForAutoAppend;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -87,12 +113,13 @@ public class PasskeyIntelFlags {
       return false;
     }
     PasskeyIntelFlags passkeyIntelFlags = (PasskeyIntelFlags) o;
-    return Objects.equals(this.forcePasskeyAppend, passkeyIntelFlags.forcePasskeyAppend);
+    return Objects.equals(this.forcePasskeyAppend, passkeyIntelFlags.forcePasskeyAppend) &&
+        Objects.equals(this.askForAutoAppend, passkeyIntelFlags.askForAutoAppend);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(forcePasskeyAppend);
+    return Objects.hash(forcePasskeyAppend, askForAutoAppend);
   }
 
   @Override
@@ -100,6 +127,7 @@ public class PasskeyIntelFlags {
     StringBuilder sb = new StringBuilder();
     sb.append("class PasskeyIntelFlags {\n");
     sb.append("    forcePasskeyAppend: ").append(toIndentedString(forcePasskeyAppend)).append("\n");
+    sb.append("    askForAutoAppend: ").append(toIndentedString(askForAutoAppend)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -121,12 +149,10 @@ public class PasskeyIntelFlags {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("forcePasskeyAppend");
+    openapiFields = new HashSet<String>(Arrays.asList("forcePasskeyAppend", "askForAutoAppend"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("forcePasskeyAppend");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("forcePasskeyAppend"));
   }
 
   /**
@@ -138,7 +164,7 @@ public class PasskeyIntelFlags {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PasskeyIntelFlags.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyIntelFlags is not found in the empty JSON string", PasskeyIntelFlags.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in PasskeyIntelFlags is not found in the empty JSON string", PasskeyIntelFlags.openapiRequiredFields.toString()));
         }
       }
 
@@ -146,14 +172,14 @@ public class PasskeyIntelFlags {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PasskeyIntelFlags.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyIntelFlags` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PasskeyIntelFlags` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PasskeyIntelFlags.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();

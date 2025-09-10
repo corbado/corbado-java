@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.corbado.generated.model.ErrorRsp;
-import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.SessionList;
+import com.corbado.generated.model.UserDelete200Response;
+import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -76,10 +76,10 @@ public class SessionsApi {
 
     /**
      * Build call for sessionList
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -87,11 +87,11 @@ public class SessionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching sessions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching sessions. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sessionListCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call sessionListCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -152,63 +152,63 @@ public class SessionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call sessionListValidateBeforeCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call sessionListValidateBeforeCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         return sessionListCall(sort, filter, page, pageSize, _callback);
 
     }
 
     /**
-     * 
-     * Returns a list of matching sessions
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all sessions
+     * Returns a list of sessions.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;ID&#x60;, &#x60;userID&#x60;, &#x60;expires&#x60;, &#x60;lastAction&#x60;, &#x60;created&#x60;, &#x60;updated&#x60;, and &#x60;status&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;ID&#x60;, &#x60;userID&#x60;, &#x60;expires&#x60;, &#x60;lastAction&#x60;, &#x60;created&#x60;, &#x60;updated&#x60;, and &#x60;status&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators.  You can view and manage sessions in the [Developer Panel](https://app.corbado.com/users/sessions) or consult the [Documentation](https://docs.corbado.com/corbado-complete/sessions/overview) for more details. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return SessionList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching sessions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching sessions. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public SessionList sessionList(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public SessionList sessionList(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<SessionList> localVarResp = sessionListWithHttpInfo(sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Returns a list of matching sessions
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all sessions
+     * Returns a list of sessions.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;ID&#x60;, &#x60;userID&#x60;, &#x60;expires&#x60;, &#x60;lastAction&#x60;, &#x60;created&#x60;, &#x60;updated&#x60;, and &#x60;status&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;ID&#x60;, &#x60;userID&#x60;, &#x60;expires&#x60;, &#x60;lastAction&#x60;, &#x60;created&#x60;, &#x60;updated&#x60;, and &#x60;status&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators.  You can view and manage sessions in the [Developer Panel](https://app.corbado.com/users/sessions) or consult the [Documentation](https://docs.corbado.com/corbado-complete/sessions/overview) for more details. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return ApiResponse&lt;SessionList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching sessions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching sessions. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SessionList> sessionListWithHttpInfo(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public ApiResponse<SessionList> sessionListWithHttpInfo(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = sessionListValidateBeforeCall(sort, filter, page, pageSize, null);
         Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Returns a list of matching sessions
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all sessions (asynchronously)
+     * Returns a list of sessions.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;ID&#x60;, &#x60;userID&#x60;, &#x60;expires&#x60;, &#x60;lastAction&#x60;, &#x60;created&#x60;, &#x60;updated&#x60;, and &#x60;status&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;ID&#x60;, &#x60;userID&#x60;, &#x60;expires&#x60;, &#x60;lastAction&#x60;, &#x60;created&#x60;, &#x60;updated&#x60;, and &#x60;status&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators.  You can view and manage sessions in the [Developer Panel](https://app.corbado.com/users/sessions) or consult the [Documentation](https://docs.corbado.com/corbado-complete/sessions/overview) for more details. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -216,11 +216,11 @@ public class SessionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching sessions </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching sessions. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sessionListAsync(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<SessionList> _callback) throws ApiException {
+    public okhttp3.Call sessionListAsync(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback<SessionList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = sessionListValidateBeforeCall(sort, filter, page, pageSize, _callback);
         Type localVarReturnType = new TypeToken<SessionList>(){}.getType();
@@ -237,11 +237,11 @@ public class SessionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sessionRevokeCall(String sessionID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call sessionRevokeCall(@javax.annotation.Nonnull String sessionID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -287,7 +287,7 @@ public class SessionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call sessionRevokeValidateBeforeCall(String sessionID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call sessionRevokeValidateBeforeCall(@javax.annotation.Nonnull String sessionID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'sessionID' is set
         if (sessionID == null) {
             throw new ApiException("Missing the required parameter 'sessionID' when calling sessionRevoke(Async)");
@@ -298,47 +298,47 @@ public class SessionsApi {
     }
 
     /**
-     * 
-     * Revokes an existing session
+     * Revoke a session
+     * Revokes an existing session by given &#x60;sessionID&#x60;.
      * @param sessionID ID of session (required)
-     * @return GenericRsp
+     * @return UserDelete200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp sessionRevoke(String sessionID) throws ApiException {
-        ApiResponse<GenericRsp> localVarResp = sessionRevokeWithHttpInfo(sessionID);
+    public UserDelete200Response sessionRevoke(@javax.annotation.Nonnull String sessionID) throws ApiException {
+        ApiResponse<UserDelete200Response> localVarResp = sessionRevokeWithHttpInfo(sessionID);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Revokes an existing session
+     * Revoke a session
+     * Revokes an existing session by given &#x60;sessionID&#x60;.
      * @param sessionID ID of session (required)
-     * @return ApiResponse&lt;GenericRsp&gt;
+     * @return ApiResponse&lt;UserDelete200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> sessionRevokeWithHttpInfo(String sessionID) throws ApiException {
+    public ApiResponse<UserDelete200Response> sessionRevokeWithHttpInfo(@javax.annotation.Nonnull String sessionID) throws ApiException {
         okhttp3.Call localVarCall = sessionRevokeValidateBeforeCall(sessionID, null);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Revokes an existing session
+     * Revoke a session (asynchronously)
+     * Revokes an existing session by given &#x60;sessionID&#x60;.
      * @param sessionID ID of session (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -347,14 +347,14 @@ public class SessionsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sessionRevokeAsync(String sessionID, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call sessionRevokeAsync(@javax.annotation.Nonnull String sessionID, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = sessionRevokeValidateBeforeCall(sessionID, _callback);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,7 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
-import com.corbado.generated.model.SessionStatus;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -43,14 +43,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
- * Session
+ * SessionListSessionsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
-public class Session {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+public class SessionListSessionsInner {
   public static final String SERIALIZED_NAME_SESSION_I_D = "sessionID";
   @SerializedName(SERIALIZED_NAME_SESSION_I_D)
   @javax.annotation.Nonnull
@@ -81,21 +82,79 @@ public class Session {
   @javax.annotation.Nonnull
   private Long expiresMs;
 
+  /**
+   * Gets or Sets status
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    ACTIVE("active"),
+    
+    LOGGED_OUT("logged_out"),
+    
+    EXPIRED("expired"),
+    
+    INACTIVITY_REACHED("inactivity_reached"),
+    
+    REVOKED("revoked");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      StatusEnum.fromValue(value);
+    }
+  }
+
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   @javax.annotation.Nonnull
-  private SessionStatus status;
+  private StatusEnum status;
 
-  public Session() {
+  public SessionListSessionsInner() {
   }
 
-  public Session sessionID(@javax.annotation.Nonnull String sessionID) {
+  public SessionListSessionsInner sessionID(@javax.annotation.Nonnull String sessionID) {
     this.sessionID = sessionID;
     return this;
   }
 
   /**
-   * Get sessionID
+   * Unique identifier of the session.
    * @return sessionID
    */
   @javax.annotation.Nonnull
@@ -108,13 +167,13 @@ public class Session {
   }
 
 
-  public Session userID(@javax.annotation.Nonnull String userID) {
+  public SessionListSessionsInner userID(@javax.annotation.Nonnull String userID) {
     this.userID = userID;
     return this;
   }
 
   /**
-   * Get userID
+   * Unique identifier of the user.
    * @return userID
    */
   @javax.annotation.Nonnull
@@ -127,13 +186,13 @@ public class Session {
   }
 
 
-  public Session identifierValue(@javax.annotation.Nonnull String identifierValue) {
+  public SessionListSessionsInner identifierValue(@javax.annotation.Nonnull String identifierValue) {
     this.identifierValue = identifierValue;
     return this;
   }
 
   /**
-   * Get identifierValue
+   * Login identifier of the user (here email address).
    * @return identifierValue
    */
   @javax.annotation.Nonnull
@@ -146,13 +205,13 @@ public class Session {
   }
 
 
-  public Session createdMs(@javax.annotation.Nonnull Long createdMs) {
+  public SessionListSessionsInner createdMs(@javax.annotation.Nonnull Long createdMs) {
     this.createdMs = createdMs;
     return this;
   }
 
   /**
-   * Get createdMs
+   * Unix time of when the session was created (in milliseconds elapsed since January 1, 1970, 00:00:00 UTC).
    * @return createdMs
    */
   @javax.annotation.Nonnull
@@ -165,13 +224,13 @@ public class Session {
   }
 
 
-  public Session lastActionMs(@javax.annotation.Nonnull Long lastActionMs) {
+  public SessionListSessionsInner lastActionMs(@javax.annotation.Nonnull Long lastActionMs) {
     this.lastActionMs = lastActionMs;
     return this;
   }
 
   /**
-   * Get lastActionMs
+   * Unix time of when last action (e.g., refresh) on session occurred (in milliseconds elapsed since January 1, 1970, 00:00:00 UTC).
    * @return lastActionMs
    */
   @javax.annotation.Nonnull
@@ -184,13 +243,13 @@ public class Session {
   }
 
 
-  public Session expiresMs(@javax.annotation.Nonnull Long expiresMs) {
+  public SessionListSessionsInner expiresMs(@javax.annotation.Nonnull Long expiresMs) {
     this.expiresMs = expiresMs;
     return this;
   }
 
   /**
-   * Get expiresMs
+   * Unix time of when the session expires (in milliseconds elapsed since January 1, 1970, 00:00:00 UTC).
    * @return expiresMs
    */
   @javax.annotation.Nonnull
@@ -203,7 +262,7 @@ public class Session {
   }
 
 
-  public Session status(@javax.annotation.Nonnull SessionStatus status) {
+  public SessionListSessionsInner status(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -213,11 +272,11 @@ public class Session {
    * @return status
    */
   @javax.annotation.Nonnull
-  public SessionStatus getStatus() {
+  public StatusEnum getStatus() {
     return status;
   }
 
-  public void setStatus(@javax.annotation.Nonnull SessionStatus status) {
+  public void setStatus(@javax.annotation.Nonnull StatusEnum status) {
     this.status = status;
   }
 
@@ -231,14 +290,14 @@ public class Session {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Session session = (Session) o;
-    return Objects.equals(this.sessionID, session.sessionID) &&
-        Objects.equals(this.userID, session.userID) &&
-        Objects.equals(this.identifierValue, session.identifierValue) &&
-        Objects.equals(this.createdMs, session.createdMs) &&
-        Objects.equals(this.lastActionMs, session.lastActionMs) &&
-        Objects.equals(this.expiresMs, session.expiresMs) &&
-        Objects.equals(this.status, session.status);
+    SessionListSessionsInner sessionListSessionsInner = (SessionListSessionsInner) o;
+    return Objects.equals(this.sessionID, sessionListSessionsInner.sessionID) &&
+        Objects.equals(this.userID, sessionListSessionsInner.userID) &&
+        Objects.equals(this.identifierValue, sessionListSessionsInner.identifierValue) &&
+        Objects.equals(this.createdMs, sessionListSessionsInner.createdMs) &&
+        Objects.equals(this.lastActionMs, sessionListSessionsInner.lastActionMs) &&
+        Objects.equals(this.expiresMs, sessionListSessionsInner.expiresMs) &&
+        Objects.equals(this.status, sessionListSessionsInner.status);
   }
 
   @Override
@@ -249,7 +308,7 @@ public class Session {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Session {\n");
+    sb.append("class SessionListSessionsInner {\n");
     sb.append("    sessionID: ").append(toIndentedString(sessionID)).append("\n");
     sb.append("    userID: ").append(toIndentedString(userID)).append("\n");
     sb.append("    identifierValue: ").append(toIndentedString(identifierValue)).append("\n");
@@ -278,87 +337,76 @@ public class Session {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("sessionID");
-    openapiFields.add("userID");
-    openapiFields.add("identifierValue");
-    openapiFields.add("createdMs");
-    openapiFields.add("lastActionMs");
-    openapiFields.add("expiresMs");
-    openapiFields.add("status");
+    openapiFields = new HashSet<String>(Arrays.asList("sessionID", "userID", "identifierValue", "createdMs", "lastActionMs", "expiresMs", "status"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("sessionID");
-    openapiRequiredFields.add("userID");
-    openapiRequiredFields.add("identifierValue");
-    openapiRequiredFields.add("createdMs");
-    openapiRequiredFields.add("lastActionMs");
-    openapiRequiredFields.add("expiresMs");
-    openapiRequiredFields.add("status");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("sessionID", "userID", "identifierValue", "createdMs", "lastActionMs", "expiresMs", "status"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Session
+   * @throws IOException if the JSON Element is invalid with respect to SessionListSessionsInner
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Session.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Session is not found in the empty JSON string", Session.openapiRequiredFields.toString()));
+        if (!SessionListSessionsInner.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in SessionListSessionsInner is not found in the empty JSON string", SessionListSessionsInner.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Session.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Session` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!SessionListSessionsInner.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `SessionListSessionsInner` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Session.openapiRequiredFields) {
+      for (String requiredField : SessionListSessionsInner.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("sessionID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `sessionID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sessionID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sessionID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sessionID").toString()));
       }
       if (!jsonObj.get("userID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
       }
       if (!jsonObj.get("identifierValue").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identifierValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierValue").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `identifierValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierValue").toString()));
+      }
+      if (!jsonObj.get("status").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
       // validate the required field `status`
-      SessionStatus.validateJsonElement(jsonObj.get("status"));
+      StatusEnum.validateJsonElement(jsonObj.get("status"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Session.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Session' and its subtypes
+       if (!SessionListSessionsInner.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'SessionListSessionsInner' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Session> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Session.class));
+       final TypeAdapter<SessionListSessionsInner> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(SessionListSessionsInner.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Session>() {
+       return (TypeAdapter<T>) new TypeAdapter<SessionListSessionsInner>() {
            @Override
-           public void write(JsonWriter out, Session value) throws IOException {
+           public void write(JsonWriter out, SessionListSessionsInner value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Session read(JsonReader in) throws IOException {
+           public SessionListSessionsInner read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -369,18 +417,18 @@ public class Session {
   }
 
   /**
-   * Create an instance of Session given an JSON string
+   * Create an instance of SessionListSessionsInner given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Session
-   * @throws IOException if the JSON string is invalid with respect to Session
+   * @return An instance of SessionListSessionsInner
+   * @throws IOException if the JSON string is invalid with respect to SessionListSessionsInner
    */
-  public static Session fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Session.class);
+  public static SessionListSessionsInner fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, SessionListSessionsInner.class);
   }
 
   /**
-   * Convert an instance of Session to an JSON string
+   * Convert an instance of SessionListSessionsInner to an JSON string
    *
    * @return JSON string
    */

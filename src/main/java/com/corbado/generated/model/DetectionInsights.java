@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,8 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
+import com.corbado.generated.model.AppendHistoryData;
 import com.corbado.generated.model.DetectionTag;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -45,13 +47,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * DetectionInsights
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class DetectionInsights {
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -72,6 +75,11 @@ public class DetectionInsights {
   @SerializedName(SERIALIZED_NAME_PASSWORD_MANAGER_IDS)
   @javax.annotation.Nonnull
   private List<String> passwordManagerIds = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_HISTORY_DATA = "historyData";
+  @SerializedName(SERIALIZED_NAME_HISTORY_DATA)
+  @javax.annotation.Nonnull
+  private AppendHistoryData historyData;
 
   public DetectionInsights() {
   }
@@ -184,6 +192,25 @@ public class DetectionInsights {
   }
 
 
+  public DetectionInsights historyData(@javax.annotation.Nonnull AppendHistoryData historyData) {
+    this.historyData = historyData;
+    return this;
+  }
+
+  /**
+   * Get historyData
+   * @return historyData
+   */
+  @javax.annotation.Nonnull
+  public AppendHistoryData getHistoryData() {
+    return historyData;
+  }
+
+  public void setHistoryData(@javax.annotation.Nonnull AppendHistoryData historyData) {
+    this.historyData = historyData;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -197,12 +224,13 @@ public class DetectionInsights {
     return Objects.equals(this.tags, detectionInsights.tags) &&
         Objects.equals(this.credentialIds, detectionInsights.credentialIds) &&
         Objects.equals(this.clientEnvIds, detectionInsights.clientEnvIds) &&
-        Objects.equals(this.passwordManagerIds, detectionInsights.passwordManagerIds);
+        Objects.equals(this.passwordManagerIds, detectionInsights.passwordManagerIds) &&
+        Objects.equals(this.historyData, detectionInsights.historyData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, credentialIds, clientEnvIds, passwordManagerIds);
+    return Objects.hash(tags, credentialIds, clientEnvIds, passwordManagerIds, historyData);
   }
 
   @Override
@@ -213,6 +241,7 @@ public class DetectionInsights {
     sb.append("    credentialIds: ").append(toIndentedString(credentialIds)).append("\n");
     sb.append("    clientEnvIds: ").append(toIndentedString(clientEnvIds)).append("\n");
     sb.append("    passwordManagerIds: ").append(toIndentedString(passwordManagerIds)).append("\n");
+    sb.append("    historyData: ").append(toIndentedString(historyData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -234,18 +263,10 @@ public class DetectionInsights {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("tags");
-    openapiFields.add("credentialIds");
-    openapiFields.add("clientEnvIds");
-    openapiFields.add("passwordManagerIds");
+    openapiFields = new HashSet<String>(Arrays.asList("tags", "credentialIds", "clientEnvIds", "passwordManagerIds", "historyData"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("tags");
-    openapiRequiredFields.add("credentialIds");
-    openapiRequiredFields.add("clientEnvIds");
-    openapiRequiredFields.add("passwordManagerIds");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("tags", "credentialIds", "clientEnvIds", "passwordManagerIds", "historyData"));
   }
 
   /**
@@ -257,7 +278,7 @@ public class DetectionInsights {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!DetectionInsights.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in DetectionInsights is not found in the empty JSON string", DetectionInsights.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in DetectionInsights is not found in the empty JSON string", DetectionInsights.openapiRequiredFields.toString()));
         }
       }
 
@@ -265,20 +286,20 @@ public class DetectionInsights {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!DetectionInsights.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DetectionInsights` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `DetectionInsights` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : DetectionInsights.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("tags").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tags` to be an array in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
 
       JsonArray jsonArraytags = jsonObj.getAsJsonArray("tags");
@@ -290,20 +311,22 @@ public class DetectionInsights {
       if (jsonObj.get("credentialIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("credentialIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credentialIds` to be an array in the JSON string but got `%s`", jsonObj.get("credentialIds").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `credentialIds` to be an array in the JSON string but got `%s`", jsonObj.get("credentialIds").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("clientEnvIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("clientEnvIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clientEnvIds` to be an array in the JSON string but got `%s`", jsonObj.get("clientEnvIds").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `clientEnvIds` to be an array in the JSON string but got `%s`", jsonObj.get("clientEnvIds").toString()));
       }
       // ensure the required json array is present
       if (jsonObj.get("passwordManagerIds") == null) {
         throw new IllegalArgumentException("Expected the field `linkedContent` to be an array in the JSON string but got `null`");
       } else if (!jsonObj.get("passwordManagerIds").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `passwordManagerIds` to be an array in the JSON string but got `%s`", jsonObj.get("passwordManagerIds").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `passwordManagerIds` to be an array in the JSON string but got `%s`", jsonObj.get("passwordManagerIds").toString()));
       }
+      // validate the required field `historyData`
+      AppendHistoryData.validateJsonElement(jsonObj.get("historyData"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

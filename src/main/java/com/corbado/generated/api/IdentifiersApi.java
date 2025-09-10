@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -27,12 +27,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.corbado.generated.model.ErrorRsp;
-import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.Identifier;
 import com.corbado.generated.model.IdentifierCreateReq;
 import com.corbado.generated.model.IdentifierList;
 import com.corbado.generated.model.IdentifierUpdateReq;
+import com.corbado.generated.model.UserDelete200Response;
+import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -79,7 +79,7 @@ public class IdentifiersApi {
 
     /**
      * Build call for identifierCreate
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param identifierCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -88,11 +88,11 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Identifier has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Identifier has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call identifierCreateCall(String userID, IdentifierCreateReq identifierCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call identifierCreateCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull IdentifierCreateReq identifierCreateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -139,7 +139,7 @@ public class IdentifiersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call identifierCreateValidateBeforeCall(String userID, IdentifierCreateReq identifierCreateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call identifierCreateValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull IdentifierCreateReq identifierCreateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling identifierCreate(Async)");
@@ -155,9 +155,9 @@ public class IdentifiersApi {
     }
 
     /**
-     * 
-     * Create a new login identifier
-     * @param userID ID of user (required)
+     * Create a login identifier for a user
+     * Creates a new login identifier for a user with the given ID. Login identifiers can be of the type &#x60;email&#x60;, &#x60;phone&#x60;, or &#x60;username&#x60;. Separating login identifiers from users allows Corbado to manage multiple login identifiers of different types for each user.  You can set up login identifiers in the [Developer Panel](https://app.corbado.com/settings/userinterface?tab&#x3D;Overview) or consult the [Documentation](/corbado-complete/overview/configuration/user-flow-configuration#2-login-identifiers-and-fallbacks) for more details. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param identifierCreateReq  (required)
      * @return Identifier
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -165,19 +165,19 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Identifier has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Identifier has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public Identifier identifierCreate(String userID, IdentifierCreateReq identifierCreateReq) throws ApiException {
+    public Identifier identifierCreate(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull IdentifierCreateReq identifierCreateReq) throws ApiException {
         ApiResponse<Identifier> localVarResp = identifierCreateWithHttpInfo(userID, identifierCreateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Create a new login identifier
-     * @param userID ID of user (required)
+     * Create a login identifier for a user
+     * Creates a new login identifier for a user with the given ID. Login identifiers can be of the type &#x60;email&#x60;, &#x60;phone&#x60;, or &#x60;username&#x60;. Separating login identifiers from users allows Corbado to manage multiple login identifiers of different types for each user.  You can set up login identifiers in the [Developer Panel](https://app.corbado.com/settings/userinterface?tab&#x3D;Overview) or consult the [Documentation](/corbado-complete/overview/configuration/user-flow-configuration#2-login-identifiers-and-fallbacks) for more details. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param identifierCreateReq  (required)
      * @return ApiResponse&lt;Identifier&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -185,20 +185,20 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Identifier has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Identifier has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Identifier> identifierCreateWithHttpInfo(String userID, IdentifierCreateReq identifierCreateReq) throws ApiException {
+    public ApiResponse<Identifier> identifierCreateWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull IdentifierCreateReq identifierCreateReq) throws ApiException {
         okhttp3.Call localVarCall = identifierCreateValidateBeforeCall(userID, identifierCreateReq, null);
         Type localVarReturnType = new TypeToken<Identifier>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Create a new login identifier
-     * @param userID ID of user (required)
+     * Create a login identifier for a user (asynchronously)
+     * Creates a new login identifier for a user with the given ID. Login identifiers can be of the type &#x60;email&#x60;, &#x60;phone&#x60;, or &#x60;username&#x60;. Separating login identifiers from users allows Corbado to manage multiple login identifiers of different types for each user.  You can set up login identifiers in the [Developer Panel](https://app.corbado.com/settings/userinterface?tab&#x3D;Overview) or consult the [Documentation](/corbado-complete/overview/configuration/user-flow-configuration#2-login-identifiers-and-fallbacks) for more details. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param identifierCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -207,11 +207,11 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Identifier has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Identifier has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call identifierCreateAsync(String userID, IdentifierCreateReq identifierCreateReq, final ApiCallback<Identifier> _callback) throws ApiException {
+    public okhttp3.Call identifierCreateAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull IdentifierCreateReq identifierCreateReq, final ApiCallback<Identifier> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = identifierCreateValidateBeforeCall(userID, identifierCreateReq, _callback);
         Type localVarReturnType = new TypeToken<Identifier>(){}.getType();
@@ -220,8 +220,8 @@ public class IdentifiersApi {
     }
     /**
      * Build call for identifierDelete
-     * @param userID ID of user (required)
-     * @param identifierID ID of login identifier (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param identifierID Unique identifier of the login identifier (e.g., email address or phone number). Format: &#x60;ide-&lt;number&gt;&#x60;.  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -229,11 +229,11 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call identifierDeleteCall(String userID, String identifierID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call identifierDeleteCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -280,7 +280,7 @@ public class IdentifiersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call identifierDeleteValidateBeforeCall(String userID, String identifierID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call identifierDeleteValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling identifierDelete(Async)");
@@ -296,51 +296,51 @@ public class IdentifiersApi {
     }
 
     /**
-     * 
-     * Delete an existing login identifier
-     * @param userID ID of user (required)
-     * @param identifierID ID of login identifier (required)
-     * @return GenericRsp
+     * Delete a login identifier for a user
+     * Delete an existing login identifier for a user by given &#x60;userID&#x60; and &#x60;identifierID&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param identifierID Unique identifier of the login identifier (e.g., email address or phone number). Format: &#x60;ide-&lt;number&gt;&#x60;.  (required)
+     * @return UserDelete200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp identifierDelete(String userID, String identifierID) throws ApiException {
-        ApiResponse<GenericRsp> localVarResp = identifierDeleteWithHttpInfo(userID, identifierID);
+    public UserDelete200Response identifierDelete(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID) throws ApiException {
+        ApiResponse<UserDelete200Response> localVarResp = identifierDeleteWithHttpInfo(userID, identifierID);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Delete an existing login identifier
-     * @param userID ID of user (required)
-     * @param identifierID ID of login identifier (required)
-     * @return ApiResponse&lt;GenericRsp&gt;
+     * Delete a login identifier for a user
+     * Delete an existing login identifier for a user by given &#x60;userID&#x60; and &#x60;identifierID&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param identifierID Unique identifier of the login identifier (e.g., email address or phone number). Format: &#x60;ide-&lt;number&gt;&#x60;.  (required)
+     * @return ApiResponse&lt;UserDelete200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> identifierDeleteWithHttpInfo(String userID, String identifierID) throws ApiException {
+    public ApiResponse<UserDelete200Response> identifierDeleteWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID) throws ApiException {
         okhttp3.Call localVarCall = identifierDeleteValidateBeforeCall(userID, identifierID, null);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Delete an existing login identifier
-     * @param userID ID of user (required)
-     * @param identifierID ID of login identifier (required)
+     * Delete a login identifier for a user (asynchronously)
+     * Delete an existing login identifier for a user by given &#x60;userID&#x60; and &#x60;identifierID&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param identifierID Unique identifier of the login identifier (e.g., email address or phone number). Format: &#x60;ide-&lt;number&gt;&#x60;.  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -348,23 +348,23 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call identifierDeleteAsync(String userID, String identifierID, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call identifierDeleteAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = identifierDeleteValidateBeforeCall(userID, identifierID, _callback);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for identifierList
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -372,11 +372,11 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching identifiers </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching login identifiers. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call identifierListCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call identifierListCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -437,63 +437,63 @@ public class IdentifiersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call identifierListValidateBeforeCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call identifierListValidateBeforeCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         return identifierListCall(sort, filter, page, pageSize, _callback);
 
     }
 
     /**
-     * 
-     * Returns a list of matching identifiers
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all login identifiers
+     * Returns a list of login identifiers.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;identifierType&#x60; and &#x60;identifierValue&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;identifierType&#x60; and &#x60;identifierValue&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return IdentifierList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching identifiers </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching login identifiers. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public IdentifierList identifierList(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public IdentifierList identifierList(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<IdentifierList> localVarResp = identifierListWithHttpInfo(sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Returns a list of matching identifiers
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all login identifiers
+     * Returns a list of login identifiers.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;identifierType&#x60; and &#x60;identifierValue&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;identifierType&#x60; and &#x60;identifierValue&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return ApiResponse&lt;IdentifierList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching identifiers </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching login identifiers. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<IdentifierList> identifierListWithHttpInfo(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public ApiResponse<IdentifierList> identifierListWithHttpInfo(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = identifierListValidateBeforeCall(sort, filter, page, pageSize, null);
         Type localVarReturnType = new TypeToken<IdentifierList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Returns a list of matching identifiers
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all login identifiers (asynchronously)
+     * Returns a list of login identifiers.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;identifierType&#x60; and &#x60;identifierValue&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;identifierType&#x60; and &#x60;identifierValue&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -501,11 +501,11 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching identifiers </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching login identifiers. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call identifierListAsync(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<IdentifierList> _callback) throws ApiException {
+    public okhttp3.Call identifierListAsync(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback<IdentifierList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = identifierListValidateBeforeCall(sort, filter, page, pageSize, _callback);
         Type localVarReturnType = new TypeToken<IdentifierList>(){}.getType();
@@ -514,8 +514,8 @@ public class IdentifiersApi {
     }
     /**
      * Build call for identifierUpdate
-     * @param userID ID of user (required)
-     * @param identifierID ID of login identifier (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param identifierID Unique identifier of the login identifier (e.g., email address or phone number). Format: &#x60;ide-&lt;number&gt;&#x60;.  (required)
      * @param identifierUpdateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -524,11 +524,11 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Identifier has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Identifier has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call identifierUpdateCall(String userID, String identifierID, IdentifierUpdateReq identifierUpdateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call identifierUpdateCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID, @javax.annotation.Nonnull IdentifierUpdateReq identifierUpdateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -576,7 +576,7 @@ public class IdentifiersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call identifierUpdateValidateBeforeCall(String userID, String identifierID, IdentifierUpdateReq identifierUpdateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call identifierUpdateValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID, @javax.annotation.Nonnull IdentifierUpdateReq identifierUpdateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling identifierUpdate(Async)");
@@ -597,10 +597,10 @@ public class IdentifiersApi {
     }
 
     /**
-     * 
-     * Updates a login identifier (e.g. from pending to verified)
-     * @param userID ID of user (required)
-     * @param identifierID ID of login identifier (required)
+     * Update a login identifier for a user
+     * Updates a login identifier (e.g. from &#x60;pending&#x60; to &#x60;verified&#x60;) for a user by given &#x60;userID&#x60; and &#x60;identifierID&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param identifierID Unique identifier of the login identifier (e.g., email address or phone number). Format: &#x60;ide-&lt;number&gt;&#x60;.  (required)
      * @param identifierUpdateReq  (required)
      * @return Identifier
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -608,20 +608,20 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Identifier has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Identifier has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public Identifier identifierUpdate(String userID, String identifierID, IdentifierUpdateReq identifierUpdateReq) throws ApiException {
+    public Identifier identifierUpdate(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID, @javax.annotation.Nonnull IdentifierUpdateReq identifierUpdateReq) throws ApiException {
         ApiResponse<Identifier> localVarResp = identifierUpdateWithHttpInfo(userID, identifierID, identifierUpdateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Updates a login identifier (e.g. from pending to verified)
-     * @param userID ID of user (required)
-     * @param identifierID ID of login identifier (required)
+     * Update a login identifier for a user
+     * Updates a login identifier (e.g. from &#x60;pending&#x60; to &#x60;verified&#x60;) for a user by given &#x60;userID&#x60; and &#x60;identifierID&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param identifierID Unique identifier of the login identifier (e.g., email address or phone number). Format: &#x60;ide-&lt;number&gt;&#x60;.  (required)
      * @param identifierUpdateReq  (required)
      * @return ApiResponse&lt;Identifier&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -629,21 +629,21 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Identifier has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Identifier has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Identifier> identifierUpdateWithHttpInfo(String userID, String identifierID, IdentifierUpdateReq identifierUpdateReq) throws ApiException {
+    public ApiResponse<Identifier> identifierUpdateWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID, @javax.annotation.Nonnull IdentifierUpdateReq identifierUpdateReq) throws ApiException {
         okhttp3.Call localVarCall = identifierUpdateValidateBeforeCall(userID, identifierID, identifierUpdateReq, null);
         Type localVarReturnType = new TypeToken<Identifier>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Updates a login identifier (e.g. from pending to verified)
-     * @param userID ID of user (required)
-     * @param identifierID ID of login identifier (required)
+     * Update a login identifier for a user (asynchronously)
+     * Updates a login identifier (e.g. from &#x60;pending&#x60; to &#x60;verified&#x60;) for a user by given &#x60;userID&#x60; and &#x60;identifierID&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param identifierID Unique identifier of the login identifier (e.g., email address or phone number). Format: &#x60;ide-&lt;number&gt;&#x60;.  (required)
      * @param identifierUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -652,11 +652,11 @@ public class IdentifiersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Identifier has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Identifier has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call identifierUpdateAsync(String userID, String identifierID, IdentifierUpdateReq identifierUpdateReq, final ApiCallback<Identifier> _callback) throws ApiException {
+    public okhttp3.Call identifierUpdateAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String identifierID, @javax.annotation.Nonnull IdentifierUpdateReq identifierUpdateReq, final ApiCallback<Identifier> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = identifierUpdateValidateBeforeCall(userID, identifierID, identifierUpdateReq, _callback);
         Type localVarReturnType = new TypeToken<Identifier>(){}.getType();

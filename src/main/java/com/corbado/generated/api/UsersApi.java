@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -28,13 +28,14 @@ import java.io.IOException;
 
 
 import com.corbado.generated.model.CredentialList;
-import com.corbado.generated.model.ErrorRsp;
-import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.SocialAccount;
 import com.corbado.generated.model.SocialAccountCreateReq;
 import com.corbado.generated.model.SocialAccountList;
 import com.corbado.generated.model.User;
 import com.corbado.generated.model.UserCreateReq;
+import com.corbado.generated.model.UserDelete200Response;
+import com.corbado.generated.model.UserList;
+import com.corbado.generated.model.UserListDefaultResponse;
 import com.corbado.generated.model.UserUpdateReq;
 
 import java.lang.reflect.Type;
@@ -82,8 +83,8 @@ public class UsersApi {
 
     /**
      * Build call for credentialDelete
-     * @param userID ID of user (required)
-     * @param credentialID ID of credential (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param credentialID Unique identifier of the passkey. Format: &#x60;cre-&lt;number&gt;&#x60;.  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -91,11 +92,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call credentialDeleteCall(String userID, String credentialID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call credentialDeleteCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -142,7 +143,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call credentialDeleteValidateBeforeCall(String userID, String credentialID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call credentialDeleteValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling credentialDelete(Async)");
@@ -158,51 +159,51 @@ public class UsersApi {
     }
 
     /**
-     * 
-     * Deletes an existing credential (passkey)
-     * @param userID ID of user (required)
-     * @param credentialID ID of credential (required)
-     * @return GenericRsp
+     * Delete a passkey for a user
+     * Deletes an existing passkey for a user by given &#x60;userID&#x60; and &#x60;credentialID&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param credentialID Unique identifier of the passkey. Format: &#x60;cre-&lt;number&gt;&#x60;.  (required)
+     * @return UserDelete200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp credentialDelete(String userID, String credentialID) throws ApiException {
-        ApiResponse<GenericRsp> localVarResp = credentialDeleteWithHttpInfo(userID, credentialID);
+    public UserDelete200Response credentialDelete(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID) throws ApiException {
+        ApiResponse<UserDelete200Response> localVarResp = credentialDeleteWithHttpInfo(userID, credentialID);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Deletes an existing credential (passkey)
-     * @param userID ID of user (required)
-     * @param credentialID ID of credential (required)
-     * @return ApiResponse&lt;GenericRsp&gt;
+     * Delete a passkey for a user
+     * Deletes an existing passkey for a user by given &#x60;userID&#x60; and &#x60;credentialID&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param credentialID Unique identifier of the passkey. Format: &#x60;cre-&lt;number&gt;&#x60;.  (required)
+     * @return ApiResponse&lt;UserDelete200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> credentialDeleteWithHttpInfo(String userID, String credentialID) throws ApiException {
+    public ApiResponse<UserDelete200Response> credentialDeleteWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID) throws ApiException {
         okhttp3.Call localVarCall = credentialDeleteValidateBeforeCall(userID, credentialID, null);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Deletes an existing credential (passkey)
-     * @param userID ID of user (required)
-     * @param credentialID ID of credential (required)
+     * Delete a passkey for a user (asynchronously)
+     * Deletes an existing passkey for a user by given &#x60;userID&#x60; and &#x60;credentialID&#x60;. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param credentialID Unique identifier of the passkey. Format: &#x60;cre-&lt;number&gt;&#x60;.  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -210,24 +211,24 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call credentialDeleteAsync(String userID, String credentialID, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call credentialDeleteAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = credentialDeleteValidateBeforeCall(userID, credentialID, _callback);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for credentialList
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -235,11 +236,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of credentials (passkeys) </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of passkeys. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call credentialListCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call credentialListCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -301,7 +302,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call credentialListValidateBeforeCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call credentialListValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling credentialList(Async)");
@@ -312,60 +313,60 @@ public class UsersApi {
     }
 
     /**
-     * 
-     * Returns a list of credentials (passkeys)
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List passkeys for a user
+     * Returns a list of passkeys for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;created&#x60;, &#x60;status&#x60;, &#x60;backupState&#x60;, &#x60;browserName&#x60; and &#x60;osName&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;created&#x60;, &#x60;status&#x60;, &#x60;backupState&#x60;, &#x60;browserName&#x60; and &#x60;osName&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return CredentialList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of credentials (passkeys) </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of passkeys. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public CredentialList credentialList(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public CredentialList credentialList(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<CredentialList> localVarResp = credentialListWithHttpInfo(userID, sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Returns a list of credentials (passkeys)
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List passkeys for a user
+     * Returns a list of passkeys for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;created&#x60;, &#x60;status&#x60;, &#x60;backupState&#x60;, &#x60;browserName&#x60; and &#x60;osName&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;created&#x60;, &#x60;status&#x60;, &#x60;backupState&#x60;, &#x60;browserName&#x60; and &#x60;osName&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return ApiResponse&lt;CredentialList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of credentials (passkeys) </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of passkeys. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<CredentialList> credentialListWithHttpInfo(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public ApiResponse<CredentialList> credentialListWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = credentialListValidateBeforeCall(userID, sort, filter, page, pageSize, null);
         Type localVarReturnType = new TypeToken<CredentialList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Returns a list of credentials (passkeys)
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List passkeys for a user (asynchronously)
+     * Returns a list of passkeys for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;created&#x60;, &#x60;status&#x60;, &#x60;backupState&#x60;, &#x60;browserName&#x60; and &#x60;osName&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;userID&#x60;, &#x60;created&#x60;, &#x60;status&#x60;, &#x60;backupState&#x60;, &#x60;browserName&#x60; and &#x60;osName&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -373,11 +374,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of credentials (passkeys) </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of passkeys. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call credentialListAsync(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<CredentialList> _callback) throws ApiException {
+    public okhttp3.Call credentialListAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback<CredentialList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = credentialListValidateBeforeCall(userID, sort, filter, page, pageSize, _callback);
         Type localVarReturnType = new TypeToken<CredentialList>(){}.getType();
@@ -386,7 +387,7 @@ public class UsersApi {
     }
     /**
      * Build call for socialAccountCreate
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param socialAccountCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -395,11 +396,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Social account has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Social login has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call socialAccountCreateCall(String userID, SocialAccountCreateReq socialAccountCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call socialAccountCreateCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull SocialAccountCreateReq socialAccountCreateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -446,7 +447,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call socialAccountCreateValidateBeforeCall(String userID, SocialAccountCreateReq socialAccountCreateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call socialAccountCreateValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull SocialAccountCreateReq socialAccountCreateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling socialAccountCreate(Async)");
@@ -462,9 +463,9 @@ public class UsersApi {
     }
 
     /**
-     * 
-     * Creates a new social account
-     * @param userID ID of user (required)
+     * Create a social login for a user
+     * Creates a new social login for a user by given &#x60;userID&#x60;. Social logins are used to authenticate users with third-party providers like Google, Microsoft, or GitHub.  You can set up social logins in the [Developer Panel](https://app.corbado.com/settings/userinterface?tab&#x3D;Social) or consult the [Documentation](/corbado-complete/overview/configuration/social-logins/overview) for more details. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param socialAccountCreateReq  (required)
      * @return SocialAccount
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -472,19 +473,19 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Social account has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Social login has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public SocialAccount socialAccountCreate(String userID, SocialAccountCreateReq socialAccountCreateReq) throws ApiException {
+    public SocialAccount socialAccountCreate(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull SocialAccountCreateReq socialAccountCreateReq) throws ApiException {
         ApiResponse<SocialAccount> localVarResp = socialAccountCreateWithHttpInfo(userID, socialAccountCreateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Creates a new social account
-     * @param userID ID of user (required)
+     * Create a social login for a user
+     * Creates a new social login for a user by given &#x60;userID&#x60;. Social logins are used to authenticate users with third-party providers like Google, Microsoft, or GitHub.  You can set up social logins in the [Developer Panel](https://app.corbado.com/settings/userinterface?tab&#x3D;Social) or consult the [Documentation](/corbado-complete/overview/configuration/social-logins/overview) for more details. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param socialAccountCreateReq  (required)
      * @return ApiResponse&lt;SocialAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -492,20 +493,20 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Social account has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Social login has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialAccount> socialAccountCreateWithHttpInfo(String userID, SocialAccountCreateReq socialAccountCreateReq) throws ApiException {
+    public ApiResponse<SocialAccount> socialAccountCreateWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull SocialAccountCreateReq socialAccountCreateReq) throws ApiException {
         okhttp3.Call localVarCall = socialAccountCreateValidateBeforeCall(userID, socialAccountCreateReq, null);
         Type localVarReturnType = new TypeToken<SocialAccount>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Creates a new social account
-     * @param userID ID of user (required)
+     * Create a social login for a user (asynchronously)
+     * Creates a new social login for a user by given &#x60;userID&#x60;. Social logins are used to authenticate users with third-party providers like Google, Microsoft, or GitHub.  You can set up social logins in the [Developer Panel](https://app.corbado.com/settings/userinterface?tab&#x3D;Social) or consult the [Documentation](/corbado-complete/overview/configuration/social-logins/overview) for more details. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param socialAccountCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -514,11 +515,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Social account has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Social login has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call socialAccountCreateAsync(String userID, SocialAccountCreateReq socialAccountCreateReq, final ApiCallback<SocialAccount> _callback) throws ApiException {
+    public okhttp3.Call socialAccountCreateAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull SocialAccountCreateReq socialAccountCreateReq, final ApiCallback<SocialAccount> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = socialAccountCreateValidateBeforeCall(userID, socialAccountCreateReq, _callback);
         Type localVarReturnType = new TypeToken<SocialAccount>(){}.getType();
@@ -527,10 +528,10 @@ public class UsersApi {
     }
     /**
      * Build call for socialAccountList
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -538,11 +539,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of social accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of social logins. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call socialAccountListCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call socialAccountListCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -603,63 +604,63 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call socialAccountListValidateBeforeCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call socialAccountListValidateBeforeCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         return socialAccountListCall(sort, filter, page, pageSize, _callback);
 
     }
 
     /**
-     * 
-     * Returns a list of social accounts
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all social logins
+     * Returns a list of social logins.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return SocialAccountList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of social accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of social logins. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public SocialAccountList socialAccountList(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public SocialAccountList socialAccountList(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<SocialAccountList> localVarResp = socialAccountListWithHttpInfo(sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Returns a list of social accounts
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all social logins
+     * Returns a list of social logins.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return ApiResponse&lt;SocialAccountList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of social accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of social logins. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<SocialAccountList> socialAccountListWithHttpInfo(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public ApiResponse<SocialAccountList> socialAccountListWithHttpInfo(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = socialAccountListValidateBeforeCall(sort, filter, page, pageSize, null);
         Type localVarReturnType = new TypeToken<SocialAccountList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Returns a list of social accounts
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all social logins (asynchronously)
+     * Returns a list of social logins.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -667,11 +668,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of social accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of social logins. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call socialAccountListAsync(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<SocialAccountList> _callback) throws ApiException {
+    public okhttp3.Call socialAccountListAsync(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback<SocialAccountList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = socialAccountListValidateBeforeCall(sort, filter, page, pageSize, _callback);
         Type localVarReturnType = new TypeToken<SocialAccountList>(){}.getType();
@@ -688,11 +689,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userCreateCall(UserCreateReq userCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call userCreateCall(@javax.annotation.Nonnull UserCreateReq userCreateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -738,7 +739,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call userCreateValidateBeforeCall(UserCreateReq userCreateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call userCreateValidateBeforeCall(@javax.annotation.Nonnull UserCreateReq userCreateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userCreateReq' is set
         if (userCreateReq == null) {
             throw new ApiException("Missing the required parameter 'userCreateReq' when calling userCreate(Async)");
@@ -749,8 +750,8 @@ public class UsersApi {
     }
 
     /**
-     * 
-     * Creates a new user
+     * Create a new user
+     * Creates a new user with the given status. Use [login identifiers](/api-reference/backend-api/identifiers/create-a-login-identifier-for-a-user) to add an email address or phone number to the user.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
      * @param userCreateReq  (required)
      * @return User
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -758,18 +759,18 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public User userCreate(UserCreateReq userCreateReq) throws ApiException {
+    public User userCreate(@javax.annotation.Nonnull UserCreateReq userCreateReq) throws ApiException {
         ApiResponse<User> localVarResp = userCreateWithHttpInfo(userCreateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Creates a new user
+     * Create a new user
+     * Creates a new user with the given status. Use [login identifiers](/api-reference/backend-api/identifiers/create-a-login-identifier-for-a-user) to add an email address or phone number to the user.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
      * @param userCreateReq  (required)
      * @return ApiResponse&lt;User&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -777,19 +778,19 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<User> userCreateWithHttpInfo(UserCreateReq userCreateReq) throws ApiException {
+    public ApiResponse<User> userCreateWithHttpInfo(@javax.annotation.Nonnull UserCreateReq userCreateReq) throws ApiException {
         okhttp3.Call localVarCall = userCreateValidateBeforeCall(userCreateReq, null);
         Type localVarReturnType = new TypeToken<User>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Creates a new user
+     * Create a new user (asynchronously)
+     * Creates a new user with the given status. Use [login identifiers](/api-reference/backend-api/identifiers/create-a-login-identifier-for-a-user) to add an email address or phone number to the user.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
      * @param userCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -798,11 +799,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userCreateAsync(UserCreateReq userCreateReq, final ApiCallback<User> _callback) throws ApiException {
+    public okhttp3.Call userCreateAsync(@javax.annotation.Nonnull UserCreateReq userCreateReq, final ApiCallback<User> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = userCreateValidateBeforeCall(userCreateReq, _callback);
         Type localVarReturnType = new TypeToken<User>(){}.getType();
@@ -811,7 +812,7 @@ public class UsersApi {
     }
     /**
      * Build call for userDelete
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -819,11 +820,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userDeleteCall(String userID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call userDeleteCall(@javax.annotation.Nonnull String userID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -869,7 +870,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call userDeleteValidateBeforeCall(String userID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call userDeleteValidateBeforeCall(@javax.annotation.Nonnull String userID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling userDelete(Async)");
@@ -880,48 +881,48 @@ public class UsersApi {
     }
 
     /**
-     * 
-     * Deletes a user
-     * @param userID ID of user (required)
-     * @return GenericRsp
+     * Delete a user
+     * Deletes a user by given &#x60;userID&#x60;.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @return UserDelete200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp userDelete(String userID) throws ApiException {
-        ApiResponse<GenericRsp> localVarResp = userDeleteWithHttpInfo(userID);
+    public UserDelete200Response userDelete(@javax.annotation.Nonnull String userID) throws ApiException {
+        ApiResponse<UserDelete200Response> localVarResp = userDeleteWithHttpInfo(userID);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Deletes a user
-     * @param userID ID of user (required)
-     * @return ApiResponse&lt;GenericRsp&gt;
+     * Delete a user
+     * Deletes a user by given &#x60;userID&#x60;.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @return ApiResponse&lt;UserDelete200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> userDeleteWithHttpInfo(String userID) throws ApiException {
+    public ApiResponse<UserDelete200Response> userDeleteWithHttpInfo(@javax.annotation.Nonnull String userID) throws ApiException {
         okhttp3.Call localVarCall = userDeleteValidateBeforeCall(userID, null);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Deletes a user
-     * @param userID ID of user (required)
+     * Delete a user (asynchronously)
+     * Deletes a user by given &#x60;userID&#x60;.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -929,20 +930,20 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userDeleteAsync(String userID, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call userDeleteAsync(@javax.annotation.Nonnull String userID, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = userDeleteValidateBeforeCall(userID, _callback);
-        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
+        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for userGet
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -950,11 +951,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been returned. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userGetCall(String userID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call userGetCall(@javax.annotation.Nonnull String userID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1000,7 +1001,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call userGetValidateBeforeCall(String userID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call userGetValidateBeforeCall(@javax.annotation.Nonnull String userID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling userGet(Async)");
@@ -1011,48 +1012,48 @@ public class UsersApi {
     }
 
     /**
-     * 
-     * Returns a user
-     * @param userID ID of user (required)
+     * Retrieve a user
+     * Retrieves a user by given &#x60;userID&#x60;. This does not return login identifiers like email addresses or phone numbers.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @return User
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been returned. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public User userGet(String userID) throws ApiException {
+    public User userGet(@javax.annotation.Nonnull String userID) throws ApiException {
         ApiResponse<User> localVarResp = userGetWithHttpInfo(userID);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Returns a user
-     * @param userID ID of user (required)
+     * Retrieve a user
+     * Retrieves a user by given &#x60;userID&#x60;. This does not return login identifiers like email addresses or phone numbers.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @return ApiResponse&lt;User&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been returned. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<User> userGetWithHttpInfo(String userID) throws ApiException {
+    public ApiResponse<User> userGetWithHttpInfo(@javax.annotation.Nonnull String userID) throws ApiException {
         okhttp3.Call localVarCall = userGetValidateBeforeCall(userID, null);
         Type localVarReturnType = new TypeToken<User>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Returns a user
-     * @param userID ID of user (required)
+     * Retrieve a user (asynchronously)
+     * Retrieves a user by given &#x60;userID&#x60;. This does not return login identifiers like email addresses or phone numbers.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1060,11 +1061,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been returned </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been returned. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userGetAsync(String userID, final ApiCallback<User> _callback) throws ApiException {
+    public okhttp3.Call userGetAsync(@javax.annotation.Nonnull String userID, final ApiCallback<User> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = userGetValidateBeforeCall(userID, _callback);
         Type localVarReturnType = new TypeToken<User>(){}.getType();
@@ -1072,12 +1073,11 @@ public class UsersApi {
         return localVarCall;
     }
     /**
-     * Build call for userSocialAccountList
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * Build call for userList
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1085,11 +1085,165 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of social accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of users. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userSocialAccountListCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call userListCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/users";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (sort != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort", sort));
+        }
+
+        if (filter != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "filter[]", filter));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (pageSize != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("pageSize", pageSize));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "basicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call userListValidateBeforeCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
+        return userListCall(sort, filter, page, pageSize, _callback);
+
+    }
+
+    /**
+     * List users
+     * Returns a list of project users.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;id&#x60;, &#x60;name&#x60;, &#x60;fullName&#x60;, &#x60;created&#x60;, &#x60;updated&#x60; and &#x60;status&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;id&#x60;, &#x60;searchValue&#x60;, &#x60;name&#x60;, &#x60;fullName&#x60;, &#x60;created&#x60;, &#x60;updated&#x60; and &#x60;status&#x60;.  Searches in &#x60;searchValue&#x60; are performed across the &#x60;name&#x60;, &#x60;fullName&#x60; fields and identifiers values (emails, usernames and phone numbers).  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
+     * @return UserList
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of users. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public UserList userList(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
+        ApiResponse<UserList> localVarResp = userListWithHttpInfo(sort, filter, page, pageSize);
+        return localVarResp.getData();
+    }
+
+    /**
+     * List users
+     * Returns a list of project users.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;id&#x60;, &#x60;name&#x60;, &#x60;fullName&#x60;, &#x60;created&#x60;, &#x60;updated&#x60; and &#x60;status&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;id&#x60;, &#x60;searchValue&#x60;, &#x60;name&#x60;, &#x60;fullName&#x60;, &#x60;created&#x60;, &#x60;updated&#x60; and &#x60;status&#x60;.  Searches in &#x60;searchValue&#x60; are performed across the &#x60;name&#x60;, &#x60;fullName&#x60; fields and identifiers values (emails, usernames and phone numbers).  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
+     * @return ApiResponse&lt;UserList&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of users. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<UserList> userListWithHttpInfo(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
+        okhttp3.Call localVarCall = userListValidateBeforeCall(sort, filter, page, pageSize, null);
+        Type localVarReturnType = new TypeToken<UserList>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * List users (asynchronously)
+     * Returns a list of project users.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;id&#x60;, &#x60;name&#x60;, &#x60;fullName&#x60;, &#x60;created&#x60;, &#x60;updated&#x60; and &#x60;status&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;id&#x60;, &#x60;searchValue&#x60;, &#x60;name&#x60;, &#x60;fullName&#x60;, &#x60;created&#x60;, &#x60;updated&#x60; and &#x60;status&#x60;.  Searches in &#x60;searchValue&#x60; are performed across the &#x60;name&#x60;, &#x60;fullName&#x60; fields and identifiers values (emails, usernames and phone numbers).  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of users. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call userListAsync(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback<UserList> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = userListValidateBeforeCall(sort, filter, page, pageSize, _callback);
+        Type localVarReturnType = new TypeToken<UserList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for userSocialAccountList
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> List of social logins. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call userSocialAccountListCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1151,7 +1305,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call userSocialAccountListValidateBeforeCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call userSocialAccountListValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling userSocialAccountList(Async)");
@@ -1162,60 +1316,60 @@ public class UsersApi {
     }
 
     /**
-     * 
-     * Returns a list of social accounts
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all social logins for a user
+     * Returns a list of social logins for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered:   - The &#x60;sort&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return List&lt;SocialAccount&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of social accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of social logins. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public List<SocialAccount> userSocialAccountList(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public List<SocialAccount> userSocialAccountList(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<List<SocialAccount>> localVarResp = userSocialAccountListWithHttpInfo(userID, sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Returns a list of social accounts
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all social logins for a user
+     * Returns a list of social logins for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered:   - The &#x60;sort&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return ApiResponse&lt;List&lt;SocialAccount&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of social accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of social logins. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<SocialAccount>> userSocialAccountListWithHttpInfo(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public ApiResponse<List<SocialAccount>> userSocialAccountListWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = userSocialAccountListValidateBeforeCall(userID, sort, filter, page, pageSize, null);
         Type localVarReturnType = new TypeToken<List<SocialAccount>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Returns a list of social accounts
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all social logins for a user (asynchronously)
+     * Returns a list of social logins for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered:   - The &#x60;sort&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;providerType&#x60; and &#x60;foreignID&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1223,11 +1377,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of social accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of social logins. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userSocialAccountListAsync(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<List<SocialAccount>> _callback) throws ApiException {
+    public okhttp3.Call userSocialAccountListAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback<List<SocialAccount>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = userSocialAccountListValidateBeforeCall(userID, sort, filter, page, pageSize, _callback);
         Type localVarReturnType = new TypeToken<List<SocialAccount>>(){}.getType();
@@ -1236,7 +1390,7 @@ public class UsersApi {
     }
     /**
      * Build call for userUpdate
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param userUpdateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1245,11 +1399,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userUpdateCall(String userID, UserUpdateReq userUpdateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call userUpdateCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull UserUpdateReq userUpdateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1296,7 +1450,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call userUpdateValidateBeforeCall(String userID, UserUpdateReq userUpdateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call userUpdateValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull UserUpdateReq userUpdateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling userUpdate(Async)");
@@ -1312,9 +1466,9 @@ public class UsersApi {
     }
 
     /**
-     * 
-     * Updates a user
-     * @param userID ID of user (required)
+     * Update a user
+     * Updates a user by given &#x60;userID&#x60;. For example, this can be used to modify the user&#39;s status.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param userUpdateReq  (required)
      * @return User
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1322,19 +1476,19 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public User userUpdate(String userID, UserUpdateReq userUpdateReq) throws ApiException {
+    public User userUpdate(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull UserUpdateReq userUpdateReq) throws ApiException {
         ApiResponse<User> localVarResp = userUpdateWithHttpInfo(userID, userUpdateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Updates a user
-     * @param userID ID of user (required)
+     * Update a user
+     * Updates a user by given &#x60;userID&#x60;. For example, this can be used to modify the user&#39;s status.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param userUpdateReq  (required)
      * @return ApiResponse&lt;User&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1342,20 +1496,20 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<User> userUpdateWithHttpInfo(String userID, UserUpdateReq userUpdateReq) throws ApiException {
+    public ApiResponse<User> userUpdateWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull UserUpdateReq userUpdateReq) throws ApiException {
         okhttp3.Call localVarCall = userUpdateValidateBeforeCall(userID, userUpdateReq, null);
         Type localVarReturnType = new TypeToken<User>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Updates a user
-     * @param userID ID of user (required)
+     * Update a user (asynchronously)
+     * Updates a user by given &#x60;userID&#x60;. For example, this can be used to modify the user&#39;s status.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param userUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1364,11 +1518,11 @@ public class UsersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> User has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> User has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userUpdateAsync(String userID, UserUpdateReq userUpdateReq, final ApiCallback<User> _callback) throws ApiException {
+    public okhttp3.Call userUpdateAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull UserUpdateReq userUpdateReq, final ApiCallback<User> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = userUpdateValidateBeforeCall(userID, userUpdateReq, _callback);
         Type localVarReturnType = new TypeToken<User>(){}.getType();

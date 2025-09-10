@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,13 +43,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * PasswordManager
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasswordManager {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -303,26 +305,10 @@ public class PasswordManager {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("userID");
-    openapiFields.add("clientEnvID");
-    openapiFields.add("credentialID");
-    openapiFields.add("aaguid");
-    openapiFields.add("status");
-    openapiFields.add("score");
-    openapiFields.add("createdMs");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "userID", "clientEnvID", "credentialID", "aaguid", "status", "score", "createdMs"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("userID");
-    openapiRequiredFields.add("clientEnvID");
-    openapiRequiredFields.add("credentialID");
-    openapiRequiredFields.add("aaguid");
-    openapiRequiredFields.add("status");
-    openapiRequiredFields.add("score");
-    openapiRequiredFields.add("createdMs");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "userID", "clientEnvID", "credentialID", "aaguid", "status", "score", "createdMs"));
   }
 
   /**
@@ -334,7 +320,7 @@ public class PasswordManager {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PasswordManager.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PasswordManager is not found in the empty JSON string", PasswordManager.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in PasswordManager is not found in the empty JSON string", PasswordManager.openapiRequiredFields.toString()));
         }
       }
 
@@ -342,34 +328,34 @@ public class PasswordManager {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PasswordManager.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasswordManager` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PasswordManager` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PasswordManager.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("userID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
       }
       if (!jsonObj.get("clientEnvID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `clientEnvID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientEnvID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `clientEnvID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("clientEnvID").toString()));
       }
       if (!jsonObj.get("credentialID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `credentialID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `credentialID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("credentialID").toString()));
       }
       if (!jsonObj.get("aaguid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `aaguid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aaguid").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `aaguid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aaguid").toString()));
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));
       }
   }
 

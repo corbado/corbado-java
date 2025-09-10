@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -42,14 +43,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
- * Paging
+ * UserListPaging
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
-public class Paging {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+public class UserListPaging {
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)
   @javax.annotation.Nonnull
@@ -65,10 +67,10 @@ public class Paging {
   @javax.annotation.Nonnull
   private Integer totalItems;
 
-  public Paging() {
+  public UserListPaging() {
   }
 
-  public Paging page(@javax.annotation.Nonnull Integer page) {
+  public UserListPaging page(@javax.annotation.Nonnull Integer page) {
     this.page = page;
     return this;
   }
@@ -87,7 +89,7 @@ public class Paging {
   }
 
 
-  public Paging totalPages(@javax.annotation.Nonnull Integer totalPages) {
+  public UserListPaging totalPages(@javax.annotation.Nonnull Integer totalPages) {
     this.totalPages = totalPages;
     return this;
   }
@@ -106,7 +108,7 @@ public class Paging {
   }
 
 
-  public Paging totalItems(@javax.annotation.Nonnull Integer totalItems) {
+  public UserListPaging totalItems(@javax.annotation.Nonnull Integer totalItems) {
     this.totalItems = totalItems;
     return this;
   }
@@ -134,10 +136,10 @@ public class Paging {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Paging paging = (Paging) o;
-    return Objects.equals(this.page, paging.page) &&
-        Objects.equals(this.totalPages, paging.totalPages) &&
-        Objects.equals(this.totalItems, paging.totalItems);
+    UserListPaging userListPaging = (UserListPaging) o;
+    return Objects.equals(this.page, userListPaging.page) &&
+        Objects.equals(this.totalPages, userListPaging.totalPages) &&
+        Objects.equals(this.totalItems, userListPaging.totalItems);
   }
 
   @Override
@@ -148,7 +150,7 @@ public class Paging {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Paging {\n");
+    sb.append("class UserListPaging {\n");
     sb.append("    page: ").append(toIndentedString(page)).append("\n");
     sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
     sb.append("    totalItems: ").append(toIndentedString(totalItems)).append("\n");
@@ -173,43 +175,37 @@ public class Paging {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("page");
-    openapiFields.add("totalPages");
-    openapiFields.add("totalItems");
+    openapiFields = new HashSet<String>(Arrays.asList("page", "totalPages", "totalItems"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("page");
-    openapiRequiredFields.add("totalPages");
-    openapiRequiredFields.add("totalItems");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("page", "totalPages", "totalItems"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to Paging
+   * @throws IOException if the JSON Element is invalid with respect to UserListPaging
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!Paging.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in Paging is not found in the empty JSON string", Paging.openapiRequiredFields.toString()));
+        if (!UserListPaging.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in UserListPaging is not found in the empty JSON string", UserListPaging.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!Paging.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `Paging` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!UserListPaging.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UserListPaging` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : Paging.openapiRequiredFields) {
+      for (String requiredField : UserListPaging.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
@@ -219,22 +215,22 @@ public class Paging {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!Paging.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'Paging' and its subtypes
+       if (!UserListPaging.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UserListPaging' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<Paging> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(Paging.class));
+       final TypeAdapter<UserListPaging> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UserListPaging.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<Paging>() {
+       return (TypeAdapter<T>) new TypeAdapter<UserListPaging>() {
            @Override
-           public void write(JsonWriter out, Paging value) throws IOException {
+           public void write(JsonWriter out, UserListPaging value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public Paging read(JsonReader in) throws IOException {
+           public UserListPaging read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -245,18 +241,18 @@ public class Paging {
   }
 
   /**
-   * Create an instance of Paging given an JSON string
+   * Create an instance of UserListPaging given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of Paging
-   * @throws IOException if the JSON string is invalid with respect to Paging
+   * @return An instance of UserListPaging
+   * @throws IOException if the JSON string is invalid with respect to UserListPaging
    */
-  public static Paging fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, Paging.class);
+  public static UserListPaging fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UserListPaging.class);
   }
 
   /**
-   * Convert an instance of Paging to an JSON string
+   * Convert an instance of UserListPaging to an JSON string
    *
    * @return JSON string
    */

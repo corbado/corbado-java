@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.AaguidDetails;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -43,13 +44,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * PasskeyData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyData {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -306,22 +308,10 @@ public class PasskeyData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("id");
-    openapiFields.add("userID");
-    openapiFields.add("username");
-    openapiFields.add("ceremonyType");
-    openapiFields.add("challengeID");
-    openapiFields.add("aaguidDetails");
+    openapiFields = new HashSet<String>(Arrays.asList("id", "userID", "username", "ceremonyType", "challengeID", "aaguidDetails"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("userID");
-    openapiRequiredFields.add("username");
-    openapiRequiredFields.add("ceremonyType");
-    openapiRequiredFields.add("challengeID");
-    openapiRequiredFields.add("aaguidDetails");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("id", "userID", "username", "ceremonyType", "challengeID", "aaguidDetails"));
   }
 
   /**
@@ -333,7 +323,7 @@ public class PasskeyData {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PasskeyData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyData is not found in the empty JSON string", PasskeyData.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in PasskeyData is not found in the empty JSON string", PasskeyData.openapiRequiredFields.toString()));
         }
       }
 
@@ -341,33 +331,33 @@ public class PasskeyData {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PasskeyData.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PasskeyData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PasskeyData.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
       if (!jsonObj.get("userID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
       }
       if (!jsonObj.get("username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
       if (!jsonObj.get("ceremonyType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `ceremonyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ceremonyType").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `ceremonyType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ceremonyType").toString()));
       }
       // validate the required field `ceremonyType`
       CeremonyTypeEnum.validateJsonElement(jsonObj.get("ceremonyType"));
       if (!jsonObj.get("challengeID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `challengeID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("challengeID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `challengeID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("challengeID").toString()));
       }
       // validate the required field `aaguidDetails`
       AaguidDetails.validateJsonElement(jsonObj.get("aaguidDetails"));

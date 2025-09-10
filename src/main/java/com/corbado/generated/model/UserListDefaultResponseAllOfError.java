@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,7 +14,8 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
-import com.corbado.generated.model.ErrorRspAllOfErrorValidation;
+import java.util.Locale;
+import com.corbado.generated.model.UserListDefaultResponseAllOfErrorValidationInner;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -45,14 +46,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
- * ErrorRspAllOfError
+ * UserListDefaultResponseAllOfError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
-public class ErrorRspAllOfError {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+public class UserListDefaultResponseAllOfError {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   @javax.annotation.Nonnull
@@ -66,17 +68,17 @@ public class ErrorRspAllOfError {
   public static final String SERIALIZED_NAME_VALIDATION = "validation";
   @SerializedName(SERIALIZED_NAME_VALIDATION)
   @javax.annotation.Nullable
-  private List<ErrorRspAllOfErrorValidation> validation = new ArrayList<>();
+  private List<UserListDefaultResponseAllOfErrorValidationInner> validation = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   @javax.annotation.Nullable
   private List<String> links = new ArrayList<>();
 
-  public ErrorRspAllOfError() {
+  public UserListDefaultResponseAllOfError() {
   }
 
-  public ErrorRspAllOfError type(@javax.annotation.Nonnull String type) {
+  public UserListDefaultResponseAllOfError type(@javax.annotation.Nonnull String type) {
     this.type = type;
     return this;
   }
@@ -95,7 +97,7 @@ public class ErrorRspAllOfError {
   }
 
 
-  public ErrorRspAllOfError details(@javax.annotation.Nullable String details) {
+  public UserListDefaultResponseAllOfError details(@javax.annotation.Nullable String details) {
     this.details = details;
     return this;
   }
@@ -114,12 +116,12 @@ public class ErrorRspAllOfError {
   }
 
 
-  public ErrorRspAllOfError validation(@javax.annotation.Nullable List<ErrorRspAllOfErrorValidation> validation) {
+  public UserListDefaultResponseAllOfError validation(@javax.annotation.Nullable List<UserListDefaultResponseAllOfErrorValidationInner> validation) {
     this.validation = validation;
     return this;
   }
 
-  public ErrorRspAllOfError addValidationItem(ErrorRspAllOfErrorValidation validationItem) {
+  public UserListDefaultResponseAllOfError addValidationItem(UserListDefaultResponseAllOfErrorValidationInner validationItem) {
     if (this.validation == null) {
       this.validation = new ArrayList<>();
     }
@@ -132,21 +134,21 @@ public class ErrorRspAllOfError {
    * @return validation
    */
   @javax.annotation.Nullable
-  public List<ErrorRspAllOfErrorValidation> getValidation() {
+  public List<UserListDefaultResponseAllOfErrorValidationInner> getValidation() {
     return validation;
   }
 
-  public void setValidation(@javax.annotation.Nullable List<ErrorRspAllOfErrorValidation> validation) {
+  public void setValidation(@javax.annotation.Nullable List<UserListDefaultResponseAllOfErrorValidationInner> validation) {
     this.validation = validation;
   }
 
 
-  public ErrorRspAllOfError links(@javax.annotation.Nullable List<String> links) {
+  public UserListDefaultResponseAllOfError links(@javax.annotation.Nullable List<String> links) {
     this.links = links;
     return this;
   }
 
-  public ErrorRspAllOfError addLinksItem(String linksItem) {
+  public UserListDefaultResponseAllOfError addLinksItem(String linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -177,11 +179,11 @@ public class ErrorRspAllOfError {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorRspAllOfError errorRspAllOfError = (ErrorRspAllOfError) o;
-    return Objects.equals(this.type, errorRspAllOfError.type) &&
-        Objects.equals(this.details, errorRspAllOfError.details) &&
-        Objects.equals(this.validation, errorRspAllOfError.validation) &&
-        Objects.equals(this.links, errorRspAllOfError.links);
+    UserListDefaultResponseAllOfError userListDefaultResponseAllOfError = (UserListDefaultResponseAllOfError) o;
+    return Objects.equals(this.type, userListDefaultResponseAllOfError.type) &&
+        Objects.equals(this.details, userListDefaultResponseAllOfError.details) &&
+        Objects.equals(this.validation, userListDefaultResponseAllOfError.validation) &&
+        Objects.equals(this.links, userListDefaultResponseAllOfError.links);
   }
 
   @Override
@@ -192,7 +194,7 @@ public class ErrorRspAllOfError {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorRspAllOfError {\n");
+    sb.append("class UserListDefaultResponseAllOfError {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    validation: ").append(toIndentedString(validation)).append("\n");
@@ -218,68 +220,63 @@ public class ErrorRspAllOfError {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("details");
-    openapiFields.add("validation");
-    openapiFields.add("links");
+    openapiFields = new HashSet<String>(Arrays.asList("type", "details", "validation", "links"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("type"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to ErrorRspAllOfError
+   * @throws IOException if the JSON Element is invalid with respect to UserListDefaultResponseAllOfError
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ErrorRspAllOfError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ErrorRspAllOfError is not found in the empty JSON string", ErrorRspAllOfError.openapiRequiredFields.toString()));
+        if (!UserListDefaultResponseAllOfError.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in UserListDefaultResponseAllOfError is not found in the empty JSON string", UserListDefaultResponseAllOfError.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ErrorRspAllOfError.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ErrorRspAllOfError` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!UserListDefaultResponseAllOfError.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UserListDefaultResponseAllOfError` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ErrorRspAllOfError.openapiRequiredFields) {
+      for (String requiredField : UserListDefaultResponseAllOfError.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
       if ((jsonObj.get("details") != null && !jsonObj.get("details").isJsonNull()) && !jsonObj.get("details").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `details` to be a primitive type in the JSON string but got `%s`", jsonObj.get("details").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `details` to be a primitive type in the JSON string but got `%s`", jsonObj.get("details").toString()));
       }
       if (jsonObj.get("validation") != null && !jsonObj.get("validation").isJsonNull()) {
         JsonArray jsonArrayvalidation = jsonObj.getAsJsonArray("validation");
         if (jsonArrayvalidation != null) {
           // ensure the json data is an array
           if (!jsonObj.get("validation").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `validation` to be an array in the JSON string but got `%s`", jsonObj.get("validation").toString()));
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `validation` to be an array in the JSON string but got `%s`", jsonObj.get("validation").toString()));
           }
 
           // validate the optional field `validation` (array)
           for (int i = 0; i < jsonArrayvalidation.size(); i++) {
-            ErrorRspAllOfErrorValidation.validateJsonElement(jsonArrayvalidation.get(i));
+            UserListDefaultResponseAllOfErrorValidationInner.validateJsonElement(jsonArrayvalidation.get(i));
           };
         }
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull() && !jsonObj.get("links").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `links` to be an array in the JSON string but got `%s`", jsonObj.get("links").toString()));
       }
   }
 
@@ -287,22 +284,22 @@ public class ErrorRspAllOfError {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ErrorRspAllOfError.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ErrorRspAllOfError' and its subtypes
+       if (!UserListDefaultResponseAllOfError.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'UserListDefaultResponseAllOfError' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ErrorRspAllOfError> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ErrorRspAllOfError.class));
+       final TypeAdapter<UserListDefaultResponseAllOfError> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(UserListDefaultResponseAllOfError.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ErrorRspAllOfError>() {
+       return (TypeAdapter<T>) new TypeAdapter<UserListDefaultResponseAllOfError>() {
            @Override
-           public void write(JsonWriter out, ErrorRspAllOfError value) throws IOException {
+           public void write(JsonWriter out, UserListDefaultResponseAllOfError value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ErrorRspAllOfError read(JsonReader in) throws IOException {
+           public UserListDefaultResponseAllOfError read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -313,18 +310,18 @@ public class ErrorRspAllOfError {
   }
 
   /**
-   * Create an instance of ErrorRspAllOfError given an JSON string
+   * Create an instance of UserListDefaultResponseAllOfError given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of ErrorRspAllOfError
-   * @throws IOException if the JSON string is invalid with respect to ErrorRspAllOfError
+   * @return An instance of UserListDefaultResponseAllOfError
+   * @throws IOException if the JSON string is invalid with respect to UserListDefaultResponseAllOfError
    */
-  public static ErrorRspAllOfError fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ErrorRspAllOfError.class);
+  public static UserListDefaultResponseAllOfError fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, UserListDefaultResponseAllOfError.class);
   }
 
   /**
-   * Convert an instance of ErrorRspAllOfError to an JSON string
+   * Convert an instance of UserListDefaultResponseAllOfError to an JSON string
    *
    * @return JSON string
    */

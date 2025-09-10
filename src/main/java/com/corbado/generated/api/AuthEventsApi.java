@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import com.corbado.generated.model.AuthEvent;
 import com.corbado.generated.model.AuthEventCreateReq;
-import com.corbado.generated.model.ErrorRsp;
+import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -76,7 +76,7 @@ public class AuthEventsApi {
 
     /**
      * Build call for authEventCreate
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param authEventCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -85,11 +85,11 @@ public class AuthEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Auth event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Auth event has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call authEventCreateCall(String userID, AuthEventCreateReq authEventCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call authEventCreateCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull AuthEventCreateReq authEventCreateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -136,7 +136,7 @@ public class AuthEventsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call authEventCreateValidateBeforeCall(String userID, AuthEventCreateReq authEventCreateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call authEventCreateValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull AuthEventCreateReq authEventCreateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling authEventCreate(Async)");
@@ -154,7 +154,7 @@ public class AuthEventsApi {
     /**
      * 
      * Create a new authentication event for a user
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param authEventCreateReq  (required)
      * @return AuthEvent
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -162,11 +162,11 @@ public class AuthEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Auth event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Auth event has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public AuthEvent authEventCreate(String userID, AuthEventCreateReq authEventCreateReq) throws ApiException {
+    public AuthEvent authEventCreate(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull AuthEventCreateReq authEventCreateReq) throws ApiException {
         ApiResponse<AuthEvent> localVarResp = authEventCreateWithHttpInfo(userID, authEventCreateReq);
         return localVarResp.getData();
     }
@@ -174,7 +174,7 @@ public class AuthEventsApi {
     /**
      * 
      * Create a new authentication event for a user
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param authEventCreateReq  (required)
      * @return ApiResponse&lt;AuthEvent&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -182,11 +182,11 @@ public class AuthEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Auth event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Auth event has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AuthEvent> authEventCreateWithHttpInfo(String userID, AuthEventCreateReq authEventCreateReq) throws ApiException {
+    public ApiResponse<AuthEvent> authEventCreateWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull AuthEventCreateReq authEventCreateReq) throws ApiException {
         okhttp3.Call localVarCall = authEventCreateValidateBeforeCall(userID, authEventCreateReq, null);
         Type localVarReturnType = new TypeToken<AuthEvent>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -195,7 +195,7 @@ public class AuthEventsApi {
     /**
      *  (asynchronously)
      * Create a new authentication event for a user
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param authEventCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -204,11 +204,11 @@ public class AuthEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Auth event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Auth event has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call authEventCreateAsync(String userID, AuthEventCreateReq authEventCreateReq, final ApiCallback<AuthEvent> _callback) throws ApiException {
+    public okhttp3.Call authEventCreateAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull AuthEventCreateReq authEventCreateReq, final ApiCallback<AuthEvent> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = authEventCreateValidateBeforeCall(userID, authEventCreateReq, _callback);
         Type localVarReturnType = new TypeToken<AuthEvent>(){}.getType();
