@@ -1679,6 +1679,11 @@ components:
           $ref: "#/components/schemas/userStatus"
         explicitWebauthnID:
           type: string
+        updated:
+          type: string
+        updatedMs:
+          type: integer
+          format: int64
 
     userAggregate:
       type: object

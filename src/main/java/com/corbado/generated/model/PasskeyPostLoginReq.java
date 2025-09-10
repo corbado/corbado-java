@@ -50,7 +50,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyPostLoginReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:27:41.845066631Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:28:16.202271925Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyPostLoginReq {
   public static final String SERIALIZED_NAME_SIGNED_PASSKEY_DATA = "signedPasskeyData";
   @SerializedName(SERIALIZED_NAME_SIGNED_PASSKEY_DATA)
