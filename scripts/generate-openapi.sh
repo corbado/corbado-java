@@ -21,6 +21,7 @@ docker run -v ${PWD}:/local --user $(id -u):$(id -g) openapitools/openapi-genera
     -i /local/backend_api.yml \
     -g java \
     -o /local \
+    --library=okhttp-gson \
     --additional-properties=packageName=com.corbado.generated \
     --additional-properties=groupId=com.corbado \
     --additional-properties=artifactId=corbado-java-generated \

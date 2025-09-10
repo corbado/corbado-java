@@ -51,7 +51,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:09:43.911146132Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class User {
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
@@ -72,16 +72,6 @@ public class User {
   @SerializedName(SERIALIZED_NAME_EXPLICIT_WEBAUTHN_I_D)
   @javax.annotation.Nullable
   private String explicitWebauthnID;
-
-  public static final String SERIALIZED_NAME_UPDATED = "updated";
-  @SerializedName(SERIALIZED_NAME_UPDATED)
-  @javax.annotation.Nonnull
-  private String updated;
-
-  public static final String SERIALIZED_NAME_UPDATED_MS = "updatedMs";
-  @SerializedName(SERIALIZED_NAME_UPDATED_MS)
-  @javax.annotation.Nonnull
-  private Long updatedMs;
 
   public User() {
   }
@@ -162,44 +152,6 @@ public class User {
   }
 
 
-  public User updated(@javax.annotation.Nonnull String updated) {
-    this.updated = updated;
-    return this;
-  }
-
-  /**
-   * Get updated
-   * @return updated
-   */
-  @javax.annotation.Nonnull
-  public String getUpdated() {
-    return updated;
-  }
-
-  public void setUpdated(@javax.annotation.Nonnull String updated) {
-    this.updated = updated;
-  }
-
-
-  public User updatedMs(@javax.annotation.Nonnull Long updatedMs) {
-    this.updatedMs = updatedMs;
-    return this;
-  }
-
-  /**
-   * Get updatedMs
-   * @return updatedMs
-   */
-  @javax.annotation.Nonnull
-  public Long getUpdatedMs() {
-    return updatedMs;
-  }
-
-  public void setUpdatedMs(@javax.annotation.Nonnull Long updatedMs) {
-    this.updatedMs = updatedMs;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -213,14 +165,12 @@ public class User {
     return Objects.equals(this.userID, user.userID) &&
         Objects.equals(this.fullName, user.fullName) &&
         Objects.equals(this.status, user.status) &&
-        Objects.equals(this.explicitWebauthnID, user.explicitWebauthnID) &&
-        Objects.equals(this.updated, user.updated) &&
-        Objects.equals(this.updatedMs, user.updatedMs);
+        Objects.equals(this.explicitWebauthnID, user.explicitWebauthnID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userID, fullName, status, explicitWebauthnID, updated, updatedMs);
+    return Objects.hash(userID, fullName, status, explicitWebauthnID);
   }
 
   @Override
@@ -231,8 +181,6 @@ public class User {
     sb.append("    fullName: ").append(toIndentedString(fullName)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    explicitWebauthnID: ").append(toIndentedString(explicitWebauthnID)).append("\n");
-    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
-    sb.append("    updatedMs: ").append(toIndentedString(updatedMs)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -254,10 +202,10 @@ public class User {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("userID", "fullName", "status", "explicitWebauthnID", "updated", "updatedMs"));
+    openapiFields = new HashSet<String>(Arrays.asList("userID", "fullName", "status", "explicitWebauthnID"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("userID", "status", "updated", "updatedMs"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("userID", "status"));
   }
 
   /**
@@ -298,9 +246,6 @@ public class User {
       UserStatus.validateJsonElement(jsonObj.get("status"));
       if ((jsonObj.get("explicitWebauthnID") != null && !jsonObj.get("explicitWebauthnID").isJsonNull()) && !jsonObj.get("explicitWebauthnID").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `explicitWebauthnID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explicitWebauthnID").toString()));
-      }
-      if (!jsonObj.get("updated").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated").toString()));
       }
   }
 

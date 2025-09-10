@@ -50,7 +50,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ClientEnv
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:09:43.911146132Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class ClientEnv {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)

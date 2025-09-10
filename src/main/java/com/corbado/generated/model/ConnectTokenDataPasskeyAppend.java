@@ -50,7 +50,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * Data for &#x60;passkey-append&#x60;.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:09:43.911146132Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class ConnectTokenDataPasskeyAppend {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
