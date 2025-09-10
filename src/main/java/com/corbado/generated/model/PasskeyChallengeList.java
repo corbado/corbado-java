@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.Paging;
 import com.corbado.generated.model.PasskeyChallenge;
 import com.google.gson.TypeAdapter;
@@ -46,13 +47,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * PasskeyChallengeList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyChallengeList {
   public static final String SERIALIZED_NAME_PASSKEY_CHALLENGES = "passkeyChallenges";
   @SerializedName(SERIALIZED_NAME_PASSKEY_CHALLENGES)
@@ -159,14 +161,10 @@ public class PasskeyChallengeList {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("passkeyChallenges");
-    openapiFields.add("paging");
+    openapiFields = new HashSet<String>(Arrays.asList("passkeyChallenges", "paging"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("passkeyChallenges");
-    openapiRequiredFields.add("paging");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("passkeyChallenges", "paging"));
   }
 
   /**
@@ -178,7 +176,7 @@ public class PasskeyChallengeList {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PasskeyChallengeList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyChallengeList is not found in the empty JSON string", PasskeyChallengeList.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in PasskeyChallengeList is not found in the empty JSON string", PasskeyChallengeList.openapiRequiredFields.toString()));
         }
       }
 
@@ -186,20 +184,20 @@ public class PasskeyChallengeList {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PasskeyChallengeList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyChallengeList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PasskeyChallengeList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PasskeyChallengeList.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // ensure the json data is an array
       if (!jsonObj.get("passkeyChallenges").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `passkeyChallenges` to be an array in the JSON string but got `%s`", jsonObj.get("passkeyChallenges").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `passkeyChallenges` to be an array in the JSON string but got `%s`", jsonObj.get("passkeyChallenges").toString()));
       }
 
       JsonArray jsonArraypasskeyChallenges = jsonObj.getAsJsonArray("passkeyChallenges");

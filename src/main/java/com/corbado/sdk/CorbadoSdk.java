@@ -18,7 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * Entry point for the Corbado SDK.
  *
- * <p>This class provides interfaces to interact with the Corbado API, including user, session and
+ * <p>
+ * This class provides interfaces to interact with the Corbado API, including
+ * user, session and
  * identifier services.
  */
 @Slf4j
@@ -28,7 +30,8 @@ public class CorbadoSdk {
   private static final String CORBADO_HEADER_NAME = "X-Corbado-SDK";
 
   /** The configuration class. */
-  @Getter private final Config config;
+  @Getter
+  private final Config config;
 
   /** The users API. */
   @Getter(lazy = true)
@@ -36,8 +39,7 @@ public class CorbadoSdk {
 
   /** The identifiers API. */
   @Getter(lazy = true)
-  private final IdentifierService identifiers =
-      new IdentifierService(new IdentifiersApi(this.client));
+  private final IdentifierService identifiers = new IdentifierService(new IdentifiersApi(this.client));
 
   /** The sessions API. */
   @Getter(lazy = true)
@@ -102,6 +104,6 @@ public class CorbadoSdk {
    * @return the version
    */
   public String getVersion() {
-    return "1.0.6";
+    return "1.0.7";
   }
 }

@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.ClientInformation;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -43,13 +44,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * PasskeyAppendFinishReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyAppendFinishReq {
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
@@ -75,6 +77,11 @@ public class PasskeyAppendFinishReq {
   @SerializedName(SERIALIZED_NAME_SEND_NOTIFICATION)
   @javax.annotation.Nullable
   private Boolean sendNotification;
+
+  public static final String SERIALIZED_NAME_TRACKING_I_D = "trackingID";
+  @SerializedName(SERIALIZED_NAME_TRACKING_I_D)
+  @javax.annotation.Nonnull
+  private String trackingID;
 
   public PasskeyAppendFinishReq() {
   }
@@ -174,6 +181,25 @@ public class PasskeyAppendFinishReq {
   }
 
 
+  public PasskeyAppendFinishReq trackingID(@javax.annotation.Nonnull String trackingID) {
+    this.trackingID = trackingID;
+    return this;
+  }
+
+  /**
+   * Get trackingID
+   * @return trackingID
+   */
+  @javax.annotation.Nonnull
+  public String getTrackingID() {
+    return trackingID;
+  }
+
+  public void setTrackingID(@javax.annotation.Nonnull String trackingID) {
+    this.trackingID = trackingID;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -188,12 +214,13 @@ public class PasskeyAppendFinishReq {
         Objects.equals(this.processID, passkeyAppendFinishReq.processID) &&
         Objects.equals(this.attestationResponse, passkeyAppendFinishReq.attestationResponse) &&
         Objects.equals(this.clientInformation, passkeyAppendFinishReq.clientInformation) &&
-        Objects.equals(this.sendNotification, passkeyAppendFinishReq.sendNotification);
+        Objects.equals(this.sendNotification, passkeyAppendFinishReq.sendNotification) &&
+        Objects.equals(this.trackingID, passkeyAppendFinishReq.trackingID);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userID, processID, attestationResponse, clientInformation, sendNotification);
+    return Objects.hash(userID, processID, attestationResponse, clientInformation, sendNotification, trackingID);
   }
 
   @Override
@@ -205,6 +232,7 @@ public class PasskeyAppendFinishReq {
     sb.append("    attestationResponse: ").append(toIndentedString(attestationResponse)).append("\n");
     sb.append("    clientInformation: ").append(toIndentedString(clientInformation)).append("\n");
     sb.append("    sendNotification: ").append(toIndentedString(sendNotification)).append("\n");
+    sb.append("    trackingID: ").append(toIndentedString(trackingID)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -226,19 +254,10 @@ public class PasskeyAppendFinishReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("userID");
-    openapiFields.add("processID");
-    openapiFields.add("attestationResponse");
-    openapiFields.add("clientInformation");
-    openapiFields.add("sendNotification");
+    openapiFields = new HashSet<String>(Arrays.asList("userID", "processID", "attestationResponse", "clientInformation", "sendNotification", "trackingID"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("userID");
-    openapiRequiredFields.add("processID");
-    openapiRequiredFields.add("attestationResponse");
-    openapiRequiredFields.add("clientInformation");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("userID", "processID", "attestationResponse", "clientInformation", "trackingID"));
   }
 
   /**
@@ -250,7 +269,7 @@ public class PasskeyAppendFinishReq {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!PasskeyAppendFinishReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in PasskeyAppendFinishReq is not found in the empty JSON string", PasskeyAppendFinishReq.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in PasskeyAppendFinishReq is not found in the empty JSON string", PasskeyAppendFinishReq.openapiRequiredFields.toString()));
         }
       }
 
@@ -258,28 +277,31 @@ public class PasskeyAppendFinishReq {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!PasskeyAppendFinishReq.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PasskeyAppendFinishReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PasskeyAppendFinishReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : PasskeyAppendFinishReq.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("userID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
       }
       if (!jsonObj.get("processID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `processID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `processID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("processID").toString()));
       }
       if (!jsonObj.get("attestationResponse").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `attestationResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attestationResponse").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `attestationResponse` to be a primitive type in the JSON string but got `%s`", jsonObj.get("attestationResponse").toString()));
       }
       // validate the required field `clientInformation`
       ClientInformation.validateJsonElement(jsonObj.get("clientInformation"));
+      if (!jsonObj.get("trackingID").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `trackingID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("trackingID").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

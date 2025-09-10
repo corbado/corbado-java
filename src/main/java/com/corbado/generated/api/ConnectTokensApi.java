@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -87,11 +87,11 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Connect token has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ConnectToken has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenCreateCall(ConnectTokenCreateReq connectTokenCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call connectTokenCreateCall(@javax.annotation.Nonnull ConnectTokenCreateReq connectTokenCreateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,7 +137,7 @@ public class ConnectTokensApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call connectTokenCreateValidateBeforeCall(ConnectTokenCreateReq connectTokenCreateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call connectTokenCreateValidateBeforeCall(@javax.annotation.Nonnull ConnectTokenCreateReq connectTokenCreateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectTokenCreateReq' is set
         if (connectTokenCreateReq == null) {
             throw new ApiException("Missing the required parameter 'connectTokenCreateReq' when calling connectTokenCreate(Async)");
@@ -148,8 +148,8 @@ public class ConnectTokensApi {
     }
 
     /**
-     * 
-     * Create a new connect token
+     * Create a connectToken
+     * Creates a new ConnectToken, which is essential for [Corbado Connect](/corbado-connect). ConnectTokens authorize actions that modify user data.  Consult the [Documentation](/corbado-connect/concepts/connect-token) for more details. 
      * @param connectTokenCreateReq  (required)
      * @return ConnectToken
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -157,18 +157,18 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Connect token has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ConnectToken has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectToken connectTokenCreate(ConnectTokenCreateReq connectTokenCreateReq) throws ApiException {
+    public ConnectToken connectTokenCreate(@javax.annotation.Nonnull ConnectTokenCreateReq connectTokenCreateReq) throws ApiException {
         ApiResponse<ConnectToken> localVarResp = connectTokenCreateWithHttpInfo(connectTokenCreateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Create a new connect token
+     * Create a connectToken
+     * Creates a new ConnectToken, which is essential for [Corbado Connect](/corbado-connect). ConnectTokens authorize actions that modify user data.  Consult the [Documentation](/corbado-connect/concepts/connect-token) for more details. 
      * @param connectTokenCreateReq  (required)
      * @return ApiResponse&lt;ConnectToken&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -176,19 +176,19 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Connect token has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ConnectToken has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectToken> connectTokenCreateWithHttpInfo(ConnectTokenCreateReq connectTokenCreateReq) throws ApiException {
+    public ApiResponse<ConnectToken> connectTokenCreateWithHttpInfo(@javax.annotation.Nonnull ConnectTokenCreateReq connectTokenCreateReq) throws ApiException {
         okhttp3.Call localVarCall = connectTokenCreateValidateBeforeCall(connectTokenCreateReq, null);
         Type localVarReturnType = new TypeToken<ConnectToken>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Create a new connect token
+     * Create a connectToken (asynchronously)
+     * Creates a new ConnectToken, which is essential for [Corbado Connect](/corbado-connect). ConnectTokens authorize actions that modify user data.  Consult the [Documentation](/corbado-connect/concepts/connect-token) for more details. 
      * @param connectTokenCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -197,11 +197,11 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Connect token has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> ConnectToken has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenCreateAsync(ConnectTokenCreateReq connectTokenCreateReq, final ApiCallback<ConnectToken> _callback) throws ApiException {
+    public okhttp3.Call connectTokenCreateAsync(@javax.annotation.Nonnull ConnectTokenCreateReq connectTokenCreateReq, final ApiCallback<ConnectToken> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = connectTokenCreateValidateBeforeCall(connectTokenCreateReq, _callback);
         Type localVarReturnType = new TypeToken<ConnectToken>(){}.getType();
@@ -210,7 +210,7 @@ public class ConnectTokensApi {
     }
     /**
      * Build call for connectTokenDelete
-     * @param connectTokenID ID of an append token (required)
+     * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -218,11 +218,11 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenDeleteCall(String connectTokenID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call connectTokenDeleteCall(@javax.annotation.Nonnull String connectTokenID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -268,7 +268,7 @@ public class ConnectTokensApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call connectTokenDeleteValidateBeforeCall(String connectTokenID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call connectTokenDeleteValidateBeforeCall(@javax.annotation.Nonnull String connectTokenID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectTokenID' is set
         if (connectTokenID == null) {
             throw new ApiException("Missing the required parameter 'connectTokenID' when calling connectTokenDelete(Async)");
@@ -279,48 +279,48 @@ public class ConnectTokensApi {
     }
 
     /**
-     * 
-     * Deletes an existing append token
-     * @param connectTokenID ID of an append token (required)
+     * Delete a ConnectToken
+     * Deletes an existing ConnectToken. 
+     * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp connectTokenDelete(String connectTokenID) throws ApiException {
+    public GenericRsp connectTokenDelete(@javax.annotation.Nonnull String connectTokenID) throws ApiException {
         ApiResponse<GenericRsp> localVarResp = connectTokenDeleteWithHttpInfo(connectTokenID);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Deletes an existing append token
-     * @param connectTokenID ID of an append token (required)
+     * Delete a ConnectToken
+     * Deletes an existing ConnectToken. 
+     * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> connectTokenDeleteWithHttpInfo(String connectTokenID) throws ApiException {
+    public ApiResponse<GenericRsp> connectTokenDeleteWithHttpInfo(@javax.annotation.Nonnull String connectTokenID) throws ApiException {
         okhttp3.Call localVarCall = connectTokenDeleteValidateBeforeCall(connectTokenID, null);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Deletes an existing append token
-     * @param connectTokenID ID of an append token (required)
+     * Delete a ConnectToken (asynchronously)
+     * Deletes an existing ConnectToken. 
+     * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -328,11 +328,11 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenDeleteAsync(String connectTokenID, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call connectTokenDeleteAsync(@javax.annotation.Nonnull String connectTokenID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = connectTokenDeleteValidateBeforeCall(connectTokenID, _callback);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
@@ -341,10 +341,10 @@ public class ConnectTokensApi {
     }
     /**
      * Build call for connectTokenList
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -352,11 +352,11 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching append tokens </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching append tokens. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenListCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call connectTokenListCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -417,63 +417,63 @@ public class ConnectTokensApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call connectTokenListValidateBeforeCall(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call connectTokenListValidateBeforeCall(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         return connectTokenListCall(sort, filter, page, pageSize, _callback);
 
     }
 
     /**
-     * 
-     * Returns a list of matching append tokens
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all ConnectTokens
+     * Returns a list of ConnectTokens.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;token&#x60;, &#x60;tokenType&#x60;, &#x60;status&#x60; and &#x60;expires&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;token&#x60;, &#x60;tokenType&#x60;, &#x60;status&#x60; and &#x60;expires&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return ConnectTokenList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching append tokens </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching append tokens. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ConnectTokenList connectTokenList(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public ConnectTokenList connectTokenList(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<ConnectTokenList> localVarResp = connectTokenListWithHttpInfo(sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Returns a list of matching append tokens
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all ConnectTokens
+     * Returns a list of ConnectTokens.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;token&#x60;, &#x60;tokenType&#x60;, &#x60;status&#x60; and &#x60;expires&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;token&#x60;, &#x60;tokenType&#x60;, &#x60;status&#x60; and &#x60;expires&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return ApiResponse&lt;ConnectTokenList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching append tokens </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching append tokens. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ConnectTokenList> connectTokenListWithHttpInfo(String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public ApiResponse<ConnectTokenList> connectTokenListWithHttpInfo(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = connectTokenListValidateBeforeCall(sort, filter, page, pageSize, null);
         Type localVarReturnType = new TypeToken<ConnectTokenList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Returns a list of matching append tokens
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all ConnectTokens (asynchronously)
+     * Returns a list of ConnectTokens.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;token&#x60;, &#x60;tokenType&#x60;, &#x60;status&#x60; and &#x60;expires&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;token&#x60;, &#x60;tokenType&#x60;, &#x60;status&#x60; and &#x60;expires&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -481,11 +481,11 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching append tokens </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching append tokens. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenListAsync(String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<ConnectTokenList> _callback) throws ApiException {
+    public okhttp3.Call connectTokenListAsync(@javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback<ConnectTokenList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = connectTokenListValidateBeforeCall(sort, filter, page, pageSize, _callback);
         Type localVarReturnType = new TypeToken<ConnectTokenList>(){}.getType();
@@ -494,7 +494,7 @@ public class ConnectTokensApi {
     }
     /**
      * Build call for connectTokenUpdate
-     * @param connectTokenID ID of an append token (required)
+     * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @param connectTokenUpdateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -503,11 +503,11 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenUpdateCall(String connectTokenID, ConnectTokenUpdateReq connectTokenUpdateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call connectTokenUpdateCall(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -554,7 +554,7 @@ public class ConnectTokensApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call connectTokenUpdateValidateBeforeCall(String connectTokenID, ConnectTokenUpdateReq connectTokenUpdateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call connectTokenUpdateValidateBeforeCall(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'connectTokenID' is set
         if (connectTokenID == null) {
             throw new ApiException("Missing the required parameter 'connectTokenID' when calling connectTokenUpdate(Async)");
@@ -570,9 +570,9 @@ public class ConnectTokensApi {
     }
 
     /**
-     * 
-     * Updates an existing append token
-     * @param connectTokenID ID of an append token (required)
+     * Update a ConnectToken
+     * Updates an existing ConnectToken. 
+     * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @param connectTokenUpdateReq  (required)
      * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -580,19 +580,19 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp connectTokenUpdate(String connectTokenID, ConnectTokenUpdateReq connectTokenUpdateReq) throws ApiException {
+    public GenericRsp connectTokenUpdate(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq) throws ApiException {
         ApiResponse<GenericRsp> localVarResp = connectTokenUpdateWithHttpInfo(connectTokenID, connectTokenUpdateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Updates an existing append token
-     * @param connectTokenID ID of an append token (required)
+     * Update a ConnectToken
+     * Updates an existing ConnectToken. 
+     * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @param connectTokenUpdateReq  (required)
      * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -600,20 +600,20 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> connectTokenUpdateWithHttpInfo(String connectTokenID, ConnectTokenUpdateReq connectTokenUpdateReq) throws ApiException {
+    public ApiResponse<GenericRsp> connectTokenUpdateWithHttpInfo(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq) throws ApiException {
         okhttp3.Call localVarCall = connectTokenUpdateValidateBeforeCall(connectTokenID, connectTokenUpdateReq, null);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Updates an existing append token
-     * @param connectTokenID ID of an append token (required)
+     * Update a ConnectToken (asynchronously)
+     * Updates an existing ConnectToken. 
+     * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @param connectTokenUpdateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -622,11 +622,11 @@ public class ConnectTokensApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenUpdateAsync(String connectTokenID, ConnectTokenUpdateReq connectTokenUpdateReq, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call connectTokenUpdateAsync(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = connectTokenUpdateValidateBeforeCall(connectTokenID, connectTokenUpdateReq, _callback);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();

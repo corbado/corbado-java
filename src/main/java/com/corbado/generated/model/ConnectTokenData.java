@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.ConnectTokenDataPasskeyAppend;
 import com.corbado.generated.model.ConnectTokenDataPasskeyDelete;
 import com.corbado.generated.model.ConnectTokenDataPasskeyList;
@@ -38,6 +39,7 @@ import java.util.HashSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Locale;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -61,7 +63,7 @@ import com.google.gson.JsonParseException;
 
 import com.corbado.generated.invoker.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class ConnectTokenData extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(ConnectTokenData.class.getName());
 
@@ -131,7 +133,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ConnectTokenDataPasskeyAppend'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyAppend failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for ConnectTokenDataPasskeyAppend failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ConnectTokenDataPasskeyAppend'", e);
                     }
                     // deserialize ConnectTokenDataPasskeyDelete
@@ -143,7 +145,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ConnectTokenDataPasskeyDelete'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyDelete failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for ConnectTokenDataPasskeyDelete failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ConnectTokenDataPasskeyDelete'", e);
                     }
                     // deserialize ConnectTokenDataPasskeyList
@@ -155,7 +157,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ConnectTokenDataPasskeyList'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyList failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for ConnectTokenDataPasskeyList failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ConnectTokenDataPasskeyList'", e);
                     }
                     // deserialize ConnectTokenDataPasskeyLogin
@@ -167,7 +169,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
                         log.log(Level.FINER, "Input data matches schema 'ConnectTokenDataPasskeyLogin'");
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyLogin failed with `%s`.", e.getMessage()));
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for ConnectTokenDataPasskeyLogin failed with `%s`.", e.getMessage()));
                         log.log(Level.FINER, "Input data does not match schema 'ConnectTokenDataPasskeyLogin'", e);
                     }
 
@@ -177,7 +179,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
                         return ret;
                     }
 
-                    throw new IOException(String.format("Failed deserialization for ConnectTokenData: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for ConnectTokenData: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
                 }
             }.nullSafe();
         }
@@ -310,7 +312,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
             ConnectTokenDataPasskeyAppend.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyAppend failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for ConnectTokenDataPasskeyAppend failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ConnectTokenDataPasskeyDelete
@@ -318,7 +320,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
             ConnectTokenDataPasskeyDelete.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyDelete failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for ConnectTokenDataPasskeyDelete failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ConnectTokenDataPasskeyList
@@ -326,7 +328,7 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
             ConnectTokenDataPasskeyList.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyList failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for ConnectTokenDataPasskeyList failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         // validate the json string with ConnectTokenDataPasskeyLogin
@@ -334,11 +336,11 @@ public class ConnectTokenData extends AbstractOpenApiSchema {
             ConnectTokenDataPasskeyLogin.validateJsonElement(jsonElement);
             validCount++;
         } catch (Exception e) {
-            errorMessages.add(String.format("Deserialization for ConnectTokenDataPasskeyLogin failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for ConnectTokenDataPasskeyLogin failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
         if (validCount != 1) {
-            throw new IOException(String.format("The JSON string is invalid for ConnectTokenData with oneOf schemas: ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList, ConnectTokenDataPasskeyLogin. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+            throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for ConnectTokenData with oneOf schemas: ConnectTokenDataPasskeyAppend, ConnectTokenDataPasskeyDelete, ConnectTokenDataPasskeyList, ConnectTokenDataPasskeyLogin. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
         }
     }
 

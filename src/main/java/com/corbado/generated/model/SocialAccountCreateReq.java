@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.SocialProviderType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -43,13 +44,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * SocialAccountCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class SocialAccountCreateReq {
   public static final String SERIALIZED_NAME_PROVIDER_TYPE = "providerType";
   @SerializedName(SERIALIZED_NAME_PROVIDER_TYPE)
@@ -104,7 +106,7 @@ public class SocialAccountCreateReq {
   }
 
   /**
-   * Get identifierValue
+   * Login identifier of the user (here email address).
    * @return identifierValue
    */
   @javax.annotation.Nonnull
@@ -123,7 +125,7 @@ public class SocialAccountCreateReq {
   }
 
   /**
-   * Get foreignID
+   * Unique identifier of the user in the social provider.
    * @return foreignID
    */
   @javax.annotation.Nonnull
@@ -142,7 +144,7 @@ public class SocialAccountCreateReq {
   }
 
   /**
-   * Get avatarURL
+   * URL of the avatar of the user in the social provider.
    * @return avatarURL
    */
   @javax.annotation.Nonnull
@@ -161,7 +163,7 @@ public class SocialAccountCreateReq {
   }
 
   /**
-   * Get fullName
+   * Full name of the user in the social provider.
    * @return fullName
    */
   @javax.annotation.Nonnull
@@ -226,20 +228,10 @@ public class SocialAccountCreateReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("providerType");
-    openapiFields.add("identifierValue");
-    openapiFields.add("foreignID");
-    openapiFields.add("avatarURL");
-    openapiFields.add("fullName");
+    openapiFields = new HashSet<String>(Arrays.asList("providerType", "identifierValue", "foreignID", "avatarURL", "fullName"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("providerType");
-    openapiRequiredFields.add("identifierValue");
-    openapiRequiredFields.add("foreignID");
-    openapiRequiredFields.add("avatarURL");
-    openapiRequiredFields.add("fullName");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("providerType", "identifierValue", "foreignID", "avatarURL", "fullName"));
   }
 
   /**
@@ -251,7 +243,7 @@ public class SocialAccountCreateReq {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!SocialAccountCreateReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in SocialAccountCreateReq is not found in the empty JSON string", SocialAccountCreateReq.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in SocialAccountCreateReq is not found in the empty JSON string", SocialAccountCreateReq.openapiRequiredFields.toString()));
         }
       }
 
@@ -259,30 +251,30 @@ public class SocialAccountCreateReq {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!SocialAccountCreateReq.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `SocialAccountCreateReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `SocialAccountCreateReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : SocialAccountCreateReq.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       // validate the required field `providerType`
       SocialProviderType.validateJsonElement(jsonObj.get("providerType"));
       if (!jsonObj.get("identifierValue").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `identifierValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierValue").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `identifierValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierValue").toString()));
       }
       if (!jsonObj.get("foreignID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `foreignID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("foreignID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `foreignID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("foreignID").toString()));
       }
       if (!jsonObj.get("avatarURL").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `avatarURL` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatarURL").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `avatarURL` to be a primitive type in the JSON string but got `%s`", jsonObj.get("avatarURL").toString()));
       }
       if (!jsonObj.get("fullName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fullName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fullName").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `fullName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fullName").toString()));
       }
   }
 

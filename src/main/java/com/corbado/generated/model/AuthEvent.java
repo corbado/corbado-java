@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.AuthEventMethod;
 import com.corbado.generated.model.AuthEventStatus;
 import com.corbado.generated.model.AuthEventType;
@@ -45,13 +46,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * AuthEvent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class AuthEvent {
   public static final String SERIALIZED_NAME_AUTH_EVENT_I_D = "authEventID";
   @SerializedName(SERIALIZED_NAME_AUTH_EVENT_I_D)
@@ -306,26 +308,10 @@ public class AuthEvent {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("authEventID");
-    openapiFields.add("userID");
-    openapiFields.add("username");
-    openapiFields.add("eventType");
-    openapiFields.add("method");
-    openapiFields.add("created");
-    openapiFields.add("createdMs");
-    openapiFields.add("status");
+    openapiFields = new HashSet<String>(Arrays.asList("authEventID", "userID", "username", "eventType", "method", "created", "createdMs", "status"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("authEventID");
-    openapiRequiredFields.add("userID");
-    openapiRequiredFields.add("username");
-    openapiRequiredFields.add("eventType");
-    openapiRequiredFields.add("method");
-    openapiRequiredFields.add("created");
-    openapiRequiredFields.add("createdMs");
-    openapiRequiredFields.add("status");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("authEventID", "userID", "username", "eventType", "method", "created", "createdMs", "status"));
   }
 
   /**
@@ -337,7 +323,7 @@ public class AuthEvent {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!AuthEvent.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in AuthEvent is not found in the empty JSON string", AuthEvent.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in AuthEvent is not found in the empty JSON string", AuthEvent.openapiRequiredFields.toString()));
         }
       }
 
@@ -345,32 +331,32 @@ public class AuthEvent {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!AuthEvent.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AuthEvent` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `AuthEvent` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : AuthEvent.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if (!jsonObj.get("authEventID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `authEventID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("authEventID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `authEventID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("authEventID").toString()));
       }
       if (!jsonObj.get("userID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `userID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userID").toString()));
       }
       if (!jsonObj.get("username").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `username` to be a primitive type in the JSON string but got `%s`", jsonObj.get("username").toString()));
       }
       // validate the required field `eventType`
       AuthEventType.validateJsonElement(jsonObj.get("eventType"));
       // validate the required field `method`
       AuthEventMethod.validateJsonElement(jsonObj.get("method"));
       if (!jsonObj.get("created").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `created` to be a primitive type in the JSON string but got `%s`", jsonObj.get("created").toString()));
       }
       // validate the required field `status`
       AuthEventStatus.validateJsonElement(jsonObj.get("status"));

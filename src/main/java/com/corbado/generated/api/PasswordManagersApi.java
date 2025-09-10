@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -75,7 +75,7 @@ public class PasswordManagersApi {
 
     /**
      * Build call for passwordManagerList
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -83,11 +83,11 @@ public class PasswordManagersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching password managers </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching password managers. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passwordManagerListCall(String userID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passwordManagerListCall(@javax.annotation.Nonnull String userID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -133,7 +133,7 @@ public class PasswordManagersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passwordManagerListValidateBeforeCall(String userID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passwordManagerListValidateBeforeCall(@javax.annotation.Nonnull String userID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling passwordManagerList(Async)");
@@ -144,48 +144,48 @@ public class PasswordManagersApi {
     }
 
     /**
-     * 
+     * List password managers for a user
      * Returns a list of password managers
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @return PasswordManagerList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching password managers </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching password managers. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasswordManagerList passwordManagerList(String userID) throws ApiException {
+    public PasswordManagerList passwordManagerList(@javax.annotation.Nonnull String userID) throws ApiException {
         ApiResponse<PasswordManagerList> localVarResp = passwordManagerListWithHttpInfo(userID);
         return localVarResp.getData();
     }
 
     /**
-     * 
+     * List password managers for a user
      * Returns a list of password managers
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @return ApiResponse&lt;PasswordManagerList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching password managers </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching password managers. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasswordManagerList> passwordManagerListWithHttpInfo(String userID) throws ApiException {
+    public ApiResponse<PasswordManagerList> passwordManagerListWithHttpInfo(@javax.annotation.Nonnull String userID) throws ApiException {
         okhttp3.Call localVarCall = passwordManagerListValidateBeforeCall(userID, null);
         Type localVarReturnType = new TypeToken<PasswordManagerList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
+     * List password managers for a user (asynchronously)
      * Returns a list of password managers
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -193,11 +193,11 @@ public class PasswordManagersApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching password managers </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching password managers. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passwordManagerListAsync(String userID, final ApiCallback<PasswordManagerList> _callback) throws ApiException {
+    public okhttp3.Call passwordManagerListAsync(@javax.annotation.Nonnull String userID, final ApiCallback<PasswordManagerList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passwordManagerListValidateBeforeCall(userID, _callback);
         Type localVarReturnType = new TypeToken<PasswordManagerList>(){}.getType();

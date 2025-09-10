@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -78,7 +78,7 @@ public class PasskeyEventsApi {
 
     /**
      * Build call for passkeyEventCreate
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventCreateReq  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -87,11 +87,11 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey event has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventCreateCall(String userID, PasskeyEventCreateReq passkeyEventCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyEventCreateCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull PasskeyEventCreateReq passkeyEventCreateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -138,7 +138,7 @@ public class PasskeyEventsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyEventCreateValidateBeforeCall(String userID, PasskeyEventCreateReq passkeyEventCreateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyEventCreateValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull PasskeyEventCreateReq passkeyEventCreateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling passkeyEventCreate(Async)");
@@ -154,9 +154,9 @@ public class PasskeyEventsApi {
     }
 
     /**
-     * 
-     * Create a new passkey event for a user
-     * @param userID ID of user (required)
+     * Create a passkey event for a user
+     * Creates a new passkey event for a user by given &#x60;userID&#x60;.
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventCreateReq  (required)
      * @return PasskeyEvent
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -164,19 +164,19 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey event has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyEvent passkeyEventCreate(String userID, PasskeyEventCreateReq passkeyEventCreateReq) throws ApiException {
+    public PasskeyEvent passkeyEventCreate(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull PasskeyEventCreateReq passkeyEventCreateReq) throws ApiException {
         ApiResponse<PasskeyEvent> localVarResp = passkeyEventCreateWithHttpInfo(userID, passkeyEventCreateReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Create a new passkey event for a user
-     * @param userID ID of user (required)
+     * Create a passkey event for a user
+     * Creates a new passkey event for a user by given &#x60;userID&#x60;.
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventCreateReq  (required)
      * @return ApiResponse&lt;PasskeyEvent&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -184,20 +184,20 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey event has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyEvent> passkeyEventCreateWithHttpInfo(String userID, PasskeyEventCreateReq passkeyEventCreateReq) throws ApiException {
+    public ApiResponse<PasskeyEvent> passkeyEventCreateWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull PasskeyEventCreateReq passkeyEventCreateReq) throws ApiException {
         okhttp3.Call localVarCall = passkeyEventCreateValidateBeforeCall(userID, passkeyEventCreateReq, null);
         Type localVarReturnType = new TypeToken<PasskeyEvent>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Create a new passkey event for a user
-     * @param userID ID of user (required)
+     * Create a passkey event for a user (asynchronously)
+     * Creates a new passkey event for a user by given &#x60;userID&#x60;.
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventCreateReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -206,11 +206,11 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey event has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey event has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventCreateAsync(String userID, PasskeyEventCreateReq passkeyEventCreateReq, final ApiCallback<PasskeyEvent> _callback) throws ApiException {
+    public okhttp3.Call passkeyEventCreateAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull PasskeyEventCreateReq passkeyEventCreateReq, final ApiCallback<PasskeyEvent> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyEventCreateValidateBeforeCall(userID, passkeyEventCreateReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyEvent>(){}.getType();
@@ -219,7 +219,7 @@ public class PasskeyEventsApi {
     }
     /**
      * Build call for passkeyEventDelete
-     * @param userID ID of user (required)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventID ID of a passkey event (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -228,11 +228,11 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventDeleteCall(String userID, String passkeyEventID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyEventDeleteCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -279,7 +279,7 @@ public class PasskeyEventsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyEventDeleteValidateBeforeCall(String userID, String passkeyEventID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyEventDeleteValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling passkeyEventDelete(Async)");
@@ -295,9 +295,9 @@ public class PasskeyEventsApi {
     }
 
     /**
-     * 
-     * Deletes an existing passkey event
-     * @param userID ID of user (required)
+     * Delete a passkey event for a user
+     * Deletes an existing passkey event for a user by given &#x60;userID&#x60; and &#x60;passkeyEventID&#x60;.
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventID ID of a passkey event (required)
      * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -305,19 +305,19 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp passkeyEventDelete(String userID, String passkeyEventID) throws ApiException {
+    public GenericRsp passkeyEventDelete(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID) throws ApiException {
         ApiResponse<GenericRsp> localVarResp = passkeyEventDeleteWithHttpInfo(userID, passkeyEventID);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Deletes an existing passkey event
-     * @param userID ID of user (required)
+     * Delete a passkey event for a user
+     * Deletes an existing passkey event for a user by given &#x60;userID&#x60; and &#x60;passkeyEventID&#x60;.
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventID ID of a passkey event (required)
      * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -325,20 +325,20 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> passkeyEventDeleteWithHttpInfo(String userID, String passkeyEventID) throws ApiException {
+    public ApiResponse<GenericRsp> passkeyEventDeleteWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID) throws ApiException {
         okhttp3.Call localVarCall = passkeyEventDeleteValidateBeforeCall(userID, passkeyEventID, null);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Deletes an existing passkey event
-     * @param userID ID of user (required)
+     * Delete a passkey event for a user (asynchronously)
+     * Deletes an existing passkey event for a user by given &#x60;userID&#x60; and &#x60;passkeyEventID&#x60;.
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventID ID of a passkey event (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -347,11 +347,11 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventDeleteAsync(String userID, String passkeyEventID, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call passkeyEventDeleteAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyEventDeleteValidateBeforeCall(userID, passkeyEventID, _callback);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
@@ -360,11 +360,11 @@ public class PasskeyEventsApi {
     }
     /**
      * Build call for passkeyEventList
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -372,11 +372,11 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey events. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventListCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyEventListCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -438,7 +438,7 @@ public class PasskeyEventsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyEventListValidateBeforeCall(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyEventListValidateBeforeCall(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'userID' is set
         if (userID == null) {
             throw new ApiException("Missing the required parameter 'userID' when calling passkeyEventList(Async)");
@@ -449,60 +449,60 @@ public class PasskeyEventsApi {
     }
 
     /**
-     * 
-     * Returns a list of matching passkey events
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all passkey events for a user
+     * Returns a list of passkey events for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;created&#x60; and &#x60;eventType&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;eventType&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return PasskeyEventList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey events. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyEventList passkeyEventList(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public PasskeyEventList passkeyEventList(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         ApiResponse<PasskeyEventList> localVarResp = passkeyEventListWithHttpInfo(userID, sort, filter, page, pageSize);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Returns a list of matching passkey events
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all passkey events for a user
+     * Returns a list of passkey events for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;created&#x60; and &#x60;eventType&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;eventType&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @return ApiResponse&lt;PasskeyEventList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey events. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyEventList> passkeyEventListWithHttpInfo(String userID, String sort, List<String> filter, Integer page, Integer pageSize) throws ApiException {
+    public ApiResponse<PasskeyEventList> passkeyEventListWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize) throws ApiException {
         okhttp3.Call localVarCall = passkeyEventListValidateBeforeCall(userID, sort, filter, page, pageSize, null);
         Type localVarReturnType = new TypeToken<PasskeyEventList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Returns a list of matching passkey events
-     * @param userID ID of user (required)
-     * @param sort Field sorting (optional)
-     * @param filter Field filtering (optional)
-     * @param page Page number (optional, default to 1)
-     * @param pageSize Number of items per page (optional, default to 10)
+     * List all passkey events for a user (asynchronously)
+     * Returns a list of passkey events for a user by given &#x60;userID&#x60;.  The list can be sorted and filtered: - The &#x60;sort&#x60; parameter supports the following fields: &#x60;created&#x60; and &#x60;eventType&#x60;. - The &#x60;filter&#x60; parameter supports the following fields: &#x60;eventType&#x60;.  Refer to the parameter description for more details on sorting in different directions and using the filter with different operators. 
+     * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
+     * @param sort Field and direction to sort results. Use the format &#x60;fieldName:asc&#x60; or &#x60;fieldName:desc&#x60;.  (optional)
+     * @param filter Filter results by specific fields and conditions. Format: &#x60;&lt;field&gt;:&lt;operator&gt;:&lt;value&gt;&#x60;. Supported operators include:     - &#x60;eq&#x60;: equals (e\\.g\\. &#x60;email:eq:mail@example\\.com&#x60; matches items where email equals mail@example\\.com)     - &#x60;gt&#x60;: greater than (e\\.g\\. &#x60;created:gt:2021-01-01T00:00:00&#x60; matches items created after Jan 1, 2021)     - &#x60;lt&#x60;: less than (e\\.g\\. &#x60;created:lt:2021-01-01T00:00:00&#x60; matches items created before Jan 1, 2021)  (optional)
+     * @param page The page number to retrieve for paginated results.  (optional, default to 1)
+     * @param pageSize The number of items to return per page. Useful for pagination.  (optional, default to 10)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -510,11 +510,11 @@ public class PasskeyEventsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of all matching passkey events </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of all matching passkey events. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventListAsync(String userID, String sort, List<String> filter, Integer page, Integer pageSize, final ApiCallback<PasskeyEventList> _callback) throws ApiException {
+    public okhttp3.Call passkeyEventListAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nullable String sort, @javax.annotation.Nullable List<String> filter, @javax.annotation.Nullable Integer page, @javax.annotation.Nullable Integer pageSize, final ApiCallback<PasskeyEventList> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyEventListValidateBeforeCall(userID, sort, filter, page, pageSize, _callback);
         Type localVarReturnType = new TypeToken<PasskeyEventList>(){}.getType();

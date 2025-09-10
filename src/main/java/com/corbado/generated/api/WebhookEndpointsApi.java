@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -87,11 +87,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook endpoint has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call webhookEndpointCreateCall(WebhookEndpointCreateReq webhookEndpointCreateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointCreateCall(@javax.annotation.Nonnull WebhookEndpointCreateReq webhookEndpointCreateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -137,7 +137,7 @@ public class WebhookEndpointsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call webhookEndpointCreateValidateBeforeCall(WebhookEndpointCreateReq webhookEndpointCreateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call webhookEndpointCreateValidateBeforeCall(@javax.annotation.Nonnull WebhookEndpointCreateReq webhookEndpointCreateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'webhookEndpointCreateReq' is set
         if (webhookEndpointCreateReq == null) {
             throw new ApiException("Missing the required parameter 'webhookEndpointCreateReq' when calling webhookEndpointCreate(Async)");
@@ -157,11 +157,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook endpoint has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public WebhookEndpoint webhookEndpointCreate(WebhookEndpointCreateReq webhookEndpointCreateReq) throws ApiException {
+    public WebhookEndpoint webhookEndpointCreate(@javax.annotation.Nonnull WebhookEndpointCreateReq webhookEndpointCreateReq) throws ApiException {
         ApiResponse<WebhookEndpoint> localVarResp = webhookEndpointCreateWithHttpInfo(webhookEndpointCreateReq);
         return localVarResp.getData();
     }
@@ -176,11 +176,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook endpoint has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WebhookEndpoint> webhookEndpointCreateWithHttpInfo(WebhookEndpointCreateReq webhookEndpointCreateReq) throws ApiException {
+    public ApiResponse<WebhookEndpoint> webhookEndpointCreateWithHttpInfo(@javax.annotation.Nonnull WebhookEndpointCreateReq webhookEndpointCreateReq) throws ApiException {
         okhttp3.Call localVarCall = webhookEndpointCreateValidateBeforeCall(webhookEndpointCreateReq, null);
         Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -197,11 +197,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook endpoint has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been created. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call webhookEndpointCreateAsync(WebhookEndpointCreateReq webhookEndpointCreateReq, final ApiCallback<WebhookEndpoint> _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointCreateAsync(@javax.annotation.Nonnull WebhookEndpointCreateReq webhookEndpointCreateReq, final ApiCallback<WebhookEndpoint> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = webhookEndpointCreateValidateBeforeCall(webhookEndpointCreateReq, _callback);
         Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
@@ -218,11 +218,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call webhookEndpointDeleteCall(String webhookEndpointID, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointDeleteCall(@javax.annotation.Nonnull String webhookEndpointID, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -268,7 +268,7 @@ public class WebhookEndpointsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call webhookEndpointDeleteValidateBeforeCall(String webhookEndpointID, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call webhookEndpointDeleteValidateBeforeCall(@javax.annotation.Nonnull String webhookEndpointID, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'webhookEndpointID' is set
         if (webhookEndpointID == null) {
             throw new ApiException("Missing the required parameter 'webhookEndpointID' when calling webhookEndpointDelete(Async)");
@@ -288,11 +288,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public GenericRsp webhookEndpointDelete(String webhookEndpointID) throws ApiException {
+    public GenericRsp webhookEndpointDelete(@javax.annotation.Nonnull String webhookEndpointID) throws ApiException {
         ApiResponse<GenericRsp> localVarResp = webhookEndpointDeleteWithHttpInfo(webhookEndpointID);
         return localVarResp.getData();
     }
@@ -307,11 +307,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GenericRsp> webhookEndpointDeleteWithHttpInfo(String webhookEndpointID) throws ApiException {
+    public ApiResponse<GenericRsp> webhookEndpointDeleteWithHttpInfo(@javax.annotation.Nonnull String webhookEndpointID) throws ApiException {
         okhttp3.Call localVarCall = webhookEndpointDeleteValidateBeforeCall(webhookEndpointID, null);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -328,11 +328,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Operation succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Operation succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call webhookEndpointDeleteAsync(String webhookEndpointID, final ApiCallback<GenericRsp> _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointDeleteAsync(@javax.annotation.Nonnull String webhookEndpointID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = webhookEndpointDeleteValidateBeforeCall(webhookEndpointID, _callback);
         Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
@@ -348,7 +348,7 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of webhook endpoints </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of webhook endpoints. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
@@ -411,7 +411,7 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of webhook endpoints </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of webhook endpoints. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
@@ -429,7 +429,7 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of webhook endpoints </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of webhook endpoints. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
@@ -449,7 +449,7 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> List of webhook endpoints </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> List of webhook endpoints. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
@@ -471,11 +471,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook endpoint has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call webhookEndpointUpdateCall(String webhookEndpointID, WebhookEndpointUpdateReq webhookEndpointUpdateReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointUpdateCall(@javax.annotation.Nonnull String webhookEndpointID, @javax.annotation.Nonnull WebhookEndpointUpdateReq webhookEndpointUpdateReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -522,7 +522,7 @@ public class WebhookEndpointsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call webhookEndpointUpdateValidateBeforeCall(String webhookEndpointID, WebhookEndpointUpdateReq webhookEndpointUpdateReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call webhookEndpointUpdateValidateBeforeCall(@javax.annotation.Nonnull String webhookEndpointID, @javax.annotation.Nonnull WebhookEndpointUpdateReq webhookEndpointUpdateReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'webhookEndpointID' is set
         if (webhookEndpointID == null) {
             throw new ApiException("Missing the required parameter 'webhookEndpointID' when calling webhookEndpointUpdate(Async)");
@@ -548,11 +548,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook endpoint has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public WebhookEndpoint webhookEndpointUpdate(String webhookEndpointID, WebhookEndpointUpdateReq webhookEndpointUpdateReq) throws ApiException {
+    public WebhookEndpoint webhookEndpointUpdate(@javax.annotation.Nonnull String webhookEndpointID, @javax.annotation.Nonnull WebhookEndpointUpdateReq webhookEndpointUpdateReq) throws ApiException {
         ApiResponse<WebhookEndpoint> localVarResp = webhookEndpointUpdateWithHttpInfo(webhookEndpointID, webhookEndpointUpdateReq);
         return localVarResp.getData();
     }
@@ -568,11 +568,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook endpoint has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<WebhookEndpoint> webhookEndpointUpdateWithHttpInfo(String webhookEndpointID, WebhookEndpointUpdateReq webhookEndpointUpdateReq) throws ApiException {
+    public ApiResponse<WebhookEndpoint> webhookEndpointUpdateWithHttpInfo(@javax.annotation.Nonnull String webhookEndpointID, @javax.annotation.Nonnull WebhookEndpointUpdateReq webhookEndpointUpdateReq) throws ApiException {
         okhttp3.Call localVarCall = webhookEndpointUpdateValidateBeforeCall(webhookEndpointID, webhookEndpointUpdateReq, null);
         Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -590,11 +590,11 @@ public class WebhookEndpointsApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Webhook endpoint has been updated </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Webhook endpoint has been updated. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call webhookEndpointUpdateAsync(String webhookEndpointID, WebhookEndpointUpdateReq webhookEndpointUpdateReq, final ApiCallback<WebhookEndpoint> _callback) throws ApiException {
+    public okhttp3.Call webhookEndpointUpdateAsync(@javax.annotation.Nonnull String webhookEndpointID, @javax.annotation.Nonnull WebhookEndpointUpdateReq webhookEndpointUpdateReq, final ApiCallback<WebhookEndpoint> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = webhookEndpointUpdateValidateBeforeCall(webhookEndpointID, webhookEndpointUpdateReq, _callback);
         Type localVarReturnType = new TypeToken<WebhookEndpoint>(){}.getType();

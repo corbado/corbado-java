@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,6 +14,7 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.corbado.generated.model.UserStatus;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -43,13 +44,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Locale;
 
 import com.corbado.generated.invoker.JSON;
 
 /**
  * UserCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-03-14T05:38:33.191503012Z[Etc/UTC]", comments = "Generator version: 7.13.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class UserCreateReq {
   public static final String SERIALIZED_NAME_FULL_NAME = "fullName";
   @SerializedName(SERIALIZED_NAME_FULL_NAME)
@@ -113,7 +115,7 @@ public class UserCreateReq {
   }
 
   /**
-   * For connect projects, the webauthnID can be explicitly set for a user
+   * For [Corbado Connect](https://docs.corbado.com/corbado-connect) projects, the webauthnID can be explicitly set for a user
    * @return explicitWebauthnID
    */
   @javax.annotation.Nullable
@@ -174,14 +176,10 @@ public class UserCreateReq {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>();
-    openapiFields.add("fullName");
-    openapiFields.add("status");
-    openapiFields.add("explicitWebauthnID");
+    openapiFields = new HashSet<String>(Arrays.asList("fullName", "status", "explicitWebauthnID"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("status");
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("status"));
   }
 
   /**
@@ -193,7 +191,7 @@ public class UserCreateReq {
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
         if (!UserCreateReq.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in UserCreateReq is not found in the empty JSON string", UserCreateReq.openapiRequiredFields.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in UserCreateReq is not found in the empty JSON string", UserCreateReq.openapiRequiredFields.toString()));
         }
       }
 
@@ -201,24 +199,24 @@ public class UserCreateReq {
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
         if (!UserCreateReq.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `UserCreateReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UserCreateReq` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
       for (String requiredField : UserCreateReq.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("fullName") != null && !jsonObj.get("fullName").isJsonNull()) && !jsonObj.get("fullName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fullName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fullName").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `fullName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fullName").toString()));
       }
       // validate the required field `status`
       UserStatus.validateJsonElement(jsonObj.get("status"));
       if ((jsonObj.get("explicitWebauthnID") != null && !jsonObj.get("explicitWebauthnID").isJsonNull()) && !jsonObj.get("explicitWebauthnID").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `explicitWebauthnID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explicitWebauthnID").toString()));
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `explicitWebauthnID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explicitWebauthnID").toString()));
       }
   }
 

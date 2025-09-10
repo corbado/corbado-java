@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -14,9 +14,11 @@
 package com.corbado.generated.model;
 
 import java.util.Objects;
+import java.util.Locale;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
+import java.util.Locale;
 import com.google.gson.TypeAdapter;
 import com.google.gson.JsonElement;
 import com.google.gson.annotations.JsonAdapter;
@@ -47,7 +49,9 @@ public enum PasskeyEventType {
   
   APPEND_EXPLICIT_ABORT("append-explicit-abort"),
   
-  APPEND_ERROR("append-error");
+  APPEND_ERROR("append-error"),
+  
+  LOGIN_NO_CREDENTIALS("login-no-credentials");
 
   private String value;
 

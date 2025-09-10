@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -27,8 +27,11 @@ import io.gsonfire.TypeSelector;
 import okio.ByteString;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
@@ -64,8 +67,6 @@ public class JSON {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("alternativeProjectID", com.corbado.generated.model.PasskeyMediationFinishErrorAlternativeProject.class);
                         classByDiscriminatorValue.put("credentialDeleted", com.corbado.generated.model.PasskeyMediationFinishErrorCredentialDeleted.class);
-                        classByDiscriminatorValue.put("passkeyMediationFinishErrorAlternativeProject", com.corbado.generated.model.PasskeyMediationFinishErrorAlternativeProject.class);
-                        classByDiscriminatorValue.put("passkeyMediationFinishErrorCredentialDeleted", com.corbado.generated.model.PasskeyMediationFinishErrorCredentialDeleted.class);
                         classByDiscriminatorValue.put("passkeyMediationFinishRsp_error", com.corbado.generated.model.PasskeyMediationFinishRspError.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "type"));
@@ -107,11 +108,14 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(LocalDate.class, localDateTypeAdapter);
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.AaguidDetails.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.AppendHistoryData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.AuthEvent.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.AuthEventCreateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.Challenge.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ChallengeCreateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ChallengeUpdateReq.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ClientEnv.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ClientEnvList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ClientInformation.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ConnectToken.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ConnectTokenCreateReq.CustomTypeAdapterFactory());
@@ -125,6 +129,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.Credential.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.CredentialList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.DecisionInsights.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.DecisionInsightsAppend.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.DetectionInsights.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.DetectionTag.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ErrorRsp.CustomTypeAdapterFactory());
@@ -136,6 +141,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.IdentifierList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.IdentifierUpdateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.JavaScriptHighEntropy.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.NativeMeta.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.Paging.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ParsedDeviceInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyAppendFinishReq.CustomTypeAdapterFactory());
@@ -163,6 +169,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyMediationStartRsp.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyPostLoginReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyPostLoginRsp.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyVerifySignedDataReq.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasskeyVerifySignedDataRsp.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasswordManager.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.PasswordManagerList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.ProjectConfigUpdateCnameReq.CustomTypeAdapterFactory());
@@ -173,7 +181,9 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.SocialAccountCreateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.SocialAccountList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.User.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.UserAggregate.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.UserCreateReq.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.UserList.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.UserUpdateReq.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.WebhookEndpoint.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.corbado.generated.model.WebhookEndpointCreateReq.CustomTypeAdapterFactory());
@@ -240,6 +250,28 @@ public class JSON {
                 return (T) body;
             } else {
                 throw (e);
+            }
+        }
+    }
+
+    /**
+    * Deserialize the given JSON InputStream to a Java object.
+    *
+    * @param <T>         Type
+    * @param inputStream The JSON InputStream
+    * @param returnType  The type to deserialize into
+    * @return The deserialized Java object
+    */
+    @SuppressWarnings("unchecked")
+    public static <T> T deserialize(InputStream inputStream, Type returnType) throws IOException {
+        try (InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
+        if (isLenientOnJson) {
+            // see https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/stream/JsonReader.html#setLenient(boolean)
+            JsonReader jsonReader = new JsonReader(reader);
+            jsonReader.setLenient(true);
+            return gson.fromJson(jsonReader, returnType);
+            } else {
+                return gson.fromJson(reader, returnType);
             }
         }
     }

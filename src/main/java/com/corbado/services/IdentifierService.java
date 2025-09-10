@@ -36,11 +36,12 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   /**
    * Create a new login identifier.
    *
-   * @param userID ID of user (required)
+   * @param userID              ID of user (required)
    * @param identifierCreateReq
    * @return Identifier
-   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
-   *     the response body
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or
+   *                                cannot deserialize
+   *                                the response body
    */
   public Identifier create(
       @NonNull final String userID, @NonNull final IdentifierCreateReq identifierCreateReq)
@@ -57,7 +58,7 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
 
     try {
       return client.identifierCreate(userID, identifierCreateReq);
-      //      client.identifierList(userID, null, null, null)
+      // client.identifierList(userID, null, null, null)
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);
     }
@@ -66,13 +67,14 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   /**
    * Returns a list of matching identifiers
    *
-   * @param sort Field sorting (optional)
-   * @param filter Field filtering (optional)
-   * @param page Page number (optional, default to 1)
+   * @param sort     Field sorting (optional)
+   * @param filter   Field filtering (optional)
+   * @param page     Page number (optional, default to 1)
    * @param pageSize Number of items per page (optional, default to 10)
    * @return IdentifierList list of matching identifiers
-   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
-   *     the response body
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or
+   *                                cannot deserialize
+   *                                the response body
    */
   public IdentifierList list(
       @Nullable final String sort,
@@ -90,11 +92,12 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   /**
    * Returns a list of matching identifiers
    *
-   * @param page Page number (optional, default to 1)
+   * @param page     Page number (optional, default to 1)
    * @param pageSize Number of items per page (optional, default to 10)
    * @return IdentifierList list of matching identifiers
-   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
-   *     the response body
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or
+   *                                cannot deserialize
+   *                                the response body
    */
   public IdentifierList listAllWithPaging(
       @Nullable final Integer page, @Nullable final Integer pageSize)
@@ -106,7 +109,7 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
    * Gets the by value and type.
    *
    * @param value the value
-   * @param type the type
+   * @param type  the type
    * @return the by value and type
    * @throws CorbadoServerException the corbado server exception
    */
@@ -123,14 +126,15 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   /**
    * Gets the identifiers matching identifier value and identifier type.
    *
-   * @param sort the sort
-   * @param value the identifier value
-   * @param type the identifier type
-   * @param page the page
+   * @param sort     the sort
+   * @param value    the identifier value
+   * @param type     the identifier type
+   * @param page     the page
    * @param pageSize the page size
    * @return list of matching identifiers
-   * @throws CorbadoServerException tIf fail to call the API, e.g. server error or cannot
-   *     deserialize the response body
+   * @throws CorbadoServerException tIf fail to call the API, e.g. server error or
+   *                                cannot
+   *                                deserialize the response body
    */
   public IdentifierList listByValueAndTypeWithPaging(
       @Nullable final String sort,
@@ -150,32 +154,33 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
    * Exists by value and type.
    *
    * @return the identifier list
-   * @throws ApiException the api exception
-   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
-   *     the response body
+   * @throws ApiException           the api exception
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or
+   *                                cannot deserialize
+   *                                the response body
    */
   public boolean existsByValueAndType(
       @NonNull final String value, @NonNull final IdentifierType type)
       throws CorbadoServerException {
 
-    final IdentifierList ret =
-        list(
-            null,
-            Arrays.asList("identifierValue:eq:" + value, "identifierType:eq:" + type),
-            null,
-            null);
+    final IdentifierList ret = list(
+        null,
+        Arrays.asList("identifierValue:eq:" + value, "identifierType:eq:" + type),
+        null,
+        null);
     return !ret.getIdentifiers().isEmpty();
   }
 
   /**
    * List all identifiers (active and inactive) by user id with paging.
    *
-   * @param userID the user ID (with or without 'usr-' prefix)
-   * @param page the page
+   * @param userID   the user ID (with or without 'usr-' prefix)
+   * @param page     the page
    * @param pageSize the page size
    * @return the identifier list
-   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
-   *     the response body
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or
+   *                                cannot deserialize
+   *                                the response body
    */
   public IdentifierList listAllByUserIdWithPaging(
       @NonNull String userID, @Nullable final Integer page, @Nullable final Integer pageSize)
@@ -191,13 +196,14 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   /**
    * List all identifiers (active and inactive) by user id and type with paging.
    *
-   * @param userID the user ID
-   * @param type the type of identifier (email, phone, username)
-   * @param page the page
+   * @param userID   the user ID
+   * @param type     the type of identifier (email, phone, username)
+   * @param page     the page
    * @param pageSize the page size
    * @return the identifier list
-   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
-   *     the response body
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or
+   *                                cannot deserialize
+   *                                the response body
    */
   public IdentifierList listAllByUserIdAndTypeWithPaging(
       @NonNull String userID,
@@ -219,14 +225,14 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
    *
    * @param userID the user ID
    * @return the single email by user id
-   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
-   *     the response body
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or
+   *                                cannot deserialize
+   *                                the response body
    */
   public List<Identifier> listAllEmailsByUserId(@NonNull final String userID)
       throws CorbadoServerException {
     final ArrayList<Identifier> list = new ArrayList<>();
-    final IdentifierList firstRes =
-        listAllByUserIdAndTypeWithPaging(userID, IdentifierType.EMAIL, null, null);
+    final IdentifierList firstRes = listAllByUserIdAndTypeWithPaging(userID, IdentifierType.EMAIL, null, null);
     list.addAll(firstRes.getIdentifiers());
     final Paging paging = firstRes.getPaging();
     // if there are more results unread
@@ -234,8 +240,8 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
       // fetch further entries
       final Integer currentPage = paging.getPage();
       paging.setPage(currentPage + 1);
-      final IdentifierList temp =
-          listAllByUserIdAndTypeWithPaging(userID, IdentifierType.EMAIL, paging.getPage(), null);
+      final IdentifierList temp = listAllByUserIdAndTypeWithPaging(userID, IdentifierType.EMAIL, paging.getPage(),
+          null);
       // update paging
       list.addAll(temp.getIdentifiers());
     }
@@ -246,12 +252,13 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   /**
    * Updates a login identifier (e.g. from pending to verified)
    *
-   * @param userID ID of user (required)
-   * @param identifierID ID of login identifier (required)
+   * @param userID              ID of user (required)
+   * @param identifierID        ID of login identifier (required)
    * @param identifierUpdateReq (required)
    * @return Identifier
-   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
-   *     the response body
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or
+   *                                cannot deserialize
+   *                                the response body
    */
   public Identifier updateStatus(
       @NonNull final String userID,
@@ -268,12 +275,13 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   /**
    * Updates a login identifier (e.g. from pending to verified)
    *
-   * @param userID ID of user (required)
+   * @param userID       ID of user (required)
    * @param identifierID ID of login identifier (required)
-   * @param status IdentifierStatus (required)
+   * @param status       IdentifierStatus (required)
    * @return Identifier
-   * @throws CorbadoServerException If fail to call the API, e.g. server error or cannot deserialize
-   *     the response body
+   * @throws CorbadoServerException If fail to call the API, e.g. server error or
+   *                                cannot deserialize
+   *                                the response body
    */
   public Identifier updateStatus(
       @NonNull final String userID,
@@ -286,9 +294,10 @@ public class IdentifierService extends ApiService<IdentifiersApi> {
   /**
    * Delete.
    *
-   * @param userID the user ID
+   * @param userID       the user ID
    * @param identifierID the identifier ID
-   * @throws CorbadoServerException If fail to call the API or to delete the object.
+   * @throws CorbadoServerException If fail to call the API or to delete the
+   *                                object.
    */
   public void delete(@NonNull final String userID, @NonNull final String identifierID)
       throws CorbadoServerException {

@@ -1,6 +1,6 @@
 /*
  * Corbado Backend API
- *  # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
+ * # Introduction This documentation gives an overview of all Corbado Backend API calls to implement passwordless authentication with Passkeys. 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: support@corbado.com
@@ -42,6 +42,8 @@ import com.corbado.generated.model.PasskeyMediationStartReq;
 import com.corbado.generated.model.PasskeyMediationStartRsp;
 import com.corbado.generated.model.PasskeyPostLoginReq;
 import com.corbado.generated.model.PasskeyPostLoginRsp;
+import com.corbado.generated.model.PasskeyVerifySignedDataReq;
+import com.corbado.generated.model.PasskeyVerifySignedDataRsp;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -96,11 +98,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey append succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey append succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyAppendFinishCall(PasskeyAppendFinishReq passkeyAppendFinishReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyAppendFinishCall(@javax.annotation.Nonnull PasskeyAppendFinishReq passkeyAppendFinishReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -146,7 +148,7 @@ public class PasskeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyAppendFinishValidateBeforeCall(PasskeyAppendFinishReq passkeyAppendFinishReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyAppendFinishValidateBeforeCall(@javax.annotation.Nonnull PasskeyAppendFinishReq passkeyAppendFinishReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'passkeyAppendFinishReq' is set
         if (passkeyAppendFinishReq == null) {
             throw new ApiException("Missing the required parameter 'passkeyAppendFinishReq' when calling passkeyAppendFinish(Async)");
@@ -157,8 +159,8 @@ public class PasskeysApi {
     }
 
     /**
-     * 
-     * Completes a challenge for creating a new passkey
+     * Finish creating a new passkey
+     * Finishes creating a new passkey by completing the WebAuthn ceremony. 
      * @param passkeyAppendFinishReq  (required)
      * @return PasskeyAppendFinishRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -166,18 +168,18 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey append succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey append succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyAppendFinishRsp passkeyAppendFinish(PasskeyAppendFinishReq passkeyAppendFinishReq) throws ApiException {
+    public PasskeyAppendFinishRsp passkeyAppendFinish(@javax.annotation.Nonnull PasskeyAppendFinishReq passkeyAppendFinishReq) throws ApiException {
         ApiResponse<PasskeyAppendFinishRsp> localVarResp = passkeyAppendFinishWithHttpInfo(passkeyAppendFinishReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Completes a challenge for creating a new passkey
+     * Finish creating a new passkey
+     * Finishes creating a new passkey by completing the WebAuthn ceremony. 
      * @param passkeyAppendFinishReq  (required)
      * @return ApiResponse&lt;PasskeyAppendFinishRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -185,19 +187,19 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey append succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey append succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyAppendFinishRsp> passkeyAppendFinishWithHttpInfo(PasskeyAppendFinishReq passkeyAppendFinishReq) throws ApiException {
+    public ApiResponse<PasskeyAppendFinishRsp> passkeyAppendFinishWithHttpInfo(@javax.annotation.Nonnull PasskeyAppendFinishReq passkeyAppendFinishReq) throws ApiException {
         okhttp3.Call localVarCall = passkeyAppendFinishValidateBeforeCall(passkeyAppendFinishReq, null);
         Type localVarReturnType = new TypeToken<PasskeyAppendFinishRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Completes a challenge for creating a new passkey
+     * Finish creating a new passkey (asynchronously)
+     * Finishes creating a new passkey by completing the WebAuthn ceremony. 
      * @param passkeyAppendFinishReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -206,11 +208,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey append succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey append succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyAppendFinishAsync(PasskeyAppendFinishReq passkeyAppendFinishReq, final ApiCallback<PasskeyAppendFinishRsp> _callback) throws ApiException {
+    public okhttp3.Call passkeyAppendFinishAsync(@javax.annotation.Nonnull PasskeyAppendFinishReq passkeyAppendFinishReq, final ApiCallback<PasskeyAppendFinishRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyAppendFinishValidateBeforeCall(passkeyAppendFinishReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyAppendFinishRsp>(){}.getType();
@@ -227,11 +229,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey append challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey creation process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyAppendStartCall(PasskeyAppendStartReq passkeyAppendStartReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyAppendStartCall(@javax.annotation.Nonnull PasskeyAppendStartReq passkeyAppendStartReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -277,7 +279,7 @@ public class PasskeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyAppendStartValidateBeforeCall(PasskeyAppendStartReq passkeyAppendStartReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyAppendStartValidateBeforeCall(@javax.annotation.Nonnull PasskeyAppendStartReq passkeyAppendStartReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'passkeyAppendStartReq' is set
         if (passkeyAppendStartReq == null) {
             throw new ApiException("Missing the required parameter 'passkeyAppendStartReq' when calling passkeyAppendStart(Async)");
@@ -288,8 +290,8 @@ public class PasskeysApi {
     }
 
     /**
-     * 
-     * Starts a challenge for creating a new passkey
+     * Start creating a new passkey
+     * Starts creating a new passkey by initiating the WebAuthn ceremony. To complete the ceremony you need to call [finish](/api-reference/backend-api/passkeys/finish-creating-a-new-passkey). 
      * @param passkeyAppendStartReq  (required)
      * @return PasskeyAppendStartRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -297,18 +299,18 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey append challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey creation process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyAppendStartRsp passkeyAppendStart(PasskeyAppendStartReq passkeyAppendStartReq) throws ApiException {
+    public PasskeyAppendStartRsp passkeyAppendStart(@javax.annotation.Nonnull PasskeyAppendStartReq passkeyAppendStartReq) throws ApiException {
         ApiResponse<PasskeyAppendStartRsp> localVarResp = passkeyAppendStartWithHttpInfo(passkeyAppendStartReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Starts a challenge for creating a new passkey
+     * Start creating a new passkey
+     * Starts creating a new passkey by initiating the WebAuthn ceremony. To complete the ceremony you need to call [finish](/api-reference/backend-api/passkeys/finish-creating-a-new-passkey). 
      * @param passkeyAppendStartReq  (required)
      * @return ApiResponse&lt;PasskeyAppendStartRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -316,19 +318,19 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey append challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey creation process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyAppendStartRsp> passkeyAppendStartWithHttpInfo(PasskeyAppendStartReq passkeyAppendStartReq) throws ApiException {
+    public ApiResponse<PasskeyAppendStartRsp> passkeyAppendStartWithHttpInfo(@javax.annotation.Nonnull PasskeyAppendStartReq passkeyAppendStartReq) throws ApiException {
         okhttp3.Call localVarCall = passkeyAppendStartValidateBeforeCall(passkeyAppendStartReq, null);
         Type localVarReturnType = new TypeToken<PasskeyAppendStartRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Starts a challenge for creating a new passkey
+     * Start creating a new passkey (asynchronously)
+     * Starts creating a new passkey by initiating the WebAuthn ceremony. To complete the ceremony you need to call [finish](/api-reference/backend-api/passkeys/finish-creating-a-new-passkey). 
      * @param passkeyAppendStartReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -337,11 +339,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey append challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey creation process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyAppendStartAsync(PasskeyAppendStartReq passkeyAppendStartReq, final ApiCallback<PasskeyAppendStartRsp> _callback) throws ApiException {
+    public okhttp3.Call passkeyAppendStartAsync(@javax.annotation.Nonnull PasskeyAppendStartReq passkeyAppendStartReq, final ApiCallback<PasskeyAppendStartRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyAppendStartValidateBeforeCall(passkeyAppendStartReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyAppendStartRsp>(){}.getType();
@@ -358,11 +360,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyLoginFinishCall(PasskeyLoginFinishReq passkeyLoginFinishReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyLoginFinishCall(@javax.annotation.Nonnull PasskeyLoginFinishReq passkeyLoginFinishReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -408,7 +410,7 @@ public class PasskeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyLoginFinishValidateBeforeCall(PasskeyLoginFinishReq passkeyLoginFinishReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyLoginFinishValidateBeforeCall(@javax.annotation.Nonnull PasskeyLoginFinishReq passkeyLoginFinishReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'passkeyLoginFinishReq' is set
         if (passkeyLoginFinishReq == null) {
             throw new ApiException("Missing the required parameter 'passkeyLoginFinishReq' when calling passkeyLoginFinish(Async)");
@@ -419,8 +421,8 @@ public class PasskeysApi {
     }
 
     /**
-     * 
-     * Completes a challenge for an existing passkey
+     * Finish login with an existing passkey
+     * Finishes login with an existing passkey by completing the WebAuthn ceremony. 
      * @param passkeyLoginFinishReq  (required)
      * @return PasskeyLoginFinishRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -428,18 +430,18 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyLoginFinishRsp passkeyLoginFinish(PasskeyLoginFinishReq passkeyLoginFinishReq) throws ApiException {
+    public PasskeyLoginFinishRsp passkeyLoginFinish(@javax.annotation.Nonnull PasskeyLoginFinishReq passkeyLoginFinishReq) throws ApiException {
         ApiResponse<PasskeyLoginFinishRsp> localVarResp = passkeyLoginFinishWithHttpInfo(passkeyLoginFinishReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Completes a challenge for an existing passkey
+     * Finish login with an existing passkey
+     * Finishes login with an existing passkey by completing the WebAuthn ceremony. 
      * @param passkeyLoginFinishReq  (required)
      * @return ApiResponse&lt;PasskeyLoginFinishRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -447,19 +449,19 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyLoginFinishRsp> passkeyLoginFinishWithHttpInfo(PasskeyLoginFinishReq passkeyLoginFinishReq) throws ApiException {
+    public ApiResponse<PasskeyLoginFinishRsp> passkeyLoginFinishWithHttpInfo(@javax.annotation.Nonnull PasskeyLoginFinishReq passkeyLoginFinishReq) throws ApiException {
         okhttp3.Call localVarCall = passkeyLoginFinishValidateBeforeCall(passkeyLoginFinishReq, null);
         Type localVarReturnType = new TypeToken<PasskeyLoginFinishRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Completes a challenge for an existing passkey
+     * Finish login with an existing passkey (asynchronously)
+     * Finishes login with an existing passkey by completing the WebAuthn ceremony. 
      * @param passkeyLoginFinishReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -468,11 +470,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyLoginFinishAsync(PasskeyLoginFinishReq passkeyLoginFinishReq, final ApiCallback<PasskeyLoginFinishRsp> _callback) throws ApiException {
+    public okhttp3.Call passkeyLoginFinishAsync(@javax.annotation.Nonnull PasskeyLoginFinishReq passkeyLoginFinishReq, final ApiCallback<PasskeyLoginFinishRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyLoginFinishValidateBeforeCall(passkeyLoginFinishReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyLoginFinishRsp>(){}.getType();
@@ -489,11 +491,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey authentication process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyLoginStartCall(PasskeyLoginStartReq passkeyLoginStartReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyLoginStartCall(@javax.annotation.Nonnull PasskeyLoginStartReq passkeyLoginStartReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -539,7 +541,7 @@ public class PasskeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyLoginStartValidateBeforeCall(PasskeyLoginStartReq passkeyLoginStartReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyLoginStartValidateBeforeCall(@javax.annotation.Nonnull PasskeyLoginStartReq passkeyLoginStartReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'passkeyLoginStartReq' is set
         if (passkeyLoginStartReq == null) {
             throw new ApiException("Missing the required parameter 'passkeyLoginStartReq' when calling passkeyLoginStart(Async)");
@@ -550,8 +552,8 @@ public class PasskeysApi {
     }
 
     /**
-     * 
-     * Starts a challenge for an existing passkey
+     * Start login with an existing passkey
+     * Starts login with an existing passkey by initiating the WebAuthn ceremony. To complete the ceremony you need to call [finish](/api-reference/backend-api/passkeys/finish-login-with-an-existing-passkey). 
      * @param passkeyLoginStartReq  (required)
      * @return PasskeyLoginStartRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -559,18 +561,18 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey authentication process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyLoginStartRsp passkeyLoginStart(PasskeyLoginStartReq passkeyLoginStartReq) throws ApiException {
+    public PasskeyLoginStartRsp passkeyLoginStart(@javax.annotation.Nonnull PasskeyLoginStartReq passkeyLoginStartReq) throws ApiException {
         ApiResponse<PasskeyLoginStartRsp> localVarResp = passkeyLoginStartWithHttpInfo(passkeyLoginStartReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Starts a challenge for an existing passkey
+     * Start login with an existing passkey
+     * Starts login with an existing passkey by initiating the WebAuthn ceremony. To complete the ceremony you need to call [finish](/api-reference/backend-api/passkeys/finish-login-with-an-existing-passkey). 
      * @param passkeyLoginStartReq  (required)
      * @return ApiResponse&lt;PasskeyLoginStartRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -578,19 +580,19 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey authentication process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyLoginStartRsp> passkeyLoginStartWithHttpInfo(PasskeyLoginStartReq passkeyLoginStartReq) throws ApiException {
+    public ApiResponse<PasskeyLoginStartRsp> passkeyLoginStartWithHttpInfo(@javax.annotation.Nonnull PasskeyLoginStartReq passkeyLoginStartReq) throws ApiException {
         okhttp3.Call localVarCall = passkeyLoginStartValidateBeforeCall(passkeyLoginStartReq, null);
         Type localVarReturnType = new TypeToken<PasskeyLoginStartRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Starts a challenge for an existing passkey
+     * Start login with an existing passkey (asynchronously)
+     * Starts login with an existing passkey by initiating the WebAuthn ceremony. To complete the ceremony you need to call [finish](/api-reference/backend-api/passkeys/finish-login-with-an-existing-passkey). 
      * @param passkeyLoginStartReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -599,11 +601,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey authentication process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyLoginStartAsync(PasskeyLoginStartReq passkeyLoginStartReq, final ApiCallback<PasskeyLoginStartRsp> _callback) throws ApiException {
+    public okhttp3.Call passkeyLoginStartAsync(@javax.annotation.Nonnull PasskeyLoginStartReq passkeyLoginStartReq, final ApiCallback<PasskeyLoginStartRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyLoginStartValidateBeforeCall(passkeyLoginStartReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyLoginStartRsp>(){}.getType();
@@ -620,11 +622,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey mediation has been success, thus we can return a userID </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login process has been completed. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyMediationFinishCall(PasskeyMediationFinishReq passkeyMediationFinishReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyMediationFinishCall(@javax.annotation.Nonnull PasskeyMediationFinishReq passkeyMediationFinishReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -670,7 +672,7 @@ public class PasskeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyMediationFinishValidateBeforeCall(PasskeyMediationFinishReq passkeyMediationFinishReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyMediationFinishValidateBeforeCall(@javax.annotation.Nonnull PasskeyMediationFinishReq passkeyMediationFinishReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'passkeyMediationFinishReq' is set
         if (passkeyMediationFinishReq == null) {
             throw new ApiException("Missing the required parameter 'passkeyMediationFinishReq' when calling passkeyMediationFinish(Async)");
@@ -681,8 +683,8 @@ public class PasskeysApi {
     }
 
     /**
-     * 
-     * Completes a challenge for an existing passkey (Conditional UI)
+     * Finish login with an existing passkey (Conditional UI)
+     * Finishes login with an existing passkey in [Conditional UI](https://www.corbado.com/glossary/conditional-ui) scenario. 
      * @param passkeyMediationFinishReq  (required)
      * @return PasskeyMediationFinishRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -690,18 +692,18 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey mediation has been success, thus we can return a userID </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login process has been completed. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyMediationFinishRsp passkeyMediationFinish(PasskeyMediationFinishReq passkeyMediationFinishReq) throws ApiException {
+    public PasskeyMediationFinishRsp passkeyMediationFinish(@javax.annotation.Nonnull PasskeyMediationFinishReq passkeyMediationFinishReq) throws ApiException {
         ApiResponse<PasskeyMediationFinishRsp> localVarResp = passkeyMediationFinishWithHttpInfo(passkeyMediationFinishReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Completes a challenge for an existing passkey (Conditional UI)
+     * Finish login with an existing passkey (Conditional UI)
+     * Finishes login with an existing passkey in [Conditional UI](https://www.corbado.com/glossary/conditional-ui) scenario. 
      * @param passkeyMediationFinishReq  (required)
      * @return ApiResponse&lt;PasskeyMediationFinishRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -709,19 +711,19 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey mediation has been success, thus we can return a userID </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login process has been completed. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyMediationFinishRsp> passkeyMediationFinishWithHttpInfo(PasskeyMediationFinishReq passkeyMediationFinishReq) throws ApiException {
+    public ApiResponse<PasskeyMediationFinishRsp> passkeyMediationFinishWithHttpInfo(@javax.annotation.Nonnull PasskeyMediationFinishReq passkeyMediationFinishReq) throws ApiException {
         okhttp3.Call localVarCall = passkeyMediationFinishValidateBeforeCall(passkeyMediationFinishReq, null);
         Type localVarReturnType = new TypeToken<PasskeyMediationFinishRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Completes a challenge for an existing passkey (Conditional UI)
+     * Finish login with an existing passkey (Conditional UI) (asynchronously)
+     * Finishes login with an existing passkey in [Conditional UI](https://www.corbado.com/glossary/conditional-ui) scenario. 
      * @param passkeyMediationFinishReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -730,11 +732,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey mediation has been success, thus we can return a userID </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login process has been completed. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyMediationFinishAsync(PasskeyMediationFinishReq passkeyMediationFinishReq, final ApiCallback<PasskeyMediationFinishRsp> _callback) throws ApiException {
+    public okhttp3.Call passkeyMediationFinishAsync(@javax.annotation.Nonnull PasskeyMediationFinishReq passkeyMediationFinishReq, final ApiCallback<PasskeyMediationFinishRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyMediationFinishValidateBeforeCall(passkeyMediationFinishReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyMediationFinishRsp>(){}.getType();
@@ -751,11 +753,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyMediationStartCall(PasskeyMediationStartReq passkeyMediationStartReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyMediationStartCall(@javax.annotation.Nonnull PasskeyMediationStartReq passkeyMediationStartReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -801,7 +803,7 @@ public class PasskeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyMediationStartValidateBeforeCall(PasskeyMediationStartReq passkeyMediationStartReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyMediationStartValidateBeforeCall(@javax.annotation.Nonnull PasskeyMediationStartReq passkeyMediationStartReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'passkeyMediationStartReq' is set
         if (passkeyMediationStartReq == null) {
             throw new ApiException("Missing the required parameter 'passkeyMediationStartReq' when calling passkeyMediationStart(Async)");
@@ -812,8 +814,8 @@ public class PasskeysApi {
     }
 
     /**
-     * 
-     * Starts a challenge for an existing passkey (Conditional UI)
+     * Start login with an existing passkey (Conditional UI)
+     * Starts login with an existing passkey in [Conditional UI](https://www.corbado.com/glossary/conditional-ui) scenario. To complete the ceremony you need to call [finish](/api-reference/backend-api/passkeys/finish-login-with-an-existing-passkey-conditional-ui). 
      * @param passkeyMediationStartReq  (required)
      * @return PasskeyMediationStartRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -821,18 +823,18 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyMediationStartRsp passkeyMediationStart(PasskeyMediationStartReq passkeyMediationStartReq) throws ApiException {
+    public PasskeyMediationStartRsp passkeyMediationStart(@javax.annotation.Nonnull PasskeyMediationStartReq passkeyMediationStartReq) throws ApiException {
         ApiResponse<PasskeyMediationStartRsp> localVarResp = passkeyMediationStartWithHttpInfo(passkeyMediationStartReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
-     * Starts a challenge for an existing passkey (Conditional UI)
+     * Start login with an existing passkey (Conditional UI)
+     * Starts login with an existing passkey in [Conditional UI](https://www.corbado.com/glossary/conditional-ui) scenario. To complete the ceremony you need to call [finish](/api-reference/backend-api/passkeys/finish-login-with-an-existing-passkey-conditional-ui). 
      * @param passkeyMediationStartReq  (required)
      * @return ApiResponse&lt;PasskeyMediationStartRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -840,19 +842,19 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyMediationStartRsp> passkeyMediationStartWithHttpInfo(PasskeyMediationStartReq passkeyMediationStartReq) throws ApiException {
+    public ApiResponse<PasskeyMediationStartRsp> passkeyMediationStartWithHttpInfo(@javax.annotation.Nonnull PasskeyMediationStartReq passkeyMediationStartReq) throws ApiException {
         okhttp3.Call localVarCall = passkeyMediationStartValidateBeforeCall(passkeyMediationStartReq, null);
         Type localVarReturnType = new TypeToken<PasskeyMediationStartRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
-     * Starts a challenge for an existing passkey (Conditional UI)
+     * Start login with an existing passkey (Conditional UI) (asynchronously)
+     * Starts login with an existing passkey in [Conditional UI](https://www.corbado.com/glossary/conditional-ui) scenario. To complete the ceremony you need to call [finish](/api-reference/backend-api/passkeys/finish-login-with-an-existing-passkey-conditional-ui). 
      * @param passkeyMediationStartReq  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -861,11 +863,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Passkey login challenge has been created </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Passkey login process has been started. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyMediationStartAsync(PasskeyMediationStartReq passkeyMediationStartReq, final ApiCallback<PasskeyMediationStartRsp> _callback) throws ApiException {
+    public okhttp3.Call passkeyMediationStartAsync(@javax.annotation.Nonnull PasskeyMediationStartReq passkeyMediationStartReq, final ApiCallback<PasskeyMediationStartRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyMediationStartValidateBeforeCall(passkeyMediationStartReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyMediationStartRsp>(){}.getType();
@@ -882,11 +884,11 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Post Passkey Login succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Post Passkey Login succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyPostLoginCall(PasskeyPostLoginReq passkeyPostLoginReq, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call passkeyPostLoginCall(@javax.annotation.Nonnull PasskeyPostLoginReq passkeyPostLoginReq, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -932,7 +934,7 @@ public class PasskeysApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call passkeyPostLoginValidateBeforeCall(PasskeyPostLoginReq passkeyPostLoginReq, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call passkeyPostLoginValidateBeforeCall(@javax.annotation.Nonnull PasskeyPostLoginReq passkeyPostLoginReq, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'passkeyPostLoginReq' is set
         if (passkeyPostLoginReq == null) {
             throw new ApiException("Missing the required parameter 'passkeyPostLoginReq' when calling passkeyPostLogin(Async)");
@@ -943,7 +945,7 @@ public class PasskeysApi {
     }
 
     /**
-     * 
+     * Run the post-login action for passkey
      * Explicitly runs the post-login action
      * @param passkeyPostLoginReq  (required)
      * @return PasskeyPostLoginRsp
@@ -952,17 +954,17 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Post Passkey Login succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Post Passkey Login succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public PasskeyPostLoginRsp passkeyPostLogin(PasskeyPostLoginReq passkeyPostLoginReq) throws ApiException {
+    public PasskeyPostLoginRsp passkeyPostLogin(@javax.annotation.Nonnull PasskeyPostLoginReq passkeyPostLoginReq) throws ApiException {
         ApiResponse<PasskeyPostLoginRsp> localVarResp = passkeyPostLoginWithHttpInfo(passkeyPostLoginReq);
         return localVarResp.getData();
     }
 
     /**
-     * 
+     * Run the post-login action for passkey
      * Explicitly runs the post-login action
      * @param passkeyPostLoginReq  (required)
      * @return ApiResponse&lt;PasskeyPostLoginRsp&gt;
@@ -971,18 +973,18 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Post Passkey Login succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Post Passkey Login succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PasskeyPostLoginRsp> passkeyPostLoginWithHttpInfo(PasskeyPostLoginReq passkeyPostLoginReq) throws ApiException {
+    public ApiResponse<PasskeyPostLoginRsp> passkeyPostLoginWithHttpInfo(@javax.annotation.Nonnull PasskeyPostLoginReq passkeyPostLoginReq) throws ApiException {
         okhttp3.Call localVarCall = passkeyPostLoginValidateBeforeCall(passkeyPostLoginReq, null);
         Type localVarReturnType = new TypeToken<PasskeyPostLoginRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     *  (asynchronously)
+     * Run the post-login action for passkey (asynchronously)
      * Explicitly runs the post-login action
      * @param passkeyPostLoginReq  (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -992,14 +994,145 @@ public class PasskeysApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Post Passkey Login succeeded </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Post Passkey Login succeeded. </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyPostLoginAsync(PasskeyPostLoginReq passkeyPostLoginReq, final ApiCallback<PasskeyPostLoginRsp> _callback) throws ApiException {
+    public okhttp3.Call passkeyPostLoginAsync(@javax.annotation.Nonnull PasskeyPostLoginReq passkeyPostLoginReq, final ApiCallback<PasskeyPostLoginRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyPostLoginValidateBeforeCall(passkeyPostLoginReq, _callback);
         Type localVarReturnType = new TypeToken<PasskeyPostLoginRsp>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for passkeyVerifySignedData
+     * @param passkeyVerifySignedDataReq  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> &#x60;signedPasskeyData&#x60; has been verified.  </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call passkeyVerifySignedDataCall(@javax.annotation.Nonnull PasskeyVerifySignedDataReq passkeyVerifySignedDataReq, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = passkeyVerifySignedDataReq;
+
+        // create path and map variables
+        String localVarPath = "/passkey/verifySignedData";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "basicAuth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call passkeyVerifySignedDataValidateBeforeCall(@javax.annotation.Nonnull PasskeyVerifySignedDataReq passkeyVerifySignedDataReq, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'passkeyVerifySignedDataReq' is set
+        if (passkeyVerifySignedDataReq == null) {
+            throw new ApiException("Missing the required parameter 'passkeyVerifySignedDataReq' when calling passkeyVerifySignedData(Async)");
+        }
+
+        return passkeyVerifySignedDataCall(passkeyVerifySignedDataReq, _callback);
+
+    }
+
+    /**
+     * Verify signedPasskeyData from a passkey login
+     * Verifies the &#x60;signedPasskeyData&#x60; from a passkey login. The &#x60;signedPasskeyData&#x60; is returned by the [finish](/api-reference/backend-api/passkeys/finish-login-with-an-existing-passkey) call and is essential for transferring the authentication state to your backend.  It is required only for [Corbado Connect](/corbado-connect) and is thoroughly explained in our [Documentation](/corbado-connect/concepts/signed-passkey-data). Our [generic integration guide](/corbado-connect/integration/generic) explains how to use &#x60;signedPasskeyData&#x60; in your backend. 
+     * @param passkeyVerifySignedDataReq  (required)
+     * @return PasskeyVerifySignedDataRsp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> &#x60;signedPasskeyData&#x60; has been verified.  </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public PasskeyVerifySignedDataRsp passkeyVerifySignedData(@javax.annotation.Nonnull PasskeyVerifySignedDataReq passkeyVerifySignedDataReq) throws ApiException {
+        ApiResponse<PasskeyVerifySignedDataRsp> localVarResp = passkeyVerifySignedDataWithHttpInfo(passkeyVerifySignedDataReq);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Verify signedPasskeyData from a passkey login
+     * Verifies the &#x60;signedPasskeyData&#x60; from a passkey login. The &#x60;signedPasskeyData&#x60; is returned by the [finish](/api-reference/backend-api/passkeys/finish-login-with-an-existing-passkey) call and is essential for transferring the authentication state to your backend.  It is required only for [Corbado Connect](/corbado-connect) and is thoroughly explained in our [Documentation](/corbado-connect/concepts/signed-passkey-data). Our [generic integration guide](/corbado-connect/integration/generic) explains how to use &#x60;signedPasskeyData&#x60; in your backend. 
+     * @param passkeyVerifySignedDataReq  (required)
+     * @return ApiResponse&lt;PasskeyVerifySignedDataRsp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> &#x60;signedPasskeyData&#x60; has been verified.  </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PasskeyVerifySignedDataRsp> passkeyVerifySignedDataWithHttpInfo(@javax.annotation.Nonnull PasskeyVerifySignedDataReq passkeyVerifySignedDataReq) throws ApiException {
+        okhttp3.Call localVarCall = passkeyVerifySignedDataValidateBeforeCall(passkeyVerifySignedDataReq, null);
+        Type localVarReturnType = new TypeToken<PasskeyVerifySignedDataRsp>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Verify signedPasskeyData from a passkey login (asynchronously)
+     * Verifies the &#x60;signedPasskeyData&#x60; from a passkey login. The &#x60;signedPasskeyData&#x60; is returned by the [finish](/api-reference/backend-api/passkeys/finish-login-with-an-existing-passkey) call and is essential for transferring the authentication state to your backend.  It is required only for [Corbado Connect](/corbado-connect) and is thoroughly explained in our [Documentation](/corbado-connect/concepts/signed-passkey-data). Our [generic integration guide](/corbado-connect/integration/generic) explains how to use &#x60;signedPasskeyData&#x60; in your backend. 
+     * @param passkeyVerifySignedDataReq  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> &#x60;signedPasskeyData&#x60; has been verified.  </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call passkeyVerifySignedDataAsync(@javax.annotation.Nonnull PasskeyVerifySignedDataReq passkeyVerifySignedDataReq, final ApiCallback<PasskeyVerifySignedDataRsp> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = passkeyVerifySignedDataValidateBeforeCall(passkeyVerifySignedDataReq, _callback);
+        Type localVarReturnType = new TypeToken<PasskeyVerifySignedDataRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
