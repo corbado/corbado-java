@@ -104,6 +104,6 @@ public class CorbadoSdk {
    * @return the version
    */
   public String getVersion() {
-    return "1.0.7";
+    return "1.0.8";
   }
 }
