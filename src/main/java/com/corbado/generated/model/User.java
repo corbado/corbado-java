@@ -51,7 +51,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * User
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:28:16.202271925Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:34:06.387838337Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class User {
   public static final String SERIALIZED_NAME_USER_I_D = "userID";
   @SerializedName(SERIALIZED_NAME_USER_I_D)
@@ -75,12 +75,12 @@ public class User {
 
   public static final String SERIALIZED_NAME_UPDATED = "updated";
   @SerializedName(SERIALIZED_NAME_UPDATED)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String updated;
 
   public static final String SERIALIZED_NAME_UPDATED_MS = "updatedMs";
   @SerializedName(SERIALIZED_NAME_UPDATED_MS)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private Long updatedMs;
 
   public User() {
@@ -162,7 +162,7 @@ public class User {
   }
 
 
-  public User updated(@javax.annotation.Nullable String updated) {
+  public User updated(@javax.annotation.Nonnull String updated) {
     this.updated = updated;
     return this;
   }
@@ -171,17 +171,17 @@ public class User {
    * Get updated
    * @return updated
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getUpdated() {
     return updated;
   }
 
-  public void setUpdated(@javax.annotation.Nullable String updated) {
+  public void setUpdated(@javax.annotation.Nonnull String updated) {
     this.updated = updated;
   }
 
 
-  public User updatedMs(@javax.annotation.Nullable Long updatedMs) {
+  public User updatedMs(@javax.annotation.Nonnull Long updatedMs) {
     this.updatedMs = updatedMs;
     return this;
   }
@@ -190,12 +190,12 @@ public class User {
    * Get updatedMs
    * @return updatedMs
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public Long getUpdatedMs() {
     return updatedMs;
   }
 
-  public void setUpdatedMs(@javax.annotation.Nullable Long updatedMs) {
+  public void setUpdatedMs(@javax.annotation.Nonnull Long updatedMs) {
     this.updatedMs = updatedMs;
   }
 
@@ -303,7 +303,7 @@ public class User {
     openapiFields = new HashSet<String>(Arrays.asList("userID", "fullName", "status", "explicitWebauthnID", "updated", "updatedMs"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("userID", "status"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("userID", "status", "updated", "updatedMs"));
   }
 
   /**
@@ -337,7 +337,7 @@ public class User {
       if ((jsonObj.get("explicitWebauthnID") != null && !jsonObj.get("explicitWebauthnID").isJsonNull()) && !jsonObj.get("explicitWebauthnID").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `explicitWebauthnID` to be a primitive type in the JSON string but got `%s`", jsonObj.get("explicitWebauthnID").toString()));
       }
-      if ((jsonObj.get("updated") != null && !jsonObj.get("updated").isJsonNull()) && !jsonObj.get("updated").isJsonPrimitive()) {
+      if (!jsonObj.get("updated").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("updated").toString()));
       }
   }

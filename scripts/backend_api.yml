@@ -1668,6 +1668,8 @@ components:
       required:
         - userID
         - status
+        - updated
+        - updatedMs
       properties:
         userID:
           type: string
