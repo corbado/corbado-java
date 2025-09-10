@@ -13,7 +13,7 @@
 
 package com.corbado.generated.invoker;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:16:45.773957592Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:20:08.389669505Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class Pair {
   private final String name;
   private final String value;
