@@ -61,7 +61,8 @@ import com.google.gson.JsonParseException;
 
 import com.corbado.generated.invoker.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:15:43.732748882Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:16:45.773957592Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyMediationFinishRspError extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(PasskeyMediationFinishRspError.class.getName());
 
