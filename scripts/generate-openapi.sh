@@ -29,8 +29,7 @@ docker run -v ${PWD}:/local --user $(id -u):$(id -g) openapitools/openapi-genera
     --additional-properties=modelPackage=com.corbado.generated.model \
     --additional-properties=apiPackage=com.corbado.generated.api \
     --additional-properties=useSwaggerAnnotations=false \
-    --additional-properties=disallowAdditionalPropertiesIfNotPresent=false \
-    --additional-properties=additionalModelTypeAnnotations='@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)'
+    --additional-properties=disallowAdditionalPropertiesIfNotPresent=false
 
 cp -r src/main/java/$SDK_PACKAGE_NAME/$GENERATED_PACKAGE_NAME/* ../../src/main/java/$SDK_PACKAGE_NAME/$GENERATED_PACKAGE_NAME
 cd ..

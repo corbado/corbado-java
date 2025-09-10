@@ -51,8 +51,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * DecisionInsightsAppend
  */
-@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown = true)
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:23:59.197916542Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:27:41.845066631Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class DecisionInsightsAppend {
   public static final String SERIALIZED_NAME_TAG = "tag";
   @SerializedName(SERIALIZED_NAME_TAG)
