@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.corbado.generated.model.ErrorRsp;
+import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.SessionList;
-import com.corbado.generated.model.UserDelete200Response;
-import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -301,7 +301,7 @@ public class SessionsApi {
      * Revoke a session
      * Revokes an existing session by given &#x60;sessionID&#x60;.
      * @param sessionID ID of session (required)
-     * @return UserDelete200Response
+     * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -311,8 +311,8 @@ public class SessionsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public UserDelete200Response sessionRevoke(@javax.annotation.Nonnull String sessionID) throws ApiException {
-        ApiResponse<UserDelete200Response> localVarResp = sessionRevokeWithHttpInfo(sessionID);
+    public GenericRsp sessionRevoke(@javax.annotation.Nonnull String sessionID) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = sessionRevokeWithHttpInfo(sessionID);
         return localVarResp.getData();
     }
 
@@ -320,7 +320,7 @@ public class SessionsApi {
      * Revoke a session
      * Revokes an existing session by given &#x60;sessionID&#x60;.
      * @param sessionID ID of session (required)
-     * @return ApiResponse&lt;UserDelete200Response&gt;
+     * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -330,9 +330,9 @@ public class SessionsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserDelete200Response> sessionRevokeWithHttpInfo(@javax.annotation.Nonnull String sessionID) throws ApiException {
+    public ApiResponse<GenericRsp> sessionRevokeWithHttpInfo(@javax.annotation.Nonnull String sessionID) throws ApiException {
         okhttp3.Call localVarCall = sessionRevokeValidateBeforeCall(sessionID, null);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -351,10 +351,10 @@ public class SessionsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call sessionRevokeAsync(@javax.annotation.Nonnull String sessionID, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
+    public okhttp3.Call sessionRevokeAsync(@javax.annotation.Nonnull String sessionID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = sessionRevokeValidateBeforeCall(sessionID, _callback);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

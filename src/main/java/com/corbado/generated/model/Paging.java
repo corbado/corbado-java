@@ -15,17 +15,13 @@ package com.corbado.generated.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.corbado.generated.model.Credential;
-import com.corbado.generated.model.Paging;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,66 +48,82 @@ import java.util.Locale;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * CredentialList
+ * Paging
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
-public class CredentialList {
-  public static final String SERIALIZED_NAME_CREDENTIALS = "credentials";
-  @SerializedName(SERIALIZED_NAME_CREDENTIALS)
+public class Paging {
+  public static final String SERIALIZED_NAME_PAGE = "page";
+  @SerializedName(SERIALIZED_NAME_PAGE)
   @javax.annotation.Nonnull
-  private List<Credential> credentials = new ArrayList<>();
+  private Integer page = 1;
 
-  public static final String SERIALIZED_NAME_PAGING = "paging";
-  @SerializedName(SERIALIZED_NAME_PAGING)
+  public static final String SERIALIZED_NAME_TOTAL_PAGES = "totalPages";
+  @SerializedName(SERIALIZED_NAME_TOTAL_PAGES)
   @javax.annotation.Nonnull
-  private Paging paging;
+  private Integer totalPages;
 
-  public CredentialList() {
-  }
-
-  public CredentialList credentials(@javax.annotation.Nonnull List<Credential> credentials) {
-    this.credentials = credentials;
-    return this;
-  }
-
-  public CredentialList addCredentialsItem(Credential credentialsItem) {
-    if (this.credentials == null) {
-      this.credentials = new ArrayList<>();
-    }
-    this.credentials.add(credentialsItem);
-    return this;
-  }
-
-  /**
-   * Get credentials
-   * @return credentials
-   */
+  public static final String SERIALIZED_NAME_TOTAL_ITEMS = "totalItems";
+  @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS)
   @javax.annotation.Nonnull
-  public List<Credential> getCredentials() {
-    return credentials;
+  private Integer totalItems;
+
+  public Paging() {
   }
 
-  public void setCredentials(@javax.annotation.Nonnull List<Credential> credentials) {
-    this.credentials = credentials;
-  }
-
-
-  public CredentialList paging(@javax.annotation.Nonnull Paging paging) {
-    this.paging = paging;
+  public Paging page(@javax.annotation.Nonnull Integer page) {
+    this.page = page;
     return this;
   }
 
   /**
-   * Get paging
-   * @return paging
+   * current page returned in response
+   * @return page
    */
   @javax.annotation.Nonnull
-  public Paging getPaging() {
-    return paging;
+  public Integer getPage() {
+    return page;
   }
 
-  public void setPaging(@javax.annotation.Nonnull Paging paging) {
-    this.paging = paging;
+  public void setPage(@javax.annotation.Nonnull Integer page) {
+    this.page = page;
+  }
+
+
+  public Paging totalPages(@javax.annotation.Nonnull Integer totalPages) {
+    this.totalPages = totalPages;
+    return this;
+  }
+
+  /**
+   * total number of pages available
+   * @return totalPages
+   */
+  @javax.annotation.Nonnull
+  public Integer getTotalPages() {
+    return totalPages;
+  }
+
+  public void setTotalPages(@javax.annotation.Nonnull Integer totalPages) {
+    this.totalPages = totalPages;
+  }
+
+
+  public Paging totalItems(@javax.annotation.Nonnull Integer totalItems) {
+    this.totalItems = totalItems;
+    return this;
+  }
+
+  /**
+   * total number of items available
+   * @return totalItems
+   */
+  @javax.annotation.Nonnull
+  public Integer getTotalItems() {
+    return totalItems;
+  }
+
+  public void setTotalItems(@javax.annotation.Nonnull Integer totalItems) {
+    this.totalItems = totalItems;
   }
 
 
@@ -124,22 +136,24 @@ public class CredentialList {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CredentialList credentialList = (CredentialList) o;
-    return Objects.equals(this.credentials, credentialList.credentials) &&
-        Objects.equals(this.paging, credentialList.paging);
+    Paging paging = (Paging) o;
+    return Objects.equals(this.page, paging.page) &&
+        Objects.equals(this.totalPages, paging.totalPages) &&
+        Objects.equals(this.totalItems, paging.totalItems);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(credentials, paging);
+    return Objects.hash(page, totalPages, totalItems);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CredentialList {\n");
-    sb.append("    credentials: ").append(toIndentedString(credentials)).append("\n");
-    sb.append("    paging: ").append(toIndentedString(paging)).append("\n");
+    sb.append("class Paging {\n");
+    sb.append("    page: ").append(toIndentedString(page)).append("\n");
+    sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
+    sb.append("    totalItems: ").append(toIndentedString(totalItems)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -161,74 +175,62 @@ public class CredentialList {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("credentials", "paging"));
+    openapiFields = new HashSet<String>(Arrays.asList("page", "totalPages", "totalItems"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("credentials", "paging"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("page", "totalPages", "totalItems"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to CredentialList
+   * @throws IOException if the JSON Element is invalid with respect to Paging
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!CredentialList.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in CredentialList is not found in the empty JSON string", CredentialList.openapiRequiredFields.toString()));
+        if (!Paging.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in Paging is not found in the empty JSON string", Paging.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!CredentialList.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `CredentialList` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!Paging.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `Paging` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : CredentialList.openapiRequiredFields) {
+      for (String requiredField : Paging.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the json data is an array
-      if (!jsonObj.get("credentials").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `credentials` to be an array in the JSON string but got `%s`", jsonObj.get("credentials").toString()));
-      }
-
-      JsonArray jsonArraycredentials = jsonObj.getAsJsonArray("credentials");
-      // validate the required field `credentials` (array)
-      for (int i = 0; i < jsonArraycredentials.size(); i++) {
-        Credential.validateJsonElement(jsonArraycredentials.get(i));
-      };
-      // validate the required field `paging`
-      Paging.validateJsonElement(jsonObj.get("paging"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!CredentialList.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'CredentialList' and its subtypes
+       if (!Paging.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'Paging' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<CredentialList> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(CredentialList.class));
+       final TypeAdapter<Paging> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(Paging.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<CredentialList>() {
+       return (TypeAdapter<T>) new TypeAdapter<Paging>() {
            @Override
-           public void write(JsonWriter out, CredentialList value) throws IOException {
+           public void write(JsonWriter out, Paging value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public CredentialList read(JsonReader in) throws IOException {
+           public Paging read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -239,18 +241,18 @@ public class CredentialList {
   }
 
   /**
-   * Create an instance of CredentialList given an JSON string
+   * Create an instance of Paging given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of CredentialList
-   * @throws IOException if the JSON string is invalid with respect to CredentialList
+   * @return An instance of Paging
+   * @throws IOException if the JSON string is invalid with respect to Paging
    */
-  public static CredentialList fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, CredentialList.class);
+  public static Paging fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, Paging.class);
   }
 
   /**
-   * Convert an instance of CredentialList to an JSON string
+   * Convert an instance of Paging to an JSON string
    *
    * @return JSON string
    */

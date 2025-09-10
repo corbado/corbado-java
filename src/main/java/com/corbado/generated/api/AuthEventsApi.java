@@ -29,7 +29,7 @@ import java.io.IOException;
 
 import com.corbado.generated.model.AuthEvent;
 import com.corbado.generated.model.AuthEventCreateReq;
-import com.corbado.generated.model.UserListDefaultResponse;
+import com.corbado.generated.model.ErrorRsp;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

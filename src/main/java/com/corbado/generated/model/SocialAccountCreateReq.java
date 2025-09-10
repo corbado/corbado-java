@@ -15,6 +15,7 @@ package com.corbado.generated.model;
 
 import java.util.Objects;
 import java.util.Locale;
+import com.corbado.generated.model.SocialProviderType;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,66 +51,12 @@ import com.corbado.generated.invoker.JSON;
 /**
  * SocialAccountCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class SocialAccountCreateReq {
-  /**
-   * Type of the social provider.
-   */
-  @JsonAdapter(ProviderTypeEnum.Adapter.class)
-  public enum ProviderTypeEnum {
-    GOOGLE("google"),
-    
-    MICROSOFT("microsoft"),
-    
-    GITHUB("github");
-
-    private String value;
-
-    ProviderTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ProviderTypeEnum fromValue(String value) {
-      for (ProviderTypeEnum b : ProviderTypeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ProviderTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ProviderTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ProviderTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ProviderTypeEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      ProviderTypeEnum.fromValue(value);
-    }
-  }
-
   public static final String SERIALIZED_NAME_PROVIDER_TYPE = "providerType";
   @SerializedName(SERIALIZED_NAME_PROVIDER_TYPE)
   @javax.annotation.Nonnull
-  private ProviderTypeEnum providerType;
+  private SocialProviderType providerType;
 
   public static final String SERIALIZED_NAME_IDENTIFIER_VALUE = "identifierValue";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_VALUE)
@@ -134,21 +81,21 @@ public class SocialAccountCreateReq {
   public SocialAccountCreateReq() {
   }
 
-  public SocialAccountCreateReq providerType(@javax.annotation.Nonnull ProviderTypeEnum providerType) {
+  public SocialAccountCreateReq providerType(@javax.annotation.Nonnull SocialProviderType providerType) {
     this.providerType = providerType;
     return this;
   }
 
   /**
-   * Type of the social provider.
+   * Get providerType
    * @return providerType
    */
   @javax.annotation.Nonnull
-  public ProviderTypeEnum getProviderType() {
+  public SocialProviderType getProviderType() {
     return providerType;
   }
 
-  public void setProviderType(@javax.annotation.Nonnull ProviderTypeEnum providerType) {
+  public void setProviderType(@javax.annotation.Nonnull SocialProviderType providerType) {
     this.providerType = providerType;
   }
 
@@ -315,11 +262,8 @@ public class SocialAccountCreateReq {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("providerType").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `providerType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("providerType").toString()));
-      }
       // validate the required field `providerType`
-      ProviderTypeEnum.validateJsonElement(jsonObj.get("providerType"));
+      SocialProviderType.validateJsonElement(jsonObj.get("providerType"));
       if (!jsonObj.get("identifierValue").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `identifierValue` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifierValue").toString()));
       }

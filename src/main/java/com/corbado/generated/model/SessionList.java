@@ -15,8 +15,8 @@ package com.corbado.generated.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.corbado.generated.model.SessionListSessionsInner;
-import com.corbado.generated.model.UserListPaging;
+import com.corbado.generated.model.Paging;
+import com.corbado.generated.model.Session;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -54,27 +54,27 @@ import com.corbado.generated.invoker.JSON;
 /**
  * SessionList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class SessionList {
   public static final String SERIALIZED_NAME_SESSIONS = "sessions";
   @SerializedName(SERIALIZED_NAME_SESSIONS)
   @javax.annotation.Nonnull
-  private List<SessionListSessionsInner> sessions = new ArrayList<>();
+  private List<Session> sessions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PAGING = "paging";
   @SerializedName(SERIALIZED_NAME_PAGING)
   @javax.annotation.Nonnull
-  private UserListPaging paging;
+  private Paging paging;
 
   public SessionList() {
   }
 
-  public SessionList sessions(@javax.annotation.Nonnull List<SessionListSessionsInner> sessions) {
+  public SessionList sessions(@javax.annotation.Nonnull List<Session> sessions) {
     this.sessions = sessions;
     return this;
   }
 
-  public SessionList addSessionsItem(SessionListSessionsInner sessionsItem) {
+  public SessionList addSessionsItem(Session sessionsItem) {
     if (this.sessions == null) {
       this.sessions = new ArrayList<>();
     }
@@ -87,16 +87,16 @@ public class SessionList {
    * @return sessions
    */
   @javax.annotation.Nonnull
-  public List<SessionListSessionsInner> getSessions() {
+  public List<Session> getSessions() {
     return sessions;
   }
 
-  public void setSessions(@javax.annotation.Nonnull List<SessionListSessionsInner> sessions) {
+  public void setSessions(@javax.annotation.Nonnull List<Session> sessions) {
     this.sessions = sessions;
   }
 
 
-  public SessionList paging(@javax.annotation.Nonnull UserListPaging paging) {
+  public SessionList paging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
     return this;
   }
@@ -106,11 +106,11 @@ public class SessionList {
    * @return paging
    */
   @javax.annotation.Nonnull
-  public UserListPaging getPaging() {
+  public Paging getPaging() {
     return paging;
   }
 
-  public void setPaging(@javax.annotation.Nonnull UserListPaging paging) {
+  public void setPaging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
   }
 
@@ -203,10 +203,10 @@ public class SessionList {
       JsonArray jsonArraysessions = jsonObj.getAsJsonArray("sessions");
       // validate the required field `sessions` (array)
       for (int i = 0; i < jsonArraysessions.size(); i++) {
-        SessionListSessionsInner.validateJsonElement(jsonArraysessions.get(i));
+        Session.validateJsonElement(jsonArraysessions.get(i));
       };
       // validate the required field `paging`
-      UserListPaging.validateJsonElement(jsonObj.get("paging"));
+      Paging.validateJsonElement(jsonObj.get("paging"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

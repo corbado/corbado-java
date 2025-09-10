@@ -27,6 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.corbado.generated.model.ErrorRsp;
 import com.corbado.generated.model.PasskeyAppendFinishReq;
 import com.corbado.generated.model.PasskeyAppendFinishRsp;
 import com.corbado.generated.model.PasskeyAppendStartReq;
@@ -43,7 +44,6 @@ import com.corbado.generated.model.PasskeyPostLoginReq;
 import com.corbado.generated.model.PasskeyPostLoginRsp;
 import com.corbado.generated.model.PasskeyVerifySignedDataReq;
 import com.corbado.generated.model.PasskeyVerifySignedDataRsp;
-import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

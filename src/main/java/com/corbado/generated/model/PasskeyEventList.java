@@ -15,8 +15,8 @@ package com.corbado.generated.model;
 
 import java.util.Objects;
 import java.util.Locale;
+import com.corbado.generated.model.Paging;
 import com.corbado.generated.model.PasskeyEvent;
-import com.corbado.generated.model.UserListPaging;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -54,7 +54,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyEventList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyEventList {
   public static final String SERIALIZED_NAME_PASSKEY_EVENTS = "passkeyEvents";
   @SerializedName(SERIALIZED_NAME_PASSKEY_EVENTS)
@@ -64,7 +64,7 @@ public class PasskeyEventList {
   public static final String SERIALIZED_NAME_PAGING = "paging";
   @SerializedName(SERIALIZED_NAME_PAGING)
   @javax.annotation.Nonnull
-  private UserListPaging paging;
+  private Paging paging;
 
   public PasskeyEventList() {
   }
@@ -96,7 +96,7 @@ public class PasskeyEventList {
   }
 
 
-  public PasskeyEventList paging(@javax.annotation.Nonnull UserListPaging paging) {
+  public PasskeyEventList paging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
     return this;
   }
@@ -106,11 +106,11 @@ public class PasskeyEventList {
    * @return paging
    */
   @javax.annotation.Nonnull
-  public UserListPaging getPaging() {
+  public Paging getPaging() {
     return paging;
   }
 
-  public void setPaging(@javax.annotation.Nonnull UserListPaging paging) {
+  public void setPaging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
   }
 
@@ -206,7 +206,7 @@ public class PasskeyEventList {
         PasskeyEvent.validateJsonElement(jsonArraypasskeyEvents.get(i));
       };
       // validate the required field `paging`
-      UserListPaging.validateJsonElement(jsonObj.get("paging"));
+      Paging.validateJsonElement(jsonObj.get("paging"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

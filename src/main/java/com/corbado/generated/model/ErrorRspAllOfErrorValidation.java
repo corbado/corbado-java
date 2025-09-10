@@ -48,82 +48,58 @@ import java.util.Locale;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * UserListPaging
+ * ErrorRspAllOfErrorValidation
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
-public class UserListPaging {
-  public static final String SERIALIZED_NAME_PAGE = "page";
-  @SerializedName(SERIALIZED_NAME_PAGE)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+public class ErrorRspAllOfErrorValidation {
+  public static final String SERIALIZED_NAME_FIELD = "field";
+  @SerializedName(SERIALIZED_NAME_FIELD)
   @javax.annotation.Nonnull
-  private Integer page = 1;
+  private String field;
 
-  public static final String SERIALIZED_NAME_TOTAL_PAGES = "totalPages";
-  @SerializedName(SERIALIZED_NAME_TOTAL_PAGES)
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
   @javax.annotation.Nonnull
-  private Integer totalPages;
+  private String message;
 
-  public static final String SERIALIZED_NAME_TOTAL_ITEMS = "totalItems";
-  @SerializedName(SERIALIZED_NAME_TOTAL_ITEMS)
-  @javax.annotation.Nonnull
-  private Integer totalItems;
-
-  public UserListPaging() {
+  public ErrorRspAllOfErrorValidation() {
   }
 
-  public UserListPaging page(@javax.annotation.Nonnull Integer page) {
-    this.page = page;
+  public ErrorRspAllOfErrorValidation field(@javax.annotation.Nonnull String field) {
+    this.field = field;
     return this;
   }
 
   /**
-   * current page returned in response
-   * @return page
+   * Get field
+   * @return field
    */
   @javax.annotation.Nonnull
-  public Integer getPage() {
-    return page;
+  public String getField() {
+    return field;
   }
 
-  public void setPage(@javax.annotation.Nonnull Integer page) {
-    this.page = page;
+  public void setField(@javax.annotation.Nonnull String field) {
+    this.field = field;
   }
 
 
-  public UserListPaging totalPages(@javax.annotation.Nonnull Integer totalPages) {
-    this.totalPages = totalPages;
+  public ErrorRspAllOfErrorValidation message(@javax.annotation.Nonnull String message) {
+    this.message = message;
     return this;
   }
 
   /**
-   * total number of pages available
-   * @return totalPages
+   * Get message
+   * @return message
    */
   @javax.annotation.Nonnull
-  public Integer getTotalPages() {
-    return totalPages;
+  public String getMessage() {
+    return message;
   }
 
-  public void setTotalPages(@javax.annotation.Nonnull Integer totalPages) {
-    this.totalPages = totalPages;
-  }
-
-
-  public UserListPaging totalItems(@javax.annotation.Nonnull Integer totalItems) {
-    this.totalItems = totalItems;
-    return this;
-  }
-
-  /**
-   * total number of items available
-   * @return totalItems
-   */
-  @javax.annotation.Nonnull
-  public Integer getTotalItems() {
-    return totalItems;
-  }
-
-  public void setTotalItems(@javax.annotation.Nonnull Integer totalItems) {
-    this.totalItems = totalItems;
+  public void setMessage(@javax.annotation.Nonnull String message) {
+    this.message = message;
   }
 
 
@@ -136,24 +112,22 @@ public class UserListPaging {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserListPaging userListPaging = (UserListPaging) o;
-    return Objects.equals(this.page, userListPaging.page) &&
-        Objects.equals(this.totalPages, userListPaging.totalPages) &&
-        Objects.equals(this.totalItems, userListPaging.totalItems);
+    ErrorRspAllOfErrorValidation errorRspAllOfErrorValidation = (ErrorRspAllOfErrorValidation) o;
+    return Objects.equals(this.field, errorRspAllOfErrorValidation.field) &&
+        Objects.equals(this.message, errorRspAllOfErrorValidation.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(page, totalPages, totalItems);
+    return Objects.hash(field, message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserListPaging {\n");
-    sb.append("    page: ").append(toIndentedString(page)).append("\n");
-    sb.append("    totalPages: ").append(toIndentedString(totalPages)).append("\n");
-    sb.append("    totalItems: ").append(toIndentedString(totalItems)).append("\n");
+    sb.append("class ErrorRspAllOfErrorValidation {\n");
+    sb.append("    field: ").append(toIndentedString(field)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -175,62 +149,68 @@ public class UserListPaging {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("page", "totalPages", "totalItems"));
+    openapiFields = new HashSet<String>(Arrays.asList("field", "message"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(Arrays.asList("page", "totalPages", "totalItems"));
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("field", "message"));
   }
 
   /**
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to UserListPaging
+   * @throws IOException if the JSON Element is invalid with respect to ErrorRspAllOfErrorValidation
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UserListPaging.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in UserListPaging is not found in the empty JSON string", UserListPaging.openapiRequiredFields.toString()));
+        if (!ErrorRspAllOfErrorValidation.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ErrorRspAllOfErrorValidation is not found in the empty JSON string", ErrorRspAllOfErrorValidation.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!UserListPaging.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UserListPaging` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ErrorRspAllOfErrorValidation.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ErrorRspAllOfErrorValidation` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : UserListPaging.openapiRequiredFields) {
+      for (String requiredField : ErrorRspAllOfErrorValidation.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("field").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `field` to be a primitive type in the JSON string but got `%s`", jsonObj.get("field").toString()));
+      }
+      if (!jsonObj.get("message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UserListPaging.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UserListPaging' and its subtypes
+       if (!ErrorRspAllOfErrorValidation.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ErrorRspAllOfErrorValidation' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UserListPaging> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UserListPaging.class));
+       final TypeAdapter<ErrorRspAllOfErrorValidation> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ErrorRspAllOfErrorValidation.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UserListPaging>() {
+       return (TypeAdapter<T>) new TypeAdapter<ErrorRspAllOfErrorValidation>() {
            @Override
-           public void write(JsonWriter out, UserListPaging value) throws IOException {
+           public void write(JsonWriter out, ErrorRspAllOfErrorValidation value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UserListPaging read(JsonReader in) throws IOException {
+           public ErrorRspAllOfErrorValidation read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -241,18 +221,18 @@ public class UserListPaging {
   }
 
   /**
-   * Create an instance of UserListPaging given an JSON string
+   * Create an instance of ErrorRspAllOfErrorValidation given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of UserListPaging
-   * @throws IOException if the JSON string is invalid with respect to UserListPaging
+   * @return An instance of ErrorRspAllOfErrorValidation
+   * @throws IOException if the JSON string is invalid with respect to ErrorRspAllOfErrorValidation
    */
-  public static UserListPaging fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UserListPaging.class);
+  public static ErrorRspAllOfErrorValidation fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ErrorRspAllOfErrorValidation.class);
   }
 
   /**
-   * Convert an instance of UserListPaging to an JSON string
+   * Convert an instance of ErrorRspAllOfErrorValidation to an JSON string
    *
    * @return JSON string
    */

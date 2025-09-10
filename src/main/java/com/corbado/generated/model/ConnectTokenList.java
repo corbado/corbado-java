@@ -16,7 +16,7 @@ package com.corbado.generated.model;
 import java.util.Objects;
 import java.util.Locale;
 import com.corbado.generated.model.ConnectToken;
-import com.corbado.generated.model.UserListPaging;
+import com.corbado.generated.model.Paging;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -54,7 +54,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * ConnectTokenList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class ConnectTokenList {
   public static final String SERIALIZED_NAME_CONNECT_TOKENS = "connectTokens";
   @SerializedName(SERIALIZED_NAME_CONNECT_TOKENS)
@@ -64,7 +64,7 @@ public class ConnectTokenList {
   public static final String SERIALIZED_NAME_PAGING = "paging";
   @SerializedName(SERIALIZED_NAME_PAGING)
   @javax.annotation.Nonnull
-  private UserListPaging paging;
+  private Paging paging;
 
   public ConnectTokenList() {
   }
@@ -96,7 +96,7 @@ public class ConnectTokenList {
   }
 
 
-  public ConnectTokenList paging(@javax.annotation.Nonnull UserListPaging paging) {
+  public ConnectTokenList paging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
     return this;
   }
@@ -106,11 +106,11 @@ public class ConnectTokenList {
    * @return paging
    */
   @javax.annotation.Nonnull
-  public UserListPaging getPaging() {
+  public Paging getPaging() {
     return paging;
   }
 
-  public void setPaging(@javax.annotation.Nonnull UserListPaging paging) {
+  public void setPaging(@javax.annotation.Nonnull Paging paging) {
     this.paging = paging;
   }
 
@@ -206,7 +206,7 @@ public class ConnectTokenList {
         ConnectToken.validateJsonElement(jsonArrayconnectTokens.get(i));
       };
       // validate the required field `paging`
-      UserListPaging.validateJsonElement(jsonObj.get("paging"));
+      Paging.validateJsonElement(jsonObj.get("paging"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

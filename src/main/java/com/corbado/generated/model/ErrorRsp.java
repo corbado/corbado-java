@@ -15,8 +15,8 @@ package com.corbado.generated.model;
 
 import java.util.Objects;
 import java.util.Locale;
-import com.corbado.generated.model.UserListDefaultResponseAllOfError;
-import com.corbado.generated.model.UserListDefaultResponseAllOfRequestData;
+import com.corbado.generated.model.ErrorRspAllOfError;
+import com.corbado.generated.model.RequestData;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -50,10 +50,10 @@ import java.util.Locale;
 import com.corbado.generated.invoker.JSON;
 
 /**
- * UserListDefaultResponse
+ * ErrorRsp
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T12:37:46.293891551Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
-public class UserListDefaultResponse {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T13:05:36.841382713Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+public class ErrorRsp {
   public static final String SERIALIZED_NAME_HTTP_STATUS_CODE = "httpStatusCode";
   @SerializedName(SERIALIZED_NAME_HTTP_STATUS_CODE)
   @javax.annotation.Nonnull
@@ -67,7 +67,7 @@ public class UserListDefaultResponse {
   public static final String SERIALIZED_NAME_REQUEST_DATA = "requestData";
   @SerializedName(SERIALIZED_NAME_REQUEST_DATA)
   @javax.annotation.Nonnull
-  private UserListDefaultResponseAllOfRequestData requestData;
+  private RequestData requestData;
 
   public static final String SERIALIZED_NAME_RUNTIME = "runtime";
   @SerializedName(SERIALIZED_NAME_RUNTIME)
@@ -82,12 +82,12 @@ public class UserListDefaultResponse {
   public static final String SERIALIZED_NAME_ERROR = "error";
   @SerializedName(SERIALIZED_NAME_ERROR)
   @javax.annotation.Nonnull
-  private UserListDefaultResponseAllOfError error;
+  private ErrorRspAllOfError error;
 
-  public UserListDefaultResponse() {
+  public ErrorRsp() {
   }
 
-  public UserListDefaultResponse httpStatusCode(@javax.annotation.Nonnull Integer httpStatusCode) {
+  public ErrorRsp httpStatusCode(@javax.annotation.Nonnull Integer httpStatusCode) {
     this.httpStatusCode = httpStatusCode;
     return this;
   }
@@ -106,7 +106,7 @@ public class UserListDefaultResponse {
   }
 
 
-  public UserListDefaultResponse message(@javax.annotation.Nonnull String message) {
+  public ErrorRsp message(@javax.annotation.Nonnull String message) {
     this.message = message;
     return this;
   }
@@ -125,7 +125,7 @@ public class UserListDefaultResponse {
   }
 
 
-  public UserListDefaultResponse requestData(@javax.annotation.Nonnull UserListDefaultResponseAllOfRequestData requestData) {
+  public ErrorRsp requestData(@javax.annotation.Nonnull RequestData requestData) {
     this.requestData = requestData;
     return this;
   }
@@ -135,16 +135,16 @@ public class UserListDefaultResponse {
    * @return requestData
    */
   @javax.annotation.Nonnull
-  public UserListDefaultResponseAllOfRequestData getRequestData() {
+  public RequestData getRequestData() {
     return requestData;
   }
 
-  public void setRequestData(@javax.annotation.Nonnull UserListDefaultResponseAllOfRequestData requestData) {
+  public void setRequestData(@javax.annotation.Nonnull RequestData requestData) {
     this.requestData = requestData;
   }
 
 
-  public UserListDefaultResponse runtime(@javax.annotation.Nonnull Float runtime) {
+  public ErrorRsp runtime(@javax.annotation.Nonnull Float runtime) {
     this.runtime = runtime;
     return this;
   }
@@ -163,7 +163,7 @@ public class UserListDefaultResponse {
   }
 
 
-  public UserListDefaultResponse data(@javax.annotation.Nullable Object data) {
+  public ErrorRsp data(@javax.annotation.Nullable Object data) {
     this.data = data;
     return this;
   }
@@ -182,7 +182,7 @@ public class UserListDefaultResponse {
   }
 
 
-  public UserListDefaultResponse error(@javax.annotation.Nonnull UserListDefaultResponseAllOfError error) {
+  public ErrorRsp error(@javax.annotation.Nonnull ErrorRspAllOfError error) {
     this.error = error;
     return this;
   }
@@ -192,11 +192,11 @@ public class UserListDefaultResponse {
    * @return error
    */
   @javax.annotation.Nonnull
-  public UserListDefaultResponseAllOfError getError() {
+  public ErrorRspAllOfError getError() {
     return error;
   }
 
-  public void setError(@javax.annotation.Nonnull UserListDefaultResponseAllOfError error) {
+  public void setError(@javax.annotation.Nonnull ErrorRspAllOfError error) {
     this.error = error;
   }
 
@@ -210,13 +210,13 @@ public class UserListDefaultResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserListDefaultResponse userListDefaultResponse = (UserListDefaultResponse) o;
-    return Objects.equals(this.httpStatusCode, userListDefaultResponse.httpStatusCode) &&
-        Objects.equals(this.message, userListDefaultResponse.message) &&
-        Objects.equals(this.requestData, userListDefaultResponse.requestData) &&
-        Objects.equals(this.runtime, userListDefaultResponse.runtime) &&
-        Objects.equals(this.data, userListDefaultResponse.data) &&
-        Objects.equals(this.error, userListDefaultResponse.error);
+    ErrorRsp errorRsp = (ErrorRsp) o;
+    return Objects.equals(this.httpStatusCode, errorRsp.httpStatusCode) &&
+        Objects.equals(this.message, errorRsp.message) &&
+        Objects.equals(this.requestData, errorRsp.requestData) &&
+        Objects.equals(this.runtime, errorRsp.runtime) &&
+        Objects.equals(this.data, errorRsp.data) &&
+        Objects.equals(this.error, errorRsp.error);
   }
 
   @Override
@@ -227,7 +227,7 @@ public class UserListDefaultResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserListDefaultResponse {\n");
+    sb.append("class ErrorRsp {\n");
     sb.append("    httpStatusCode: ").append(toIndentedString(httpStatusCode)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    requestData: ").append(toIndentedString(requestData)).append("\n");
@@ -265,25 +265,25 @@ public class UserListDefaultResponse {
    * Validates the JSON Element and throws an exception if issues found
    *
    * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to UserListDefaultResponse
+   * @throws IOException if the JSON Element is invalid with respect to ErrorRsp
    */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!UserListDefaultResponse.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in UserListDefaultResponse is not found in the empty JSON string", UserListDefaultResponse.openapiRequiredFields.toString()));
+        if (!ErrorRsp.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in ErrorRsp is not found in the empty JSON string", ErrorRsp.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!UserListDefaultResponse.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `UserListDefaultResponse` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ErrorRsp.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `ErrorRsp` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : UserListDefaultResponse.openapiRequiredFields) {
+      for (String requiredField : ErrorRsp.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
@@ -293,31 +293,31 @@ public class UserListDefaultResponse {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
       // validate the required field `requestData`
-      UserListDefaultResponseAllOfRequestData.validateJsonElement(jsonObj.get("requestData"));
+      RequestData.validateJsonElement(jsonObj.get("requestData"));
       // validate the required field `error`
-      UserListDefaultResponseAllOfError.validateJsonElement(jsonObj.get("error"));
+      ErrorRspAllOfError.validateJsonElement(jsonObj.get("error"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!UserListDefaultResponse.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'UserListDefaultResponse' and its subtypes
+       if (!ErrorRsp.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ErrorRsp' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<UserListDefaultResponse> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(UserListDefaultResponse.class));
+       final TypeAdapter<ErrorRsp> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ErrorRsp.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<UserListDefaultResponse>() {
+       return (TypeAdapter<T>) new TypeAdapter<ErrorRsp>() {
            @Override
-           public void write(JsonWriter out, UserListDefaultResponse value) throws IOException {
+           public void write(JsonWriter out, ErrorRsp value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public UserListDefaultResponse read(JsonReader in) throws IOException {
+           public ErrorRsp read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -328,18 +328,18 @@ public class UserListDefaultResponse {
   }
 
   /**
-   * Create an instance of UserListDefaultResponse given an JSON string
+   * Create an instance of ErrorRsp given an JSON string
    *
    * @param jsonString JSON string
-   * @return An instance of UserListDefaultResponse
-   * @throws IOException if the JSON string is invalid with respect to UserListDefaultResponse
+   * @return An instance of ErrorRsp
+   * @throws IOException if the JSON string is invalid with respect to ErrorRsp
    */
-  public static UserListDefaultResponse fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, UserListDefaultResponse.class);
+  public static ErrorRsp fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ErrorRsp.class);
   }
 
   /**
-   * Convert an instance of UserListDefaultResponse to an JSON string
+   * Convert an instance of ErrorRsp to an JSON string
    *
    * @return JSON string
    */

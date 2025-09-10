@@ -30,7 +30,7 @@ import java.io.IOException;
 import com.corbado.generated.model.Challenge;
 import com.corbado.generated.model.ChallengeCreateReq;
 import com.corbado.generated.model.ChallengeUpdateReq;
-import com.corbado.generated.model.UserListDefaultResponse;
+import com.corbado.generated.model.ErrorRsp;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;

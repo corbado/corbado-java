@@ -28,14 +28,14 @@ import java.io.IOException;
 
 
 import com.corbado.generated.model.CredentialList;
+import com.corbado.generated.model.ErrorRsp;
+import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.SocialAccount;
 import com.corbado.generated.model.SocialAccountCreateReq;
 import com.corbado.generated.model.SocialAccountList;
 import com.corbado.generated.model.User;
 import com.corbado.generated.model.UserCreateReq;
-import com.corbado.generated.model.UserDelete200Response;
 import com.corbado.generated.model.UserList;
-import com.corbado.generated.model.UserListDefaultResponse;
 import com.corbado.generated.model.UserUpdateReq;
 
 import java.lang.reflect.Type;
@@ -163,7 +163,7 @@ public class UsersApi {
      * Deletes an existing passkey for a user by given &#x60;userID&#x60; and &#x60;credentialID&#x60;. 
      * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param credentialID Unique identifier of the passkey. Format: &#x60;cre-&lt;number&gt;&#x60;.  (required)
-     * @return UserDelete200Response
+     * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -173,8 +173,8 @@ public class UsersApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public UserDelete200Response credentialDelete(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID) throws ApiException {
-        ApiResponse<UserDelete200Response> localVarResp = credentialDeleteWithHttpInfo(userID, credentialID);
+    public GenericRsp credentialDelete(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = credentialDeleteWithHttpInfo(userID, credentialID);
         return localVarResp.getData();
     }
 
@@ -183,7 +183,7 @@ public class UsersApi {
      * Deletes an existing passkey for a user by given &#x60;userID&#x60; and &#x60;credentialID&#x60;. 
      * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param credentialID Unique identifier of the passkey. Format: &#x60;cre-&lt;number&gt;&#x60;.  (required)
-     * @return ApiResponse&lt;UserDelete200Response&gt;
+     * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -193,9 +193,9 @@ public class UsersApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserDelete200Response> credentialDeleteWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID) throws ApiException {
+    public ApiResponse<GenericRsp> credentialDeleteWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID) throws ApiException {
         okhttp3.Call localVarCall = credentialDeleteValidateBeforeCall(userID, credentialID, null);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -215,10 +215,10 @@ public class UsersApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call credentialDeleteAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
+    public okhttp3.Call credentialDeleteAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String credentialID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = credentialDeleteValidateBeforeCall(userID, credentialID, _callback);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -884,7 +884,7 @@ public class UsersApi {
      * Delete a user
      * Deletes a user by given &#x60;userID&#x60;.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
      * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
-     * @return UserDelete200Response
+     * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -894,8 +894,8 @@ public class UsersApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public UserDelete200Response userDelete(@javax.annotation.Nonnull String userID) throws ApiException {
-        ApiResponse<UserDelete200Response> localVarResp = userDeleteWithHttpInfo(userID);
+    public GenericRsp userDelete(@javax.annotation.Nonnull String userID) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = userDeleteWithHttpInfo(userID);
         return localVarResp.getData();
     }
 
@@ -903,7 +903,7 @@ public class UsersApi {
      * Delete a user
      * Deletes a user by given &#x60;userID&#x60;.  You can also manage users in the [Developer Panel](https://app.corbado.com/users). 
      * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
-     * @return ApiResponse&lt;UserDelete200Response&gt;
+     * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -913,9 +913,9 @@ public class UsersApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserDelete200Response> userDeleteWithHttpInfo(@javax.annotation.Nonnull String userID) throws ApiException {
+    public ApiResponse<GenericRsp> userDeleteWithHttpInfo(@javax.annotation.Nonnull String userID) throws ApiException {
         okhttp3.Call localVarCall = userDeleteValidateBeforeCall(userID, null);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -934,10 +934,10 @@ public class UsersApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call userDeleteAsync(@javax.annotation.Nonnull String userID, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
+    public okhttp3.Call userDeleteAsync(@javax.annotation.Nonnull String userID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = userDeleteValidateBeforeCall(userID, _callback);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

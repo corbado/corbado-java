@@ -31,8 +31,8 @@ import com.corbado.generated.model.ConnectToken;
 import com.corbado.generated.model.ConnectTokenCreateReq;
 import com.corbado.generated.model.ConnectTokenList;
 import com.corbado.generated.model.ConnectTokenUpdateReq;
-import com.corbado.generated.model.UserDelete200Response;
-import com.corbado.generated.model.UserListDefaultResponse;
+import com.corbado.generated.model.ErrorRsp;
+import com.corbado.generated.model.GenericRsp;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -282,7 +282,7 @@ public class ConnectTokensApi {
      * Delete a ConnectToken
      * Deletes an existing ConnectToken. 
      * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
-     * @return UserDelete200Response
+     * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -292,8 +292,8 @@ public class ConnectTokensApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public UserDelete200Response connectTokenDelete(@javax.annotation.Nonnull String connectTokenID) throws ApiException {
-        ApiResponse<UserDelete200Response> localVarResp = connectTokenDeleteWithHttpInfo(connectTokenID);
+    public GenericRsp connectTokenDelete(@javax.annotation.Nonnull String connectTokenID) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = connectTokenDeleteWithHttpInfo(connectTokenID);
         return localVarResp.getData();
     }
 
@@ -301,7 +301,7 @@ public class ConnectTokensApi {
      * Delete a ConnectToken
      * Deletes an existing ConnectToken. 
      * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
-     * @return ApiResponse&lt;UserDelete200Response&gt;
+     * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -311,9 +311,9 @@ public class ConnectTokensApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserDelete200Response> connectTokenDeleteWithHttpInfo(@javax.annotation.Nonnull String connectTokenID) throws ApiException {
+    public ApiResponse<GenericRsp> connectTokenDeleteWithHttpInfo(@javax.annotation.Nonnull String connectTokenID) throws ApiException {
         okhttp3.Call localVarCall = connectTokenDeleteValidateBeforeCall(connectTokenID, null);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -332,10 +332,10 @@ public class ConnectTokensApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenDeleteAsync(@javax.annotation.Nonnull String connectTokenID, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
+    public okhttp3.Call connectTokenDeleteAsync(@javax.annotation.Nonnull String connectTokenID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = connectTokenDeleteValidateBeforeCall(connectTokenID, _callback);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -574,7 +574,7 @@ public class ConnectTokensApi {
      * Updates an existing ConnectToken. 
      * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @param connectTokenUpdateReq  (required)
-     * @return UserDelete200Response
+     * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -584,8 +584,8 @@ public class ConnectTokensApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public UserDelete200Response connectTokenUpdate(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq) throws ApiException {
-        ApiResponse<UserDelete200Response> localVarResp = connectTokenUpdateWithHttpInfo(connectTokenID, connectTokenUpdateReq);
+    public GenericRsp connectTokenUpdate(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = connectTokenUpdateWithHttpInfo(connectTokenID, connectTokenUpdateReq);
         return localVarResp.getData();
     }
 
@@ -594,7 +594,7 @@ public class ConnectTokensApi {
      * Updates an existing ConnectToken. 
      * @param connectTokenID Unique identifier of the connectToken. Format: &#x60;ctk-&lt;number&gt;&#x60;.  (required)
      * @param connectTokenUpdateReq  (required)
-     * @return ApiResponse&lt;UserDelete200Response&gt;
+     * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -604,9 +604,9 @@ public class ConnectTokensApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserDelete200Response> connectTokenUpdateWithHttpInfo(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq) throws ApiException {
+    public ApiResponse<GenericRsp> connectTokenUpdateWithHttpInfo(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq) throws ApiException {
         okhttp3.Call localVarCall = connectTokenUpdateValidateBeforeCall(connectTokenID, connectTokenUpdateReq, null);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -626,10 +626,10 @@ public class ConnectTokensApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call connectTokenUpdateAsync(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
+    public okhttp3.Call connectTokenUpdateAsync(@javax.annotation.Nonnull String connectTokenID, @javax.annotation.Nonnull ConnectTokenUpdateReq connectTokenUpdateReq, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = connectTokenUpdateValidateBeforeCall(connectTokenID, connectTokenUpdateReq, _callback);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

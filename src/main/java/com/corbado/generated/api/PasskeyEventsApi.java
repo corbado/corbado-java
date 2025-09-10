@@ -27,11 +27,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.corbado.generated.model.ErrorRsp;
+import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.PasskeyEvent;
 import com.corbado.generated.model.PasskeyEventCreateReq;
 import com.corbado.generated.model.PasskeyEventList;
-import com.corbado.generated.model.UserDelete200Response;
-import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -299,7 +299,7 @@ public class PasskeyEventsApi {
      * Deletes an existing passkey event for a user by given &#x60;userID&#x60; and &#x60;passkeyEventID&#x60;.
      * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventID ID of a passkey event (required)
-     * @return UserDelete200Response
+     * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -309,8 +309,8 @@ public class PasskeyEventsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public UserDelete200Response passkeyEventDelete(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID) throws ApiException {
-        ApiResponse<UserDelete200Response> localVarResp = passkeyEventDeleteWithHttpInfo(userID, passkeyEventID);
+    public GenericRsp passkeyEventDelete(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = passkeyEventDeleteWithHttpInfo(userID, passkeyEventID);
         return localVarResp.getData();
     }
 
@@ -319,7 +319,7 @@ public class PasskeyEventsApi {
      * Deletes an existing passkey event for a user by given &#x60;userID&#x60; and &#x60;passkeyEventID&#x60;.
      * @param userID Unique identifier of the user. Format: &#x60;usr-&lt;number&gt;&#x60;.  (required)
      * @param passkeyEventID ID of a passkey event (required)
-     * @return ApiResponse&lt;UserDelete200Response&gt;
+     * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -329,9 +329,9 @@ public class PasskeyEventsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserDelete200Response> passkeyEventDeleteWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID) throws ApiException {
+    public ApiResponse<GenericRsp> passkeyEventDeleteWithHttpInfo(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID) throws ApiException {
         okhttp3.Call localVarCall = passkeyEventDeleteValidateBeforeCall(userID, passkeyEventID, null);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -351,10 +351,10 @@ public class PasskeyEventsApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call passkeyEventDeleteAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
+    public okhttp3.Call passkeyEventDeleteAsync(@javax.annotation.Nonnull String userID, @javax.annotation.Nonnull String passkeyEventID, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = passkeyEventDeleteValidateBeforeCall(userID, passkeyEventID, _callback);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

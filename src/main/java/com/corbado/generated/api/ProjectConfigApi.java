@@ -27,9 +27,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.corbado.generated.model.ErrorRsp;
+import com.corbado.generated.model.GenericRsp;
 import com.corbado.generated.model.ProjectConfigUpdateCnameReq;
-import com.corbado.generated.model.UserDelete200Response;
-import com.corbado.generated.model.UserListDefaultResponse;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -148,7 +148,7 @@ public class ProjectConfigApi {
      * Update project CNAME and generate SSL certificate
      * Update project config CNAME and generates new SSL certificate
      * @param projectConfigUpdateCnameReq  (required)
-     * @return UserDelete200Response
+     * @return GenericRsp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -158,8 +158,8 @@ public class ProjectConfigApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public UserDelete200Response projectConfigUpdateCNAME(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq) throws ApiException {
-        ApiResponse<UserDelete200Response> localVarResp = projectConfigUpdateCNAMEWithHttpInfo(projectConfigUpdateCnameReq);
+    public GenericRsp projectConfigUpdateCNAME(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq) throws ApiException {
+        ApiResponse<GenericRsp> localVarResp = projectConfigUpdateCNAMEWithHttpInfo(projectConfigUpdateCnameReq);
         return localVarResp.getData();
     }
 
@@ -167,7 +167,7 @@ public class ProjectConfigApi {
      * Update project CNAME and generate SSL certificate
      * Update project config CNAME and generates new SSL certificate
      * @param projectConfigUpdateCnameReq  (required)
-     * @return ApiResponse&lt;UserDelete200Response&gt;
+     * @return ApiResponse&lt;GenericRsp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
@@ -177,9 +177,9 @@ public class ProjectConfigApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UserDelete200Response> projectConfigUpdateCNAMEWithHttpInfo(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq) throws ApiException {
+    public ApiResponse<GenericRsp> projectConfigUpdateCNAMEWithHttpInfo(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq) throws ApiException {
         okhttp3.Call localVarCall = projectConfigUpdateCNAMEValidateBeforeCall(projectConfigUpdateCnameReq, null);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -198,10 +198,10 @@ public class ProjectConfigApi {
         <tr><td> 0 </td><td> Error </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call projectConfigUpdateCNAMEAsync(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq, final ApiCallback<UserDelete200Response> _callback) throws ApiException {
+    public okhttp3.Call projectConfigUpdateCNAMEAsync(@javax.annotation.Nonnull ProjectConfigUpdateCnameReq projectConfigUpdateCnameReq, final ApiCallback<GenericRsp> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = projectConfigUpdateCNAMEValidateBeforeCall(projectConfigUpdateCnameReq, _callback);
-        Type localVarReturnType = new TypeToken<UserDelete200Response>(){}.getType();
+        Type localVarReturnType = new TypeToken<GenericRsp>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
