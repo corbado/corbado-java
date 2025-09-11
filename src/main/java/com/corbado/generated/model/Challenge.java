@@ -52,7 +52,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * Challenge
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:34:06.387838337Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-11T08:44:44.623070219Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class Challenge {
   public static final String SERIALIZED_NAME_CHALLENGE_I_D = "challengeID";
   @SerializedName(SERIALIZED_NAME_CHALLENGE_I_D)
