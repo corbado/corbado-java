@@ -29,8 +29,8 @@ public class UserService extends ApiService<UsersApi> {
   /**
    * Create a user.
    *
-   * @param fullName the full name
-   * @param status the status
+   * @param fullName           the full name
+   * @param status             the status
    * @param explicitWebauthnID the explicit webauthn ID
    * @return the user entity
    * @throws CorbadoServerException If any server-side error occurs
@@ -41,12 +41,12 @@ public class UserService extends ApiService<UsersApi> {
       @Nullable final String explicitWebauthnID)
       throws CorbadoServerException {
 
-    final UserCreateReq request =
-        new UserCreateReq()
-            .fullName(fullName)
-            .status(status)
-            .explicitWebauthnID(explicitWebauthnID);
+    final UserCreateReq request = new UserCreateReq()
+        .fullName(fullName)
+        .status(status)
+        .explicitWebauthnID(explicitWebauthnID);
     try {
+      System.err.println("IsVerifyingSSL: " + this.client.getApiClient().isVerifyingSsl());
       return new UserEntity(this.client.userCreate(request));
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);
@@ -93,7 +93,8 @@ public class UserService extends ApiService<UsersApi> {
    * Delete user.
    *
    * @param userId the user id
-   * @throws CorbadoServerException exception thrown on error or if user is not found
+   * @throws CorbadoServerException exception thrown on error or if user is not
+   *                                found
    */
   public void delete(@NonNull final String userId) throws CorbadoServerException {
     try {
