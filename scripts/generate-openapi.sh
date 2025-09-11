@@ -23,7 +23,7 @@ cp ../ApiClient.mustache templates/ApiClient.mustache
 # --- 1) Generate with our overridden template (force okhttp-gson) ---
 docker pull openapitools/openapi-generator-cli
 
-docker run --rm -v "${PWD}:/local" --user "$(id -u):$(id -g)" \
+docker run --rm --name corbado-openapi-gen -v "${PWD}:/local" --user "$(id -u):$(id -g)" \
   openapitools/openapi-generator-cli generate \
     -i /local/backend_api.yml \
     -g java \

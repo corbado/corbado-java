@@ -54,7 +54,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyChallengeList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-11T08:44:44.623070219Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-11T08:51:20.340730305Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyChallengeList {
   public static final String SERIALIZED_NAME_PASSKEY_CHALLENGES = "passkeyChallenges";
   @SerializedName(SERIALIZED_NAME_PASSKEY_CHALLENGES)
