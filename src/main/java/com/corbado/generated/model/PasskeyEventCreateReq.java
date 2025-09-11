@@ -51,7 +51,7 @@ import com.corbado.generated.invoker.JSON;
 /**
  * PasskeyEventCreateReq
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-10T14:34:06.387838337Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-09-11T08:51:20.340730305Z[Etc/UTC]", comments = "Generator version: 7.16.0-SNAPSHOT")
 public class PasskeyEventCreateReq {
   public static final String SERIALIZED_NAME_EVENT_TYPE = "eventType";
   @SerializedName(SERIALIZED_NAME_EVENT_TYPE)
