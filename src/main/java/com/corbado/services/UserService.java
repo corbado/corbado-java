@@ -65,6 +65,7 @@ public class UserService extends ApiService<UsersApi> {
         request.getStatus(), "Required field 'UserCreateReq.status' in 'request' cannot be null");
 
     try {
+      System.err.println("IsVerifyingSSL: " + this.client.getApiClient().isVerifyingSsl());
       return new UserEntity(this.client.userCreate(request));
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);
@@ -83,6 +84,7 @@ public class UserService extends ApiService<UsersApi> {
 
     final UserCreateReq request = new UserCreateReq().fullName(fullName).status(UserStatus.ACTIVE);
     try {
+      System.err.println("IsVerifyingSSL: " + this.client.getApiClient().isVerifyingSsl());
       return new UserEntity(this.client.userCreate(request));
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);
@@ -114,6 +116,7 @@ public class UserService extends ApiService<UsersApi> {
    */
   public UserEntity get(@NonNull final String userId) throws CorbadoServerException {
     try {
+      System.err.println("IsVerifyingSSL: " + this.client.getApiClient().isVerifyingSsl());
       return new UserEntity(this.client.userGet(userId));
     } catch (final ApiException e) {
       throw new CorbadoServerException(e);
