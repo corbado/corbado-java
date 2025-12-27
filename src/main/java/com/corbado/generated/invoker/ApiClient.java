@@ -1495,61 +1495,59 @@ public class ApiClient {
      */
     protected void applySslSettings() {
         try {
-            TrustManager[] trustManagers;
-            HostnameVerifier hostnameVerifier;
+            // 1) Never allow "trust-all"
             if (!verifyingSsl) {
-                trustManagers = new TrustManager[]{
-                        new X509TrustManager() {
-                            @Override
-                            public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                            }
-
-                            @Override
-                            public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                            }
-
-                            @Override
-                            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                                return new java.security.cert.X509Certificate[]{};
-                            }
-                        }
-                };
-                hostnameVerifier = new HostnameVerifier() {
-                    @Override
-                    public boolean verify(String hostname, SSLSession session) {
-                        return true;
-                    }
-                };
-            } else {
-                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-
-                if (sslCaCert == null) {
-                    trustManagerFactory.init((KeyStore) null);
-                } else {
-                    char[] password = null; // Any password will work.
-                    CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-                    Collection<? extends Certificate> certificates = certificateFactory.generateCertificates(sslCaCert);
-                    if (certificates.isEmpty()) {
-                        throw new IllegalArgumentException("expected non-empty set of trusted certificates");
-                    }
-                    KeyStore caKeyStore = newEmptyKeyStore(password);
-                    int index = 0;
-                    for (Certificate certificate : certificates) {
-                        String certificateAlias = "ca" + (index++);
-                        caKeyStore.setCertificateEntry(certificateAlias, certificate);
-                    }
-                    trustManagerFactory.init(caKeyStore);
-                }
-                trustManagers = trustManagerFactory.getTrustManagers();
-                hostnameVerifier = OkHostnameVerifier.INSTANCE;
+                throw new IllegalStateException(
+                    "TLS verification disabled (verifyingSsl=false). Refusing to install insecure TrustManager."
+                );
             }
 
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(keyManagers, trustManagers, new SecureRandom());
+            // 2) If no custom CA and no client certs, keep platform defaults (best/simplest)
+            boolean hasCustomCa = (sslCaCert != null);
+            boolean hasClientCert = (keyManagers != null && keyManagers.length > 0);
+
+            if (!hasCustomCa && !hasClientCert) {
+                // Do NOT override sslSocketFactory/hostnameVerifier: let OkHttp use system trust + default hostname checks
+                httpClient = httpClient.newBuilder().build();
+                return;
+            }
+
+            // 3) Build TrustManager from system trust or the provided CA(s)
+            TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+            if (!hasCustomCa) {
+                // System/JVM default trust store
+                tmf.init((KeyStore) null);
+            } else {
+                char[] password = null; // any password works for an empty keystore
+                CertificateFactory cf = CertificateFactory.getInstance("X.509");
+                Collection<? extends Certificate> certs = cf.generateCertificates(sslCaCert);
+                if (certs == null || certs.isEmpty()) {
+                    throw new IllegalArgumentException("Expected non-empty set of trusted certificates");
+                }
+                KeyStore caKeyStore = newEmptyKeyStore(password);
+                int i = 0;
+                for (Certificate c : certs) {
+                    caKeyStore.setCertificateEntry("ca" + (i++), c);
+                }
+                tmf.init(caKeyStore);
+            }
+
+            TrustManager[] tms = tmf.getTrustManagers();
+            if (tms.length == 0 || !(tms[0] instanceof X509TrustManager)) {
+                throw new IllegalStateException("No X509TrustManager from TrustManagerFactory");
+            }
+            X509TrustManager x509Tm = (X509TrustManager) tms[0];
+
+            // 4) Initialize SSLContext with optional client key managers (for mTLS) + the proper trust manager
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(keyManagers, new TrustManager[] { x509Tm }, new SecureRandom());
+
+            // 5) Wire into OkHttp with strict hostname verification
             httpClient = httpClient.newBuilder()
-                            .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0])
-                            .hostnameVerifier(hostnameVerifier)
-                            .build();
+                    .sslSocketFactory(sc.getSocketFactory(), x509Tm)
+                    .hostnameVerifier(OkHostnameVerifier.INSTANCE)
+                    .build();
+
         } catch (GeneralSecurityException e) {
             throw new RuntimeException(e);
         }
